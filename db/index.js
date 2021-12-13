@@ -1,8 +1,17 @@
+require('dotenv').config();
 const { Sequelize, DataTypes, DECIMAL, Deferrable } = require('sequelize');
 
-const sequelize = new Sequelize('equipRent', 'postgres', 'postgres', {
-  host: 'localhost',
-  port: 5432,
+const {
+  DATABASE,
+  USER_NAME,
+  USER_PASSWORD,
+  HOST,
+  DB_PORT,
+} = process.env;
+
+const sequelize = new Sequelize( DATABASE, USER_NAME, USER_PASSWORD, {
+  host: HOST,
+  port: DB_PORT,
   dialect: 'postgres',
   logging: false
 });
