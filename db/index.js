@@ -1,24 +1,16 @@
-const { Sequelize } = require('sequelize');
+const { Sequelize, DataTypes, DECIMAL, Deferrable } = require('sequelize');
 
-const sequelize = new Sequelize({
+const sequelize = new Sequelize('equipRent', 'postgres', 'postgres', {
   host: 'localhost',
-  username: 'root',
-  password: '',
-  dbName: 'equipRent',
-  dbPort: 5432,
+  port: 5432,
   dialect: 'postgres',
   logging: false
 });
 
-//checks for database connection
-async() => {
-  try {
-    await sequelize.authenticate();
-    console.log('Connection has been established successfully.');
-  } catch (error) {
-    console.error('Unable to connect to the database:', error);
-  }
-};
+//checks for database credentials
+sequelize.authenticate()
+  .then(() => console.log('connection established'))
+  .catch(err => console.error('error', err));
 
 const User = sequelize.define('User', {
   id: {
@@ -60,7 +52,7 @@ const Reservation = sequelize.define('Reservation', {
     type: DataTypes.INTEGER,
     references: {
       model: User,
-      key: id,
+      key: 'id',
       deferrable: Deferrable.INITIALLY_IMMEDIATE
     }
   },
@@ -82,7 +74,7 @@ const Post = sequelize.define('Post', {
     type: DataTypes.INTEGER,
     references: {
       model: Reservation,
-      key: id,
+      key: 'id',
       deferrable: Deferrable.INITIALLY_IMMEDIATE
     }
   },
@@ -109,7 +101,7 @@ const Item = sequelize.define('Item', {
     type: DataTypes.INTEGER,
     references: {
       model: User,
-      key: id,
+      key: 'id',
       deferrable: Deferrable.INITIALLY_IMMEDIATE
     }
   },
@@ -119,16 +111,13 @@ const Item = sequelize.define('Item', {
     type: DataTypes.INTEGER,
     references: {
       model: Post,
-      key: id,
+      key: 'id',
       deferrable: Deferrable.INITIALLY_IMMEDIATE
     }
   },
 });
 
-async() => {
-  await sequelize.sync({ force: true });
-  console.log('All models were synchronized successfully.');
-};
+sequelize.sync({force: true});
 
 module.exports = {
   db: sequelize,
