@@ -28,6 +28,9 @@ const User = sequelize.define('User', {
     primaryKey: true,
     autoIncrement: true
   },
+  username: DataTypes.String,
+  googleId: DataTypes.String,
+  thumbnail: DataTypes.String,
   name: DataTypes.STRING,
   email: DataTypes.STRING,
   phoneNumber: DataTypes.INTEGER,
