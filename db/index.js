@@ -21,6 +21,7 @@ sequelize.authenticate()
   .then(() => console.log('connection established'))
   .catch(err => console.error('error', err));
 
+// one to many with posts
 const User = sequelize.define('User', {
   id: {
     type: DataTypes.INTEGER,
@@ -32,83 +33,11 @@ const User = sequelize.define('User', {
   email: DataTypes.STRING,
   phoneNumber: DataTypes.INTEGER,
   description: DataTypes.STRING,
-  rating: DataTypes.INTEGER
-});
-
-const ItemImg = sequelize.define('ItemImg', {
-  id: {
-    type: DataTypes.INTEGER,
-    allowNull: false,
-    primaryKey: true,
-    autoIncrement: true
-  },
-  itemId: DataTypes.INTEGER,
-  smImg: DataTypes.STRING,
-  mdImg: DataTypes.STRING,
-  lgImg: DataTypes.STRING,
-});
-
-
-const Reservation = sequelize.define('Reservation', {
-  id: {
-    type: DataTypes.INTEGER,
-    allowNull: false,
-    primaryKey: true,
-    autoIncrement: true
-  },
-  userId: {
-    type: DataTypes.INTEGER,
-    references: {
-      model: User,
-      key: 'id',
-      deferrable: Deferrable.INITIALLY_IMMEDIATE
-    }
-  },
-  itemId: DataTypes.INTEGER,
-  // itemId: {
-  //   type: DataTypes.INTEGER,
-  //   references: {
-  //     model: Item,
-  //     key: 'id',
-  //     deferrable: Deferrable.INITIALLY_IMMEDIATE
-  //   }
-  // },
-  startDate: DataTypes.INTEGER,
-  endDate: DataTypes.INTEGER,
-  price: DataTypes.INTEGER,
-  total: DataTypes.INTEGER
-});
-
-const Post = sequelize.define('Post', {
-  id: {
-    type: DataTypes.INTEGER,
-    allowNull: false,
-    primaryKey: true,
-    autoIncrement: true
-  },
-  reservationId: {
-    type: DataTypes.INTEGER,
-    references: {
-      model: Reservation,
-      key: 'id',
-      deferrable: Deferrable.INITIALLY_IMMEDIATE
-    }
-  },
-  userId: {
-    type: DataTypes.INTEGER,
-    references: {
-      model: User,
-      key: 'id',
-      deferrable: Deferrable.INITIALLY_IMMEDIATE
-    }
-  },
   rating: DataTypes.INTEGER,
-  description: DataTypes.STRING,
   type: DataTypes.STRING
 });
 
-
-
+// one to many with posts
 const Item = sequelize.define('Item', {
   id: {
     type: DataTypes.INTEGER,
@@ -131,16 +60,93 @@ const Item = sequelize.define('Item', {
   },
   availability: DataTypes.BOOLEAN,
   description: DataTypes.STRING,
-  postId: {
+});
+
+const Post = sequelize.define('Post', {
+  id: {
+    type: DataTypes.INTEGER,
+    allowNull: false,
+    primaryKey: true,
+    autoIncrement: true
+  },
+  renterId: {
     type: DataTypes.INTEGER,
     references: {
-      model: Post,
+      model: User,
       key: 'id',
       deferrable: Deferrable.INITIALLY_IMMEDIATE
     }
   },
+  lenderId: {
+    type: DataTypes.INTEGER,
+    references: {
+      model: User,
+      key: 'id',
+      deferrable: Deferrable.INITIALLY_IMMEDIATE
+    }
+  },
+  itemId: {
+    type: DataTypes.INTEGER,
+    references: {
+      model: Item,
+      key: 'id',
+      deferrable: Deferrable.INITIALLY_IMMEDIATE
+    }
+  },
+  rating: DataTypes.INTEGER,
+  description: DataTypes.STRING,
 });
 
+
+const ItemImg = sequelize.define('ItemImg', {
+  id: {
+    type: DataTypes.INTEGER,
+    allowNull: false,
+    primaryKey: true,
+    autoIncrement: true
+  },
+  itemId: {
+    type: DataTypes.INTEGER,
+    references: {
+      model: Item,
+      key: 'id',
+      deferrable: Deferrable.INITIALLY_IMMEDIATE
+    }
+  },
+  smImg: DataTypes.STRING,
+  mdImg: DataTypes.STRING,
+  lgImg: DataTypes.STRING,
+});
+
+
+const Reservation = sequelize.define('Reservation', {
+  id: {
+    type: DataTypes.INTEGER,
+    allowNull: false,
+    primaryKey: true,
+    autoIncrement: true
+  },
+  userId: {
+    type: DataTypes.INTEGER,
+    references: {
+      model: User,
+      key: 'id',
+      deferrable: Deferrable.INITIALLY_IMMEDIATE
+    }
+  },
+  itemId: {
+    type: DataTypes.INTEGER,
+    references: {
+      model: Item,
+      key: 'id',
+      deferrable: Deferrable.INITIALLY_IMMEDIATE
+    }
+  },
+  startDate: DataTypes.INTEGER,
+  endDate: DataTypes.INTEGER,
+  price: DataTypes.INTEGER,
+  total: DataTypes.INTEGER
+});
 
 
 sequelize.sync({force: true});
