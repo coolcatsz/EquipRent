@@ -1,6 +1,7 @@
 const path = require('path');
 const passport = require('passport');
 const express = require('express');
+const session = require('express-session');
 const bodyParser = require('body-parser');
 const CLIENT_PATH = path.resolve(__dirname, '../client/dist');
 const app = express();
@@ -15,9 +16,15 @@ app.use(express.static(CLIENT_PATH));
 //initialize passport
 app.use(passport.initialize());
 app.use(passport.session());
+app.use(session({
+  secret: 'secret',
+  saveUninitialized: false,
+  resave: true
+}));
 
 //routes
-app.use('/auth', authRouter);
+app.use(authRouter);
+app.get('/auth', (req, res) => console.log('body:', req.body));
 
 module.exports = {
   app,

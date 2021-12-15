@@ -23,104 +23,104 @@ sequelize.authenticate()
 
 const User = sequelize.define('User', {
   id: {
-    type: DataTypes.INTEGER,
+    type: Sequelize.INTEGER,
     allowNull: false,
     primaryKey: true,
     autoIncrement: true
   },
-  username: DataTypes.String,
-  googleId: DataTypes.String,
-  thumbnail: DataTypes.String,
-  name: DataTypes.STRING,
-  email: DataTypes.STRING,
-  phoneNumber: DataTypes.INTEGER,
-  description: DataTypes.STRING,
-  rating: DataTypes.INTEGER,
-  type: DataTypes.STRING
+  username: Sequelize.STRING,
+  googleId: Sequelize.STRING,
+  thumbnail: Sequelize.STRING,
+  name: Sequelize.STRING,
+  email: Sequelize.STRING,
+  phoneNumber: Sequelize.INTEGER,
+  description: Sequelize.STRING,
+  rating: Sequelize.INTEGER,
+  type: Sequelize.STRING
 });
 
 const ItemImg = sequelize.define('ItemImg', {
   id: {
-    type: DataTypes.INTEGER,
+    type: Sequelize.INTEGER,
     allowNull: false,
     primaryKey: true,
     autoIncrement: true
   },
-  itemId: DataTypes.INTEGER,
-  smImg: DataTypes.STRING,
-  mdImg: DataTypes.STRING,
-  lgImg: DataTypes.STRING,
+  itemId: Sequelize.INTEGER,
+  smImg: Sequelize.STRING,
+  mdImg: Sequelize.STRING,
+  lgImg: Sequelize.STRING,
 });
 
 
 const Reservation = sequelize.define('Reservation', {
   id: {
-    type: DataTypes.INTEGER,
+    type: Sequelize.INTEGER,
     allowNull: false,
     primaryKey: true,
     autoIncrement: true
   },
   userId: {
-    type: DataTypes.INTEGER,
+    type: Sequelize.INTEGER,
     references: {
       model: User,
       key: 'id',
       deferrable: Deferrable.INITIALLY_IMMEDIATE
     }
   },
-  itemId: DataTypes.INTEGER,
-  startDate: DataTypes.INTEGER,
-  endDate: DataTypes.INTEGER,
-  price: DataTypes.INTEGER,
-  total: DataTypes.INTEGER
+  itemId: Sequelize.INTEGER,
+  startDate: Sequelize.INTEGER,
+  endDate: Sequelize.INTEGER,
+  price: Sequelize.INTEGER,
+  total: Sequelize.INTEGER
 });
 
 const Post = sequelize.define('Post', {
   id: {
-    type: DataTypes.INTEGER,
+    type: Sequelize.INTEGER,
     allowNull: false,
     primaryKey: true,
     autoIncrement: true
   },
   reservationId: {
-    type: DataTypes.INTEGER,
+    type: Sequelize.INTEGER,
     references: {
       model: Reservation,
       key: 'id',
       deferrable: Deferrable.INITIALLY_IMMEDIATE
     }
   },
-  leaserId: DataTypes.INTEGER,
-  renterId: DataTypes.INTEGER,
-  rating: DataTypes.INTEGER,
-  description: DataTypes.STRING,
-  type: DataTypes.STRING
+  leaserId: Sequelize.INTEGER,
+  renterId: Sequelize.INTEGER,
+  rating: Sequelize.INTEGER,
+  description: Sequelize.STRING,
+  type: Sequelize.STRING
 });
 
 const Item = sequelize.define('Item', {
   id: {
-    type: DataTypes.INTEGER,
+    type: Sequelize.INTEGER,
     allowNull: false,
     primaryKey: true,
     autoIncrement: true
   },
-  brandName: DataTypes.STRING,
-  itemType: DataTypes.STRING,
-  price: DataTypes.INTEGER,
-  condition: DataTypes.STRING,
-  value: DataTypes.INTEGER,
+  brandName: Sequelize.STRING,
+  itemType: Sequelize.STRING,
+  price: Sequelize.INTEGER,
+  condition: Sequelize.STRING,
+  value: Sequelize.INTEGER,
   userId: {
-    type: DataTypes.INTEGER,
+    type: Sequelize.INTEGER,
     references: {
       model: User,
       key: 'id',
       deferrable: Deferrable.INITIALLY_IMMEDIATE
     }
   },
-  availability: DataTypes.BOOLEAN,
-  description: DataTypes.STRING,
+  availability: Sequelize.BOOLEAN,
+  description: Sequelize.STRING,
   postId: {
-    type: DataTypes.INTEGER,
+    type: Sequelize.INTEGER,
     references: {
       model: Post,
       key: 'id',
