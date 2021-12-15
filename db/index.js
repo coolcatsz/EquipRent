@@ -21,113 +21,134 @@ sequelize.authenticate()
   .then(() => console.log('connection established'))
   .catch(err => console.error('error', err));
 
+// one to many with posts
 const User = sequelize.define('User', {
   id: {
-    type: Sequelize.INTEGER,
+    type: DataTypes.INTEGER,
     allowNull: false,
     primaryKey: true,
     autoIncrement: true
   },
-  username: Sequelize.STRING,
-  googleId: Sequelize.STRING,
-  thumbnail: Sequelize.STRING,
-  name: Sequelize.STRING,
-  email: Sequelize.STRING,
-  phoneNumber: Sequelize.INTEGER,
-  description: Sequelize.STRING,
-  rating: Sequelize.INTEGER,
-  type: Sequelize.STRING
+  name: DataTypes.STRING,
+  email: DataTypes.STRING,
+  phoneNumber: DataTypes.INTEGER,
+  description: DataTypes.STRING,
+  rating: DataTypes.INTEGER,
+  type: DataTypes.STRING
 });
+
+// one to many with posts
+const Item = sequelize.define('Item', {
+  id: {
+    type: DataTypes.INTEGER,
+    allowNull: false,
+    primaryKey: true,
+    autoIncrement: true
+  },
+  brandName: DataTypes.STRING,
+  itemType: DataTypes.STRING,
+  price: DataTypes.INTEGER,
+  condition: DataTypes.STRING,
+  value: DataTypes.INTEGER,
+  userId: {
+    type: DataTypes.INTEGER,
+    references: {
+      model: User,
+      key: 'id',
+      deferrable: Deferrable.INITIALLY_IMMEDIATE
+    }
+  },
+  availability: DataTypes.BOOLEAN,
+  description: DataTypes.STRING,
+});
+
+const Post = sequelize.define('Post', {
+  id: {
+    type: DataTypes.INTEGER,
+    allowNull: false,
+    primaryKey: true,
+    autoIncrement: true
+  },
+  renterId: {
+    type: DataTypes.INTEGER,
+    references: {
+      model: User,
+      key: 'id',
+      deferrable: Deferrable.INITIALLY_IMMEDIATE
+    }
+  },
+  lenderId: {
+    type: DataTypes.INTEGER,
+    references: {
+      model: User,
+      key: 'id',
+      deferrable: Deferrable.INITIALLY_IMMEDIATE
+    }
+  },
+  itemId: {
+    type: DataTypes.INTEGER,
+    references: {
+      model: Item,
+      key: 'id',
+      deferrable: Deferrable.INITIALLY_IMMEDIATE
+    }
+  },
+  rating: DataTypes.INTEGER,
+  description: DataTypes.STRING,
+});
+
 
 const ItemImg = sequelize.define('ItemImg', {
   id: {
-    type: Sequelize.INTEGER,
+    type: DataTypes.INTEGER,
     allowNull: false,
     primaryKey: true,
     autoIncrement: true
   },
-  itemId: Sequelize.INTEGER,
-  smImg: Sequelize.STRING,
-  mdImg: Sequelize.STRING,
-  lgImg: Sequelize.STRING,
+
+  itemId: {
+    type: DataTypes.INTEGER,
+    references: {
+      model: Item,
+      key: 'id',
+      deferrable: Deferrable.INITIALLY_IMMEDIATE
+    }
+  },
+  smImg: DataTypes.STRING,
+  mdImg: DataTypes.STRING,
+  lgImg: DataTypes.STRING,
 });
 
 
 const Reservation = sequelize.define('Reservation', {
   id: {
-    type: Sequelize.INTEGER,
+    type: DataTypes.INTEGER,
     allowNull: false,
     primaryKey: true,
     autoIncrement: true
   },
   userId: {
-    type: Sequelize.INTEGER,
+    type: DataTypes.INTEGER,
     references: {
       model: User,
       key: 'id',
       deferrable: Deferrable.INITIALLY_IMMEDIATE
     }
   },
-  itemId: Sequelize.INTEGER,
-  startDate: Sequelize.INTEGER,
-  endDate: Sequelize.INTEGER,
-  price: Sequelize.INTEGER,
-  total: Sequelize.INTEGER
+  itemId: {
+    type: DataTypes.INTEGER,
+    references: {
+      model: Item,
+      key: 'id',
+      deferrable: Deferrable.INITIALLY_IMMEDIATE
+    }
+  },
+  startDate: DataTypes.INTEGER,
+  endDate: DataTypes.INTEGER,
+  price: DataTypes.INTEGER,
+  total: DataTypes.INTEGER
 });
 
-const Post = sequelize.define('Post', {
-  id: {
-    type: Sequelize.INTEGER,
-    allowNull: false,
-    primaryKey: true,
-    autoIncrement: true
-  },
-  reservationId: {
-    type: Sequelize.INTEGER,
-    references: {
-      model: Reservation,
-      key: 'id',
-      deferrable: Deferrable.INITIALLY_IMMEDIATE
-    }
-  },
-  leaserId: Sequelize.INTEGER,
-  renterId: Sequelize.INTEGER,
-  rating: Sequelize.INTEGER,
-  description: Sequelize.STRING,
-  type: Sequelize.STRING
-});
-
-const Item = sequelize.define('Item', {
-  id: {
-    type: Sequelize.INTEGER,
-    allowNull: false,
-    primaryKey: true,
-    autoIncrement: true
-  },
-  brandName: Sequelize.STRING,
-  itemType: Sequelize.STRING,
-  price: Sequelize.INTEGER,
-  condition: Sequelize.STRING,
-  value: Sequelize.INTEGER,
-  userId: {
-    type: Sequelize.INTEGER,
-    references: {
-      model: User,
-      key: 'id',
-      deferrable: Deferrable.INITIALLY_IMMEDIATE
-    }
-  },
-  availability: Sequelize.BOOLEAN,
-  description: Sequelize.STRING,
-  postId: {
-    type: Sequelize.INTEGER,
-    references: {
-      model: Post,
-      key: 'id',
-      deferrable: Deferrable.INITIALLY_IMMEDIATE
-    }
-  },
-});
 
 sequelize.sync({force: true});
 
