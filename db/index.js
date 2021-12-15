@@ -32,8 +32,7 @@ const User = sequelize.define('User', {
   email: DataTypes.STRING,
   phoneNumber: DataTypes.INTEGER,
   description: DataTypes.STRING,
-  rating: DataTypes.INTEGER,
-  type: DataTypes.STRING
+  rating: DataTypes.INTEGER
 });
 
 const ItemImg = sequelize.define('ItemImg', {
@@ -66,6 +65,14 @@ const Reservation = sequelize.define('Reservation', {
     }
   },
   itemId: DataTypes.INTEGER,
+  // itemId: {
+  //   type: DataTypes.INTEGER,
+  //   references: {
+  //     model: Item,
+  //     key: 'id',
+  //     deferrable: Deferrable.INITIALLY_IMMEDIATE
+  //   }
+  // },
   startDate: DataTypes.INTEGER,
   endDate: DataTypes.INTEGER,
   price: DataTypes.INTEGER,
@@ -87,12 +94,20 @@ const Post = sequelize.define('Post', {
       deferrable: Deferrable.INITIALLY_IMMEDIATE
     }
   },
-  leaserId: DataTypes.INTEGER,
-  renterId: DataTypes.INTEGER,
+  userId: {
+    type: DataTypes.INTEGER,
+    references: {
+      model: User,
+      key: 'id',
+      deferrable: Deferrable.INITIALLY_IMMEDIATE
+    }
+  },
   rating: DataTypes.INTEGER,
   description: DataTypes.STRING,
   type: DataTypes.STRING
 });
+
+
 
 const Item = sequelize.define('Item', {
   id: {
@@ -125,6 +140,8 @@ const Item = sequelize.define('Item', {
     }
   },
 });
+
+
 
 sequelize.sync({force: true});
 
