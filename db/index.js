@@ -105,6 +105,7 @@ const ItemImg = sequelize.define('ItemImg', {
     primaryKey: true,
     autoIncrement: true
   },
+
   itemId: {
     type: DataTypes.INTEGER,
     references: {

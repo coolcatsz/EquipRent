@@ -1,4 +1,4 @@
-const { app } = require('./app');
+const { app, passport } = require('./app');
 
 const PORT = process.env.PORT || 3000;
 
