@@ -8,7 +8,7 @@ const Login = () => (
       <div className="row justify-content-center">
         <div className="col-xl-6">
           <div className="text-center">
-            <div className="col-auto"><a href='/auth/google'>Log In</a></div>
+            <div className="col-auto"><a href='/auth/google'>Log In With Google</a></div>
           </div>
         </div>
       </div>

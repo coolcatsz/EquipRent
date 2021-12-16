@@ -19,6 +19,8 @@ import SearchIcon from '@mui/icons-material/Search';
 import { styled, alpha } from '@mui/material/styles';
 import InputBase from '@mui/material/InputBase';
 
+import Login from './Login.jsx';
+
 const Search = styled('div')(({ theme }) => ({
   position: 'relative',
   borderRadius: theme.shape.borderRadius,
@@ -152,22 +154,15 @@ const NavBar = () => {
             transformOrigin={{ horizontal: 'right', vertical: 'top' }}
             anchorOrigin={{ horizontal: 'right', vertical: 'bottom' }}
           >
-            <MenuItem
-              color="inherit"
-              size="large"
-              component={Link}
-              to="/login"
-            >
-            SignUp
-            </MenuItem>
-            <MenuItem
-              color="inherit"
-              size="large"
-              component={Link}
-              to="/login"
-            >
-            Login
-            </MenuItem>
+            <Button>
+
+              <MenuItem
+                color="inherit"
+                size="large"
+                component={Login}
+              >
+              </MenuItem>
+            </Button>
             <MenuItem
               color="inherit"
               size="large"
