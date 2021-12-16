@@ -19,7 +19,6 @@ const App = () => {
           <Route path='/lender' element={<Lender/>}/>
         </Route>
       </Routes>
-      <h1>EquipRent</h1>
     </div>
 
   );

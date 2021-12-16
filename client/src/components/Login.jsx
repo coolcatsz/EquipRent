@@ -1,19 +1,31 @@
 import React, { useState, useContext } from 'react';
+import LoginIcon from '@mui/icons-material/Login';
+import Button from '@mui/material/Button';
+import MenuItem from '@mui/material/MenuItem';
 import axios from 'axios';
 
 
 const Login = () => (
-  <header className="masthead">
-    <div className="container position-relative">
-      <div className="row justify-content-center">
-        <div className="col-xl-6">
-          <div className="text-center">
-            <div className="col-auto"><a href='/auth/google'>Log In With Google</a></div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </header>
+  <div>
+    <LoginIcon fontSize="small"/>
+    <Button style={{textTransform: 'none'}}>
+      <MenuItem
+        color="inherit"
+        size="large"
+      >
+        <a href='/auth/google' style={{ textDecoration: 'none' }}>Login With Google</a>
+      </MenuItem>
+    </Button>
+    {/* <Button>
+      <MenuItem
+        color="inherit"
+        size="large"
+        component={Link}
+        to="/auth/google"
+      >
+      </MenuItem>
+     
+    </Button> */}
+  </div>
 );
-
 export default Login;
