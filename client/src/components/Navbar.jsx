@@ -20,6 +20,7 @@ import { styled, alpha } from '@mui/material/styles';
 import InputBase from '@mui/material/InputBase';
 
 import Login from './Login.jsx';
+import LogOut from './LogOut.jsx';
 
 const Search = styled('div')(({ theme }) => ({
   position: 'relative',
@@ -73,6 +74,7 @@ const NavBar = () => {
   const handleClose = () => {
     setAnchorEl(null);
   };
+
 
   return (
     <Box sx={{ flexGrow: 1 }}>
@@ -155,7 +157,6 @@ const NavBar = () => {
             anchorOrigin={{ horizontal: 'right', vertical: 'bottom' }}
           >
             <Button>
-
               <MenuItem
                 color="inherit"
                 size="large"
@@ -171,17 +172,16 @@ const NavBar = () => {
             >
               <Avatar /> Profile
             </MenuItem>
-            <MenuItem>
-              <Avatar /> My account
-            </MenuItem>
             <Divider />
             <MenuItem>
               <ListItemIcon>
                 <Settings fontSize="small" />
               </ListItemIcon>
-          Settings
+          Account Settings
             </MenuItem>
-            <MenuItem>
+            <MenuItem
+              component={LogOut}
+            >
               <ListItemIcon>
                 <Logout fontSize="small" />
               </ListItemIcon>
