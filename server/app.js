@@ -15,7 +15,7 @@ app.use(express.static(CLIENT_PATH));
 
 //initialize passport
 app.use(passport.initialize());
-app.use(passport.session());
+// app.use(passport.session());
 app.use(session({
   secret: 'secret',
   saveUninitialized: false,
