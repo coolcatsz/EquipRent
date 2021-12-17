@@ -15,7 +15,7 @@ app.use(express.static(CLIENT_PATH));
 
 //initialize passport
 app.use(passport.initialize());
-// app.use(passport.session());
+app.use(passport.session());
 app.use(session({
   secret: 'secret',
   saveUninitialized: false,
@@ -25,6 +25,7 @@ app.use(session({
 //routes
 app.use(authRouter);
 app.get('/auth', (req, res) => console.log('body:', req.body));
+app.get('/logout', (req, res) => console.log('You Have Been Logged Out'));
 
 module.exports = {
   app,

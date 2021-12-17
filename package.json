@@ -9,7 +9,8 @@
     "start": "nodemon server/index.js",
     "build:client": "webpack --config webpack.config.js --mode production",
     "dev": "webpack --config webpack.config.js --mode development --watch",
-    "lint": "eslint . --ext .js,.jsx"
+    "lint": "eslint . --ext .js,.jsx",
+    "seed": "node db/seed.js"
   },
   "husky": {
     "hooks": {
