@@ -1,4 +1,5 @@
 const path = require('path');
+const htmlPlugin = require('html-webpack-plugin');
 
 const SRC_DIR = path.join(__dirname, '/client/src');
 const DIST_DIR = path.join(__dirname, '/client/dist');
@@ -19,4 +20,10 @@ module.exports = {
       },
     ],
   },
+  plugins: [
+    new htmlPlugin({
+      template: path.resolve(SRC_DIR, 'index.html'),
+      filename: 'index.html',
+    })
+  ]
 };
