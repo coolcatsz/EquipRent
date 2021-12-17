@@ -24,12 +24,6 @@ sequelize.authenticate()
 
 // one to many with posts
 const User = sequelize.define('User', {
-  id: {
-    type: DataTypes.INTEGER,
-    allowNull: false,
-    primaryKey: true,
-    autoIncrement: true
-  },
   username: DataTypes.STRING,
   googleId: DataTypes.STRING,
   thumbnail: DataTypes.STRING,
@@ -47,12 +41,6 @@ const User = sequelize.define('User', {
 
 // one to many with posts
 const Item = sequelize.define('Item', {
-  id: {
-    type: DataTypes.INTEGER,
-    allowNull: false,
-    primaryKey: true,
-    autoIncrement: true
-  },
   brand: DataTypes.STRING,
   type: DataTypes.STRING,
   price: DataTypes.INTEGER,
@@ -73,13 +61,7 @@ const Item = sequelize.define('Item', {
 });
 
 const Post = sequelize.define('Post', {
-  id: {
-    type: DataTypes.INTEGER,
-    allowNull: false,
-    primaryKey: true,
-    autoIncrement: true
-  },
-  renter_id: {
+  user_id: {
     type: DataTypes.INTEGER,
     references: {
       model: User,
@@ -87,14 +69,14 @@ const Post = sequelize.define('Post', {
       deferrable: Deferrable.INITIALLY_IMMEDIATE
     }
   },
-  lender_id: {
-    type: DataTypes.INTEGER,
-    references: {
-      model: User,
-      key: 'id',
-      deferrable: Deferrable.INITIALLY_IMMEDIATE
-    }
-  },
+  // lender_id: {
+  //   type: DataTypes.INTEGER,
+  //   references: {
+  //     model: User,
+  //     key: 'id',
+  //     deferrable: Deferrable.INITIALLY_IMMEDIATE
+  //   }
+  // },
   item_id: {
     type: DataTypes.INTEGER,
     references: {
@@ -111,12 +93,6 @@ const Post = sequelize.define('Post', {
 
 
 const ItemImg = sequelize.define('ItemImg', {
-  id: {
-    type: DataTypes.INTEGER,
-    allowNull: false,
-    primaryKey: true,
-    autoIncrement: true
-  },
   item_id: {
     type: DataTypes.INTEGER,
     references: {
@@ -132,12 +108,6 @@ const ItemImg = sequelize.define('ItemImg', {
 
 
 const Reservation = sequelize.define('Reservation', {
-  id: {
-    type: DataTypes.INTEGER,
-    allowNull: false,
-    primaryKey: true,
-    autoIncrement: true
-  },
   user_id: {
     type: DataTypes.INTEGER,
     references: {
@@ -166,7 +136,7 @@ sequelize.sync({force: false})
   .then(() => Post.sync())
   .then(() => ItemImg.sync())
   .then(() => Reservation.sync())
-  .then(() => console.log('table synced'))
+  // .then(() => console.log('table synced'))
   .catch((err) => console.error('Sync Error'));
 
 module.exports = {
