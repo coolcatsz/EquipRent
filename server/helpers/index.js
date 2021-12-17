@@ -2,8 +2,6 @@
 const { db, User, ItemImg, Reservation, Post, Item } = require('/Users/chhotisherpa/EquipRent/db/index.js');
 
 const newPost = (post) => Post.create({
-  user_id: post.user_id,
-  item_id: post.item_id,
   rating: post.rating,
   description: post.description
 }).then((data) => {

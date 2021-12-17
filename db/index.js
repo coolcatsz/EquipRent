@@ -46,14 +46,6 @@ const Item = sequelize.define('Item', {
   price: DataTypes.INTEGER,
   condition: DataTypes.STRING,
   value: DataTypes.INTEGER,
-  user_id: {
-    type: DataTypes.INTEGER,
-    references: {
-      model: User,
-      key: 'id',
-      deferrable: Deferrable.INITIALLY_IMMEDIATE
-    }
-  },
   availability: DataTypes.BOOLEAN,
   description: DataTypes.STRING,
 }, {
@@ -61,30 +53,6 @@ const Item = sequelize.define('Item', {
 });
 
 const Post = sequelize.define('Post', {
-  user_id: {
-    type: DataTypes.INTEGER,
-    references: {
-      model: User,
-      key: 'id',
-      deferrable: Deferrable.INITIALLY_IMMEDIATE
-    }
-  },
-  // lender_id: {
-  //   type: DataTypes.INTEGER,
-  //   references: {
-  //     model: User,
-  //     key: 'id',
-  //     deferrable: Deferrable.INITIALLY_IMMEDIATE
-  //   }
-  // },
-  item_id: {
-    type: DataTypes.INTEGER,
-    references: {
-      model: Item,
-      key: 'id',
-      deferrable: Deferrable.INITIALLY_IMMEDIATE
-    }
-  },
   rating: DataTypes.INTEGER,
   description: DataTypes.STRING,
 }, {
@@ -93,14 +61,6 @@ const Post = sequelize.define('Post', {
 
 
 const ItemImg = sequelize.define('ItemImg', {
-  item_id: {
-    type: DataTypes.INTEGER,
-    references: {
-      model: Item,
-      key: 'id',
-      deferrable: Deferrable.INITIALLY_IMMEDIATE
-    }
-  },
   imgUrl: DataTypes.STRING
 }, {
   timestamps: true
@@ -129,6 +89,14 @@ const Reservation = sequelize.define('Reservation', {
   price: DataTypes.INTEGER,
   total: DataTypes.INTEGER
 });
+
+
+////Associations
+Post.belongsTo(Item, {as: 'itemPost', foreignKey: 'itemId'});
+Post.belongsTo(User, {as: 'userPost', foreignKey: 'userId'});
+Item.belongsTo(User, {as: 'userItem', foreignKey: 'userId'});
+ItemImg.belongsTo(Item, {as: 'itemImg', foreignKey: 'itemId'});
+////////////////
 
 sequelize.sync({force: false})
   .then(() => User.sync())

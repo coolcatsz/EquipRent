@@ -42,9 +42,9 @@ const fakeItem = [
     price: 50,
     condition: 'Great',
     value: 200,
-    user_id: 3,
     availability: true,
-    description: 'Lightweight corded electric mower gasless 10 Amp 15 inch electric mower for powering through rough grass'
+    description: 'Lightweight corded electric mower gasless 10 Amp 15 inch electric mower for powering through rough grass',
+    userId: 1
   },
   {
     brand: 'JUNELILY',
@@ -52,9 +52,9 @@ const fakeItem = [
     price: 80,
     condition: 'Good',
     value: 150,
-    user_id: 2,
     availability: true,
-    description: '9-Person Family Tent 3-Room for Parties'
+    description: '9-Person Family Tent 3-Room for Parties',
+    userId: 2
   },
   {
     brand: 'Blast Zone',
@@ -62,34 +62,84 @@ const fakeItem = [
     price: 300,
     condition: 'Premium Quality',
     value: 500,
+    availability: true,
+    description: 'Inflatable Bounce House with Blower',
+    userId: 3
+  },
+  {
+    brand: 'Kitchen Aid',
+    type: 'kitchen appliance',
+    price: 150,
+    condition: 'Good',
+    value: 350,
+    availability: true,
+    description: 'KitchenAid® Artisan® 5 qt. Tilt-Head Stand Mixer in Empire Red',
+    userId: 1
+  },
+  {
+    brand: 'Crock Pot',
+    type: 'kitchen appliance',
+    price: 80,
+    condition: 'Great',
+    value: 140,
+    availability: true,
+    description: 'Crock-Pot - 10qt Digital Multi Cooker - Stainless Steel',
+    userId: 1
+  },
+  {
+    brand: 'Coleman RoadTrip X-Cursion Propane Grill',
+    type: 'Backyard Appliance',
+    price: 80,
+    condition: 'Working condition',
+    value: 200,
+    availability: true,
+    description: 'Propane Grill; Need to get your own propane gas',
+    userId: 1
+  },
+  {
+    brand: 'Texas Instrument TI-83 Plus Calculator',
+    type: 'Calculator',
+    price: 15,
+    condition: 'Good',
+    value: 100,
+    availability: true,
+    description: 'The TI-83 Plus is an easy-to-use graphing calculator for math and science.',
+    userId: 1
+  },
+  {
+    brand: 'YABER 7200 Lumen full HD projector',
+    type: 'Home Entertainment',
+    price: 80,
+    condition: 'Good',
+    value: 200,
     user_id: 1,
     availability: true,
-    description: 'Inflatable Bounce House with Blower'
-  }
+    description: 'YABER Y31 home projector adopts an advanced German LED light source, high quality materials and delicate manufacturing process',
+    userId: 1
+  },
 ];
 
 const fakePost = [
   {
-    user_id: 1,
-    // lender_id: 1,
-    item_id: 3,
     rating: 4,
-    description: 'Amazing product for kids party'
+    description: 'Amazing product for kids party',
+    itemId: 3,
+    userId: 1
   }
 ];
 
 const fakeImg = [
   {
-    item_id: 1,
+    itemId: 1,
     imgUrl: 'https://m.media-amazon.com/images/I/71wDqAUdXgS._AC_SL1500_.jpg'
   },
   {
-    item_id: 2,
+    itemId: 2,
     imgUrl: 'https://www.rei.com/media/8dcbb8bc-c94c-42b1-bc40-89f4063c6da8?size=784x588'
   },
   {
-    item_id: 3,
-    imgUrl:  'https://www.bouncehousesnow.com/media/catalog/product/cache/4/image/9df78eab33525d08d6e5fb8d27136e95/a/r/arched-castle_nowm0_2.jpg'
+    itemId: 3,
+    imgUrl: 'https://www.bouncehousesnow.com/media/catalog/product/cache/4/image/9df78eab33525d08d6e5fb8d27136e95/a/r/arched-castle_nowm0_2.jpg'
   }
 ];
 module.exports.fakeUser = fakeUser;
