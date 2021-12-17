@@ -7,25 +7,13 @@ import axios from 'axios';
 
 const Login = () => (
   <div>
-    <LoginIcon fontSize="small"/>
-    <Button style={{textTransform: 'none'}}>
-      <MenuItem
-        color="inherit"
-        size="large"
-      >
-        <a href='/auth/google' style={{ textDecoration: 'none' }}>Login With Google</a>
-      </MenuItem>
-    </Button>
-    {/* <Button>
-      <MenuItem
-        color="inherit"
-        size="large"
-        component={Link}
-        to="/auth/google"
-      >
-      </MenuItem>
-     
-    </Button> */}
+    <MenuItem
+      color="inherit"
+      size="large"
+    >
+      <LoginIcon fontSize="small"/>
+      <a href='/auth/google' style={{ textDecoration: 'none' }}>Login With Google</a>
+    </MenuItem>
   </div>
 );
 export default Login;

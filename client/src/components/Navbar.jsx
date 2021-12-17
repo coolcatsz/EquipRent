@@ -156,14 +156,12 @@ const NavBar = () => {
             transformOrigin={{ horizontal: 'right', vertical: 'top' }}
             anchorOrigin={{ horizontal: 'right', vertical: 'bottom' }}
           >
-            <Button>
-              <MenuItem
-                color="inherit"
-                size="large"
-                component={Login}
-              >
-              </MenuItem>
-            </Button>
+            <MenuItem
+              color="inherit"
+              size="large"
+              component={Login}
+            >
+            </MenuItem>
             <MenuItem
               color="inherit"
               size="large"
@@ -185,7 +183,6 @@ const NavBar = () => {
               <ListItemIcon>
                 <Logout fontSize="small" />
               </ListItemIcon>
-          Logout
             </MenuItem>
           </Menu>
         </Toolbar>
