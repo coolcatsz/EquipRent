@@ -14,7 +14,7 @@ const { newPost, findPost } = require('/Users/chhotisherpa/EquipRent/server/help
 //   //   });
 // });
 
-postRoute.get('/insertPost', (req, res) => {
+postRoute.post('/insertPost', (req, res) => {
   // console.log(req);
   const post = {
     user_id: req.body.user_id,
@@ -23,7 +23,7 @@ postRoute.get('/insertPost', (req, res) => {
     description: req.body.description
   };
   console.log(post);
-  return newPost(post);
+  // return newPost(post);
 });
 
 module.exports = postRoute;
