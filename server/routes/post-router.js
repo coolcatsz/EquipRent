@@ -1,7 +1,7 @@
 /* eslint-disable camelcase */
 const { Router } = require('express');
 const postRoute = Router();
-const { newPost, findPost } = require('/Users/chhotisherpa/EquipRent/server/helpers/index.js');
+const { newPost, findPost } = require('../helpers/index.js');
 
 postRoute.get('/allPost', (req, res) => {
   console.log(req);

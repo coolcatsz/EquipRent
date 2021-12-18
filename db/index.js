@@ -104,8 +104,66 @@ sequelize.sync({force: false})
   .then(() => Post.sync())
   .then(() => ItemImg.sync())
   .then(() => Reservation.sync())
+  .then(() => addSearchVectors())
   // .then(() => console.log('table synced'))
   .catch((err) => console.error('Sync Error'));
+
+/**
+ * ADDING SEARCH VECTORS
+ */
+
+
+// sequelize.transaction((t) => {
+const addSearchVectors = (() => {
+
+  const searchables = {
+    '"Items"': ['type', 'description'],
+    '"Users"': ['name']
+  };
+
+  const returnSearchString = (string) => {
+    const splitStr = string.split('');
+    splitStr.splice(splitStr.length - 1, 0, '_search');
+    return splitStr.join('');
+  };
+
+  const returnVectorUpdateString = (string) => {
+    const splitStr = string.split('');
+    splitStr.splice(splitStr.length - 1, 0, '_vector_update');
+    return splitStr.join('');
+  };
+
+  Promise.all(Object.keys(searchables).map((table) =>
+    sequelize.query(`
+      ALTER TABLE ${table} ADD COLUMN ${returnSearchString(table)} TSVECTOR;
+    `)
+      .then(() =>
+        sequelize.query(`
+          UPDATE ${table} SET ${returnSearchString(table)} = to_tsvector('english', ${searchables[table].join(" || ' ' || ")});
+        `)
+      ).then(() =>
+        sequelize.query(`
+          CREATE INDEX ${returnSearchString(table)} ON ${table} USING gin(${returnSearchString(table)});
+        `)
+      ).then(() =>
+        sequelize.query(`
+          CREATE TRIGGER ${returnVectorUpdateString(table)}
+          BEFORE INSERT OR UPDATE ON ${table}
+          FOR EACH ROW EXECUTE PROCEDURE tsvector_update_trigger(${returnSearchString(table)}, 'pg_catalog.english', ${searchables[table].join(', ')});
+        `)
+      ).catch(err => console.error(err))
+  )
+  );
+}
+);
+
+// search vector:// searchables.forEach(table => {
+//   sequelize.query(`
+//    ALTER TABLE ${table} ADD COLUMN ${vector} TSVECTOR;
+//   `)    .then(sequelize.query(`
+//     UPDATE ${table} SET ${vector} = to_tsvector('english', 'each' || 'search' || 'field');
+//     `))
+// })
 
 module.exports = {
   db: sequelize,
