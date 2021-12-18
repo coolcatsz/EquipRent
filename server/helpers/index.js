@@ -3,16 +3,18 @@ const { db, User, ItemImg, Reservation, Post, Item } = require('/Users/chhotishe
 
 const newPost = (post) => Post.create({
   rating: post.rating,
-  description: post.description
+  description: post.description,
+  userId: post.userId,
+  itemId: post.itemId
 }).then((data) => {
   console.log('success', data.toJSON());
 }).catch((err) => {
   console.log(err);
 });
 
-const findPost = (item_id) => Post.findAll({
+const findPost = (itemId) => Post.findAll({
   where: {
-    item_id: item_id
+    itemId: itemId
   }
 });
 

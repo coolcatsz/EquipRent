@@ -8,14 +8,15 @@ postRoute.get('/allPost', (req, res) => {
 });
 
 postRoute.post('/insertPost', (req, res) => {
-  console.log(req);
+  console.log(req.body);
+  const { rating, description, itemId, userId } = req.body;
   const post = {
-    user_id: req.body.user_id,
-    item_id: req.body.item_id,
-    rating: req.body.rating,
-    description: req.body.description
+    rating: rating,
+    description: description,
+    itemId: itemId,
+    userId: userId
   };
-  console.log(post);
+  // console.log(post);
   return newPost(post);
 });
 
