@@ -8,31 +8,34 @@ import { BrowserRouter, Routes, Route, Link, useRouteMatch } from 'react-router-
 import ItemList from './ItemList.jsx';
 import CreatePost from './CreatePost.jsx';
 
+
 const App = () => {
 
   const [itemList, setItemList] = useState([]);
+
   const [user, setUser] = useState(null);
 
-  const authUser = () => {
-    axios.get('/auth/user')
-      .then((data) => {
-        console.log(data);
-      }).catch((err) => {
-        console.error('AuthErr');
-      });
-  };
+  // const authUser = () => {
+  //   axios.get('/auth/user')
+  //     .then((data) => {
+  //       console.log(data);
+  //     }).catch((err) => {
+  //       console.error('AuthErr');
+  //     });
+  // };
 
   const getAllItem = () => {
-    axios.get('/item//allItem')
+    axios.get('/item/allItem')
       .then(({ data }) => {
-        console.log(data, 'DATA');
+        // console.log(data, 'DATA');
         setItemList(data);
       }).catch((err) => console.error('GetAxiosErr'));
   };
 
+
   useEffect(() => {
     getAllItem();
-    authUser();
+    // authUser();
   }, []);
 
 
@@ -43,7 +46,8 @@ const App = () => {
         <Route path="/" >
           <Route path='/profile' element={<Profile/>}/>
           <Route path='/lender' element={<Lender/>}/>
-          {/* <Route path='/' element={<ItemList itemList={itemList}/>}/> */}
+          <Route path='/' element={<ItemList itemList={itemList}/>}/>
+          {/* <Route path='/item' element={<Item/>} /> */}
         </Route>
       </Routes>
       <CreatePost/>

@@ -8,7 +8,7 @@ const CreatePost = () => {
         <h2>Write a Review</h2>
         <form>
           <input className='create-input' type='text' placeholder='Review' />
-          <button className='create-submit-button' type='submit' >Save post</button>
+          <button className='create-submit-button' type='submit' >Add</button>
         </form>
       </div>
     </div>

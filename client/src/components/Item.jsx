@@ -1,13 +1,36 @@
-import React from 'react';
+import React, {useState, useEffect} from 'react';
+import axios from 'axios';
 
 const Item = ({item}) => {
-  console.log(item, 'ITEM');
-  return (
-    <div>
-      <img src="https://www.nicepng.com/png/detail/145-1452311_construction-tools-png-hardware-store.png" style ={{width: '250px', height: '250px'
-      }}></img>
-    </div>
-  );
+  // console.log(item.id, 'ITEM');
+  const [itemImg, setItemImg] = useState({});
+
+  const getItemImg = () => {
+    axios.get(`/item/itemImg/${item.id}`)
+      .then(( {data} ) => {
+        // console.log(data[0], 'DATA');
+        setItemImg(data[0]);
+      }).catch((err) => console.error('GetAxiosErr'));
+  };
+
+  useEffect(() => {
+    getItemImg();
+  }, []);
+
+  if (item.id === itemImg.itemId) {
+    return (
+      <div>
+        <img src={`${itemImg.imgUrl}`} style ={{width: '250px', height: '250px', border: '5px solid black'
+        }}></img>
+      </div>
+    );
+  } else {
+    return (
+      <div>
+        <p>Img not found!!</p>
+      </div>
+    );
+  }
 };
 
 export default Item;

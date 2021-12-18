@@ -13,7 +13,7 @@ itemRoute.get('/allItem', (req, res) => {
 });
 
 itemRoute.get('/userItem/:userId', (req, res) => {
-  console.log(req);
+  // console.log(req);
   findUserItem(req.params.userId)
     .then((data) => {
       // console.log(data, 'data');
