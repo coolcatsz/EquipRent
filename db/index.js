@@ -93,9 +93,13 @@ const Reservation = sequelize.define('Reservation', {
 
 ////Associations
 Post.belongsTo(Item, {as: 'itemPost', foreignKey: 'itemId'});
+
 Post.belongsTo(User, {as: 'userPost', foreignKey: 'userId'});
+
 Item.belongsTo(User, {as: 'userItem', foreignKey: 'userId'});
+
 ItemImg.belongsTo(Item, {as: 'itemImg', foreignKey: 'itemId'});
+// Item.hasOne(ItemImg);
 ////////////////
 
 sequelize.sync({force: false})

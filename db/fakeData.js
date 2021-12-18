@@ -130,17 +130,37 @@ const fakePost = [
 
 const fakeImg = [
   {
+    imgUrl: 'https://m.media-amazon.com/images/I/71wDqAUdXgS._AC_SL1500_.jpg',
     itemId: 1,
-    imgUrl: 'https://m.media-amazon.com/images/I/71wDqAUdXgS._AC_SL1500_.jpg'
   },
   {
+    imgUrl: 'https://www.rei.com/media/8dcbb8bc-c94c-42b1-bc40-89f4063c6da8?size=784x588',
     itemId: 2,
-    imgUrl: 'https://www.rei.com/media/8dcbb8bc-c94c-42b1-bc40-89f4063c6da8?size=784x588'
   },
   {
+    imgUrl: 'https://www.bouncehousesnow.com/media/catalog/product/cache/4/image/9df78eab33525d08d6e5fb8d27136e95/a/r/arched-castle_nowm0_2.jpg',
     itemId: 3,
-    imgUrl: 'https://www.bouncehousesnow.com/media/catalog/product/cache/4/image/9df78eab33525d08d6e5fb8d27136e95/a/r/arched-castle_nowm0_2.jpg'
-  }
+  },
+  {
+    imgUrl: 'https://media.kohlsimg.com/is/image/kohls/25941_Aqua_Sky?wid=600&hei=600&op_sharpen=1',
+    itemId: 4,
+  },
+  {
+    imgUrl: 'https://m.media-amazon.com/images/I/91BB48YfvFL._AC_SL1500_.jpg',
+    itemId: 5,
+  },
+  {
+    imgUrl: 'https://i5.walmartimages.com/asr/5db77f94-d5f8-4752-8058-0690c3ca125e.8fd1223dca2cb48a460aabbf4702c6ab.jpeg?odnHeight=612&odnWidth=612&odnBg=FFFFFF',
+    itemId: 6,
+  },
+  {
+    imgUrl: 'https://www.schoolmart.com/wp-content/uploads/2016/04/83plus_hi-1.jpg',
+    itemId: 7,
+  },
+  {
+    imgUrl: 'https://m.media-amazon.com/images/I/61AuQJ+hy6L._AC_SS450_.jpg',
+    itemId: 8,
+  },
 ];
 module.exports.fakeUser = fakeUser;
 module.exports.fakeItem = fakeItem;
