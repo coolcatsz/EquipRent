@@ -5,15 +5,22 @@ import MenuItem from '@mui/material/MenuItem';
 import axios from 'axios';
 
 
-const Login = () => (
-  <div>
-    <MenuItem
-      color="inherit"
-      size="large"
-    >
+const Login = () => {
+  return (
+    <div>
+      
+      {/* <MenuItem
+        color="inherit"
+        size="large"
+      > */}
       <LoginIcon fontSize="small"/>
       <a href='/auth/google' style={{ textDecoration: 'none' }}>Login With Google</a>
-    </MenuItem>
-  </div>
-);
+      {/* </MenuItem> */}
+    </div>
+  );
+
+};
+
+
+
 export default Login;
