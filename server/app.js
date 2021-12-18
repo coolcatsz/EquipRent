@@ -7,7 +7,14 @@ const CLIENT_PATH = path.resolve(__dirname, '../client/dist');
 const app = express();
 const { db, User, ItemImg, Reservation, Post, Item } = require('../db/index.js');
 const authRouter = require('./routes/auth-router.js');
-const passportSetup = require('../config/passport-setup.js');
+require('../config/passport-setup.js');
+require('dotenv').config();
+
+app.use(cookieParser());
+app.use(bodyParser.urlencoded({extended: false}));
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+
 const postRoute = require('./routes/post-router.js');
 const itemRoute = require('./routes/item-router.js');
 
