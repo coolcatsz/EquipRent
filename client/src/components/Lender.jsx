@@ -1,26 +1,31 @@
 import { FileUpload, FileUploadRounded } from '@mui/icons-material';
 import React from 'react';
 import { useForm } from "react-hook-form";
+import axios from 'axios';
 
 const Lender = () => {
 
   const { register, handleSubmit } = useForm();
   // const { selectedFile, setSelectedFile } = useState(null);
-  const onSubmit = (data) => {
+  const onSubmit = data => {
+    // data.preventDefault();
     console.log(data);
   }
 
   return (
     <div>
-      <h2>List an Item for Rent</h2>
+      <h2>Make a listing for an Item:</h2>
       <form onSubmit={handleSubmit(onSubmit)}>
 
         <label>
-          Item For Rent
+        Item For Rent
         </label>
         <input {...register("itemforLease")} />
 
-        {/* <input ref={register} type="file" name="picture" onChange={onChange}/> */}
+        <label>
+        Upload an image of the item
+        </label>
+        <input {...register("itemImg")} type="file"/>
 
         <label>
         Category
