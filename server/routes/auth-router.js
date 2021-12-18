@@ -36,4 +36,7 @@ authRouter.get('/logout', (req, res) => {
   res.redirect('/');
 });
 
+// authRouter.get('/user', (req, res) => {
+//   console.log(req.user);
+// });
 module.exports = authRouter;
