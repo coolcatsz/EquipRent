@@ -6,26 +6,43 @@ const Lender = () => {
 
   const { register, handleSubmit } = useForm();
   // const { selectedFile, setSelectedFile } = useState(null);
-  const onSubmit = data => {
+  const onSubmit = (data) => {
     console.log(data);
   }
 
   return (
     <div>
-      <h2>Lender Page 5555555555555555</h2>
+      <h2>List an Item for Rent</h2>
       <form onSubmit={handleSubmit(onSubmit)}>
+
         <label>
           Item For Rent
         </label>
         <input {...register("itemforLease")} />
-        {/* <FileUploaded
-          onFileSeclectSuccess={(file) => setSelectedFile(file)}
-          onFileSelectetError={({error}) => alert(error)}
-        /> */}
+
+        {/* <input ref={register} type="file" name="picture" onChange={onChange}/> */}
+
         <label>
-          Item Description
+        Category
+        </label>
+        <input {...register("itemCategory")} />
+
+        <label>
+        Item Description
         </label>
         <input {...register("itemDescription")} />
+
+        <label>
+        Accessed Value
+        </label>
+        <input {...register("itemValue")} />
+
+        <label>
+        Item Condition
+        </label>
+        <input {...register("itemCondition")} />
+        
+
         <input type="submit" value="submit" />
       </form>
     </div>
