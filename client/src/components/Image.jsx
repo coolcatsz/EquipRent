@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from 'react';
 import axios from 'axios';
-
-const Item = ({item}) => {
+import CreatePost from './CreatePost.jsx';
+const Image = ({item}) => {
   // console.log(item.id, 'ITEM');
   const [itemImg, setItemImg] = useState({});
 
@@ -33,4 +33,4 @@ const Item = ({item}) => {
   }
 };
 
-export default Item;
+export default Image;
