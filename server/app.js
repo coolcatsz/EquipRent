@@ -1,8 +1,6 @@
 const path = require('path');
 const passport = require('passport');
 const express = require('express');
-const cookieParser = require('cookie-parser');
-const cookieSession = require('cookie-session');
 const session = require('express-session');
 const bodyParser = require('body-parser');
 const CLIENT_PATH = path.resolve(__dirname, '../client/dist');
@@ -16,26 +14,21 @@ app.use(cookieParser());
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+
 const postRoute = require('./routes/post-router.js');
 const itemRoute = require('./routes/item-router.js');
 
 app.use(bodyParser.json());
 app.use(express.static(CLIENT_PATH));
 
-app.use(cookieSession({
-  keys: [process.env.COOKIE_KEY],
-  maxAge: 24 * 60 * 60 * 1000, //one day
-}));
-
 //initialize passport
 app.use(passport.initialize());
 app.use(passport.session());
-
-// app.use(session({
-//   secret: 'secret',
-//   saveUninitialized: false,
-//   resave: true,
-// }));
+app.use(session({
+  secret: 'secret',
+  saveUninitialized: false,
+  resave: true
+}));
 
 //routes
 app.use(authRouter);

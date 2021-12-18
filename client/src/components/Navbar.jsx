@@ -18,8 +18,6 @@ import Logout from '@mui/icons-material/Logout';
 import SearchIcon from '@mui/icons-material/Search';
 import { styled, alpha } from '@mui/material/styles';
 import InputBase from '@mui/material/InputBase';
-import GoogleIcon from '@mui/icons-material/Google';
-import axios from 'axios';
 
 import Login from './Login.jsx';
 import LogOut from './LogOut.jsx';
@@ -69,51 +67,31 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
 
 const NavBar = () => {
 
-
-
   const [anchorEl, setAnchorEl] = React.useState(null);
-  const [isLoggedIn, setIsLoggedIn] = React.useState(false);
-  const [user, setUser] = React.useState(null);
-
-  const handleLogin = () => {
-    setIsLoggedIn();
-  };
-  // const clickLogin = () => {
-  //   setToggleLogin(!toggleLogin);
-  // };
-
-
   const open = Boolean(anchorEl);
-
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
   };
-
-  const handleLogout = () => {
-    axios.get('/logout')
-      .then(() => setIsLoggedIn(false));
-  };
-
   const handleClose = () => {
     setAnchorEl(null);
   };
 
-  React.useEffect(() => {
-    axios.get('/auth/verify')
-      .then(({data}) => {
-        console.log(data);
-        setIsLoggedIn(!!data);
-        setUser(data);
-      })
-      .catch(err => console.error(err))
-    ;
-  }, []);
 
   return (
     <Box sx={{ flexGrow: 1 }}>
       <AppBar position="static">
         <Toolbar>
-          {/* where logo will go  */}
+          <IconButton
+            size="large"
+            edge="start"
+            color="inherit"
+            aria-label="menu"
+            sx={{ mr: 2 }}
+            component={Link}
+            to="/"
+          >
+            <MenuIcon />
+          </IconButton>
           <Typography
             variant="h6"
             component="div"
@@ -138,29 +116,13 @@ const NavBar = () => {
           >
             Be a Lender
           </Button>
-          {
-            (user && user.thumbnail) ?
-
-              <Box sx={{ display: 'flex', alignItems: 'center', textAlign: 'center' }}>
-                <Tooltip title="Account">
-                  <IconButton onClick={handleClick} size="small" sx={{ ml: 2 }}>
-                    <Avatar sx={{ width: 32, height: 32 }}>
-                      <img src={user.thumbnail} width={'100%'} />
-                    </Avatar>
-                  </IconButton>
-                </Tooltip>
-              </Box>
-              :
-              <Box sx={{ display: 'flex', alignItems: 'center', textAlign: 'center' }}>
-                <Tooltip title="Account">
-                  <IconButton size="small" sx={{ ml: 2 }}>
-                    <a href='/auth/google' style={{ textDecoration: 'none' }}>
-                      <GoogleIcon/>
-                    </a>
-                  </IconButton>
-                </Tooltip>
-              </Box>
-          }
+          <Box sx={{ display: 'flex', alignItems: 'center', textAlign: 'center' }}>
+            <Tooltip title="Account">
+              <IconButton onClick={handleClick} size="small" sx={{ ml: 2 }}>
+                <Avatar sx={{ width: 32, height: 32 }}>E</Avatar>
+              </IconButton>
+            </Tooltip>
+          </Box>
           <Menu
             anchorEl={anchorEl}
             open={open}
@@ -195,6 +157,14 @@ const NavBar = () => {
             transformOrigin={{ horizontal: 'right', vertical: 'top' }}
             anchorOrigin={{ horizontal: 'right', vertical: 'bottom' }}
           >
+            <Button>
+              <MenuItem
+                color="inherit"
+                size="large"
+                component={Login}
+              >
+              </MenuItem>
+            </Button>
             <MenuItem
               color="inherit"
               size="large"
@@ -216,6 +186,7 @@ const NavBar = () => {
               <ListItemIcon>
                 <Logout fontSize="small" />
               </ListItemIcon>
+          Logout
             </MenuItem>
           </Menu>
         </Toolbar>
