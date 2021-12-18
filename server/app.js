@@ -3,6 +3,7 @@ const passport = require('passport');
 const express = require('express');
 const session = require('express-session');
 const bodyParser = require('body-parser');
+const cookieParser = require('cookie-parser');
 const CLIENT_PATH = path.resolve(__dirname, '../client/dist');
 const app = express();
 const { db, User, ItemImg, Reservation, Post, Item } = require('../db/index.js');
