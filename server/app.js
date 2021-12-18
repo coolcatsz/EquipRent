@@ -25,6 +25,7 @@ app.use(session({
 
 //routes
 app.use(authRouter);
+// app.use('/auth', authRouter);
 app.use('/post', postRoute);
 app.use('/item', itemRoute);
 app.get('/auth', (req, res) => console.log('body:', req.body));

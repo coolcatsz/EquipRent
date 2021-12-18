@@ -8,5 +8,12 @@ const findUserItem = (userId) => Item.findAll({
   }
 });
 
+const itemImgId = (itemId) => ItemImg.findAll({
+  where: {
+    itemId
+  }
+});
+
 module.exports.findAllItem = findAllItem;
 module.exports.findUserItem = findUserItem;
+module.exports.itemImgId = itemImgId;

@@ -11,6 +11,16 @@ import CreatePost from './CreatePost.jsx';
 const App = () => {
 
   const [itemList, setItemList] = useState([]);
+  const [user, setUser] = useState(null);
+
+  const authUser = () => {
+    axios.get('/auth/user')
+      .then((data) => {
+        console.log(data);
+      }).catch((err) => {
+        console.error('AuthErr');
+      });
+  };
 
   const getAllItem = () => {
     axios.get('/item//allItem')
@@ -22,6 +32,7 @@ const App = () => {
 
   useEffect(() => {
     getAllItem();
+    authUser();
   }, []);
 
 
