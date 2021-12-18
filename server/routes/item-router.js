@@ -1,6 +1,6 @@
 const { Router } = require('express');
 const itemRoute = Router();
-const { findAllItem } = require('../helpers/itemHelper');
+const { findAllItem, findUserItem } = require('../helpers/itemHelper');
 
 itemRoute.get('/allItem', (req, res) => {
   findAllItem()
@@ -8,6 +8,17 @@ itemRoute.get('/allItem', (req, res) => {
       res.status(200).send(data);
     }).catch((err) => {
       console.log('Item-router Err');
+      res.sendStatus(500);
+    });
+});
+
+itemRoute.get('/userItem/:userId', (req, res) => {
+  console.log(req);
+  findUserItem(req.params.userId)
+    .then((data) => {
+      // console.log(data, 'data');
+      res.status(200).send(data);
+    }).catch((err) => {
       res.sendStatus(500);
     });
 });

@@ -1,5 +1,5 @@
 /* eslint-disable camelcase */
-const { db, User, ItemImg, Reservation, Post, Item } = require('#db/index.js');
+const { Post } = require('#db/index.js');
 
 const newPost = (post) => Post.create({
   rating: post.rating,
