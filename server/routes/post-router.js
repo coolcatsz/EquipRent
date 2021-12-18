@@ -1,10 +1,34 @@
 /* eslint-disable camelcase */
 const { Router } = require('express');
 const postRoute = Router();
-const { newPost, findPost } = require('/Users/chhotisherpa/EquipRent/server/helpers/index.js');
+const { newPost, findItemPost, findAllPost, findUserPost } = require('../helpers/postHelper');
 
 postRoute.get('/allPost', (req, res) => {
-  console.log(req);
+  findAllPost()
+    .then((data) => {
+      res.status(200).send(data);
+    }).catch((err) => {
+      console.log('post-router Err');
+      res.sendStatus(500);
+    });
+});
+
+postRoute.get('/itemPost/:itemId', (req, res) => {
+  findItemPost(req.params.itemId)
+    .then((data) => {
+      res.status(200).send(data);
+    }).catch((err) => {
+      res.sendStatus(500);
+    });
+});
+
+postRoute.get('/userPost/:userId', (req, res) => {
+  findUserPost(req.params.userId)
+    .then((data) => {
+      res.status(200).send(data);
+    }).catch((err) => {
+      res.sendStatus(500);
+    });
 });
 
 postRoute.post('/insertPost', (req, res) => {

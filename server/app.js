@@ -9,6 +9,7 @@ const { db, User, ItemImg, Reservation, Post, Item } = require('../db/index.js')
 const authRouter = require('./routes/auth-router.js');
 const passportSetup = require('../config/passport-setup.js');
 const postRoute = require('./routes/post-router.js');
+const itemRoute = require('./routes/item-router.js');
 
 app.use(bodyParser.json());
 app.use(express.static(CLIENT_PATH));
@@ -25,6 +26,7 @@ app.use(session({
 //routes
 app.use(authRouter);
 app.use('/post', postRoute);
+app.use('/item', itemRoute);
 app.get('/auth', (req, res) => console.log('body:', req.body));
 app.get('/logout', (req, res) => console.log('You Have Been Logged Out'));
 
