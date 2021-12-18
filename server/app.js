@@ -16,7 +16,6 @@ app.use(cookieParser());
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-const passportSetup = require('../config/passport-setup.js');
 const postRoute = require('./routes/post-router.js');
 const itemRoute = require('./routes/item-router.js');
 
