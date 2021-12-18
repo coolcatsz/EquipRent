@@ -7,10 +7,13 @@ import axios from 'axios';
 
 const LogOut = () => (
   <div>
-    <MenuItem>
-      <Logout fontSize="small"/>
-      <a href='/logout' style={{ textDecoration: 'none' }}>Log Out</a>
-    </MenuItem>
+    <Logout fontSize="small"/>
+    <Button style={{textTransform: 'none'}}>
+      <MenuItem
+      >
+        <a href='/logout' style={{ textDecoration: 'none' }}>Log Out</a>
+      </MenuItem>
+    </Button>
   </div>
 );
 
