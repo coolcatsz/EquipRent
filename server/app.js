@@ -5,7 +5,6 @@ const cookieParser = require('cookie-parser');
 const cookieSession = require('cookie-session');
 const session = require('express-session');
 const bodyParser = require('body-parser');
-const cookieParser = require('cookie-parser');
 const CLIENT_PATH = path.resolve(__dirname, '../client/dist');
 const app = express();
 const { db, User, ItemImg, Reservation, Post, Item } = require('../db/index.js');
@@ -37,7 +36,6 @@ app.use(passport.session());
 
 //routes
 app.use(authRouter);
-// app.use('/auth', authRouter);
 app.use('/post', postRoute);
 app.use('/item', itemRoute);
 app.get('/auth', (req, res) => console.log('body:', req.body));

@@ -99,7 +99,7 @@ const NavBar = () => {
   React.useEffect(() => {
     axios.get('/auth/verify')
       .then(({data}) => {
-        console.log(data);
+        // console.log(data);
         setIsLoggedIn(!!data);
         setUser(data);
       })

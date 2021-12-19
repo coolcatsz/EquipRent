@@ -18,10 +18,10 @@ authRouter.get('/auth/google/callback',
 
 authRouter.get('/auth/verify', (req, res) => {
   const cookies = req.cookies;
-  console.log('session', req.session.passport.user);
+  // console.log('session', req.session.passport.user);
   User.findByPk(req.session.passport.user)
     .then((user) => {
-      console.log(user);
+      // console.log(user);
       res.status(200).send(user);
     });
   // console.log('cooookies', cookies);
@@ -35,7 +35,4 @@ authRouter.get('/logout', (req, res) => {
   res.redirect('/');
 });
 
-// authRouter.get('/user', (req, res) => {
-//   console.log(req.user);
-// });
 module.exports = authRouter;
