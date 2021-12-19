@@ -32,7 +32,7 @@ const seedData = () => {
     .then(() => console.log('Post done'))
     .then(() => ItemImg.sync())
     .then(() => Promise.all(fakeImg.map((data) => ItemImg.create(data))))
-    .then(() => console.log('Post done'))
+    .then(() => console.log('ItemImg done'))
     .catch((err) => console.error(err));
 };
 
