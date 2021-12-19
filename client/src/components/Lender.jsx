@@ -1,6 +1,6 @@
 import { FileUpload, FileUploadRounded } from '@mui/icons-material';
 import React from 'react';
-import { useForm } from "react-hook-form";
+import { useForm } from 'react-hook-form';
 
 const Lender = () => {
 
@@ -8,7 +8,7 @@ const Lender = () => {
   // const { selectedFile, setSelectedFile } = useState(null);
   const onSubmit = data => {
     console.log(data);
-  }
+  };
 
   return (
     <div>
@@ -17,7 +17,7 @@ const Lender = () => {
         <label>
           Item For Rent
         </label>
-        <input {...register("itemforLease")} />
+        <input {...register('itemforLease')} />
         {/* <FileUploaded
           onFileSeclectSuccess={(file) => setSelectedFile(file)}
           onFileSelectetError={({error}) => alert(error)}
@@ -25,7 +25,7 @@ const Lender = () => {
         <label>
           Item Description
         </label>
-        <input {...register("itemDescription")} />
+        <input {...register('itemDescription')} />
         <input type="submit" value="submit" />
       </form>
     </div>
