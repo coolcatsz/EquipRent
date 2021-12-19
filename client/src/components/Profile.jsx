@@ -30,9 +30,9 @@ const Profile = () => {
       <Button>
         <Link to={'/lender'} style={{ textDecoration: 'none' }}>Upload Listing</Link>
       </Button>
-      <Button>
+      {/* <Button>
         <Link to={'/item'} style={{ textDecoration: 'none' }}>Write a Review</Link>
-      </Button>
+      </Button> */}
     </div>
   );
 
