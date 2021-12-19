@@ -1,7 +1,8 @@
 import React, {useState, useEffect} from 'react';
+import { Link } from 'react-router-dom';
 import axios from 'axios';
 
-const Item = ({item}) => {
+const Image = ({item, handleClick}) => {
   // console.log(item.id, 'ITEM');
   const [itemImg, setItemImg] = useState({});
 
@@ -20,8 +21,14 @@ const Item = ({item}) => {
   if (item.id === itemImg.itemId) {
     return (
       <div>
-        <img src={`${itemImg.imgUrl}`} style ={{width: '250px', height: '250px', border: '5px solid black'
-        }}></img>
+        <Link to='/item'>
+          <img
+            src={`${itemImg.imgUrl}`}
+            style ={{width: '250px', height: '250px', border: '5px solid black'}}
+            onClick={() => handleClick(item)}
+          >
+          </img>
+        </Link>
       </div>
     );
   } else {
@@ -33,4 +40,4 @@ const Item = ({item}) => {
   }
 };
 
-export default Item;
+export default Image;
