@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from 'react';
-import { Link, Outlet } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import axios from 'axios';
 
 const Image = ({item, handleClick}) => {
@@ -29,9 +29,6 @@ const Image = ({item, handleClick}) => {
           >
           </img>
         </Link>
-        <div>
-          <Outlet />
-        </div>
       </div>
     );
   } else {
