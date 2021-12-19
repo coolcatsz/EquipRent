@@ -5,24 +5,27 @@ import Lender from './Lender.jsx';
 import axios from 'axios';
 import { Button } from '@material-ui/core';
 import { BrowserRouter, Routes, Route, Link, useRouteMatch } from 'react-router-dom';
+import Login from './Login.jsx';
 import ItemList from './ItemList.jsx';
+import SingleItem from './SingleItem.jsx';
 import CreatePost from './CreatePost.jsx';
 
 
 const App = () => {
 
   const [itemList, setItemList] = useState([]);
-
   const [user, setUser] = useState(null);
+  const [currentItem, setCurrentItem] = useState({});
 
-  // const authUser = () => {
-  //   axios.get('/auth/user')
-  //     .then((data) => {
-  //       console.log(data);
-  //     }).catch((err) => {
-  //       console.error('AuthErr');
-  //     });
-  // };
+  const authUser = () => {
+    axios.get('/auth/verify')
+      .then(({ data }) => {
+        // console.log(data, "userdata");
+        setUser(data);
+      }).catch((err) => {
+        console.error('AuthErr');
+      });
+  };
 
   const getAllItem = () => {
     axios.get('/item/allItem')
@@ -32,25 +35,31 @@ const App = () => {
       }).catch((err) => console.error('GetAxiosErr'));
   };
 
+  const oneItem = (item) => {
+    console.log('curritem');
+    setCurrentItem(item);
+  };
 
   useEffect(() => {
     getAllItem();
-    // authUser();
+    authUser();
   }, []);
-
 
   return (
     <div>
-      <Nav/>
-      <Routes>
-        <Route path="/" >
-          <Route path='/profile' element={<Profile/>}/>
-          <Route path='/lender' element={<Lender/>}/>
-          <Route path='/' element={<ItemList itemList={itemList}/>}/>
-          {/* <Route path='/item' element={<Item/>} /> */}
-        </Route>
-      </Routes>
-      <CreatePost/>
+      { user ? (
+        <div>
+          <Nav/>
+          <Routes>
+            <Route exact path ='/profile' element={<Profile/>}/>
+            <Route exact path ='/lender' element={<Lender/>}/>
+            <Route exact path ='/' element={<ItemList itemList={itemList} handleClick={oneItem}/>}/>
+            <Route exact path ='/item' element={ <SingleItem user={user} currentItem={currentItem}/> } />
+          </Routes>
+        </div>
+      ) : (
+        <Nav />
+      )}
     </div>
 
   );

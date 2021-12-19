@@ -1,7 +1,8 @@
 import React, {useState, useEffect} from 'react';
+import { Link, Outlet } from 'react-router-dom';
 import axios from 'axios';
-import CreatePost from './CreatePost.jsx';
-const Image = ({item}) => {
+
+const Image = ({item, handleClick}) => {
   // console.log(item.id, 'ITEM');
   const [itemImg, setItemImg] = useState({});
 
@@ -20,8 +21,17 @@ const Image = ({item}) => {
   if (item.id === itemImg.itemId) {
     return (
       <div>
-        <img src={`${itemImg.imgUrl}`} style ={{width: '250px', height: '250px', border: '5px solid black'
-        }}></img>
+        <Link to='/item'>
+          <img
+            src={`${itemImg.imgUrl}`}
+            style ={{width: '250px', height: '250px', border: '5px solid black'}}
+            onClick={() => handleClick(item)}
+          >
+          </img>
+        </Link>
+        <div>
+          <Outlet />
+        </div>
       </div>
     );
   } else {

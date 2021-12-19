@@ -32,7 +32,7 @@ postRoute.get('/userPost/:userId', (req, res) => {
 });
 
 postRoute.post('/insertPost', (req, res) => {
-  console.log(req.body);
+  // console.log(req.body);
   const { rating, description, itemId, userId } = req.body;
   const post = {
     rating: rating,
@@ -40,8 +40,8 @@ postRoute.post('/insertPost', (req, res) => {
     itemId: itemId,
     userId: userId
   };
-  // console.log(post);
-  return newPost(post);
+  console.log(post);
+  // return newPost(post);
 });
 
 module.exports = postRoute;
