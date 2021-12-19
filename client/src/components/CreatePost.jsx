@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import axios from 'axios';
 
 
-const CreatePost = ({user, currentItem }) => {
+const CreatePost = ({user, currentItem, allItemPost }) => {
   // console.log(postReview,);
 
   const [rating, setRating] = useState('');
@@ -21,17 +21,18 @@ const CreatePost = ({user, currentItem }) => {
       // console.log('Success Post');
       setRating('');
       setDescription('');
-    }).catch((err) => console.error('PostReview Err'));
+    }).then(() => allItemPost())
+      .catch((err) => console.error('PostReview Err'));
   };
 
   return (
     <div className='create'>
       <div className='create-editor'>
         <h2>Write a Review</h2>
-        <form onSubmit={e => e.preventDefault()}>
+        <form onSubmit={postReview}>
           <input className='create-input' type='text' value={rating} onChange={event => setRating(event.target.value)} placeholder='Rate 1 - 5' />
           <input className='create-body-textarea' value={description} onChange={event => setDescription(event.target.value)}placeholder='Review Body'/>
-          <button className='create-submit-button' type='submit' onClick={postReview}>Add</button>
+          <button className='create-submit-button' type='submit'>Add</button>
         </form>
       </div>
     </div>

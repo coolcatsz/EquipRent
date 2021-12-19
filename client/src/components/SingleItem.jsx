@@ -5,7 +5,6 @@ import ItemPost from './ItemPost.jsx';
 
 
 const SingleItem = ({user, currentItem}) => {
-  // console.log(user.id, currentItem, 'SINGLE');
   const [itemReview, setItemReview] = useState([]);
 
   const allItemPost = () => {
@@ -23,7 +22,7 @@ const SingleItem = ({user, currentItem}) => {
   return (
     <div>
       <h1>Single Item Info page</h1>
-      <CreatePost user={user} currentItem={currentItem} />
+      <CreatePost user={user} currentItem={currentItem} allItemPost={allItemPost} />
       <div className='create-preview'>
         <ItemPost itemReview={itemReview}/>
       </div>
