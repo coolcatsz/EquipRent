@@ -13,7 +13,7 @@ const itemImgId = (itemId) => ItemImg.findAll({
     itemId
   }
 });
-//brand, type, price, condition, value, availability, description, itemId, userId } = req.body;
+
 const newItem = (item) => Item.create({
   brand: item.brand,
   type: item.type,
