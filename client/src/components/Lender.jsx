@@ -1,4 +1,3 @@
-import { FileUpload, FileUploadRounded } from '@mui/icons-material';
 import React from 'react';
 import { useForm } from "react-hook-form";
 import axios from 'axios';
@@ -8,15 +7,16 @@ const Lender = () => {
   const { register, handleSubmit } = useForm();
   // const { selectedFile, setSelectedFile } = useState(null);
   const onSubmit = data => {
-    // data.preventDefault();
+    axios.post('equiprent/items')
     console.log(data);
   }
 
+  //brand, type, price, condition, value, availability, description, itemId, userId } = req.body;
   return (
     <div>
       <h2>Make a listing for an Item:</h2>
       <form onSubmit={handleSubmit(onSubmit)}>
-
+      
         <label>
         Item For Rent
         </label>
