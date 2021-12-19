@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
 import axios from 'axios';
-import ItemPost from './ItemPost.jsx';
 
-const CreatePost = ({user, currentItem}) => {
+
+const CreatePost = ({user, currentItem }) => {
+  // console.log(postReview,);
 
   const [rating, setRating] = useState('');
   const [description, setDescription] = useState('');
@@ -32,9 +33,6 @@ const CreatePost = ({user, currentItem}) => {
           <input className='create-body-textarea' value={description} onChange={event => setDescription(event.target.value)}placeholder='Review Body'/>
           <button className='create-submit-button' type='submit' onClick={postReview}>Add</button>
         </form>
-      </div>
-      <div className='create-preview'>
-        <ItemPost currentItem={currentItem}/>
       </div>
     </div>
   );

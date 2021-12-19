@@ -2,21 +2,21 @@ import React, {useState, useEffect} from 'react';
 import axios from 'axios';
 
 
-const ItemPost = ({currentItem}) => {
+const ItemPost = ({ itemReview }) => {
 
-  const [itemReview, setItemReview] = useState([]);
+  // const [itemReview, setItemReview] = useState([]);
 
-  const allItemPost = () => {
-    axios.get(`/post/itemPost/${currentItem.id}`)
-      .then(({ data }) => {
-        console.log(data, 'DATA');
-        setItemReview(data);
-      }).catch((err) => console.error('ItemPost Err'));
-  };
+  // const allItemPost = () => {
+  //   axios.get(`/post/itemPost/${currentItem.id}`)
+  //     .then(({ data }) => {
+  //       console.log(data, 'DATA');
+  //       setItemReview(data);
+  //     }).catch((err) => console.error('ItemPost Err'));
+  // };
 
-  useEffect(() => {
-    allItemPost();
-  }, []);
+  // useEffect(() => {
+  //   allItemPost();
+  // }, []);
 
   if (itemReview.length !== 0) {
     return (
