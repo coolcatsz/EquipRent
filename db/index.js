@@ -1,6 +1,7 @@
 /* eslint-disable camelcase */
 require('dotenv').config();
 const { Sequelize, DataTypes, DECIMAL, Deferrable } = require('sequelize');
+const { addSearchVectors } = require('./dbSearch.js');
 
 const {
   DATABASE,
@@ -110,6 +111,7 @@ sequelize.sync({force: false})
   .then(() => Post.sync())
   .then(() => ItemImg.sync())
   .then(() => Reservation.sync())
+  .then(() => addSearchVectors(sequelize))
   // .then(() => console.log('table synced'))
   .catch((err) => console.error('Sync Error'));
 
