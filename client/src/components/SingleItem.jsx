@@ -5,8 +5,17 @@ import ItemPost from './ItemPost.jsx';
 
 
 const SingleItem = ({user, currentItem}) => {
-  console.log(currentItem, 'CURR');
+  // console.log(currentItem, 'CURR');
   const [itemReview, setItemReview] = useState([]);
+  const [singleItemImg, setSingleItemImg] = useState({});
+
+  const oneItemImg = () => {
+    axios.get(`/item/itemImg/${currentItem.id}`)
+      .then(( {data} ) => {
+        // console.log(data[0], 'SINGLE DATA');
+        setSingleItemImg(data[0]);
+      }).catch((err) => console.error('GetAxiosErr'));
+  };
 
   const allItemPost = () => {
     axios.get(`/post/itemPost/${currentItem.id}`)
@@ -18,12 +27,24 @@ const SingleItem = ({user, currentItem}) => {
 
   useEffect(() => {
     allItemPost();
+    oneItemImg();
   }, []);
 
+  console.log(currentItem, singleItemImg.imgUrl);
+  let image;
+  if (currentItem.id === singleItemImg.itemId) {
+    image = singleItemImg.imgUrl;
+  }
   return (
     <div>
       <div>
         <h2>Item Info</h2>
+        <div>
+          <img
+            src={`${image}`}
+            style ={{width: '250px', height: '250px', border: '5px solid black'}}
+          ></img>
+        </div>
         <div>
           <ul>
             <li>Brand: {currentItem.brand}</li>
