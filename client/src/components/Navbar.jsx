@@ -21,7 +21,9 @@ import { styled, alpha } from '@mui/material/styles';
 import InputBase from '@mui/material/InputBase';
 import axios from 'axios';
 
-import Login from './Login.jsx';
+import { useBetween } from 'use-between';
+import { useSharedUser } from './User.jsx';
+
 import LogOut from './LogOut.jsx';
 //ok
 
@@ -96,12 +98,14 @@ const NavBar = () => {
     setAnchorEl(null);
   };
 
+  const { currentUser, changeCurrentUser } = useSharedUser();
   React.useEffect(() => {
     axios.get('/auth/verify')
       .then(({data}) => {
-        // console.log(data);
+        console.log(data);
         setIsLoggedIn(!!data);
         setUser(data);
+        changeCurrentUser(data);
       })
       .catch(err => console.error(err))
     ;

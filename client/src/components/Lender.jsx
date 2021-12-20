@@ -5,7 +5,6 @@ import axios from 'axios';
 const Lender = () => {
 
   const { register, handleSubmit } = useForm();
-  // const { selectedFile, setSelectedFile } = useState(null);
   const listItem = e => {
     // e.preventDefault();
     axios.post('item/newItems', {
@@ -14,7 +13,8 @@ const Lender = () => {
       condition,
       value,
       description,
-      userId: user.id,
+      itemId: item.id, 
+      userId: user.id
     }).then(() => {
       console.log('Item successfully Listed!');
     }).catch((err) => console.error('Item listing error'));
@@ -29,6 +29,7 @@ const Lender = () => {
         <label>
         Item For Rent
         </label>
+
         <input {...register("brand")} />
 
         <label>
@@ -41,10 +42,11 @@ const Lender = () => {
         </label>
         <input {...register("type")} />
 
+
         <label>
         Item Description
         </label>
-        <input {...register("itemDescription")} />
+
 
         <label>
         Accessed Value
@@ -55,7 +57,7 @@ const Lender = () => {
         Item Condition
         </label>
         <input {...register("condition")} />
-        
+
 
         <input type="submit" value="submit" />
       </form>
