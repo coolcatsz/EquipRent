@@ -34,7 +34,7 @@ itemRoute.get('/itemImg/:itemId', (req, res) => {
     });
 });
 
-itemRoute.post('/items', (req, res) => {
+itemRoute.post('/newItems', (req, res) => {
   const { brand, type, price, condition, value, availability, description, itemId, userId } = req.body;
   const item = {
     brand: brand,
@@ -47,7 +47,13 @@ itemRoute.post('/items', (req, res) => {
     itemId: itemId,
     userId: userId,
   };
-  return newItem(item);
+  console.log(item);
+  return newItem(item)
+    .then(() => {
+      res.status(201);
+    }).catch((err) => {
+      res.sendStatus(500);
+    });
 });
 
 module.exports = itemRoute;

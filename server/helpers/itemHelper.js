@@ -30,6 +30,9 @@ const newItem = (item) => Item.create({
   console.log(err);
 });
 
+const newImg = itemImg = ItemImg.create({
+});
+
 module.exports.newItem = newItem;
 module.exports.findAllItem = findAllItem;
 module.exports.findUserItem = findUserItem;
