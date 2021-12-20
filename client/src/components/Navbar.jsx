@@ -25,7 +25,7 @@ import { useSharedUser } from './User.jsx';
 import LogOut from './LogOut.jsx';
 //ok
 
-const NavBar = () => {
+const NavBar = ({ setItemList }) => {
 
   const [anchorEl, setAnchorEl] = React.useState(null);
   const [isLoggedIn, setIsLoggedIn] = React.useState(false);
