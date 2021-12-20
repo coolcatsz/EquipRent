@@ -12,19 +12,22 @@ const ItemList = ({itemList, handleClick, user}) => {
       <h1>Item</h1>
       <div style={{display: 'inline-block'}}>
         {
-          itemList.map((item) => {
-            // console.log(item, 'Single');
-            return (
-              <div
-                key={item.id}
-                style={{display: 'inline-block', padding: '10px'}}
-              >
-                <Image key={item.id} item={item} handleClick={handleClick} />
-                <span><p>Item: {item.brand}</p></span>
-                <span><p>Type: {item.type}</p></span>
-              </div>
-            );
-          })
+          (itemList.length > 0) ? (
+            itemList.map((item) => {
+              // console.log(item, 'Single');
+              return (
+                <div
+                  key={item.id}
+                  style={{display: 'inline-block', padding: '10px'}}
+                >
+                  <Image key={item.id} item={item} handleClick={handleClick} />
+                  <span><p>Item: {item.brand}</p></span>
+                  <span><p>Type: {item.type}</p></span>
+                </div>
+              );
+            })
+          )
+            : (<p>No items match your search terms :(</p>)
         }
       </div>
     </div>
