@@ -24,7 +24,7 @@ const Image = ({item, handleClick}) => {
         <Link to='/item'>
           <img
             src={`${itemImg.imgUrl}`}
-            style ={{width: '250px', height: '250px', border: '5px solid black'}}
+            style ={{width: '300px', height: '300px', border: '5px solid black'}}
             onClick={() => handleClick(item)}
           >
           </img>

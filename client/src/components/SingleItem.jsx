@@ -30,7 +30,7 @@ const SingleItem = ({user, currentItem}) => {
     oneItemImg();
   }, []);
 
-  console.log(currentItem, singleItemImg.imgUrl);
+  // console.log(currentItem, singleItemImg.imgUrl);
   let image;
   if (currentItem.id === singleItemImg.itemId) {
     image = singleItemImg.imgUrl;
@@ -42,7 +42,7 @@ const SingleItem = ({user, currentItem}) => {
         <div>
           <img
             src={`${image}`}
-            style ={{width: '250px', height: '250px', border: '5px solid black'}}
+            style ={{width: '200px', height: '200px', border: '5px solid black'}}
           ></img>
         </div>
         <div>
@@ -51,8 +51,8 @@ const SingleItem = ({user, currentItem}) => {
             <li>Type: {currentItem.type}</li>
             <li>Condition: {currentItem.condition}</li>
             <li>Description: {currentItem.description}</li>
-            <li>Price: {currentItem.price}</li>
-            <li>Product Value: {currentItem.value}</li>
+            <li>Price: ${currentItem.price}</li>
+            <li>Product Value: ${currentItem.value}</li>
           </ul>
         </div>
       </div>
