@@ -43,6 +43,6 @@ const Lender = ({user}) => {
       </form>
     </div>
   );
-};
+}
 
 export default Lender;
