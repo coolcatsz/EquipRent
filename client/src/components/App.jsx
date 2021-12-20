@@ -49,10 +49,10 @@ const App = () => {
     <div>
       { user ? (
         <div>
-          <Nav/>
+          <Nav setItemList={setItemList}/>
           <Routes>
             <Route exact path ='/profile' element={<Profile/>}/>
-            <Route exact path ='/lender' element={<Lender/>}/>
+            <Route exact path ='/lender' element={<Lender user={user}/>}/>
             <Route exact path ='/' element={<ItemList itemList={itemList} handleClick={oneItem}/>}/>
             <Route exact path ='/item' element={ <SingleItem user={user} currentItem={currentItem}/> } />
           </Routes>
