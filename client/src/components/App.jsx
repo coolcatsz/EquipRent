@@ -49,7 +49,7 @@ const App = () => {
     <div>
       { user ? (
         <div>
-          <Nav/>
+          <Nav setItemList={setItemList}/>
           <Routes>
             <Route exact path ='/profile' element={<Profile/>}/>
             <Route exact path ='/lender' element={<Lender/>}/>
