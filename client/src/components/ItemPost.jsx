@@ -4,20 +4,6 @@ import axios from 'axios';
 
 const ItemPost = ({ itemReview }) => {
 
-  // const [itemReview, setItemReview] = useState([]);
-
-  // const allItemPost = () => {
-  //   axios.get(`/post/itemPost/${currentItem.id}`)
-  //     .then(({ data }) => {
-  //       console.log(data, 'DATA');
-  //       setItemReview(data);
-  //     }).catch((err) => console.error('ItemPost Err'));
-  // };
-
-  // useEffect(() => {
-  //   allItemPost();
-  // }, []);
-
   if (itemReview.length !== 0) {
     return (
       <div>
