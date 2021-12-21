@@ -47,7 +47,8 @@ const NavBar = ({ setItemList }) => {
 
   const handleLogout = () => {
     axios.get('/logout')
-      .then(() => setIsLoggedIn(false));
+      .then(() => setIsLoggedIn(false))
+      .catch((err) => console.error('handleLogout error'));
   };
 
   const handleClose = () => {
