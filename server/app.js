@@ -12,6 +12,7 @@ const authRouter = require('./routes/auth-router.js');
 const postRoute = require('./routes/post-router.js');
 const itemRoute = require('./routes/item-router.js');
 const searchRoute = require('./routes/search-router.js');
+const reserveRoute = require('./routes/reservation-router.js');
 require('../config/passport-setup.js');
 require('dotenv').config();
 
@@ -39,6 +40,7 @@ app.use(passport.session());
 app.use(authRouter);
 app.use('/post', postRoute);
 app.use('/item', itemRoute);
+app.use('/reserve', reserveRoute);
 app.use('/search', searchRoute);
 app.get('/auth', (req, res) => console.log('body:', req.body));
 app.get('/logout', (req, res) => console.log('You Have Been Logged Out'));
