@@ -69,22 +69,6 @@ const ItemImg = sequelize.define('ItemImg', {
 
 
 const Reservation = sequelize.define('Reservation', {
-  user_id: {
-    type: DataTypes.INTEGER,
-    references: {
-      model: User,
-      key: 'id',
-      deferrable: Deferrable.INITIALLY_IMMEDIATE
-    }
-  },
-  item_id: {
-    type: DataTypes.INTEGER,
-    references: {
-      model: Item,
-      key: 'id',
-      deferrable: Deferrable.INITIALLY_IMMEDIATE
-    }
-  },
   startDate: DataTypes.INTEGER,
   endDate: DataTypes.INTEGER,
   price: DataTypes.INTEGER,
@@ -101,11 +85,14 @@ Item.belongsTo(User, {as: 'userItem', foreignKey: 'userId'});
 
 ItemImg.belongsTo(Item, {as: 'itemImg', foreignKey: 'itemId'});
 
+Reservation.belongsTo(User, {foreignKey: 'userId'});
+
+Reservation.belongsTo(Item, {foreignKey: 'itemId'});
 
 // Item.hasOne(ItemImg);
 ////////////////
 
-sequelize.sync({force: false})
+sequelize.sync()
   .then(() => User.sync())
   .then(() => Item.sync())
   .then(() => Post.sync())
@@ -114,6 +101,7 @@ sequelize.sync({force: false})
   .then(() => addSearchVectors(sequelize))
   // .then(() => console.log('table synced'))
   .catch((err) => console.error('Sync Error'));
+
 
 module.exports = {
   db: sequelize,
