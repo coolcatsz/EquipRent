@@ -69,8 +69,8 @@ const ItemImg = sequelize.define('ItemImg', {
 
 
 const Reservation = sequelize.define('Reservation', {
-  startDate: DataTypes.INTEGER,
-  endDate: DataTypes.INTEGER,
+  startDate: DataTypes.STRING,
+  endDate: DataTypes.STRING,
   price: DataTypes.INTEGER,
   total: DataTypes.INTEGER
 });
@@ -85,9 +85,9 @@ Item.belongsTo(User, {as: 'userItem', foreignKey: 'userId'});
 
 ItemImg.belongsTo(Item, {as: 'itemImg', foreignKey: 'itemId'});
 
-Reservation.belongsTo(User, {foreignKey: 'userId'});
+Reservation.belongsTo(User, {as: 'userReserve', foreignKey: 'userId'});
 
-Reservation.belongsTo(Item, {foreignKey: 'itemId'});
+Reservation.belongsTo(Item, {as: 'itemReserve', foreignKey: 'itemId'});
 
 // Item.hasOne(ItemImg);
 ////////////////
