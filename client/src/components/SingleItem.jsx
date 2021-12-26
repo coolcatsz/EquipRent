@@ -5,8 +5,17 @@ import ItemPost from './ItemPost.jsx';
 
 
 const SingleItem = ({user, currentItem}) => {
-  console.log(currentItem, 'CURR');
+  // console.log(currentItem, 'CURR');
   const [itemReview, setItemReview] = useState([]);
+  const [singleItemImg, setSingleItemImg] = useState({});
+
+  const oneItemImg = () => {
+    axios.get(`/item/itemImg/${currentItem.id}`)
+      .then(( {data} ) => {
+        // console.log(data[0], 'SINGLE DATA');
+        setSingleItemImg(data[0]);
+      }).catch((err) => console.error('GetAxiosErr'));
+  };
 
   const allItemPost = () => {
     axios.get(`/post/itemPost/${currentItem.id}`)
@@ -18,20 +27,32 @@ const SingleItem = ({user, currentItem}) => {
 
   useEffect(() => {
     allItemPost();
+    oneItemImg();
   }, []);
 
+  // console.log(currentItem, singleItemImg.imgUrl);
+  let image;
+  if (currentItem.id === singleItemImg.itemId) {
+    image = singleItemImg.imgUrl;
+  }
   return (
     <div>
       <div>
         <h2>Item Info</h2>
+        <div>
+          <img
+            src={`${image}`}
+            style ={{width: '200px', height: '200px', border: '5px solid black'}}
+          ></img>
+        </div>
         <div>
           <ul>
             <li>Brand: {currentItem.brand}</li>
             <li>Type: {currentItem.type}</li>
             <li>Condition: {currentItem.condition}</li>
             <li>Description: {currentItem.description}</li>
-            <li>Price: {currentItem.price}</li>
-            <li>Product Value: {currentItem.value}</li>
+            <li>Price: ${currentItem.price}</li>
+            <li>Product Value: ${currentItem.value}</li>
           </ul>
         </div>
       </div>
