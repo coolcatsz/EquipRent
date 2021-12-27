@@ -1,6 +1,6 @@
 const { Router } = require('express');
 const itemRoute = Router();
-const { findAllItem, findUserItem, itemImgId, newItem } = require('../helpers/itemHelper');
+const { findAllItem, findUserItem, itemImgId, newItem, itemAvailability } = require('../helpers/itemHelper');
 
 itemRoute.get('/allItem', (req, res) => {
   findAllItem()
@@ -51,6 +51,20 @@ itemRoute.post('/newItems', (req, res) => {
   return newItem(item)
     .then(() => {
       res.status(201);
+    }).catch((err) => {
+      res.sendStatus(500);
+    });
+});
+
+itemRoute.put('/available/:id', (req, res) => {
+  console.log(req);
+  itemAvailability(req.params.id)
+    .then(([data]) => {
+      console.log(data);
+      if (data === 0) {
+        res.sendStatus(404);
+      }
+      res.sendStatus(200);
     }).catch((err) => {
       res.sendStatus(500);
     });

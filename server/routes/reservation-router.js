@@ -3,7 +3,7 @@ const reserveRoute = Router();
 const {newReserve} = require('../helpers/reservationHelper');
 
 reserveRoute.post('/insertReserve', (req, res) => {
-  console.log(req.body);
+  // console.log(req.body);
   const {startDate, endDate, price, total, itemId, userId} = req.body;
   const reserve = {
     startDate: startDate,
@@ -15,8 +15,9 @@ reserveRoute.post('/insertReserve', (req, res) => {
   };
   return newReserve(reserve)
     .then((data) => {
-      console.log(data);
-    }).catch((err) => console.error(err, 'ReserveErr'));
+      // console.log(data, 'DATA');
+      res.sendStatus(201).send(data);
+    }).catch((err) => res.status(500));
 });
 
 module.exports = reserveRoute;

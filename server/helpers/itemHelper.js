@@ -14,6 +14,14 @@ const itemImgId = (itemId) => ItemImg.findAll({
   }
 });
 
+const itemAvailability = (id) => Item.update({
+  availability: false
+}, {
+  where: {
+    id
+  },
+});
+
 const newItem = (item) => Item.create({
   brand: item.brand,
   type: item.type,
@@ -37,3 +45,4 @@ module.exports.newItem = newItem;
 module.exports.findAllItem = findAllItem;
 module.exports.findUserItem = findUserItem;
 module.exports.itemImgId = itemImgId;
+module.exports.itemAvailability = itemAvailability;
