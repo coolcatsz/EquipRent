@@ -99,6 +99,14 @@ const NavBar = ({ setItemList }) => {
           >
             Be a Lender
           </Button>
+          <Button
+            size="large"
+            component={Link}
+            to="/chat"
+            color="inherit"
+          >
+           Message
+          </Button>
           {
             (user && user.thumbnail) ?
 
