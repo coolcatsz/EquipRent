@@ -1,11 +1,13 @@
 import React, { useState, useEffect } from 'react';
+import io from 'socket.io-client';
 
 
 import ActiveChat from './ActiveChat.jsx';
 
 
 const Chat = () => {
-
+  
+  const socket = io.connect('http://localhost:3001');
 
 
   const [user, setUser] = useState('');

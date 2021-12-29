@@ -21,7 +21,7 @@ const DarkMode = () => {
 
   return (
     <ThemeProvider theme={theme}>
-      <Paper>
+      <Paper elevation={0}>
         <LightModeIcon style={{ color: darkMode ? 'grey' : 'yellow' }}></LightModeIcon>
         <Switch onChange={() => setDarkMode(!darkMode)} />
         <ModeNightIcon style={{ color: darkMode ? '#40457e' : 'grey' }}></ModeNightIcon>
