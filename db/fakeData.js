@@ -142,11 +142,11 @@ const fakeImg = [
     itemId: 3,
   },
   {
-    imgUrl: 'https://media.kohlsimg.com/is/image/kohls/25941_Aqua_Sky?wid=600&hei=600&op_sharpen=1',
+    imgUrl: 'https://m.media-amazon.com/images/I/91BB48YfvFL._AC_SL1500_.jpg',
     itemId: 4,
   },
   {
-    imgUrl: 'https://m.media-amazon.com/images/I/91BB48YfvFL._AC_SL1500_.jpg',
+    imgUrl: 'https://media.kohlsimg.com/is/image/kohls/25941_Aqua_Sky?wid=600&hei=600&op_sharpen=1',
     itemId: 5,
   },
   {
@@ -162,7 +162,9 @@ const fakeImg = [
     itemId: 8,
   },
 ];
+
 module.exports.fakeUser = fakeUser;
 module.exports.fakeItem = fakeItem;
 module.exports.fakePost = fakePost;
 module.exports.fakeImg = fakeImg;
+

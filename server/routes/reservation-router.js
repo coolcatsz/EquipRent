@@ -8,7 +8,7 @@ reserveRoute.post('/insertReserve', (req, res) => {
   const reserve = {
     startDate: startDate,
     endDate: endDate,
-    price: price,
+    // price: price,
     total: total,
     userId: userId,
     itemId: itemId,

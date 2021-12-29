@@ -2,7 +2,7 @@ import React, {useState, useEffect} from 'react';
 import axios from 'axios';
 import CreatePost from './CreatePost.jsx';
 import ItemPost from './ItemPost.jsx';
-
+import Calendar from './Calendar.jsx';
 
 const SingleItem = ({user, currentItem}) => {
   // console.log(currentItem, 'CURR');
@@ -56,6 +56,7 @@ const SingleItem = ({user, currentItem}) => {
           </ul>
         </div>
       </div>
+      <Calendar />
       <CreatePost user={user} currentItem={currentItem} allItemPost={allItemPost} />
       <div className='create-preview'>
         <ItemPost itemReview={itemReview}/>
