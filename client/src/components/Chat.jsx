@@ -6,7 +6,7 @@ import ActiveChat from './ActiveChat.jsx';
 
 const Chat = () => {
 
-  const classes = useStyles();
+
 
   const [user, setUser] = useState('');
   const [room, setRoom] = useState('');

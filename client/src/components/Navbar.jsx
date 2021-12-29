@@ -18,6 +18,7 @@ import Logout from '@mui/icons-material/Logout';
 import GoogleIcon from '@mui/icons-material/Google';
 import axios from 'axios';
 import SearchStub from './SearchStub.jsx';
+import DarkMode from './DarkMode.jsx';
 
 import { useBetween } from 'use-between';
 import { useSharedUser } from './User.jsx';
@@ -90,6 +91,7 @@ const NavBar = ({ setItemList }) => {
           >
             EquipRent
           </Typography>
+          <DarkMode/>
           <SearchStub setItemList={setItemList} />
           <Button
             size="large"
