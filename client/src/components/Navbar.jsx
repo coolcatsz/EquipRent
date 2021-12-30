@@ -58,7 +58,6 @@ const NavBar = ({ setItemList }) => {
   React.useEffect(() => {
     axios.get('/auth/verify')
       .then(({data}) => {
-        console.log(data);
         setIsLoggedIn(!!data);
         setUser(data);
         changeCurrentUser(data);
