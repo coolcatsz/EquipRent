@@ -2,7 +2,7 @@ import React, {useState, useEffect} from 'react';
 import axios from 'axios';
 import CreatePost from './CreatePost.jsx';
 import ItemPost from './ItemPost.jsx';
-
+import Calendar from './Calendar.jsx';
 
 const SingleItem = ({user, currentItem}) => {
   // console.log(currentItem, 'CURR');
@@ -23,6 +23,12 @@ const SingleItem = ({user, currentItem}) => {
         console.log(data, 'DATA');
         setItemReview(data);
       }).catch((err) => console.error('ItemPost Err'));
+  };
+
+  const updateAvailability = () => {
+    axios.put(`/item/available/${currentItem.id}`)
+      .then(() => console.log(currentItem.id))
+      .catch((err) => console.error('puterror'));
   };
 
   useEffect(() => {
@@ -56,6 +62,7 @@ const SingleItem = ({user, currentItem}) => {
           </ul>
         </div>
       </div>
+      <Calendar currentItem={currentItem} user={user} />
       <CreatePost user={user} currentItem={currentItem} allItemPost={allItemPost} />
       <div className='create-preview'>
         <ItemPost itemReview={itemReview}/>

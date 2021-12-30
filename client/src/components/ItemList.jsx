@@ -22,7 +22,7 @@ const ItemList = ({itemList, handleClick, user}) => {
                 >
                   <Image key={item.id} item={item} handleClick={handleClick} />
                   <span><p>Item: {item.brand}</p></span>
-                  <span><p>Type: {item.type}</p></span>
+                  {/* <span><p>Type: {item.type}</p></span> */}
                 </div>
               );
             })

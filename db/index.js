@@ -70,28 +70,19 @@ const ItemImg = sequelize.define('ItemImg', {
 
 
 const Reservation = sequelize.define('Reservation', {
-  user_id: {
-    type: DataTypes.INTEGER,
-    references: {
-      model: User,
-      key: 'id',
-      deferrable: Deferrable.INITIALLY_IMMEDIATE
-    }
-  },
-  item_id: {
-    type: DataTypes.INTEGER,
-    references: {
-      model: Item,
-      key: 'id',
-      deferrable: Deferrable.INITIALLY_IMMEDIATE
-    }
-  },
-  startDate: DataTypes.INTEGER,
-  endDate: DataTypes.INTEGER,
+  startDate: DataTypes.STRING,
+  endDate: DataTypes.STRING,
   price: DataTypes.INTEGER,
   total: DataTypes.INTEGER
 });
 
+const Bookmark = sequelize.define('Bookmark', {
+  id: {
+    type: Sequelize.INTEGER,
+    primaryKey: true,
+    autoIncrement: true,
+  }
+});
 
 ////Associations
 Post.belongsTo(Item, {as: 'itemPost', foreignKey: 'itemId'});
@@ -102,11 +93,18 @@ Item.belongsTo(User, {as: 'userItem', foreignKey: 'userId'});
 
 ItemImg.belongsTo(Item, {as: 'itemImg', foreignKey: 'itemId'});
 
+Reservation.belongsTo(User, {as: 'userReserve', foreignKey: 'userId'});
 
-// Item.hasOne(ItemImg);
+Reservation.belongsTo(Item, {as: 'itemReserve', foreignKey: 'itemId'});
+
+Bookmark.belongsTo(User, {as: 'userBookmark', foreignKey: 'userId'});
+
+Bookmark.belongsTo(Item, {as: 'itemBookmark', foreignKey: 'itemId'});
 ////////////////
 
-sequelize.sync({force: false})
+Bookmark.sync();
+
+sequelize.sync()
   .then(() => User.sync())
   .then(() => Item.sync())
   .then(() => Post.sync())
@@ -116,11 +114,14 @@ sequelize.sync({force: false})
   // .then(() => console.log('table synced'))
   .catch((err) => console.error('Sync Error'));
 
+
+
 module.exports = {
   db: sequelize,
   User,
   ItemImg,
   Reservation,
   Post,
-  Item
+  Item,
+  Bookmark
 };
