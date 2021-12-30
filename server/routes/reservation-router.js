@@ -15,7 +15,7 @@ reserveRoute.post('/insertReserve', (req, res) => {
   };
   return newReserve(reserve)
     .then((data) => {
-      console.log(data, 'DATA');
+      // console.log(data, 'DATA');
       res.sendStatus(201).send(data);
     }).catch((err) => res.status(500));
 });

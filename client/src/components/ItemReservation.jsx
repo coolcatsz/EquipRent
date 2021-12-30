@@ -24,12 +24,15 @@ const ItemReservation = ({ currentItem, dates, user}) => {
   return (
     <div>
       <div>
-        <h4>Add reservation post body here</h4>
+        <h4>Reservation Info</h4>
         {/* <p>StartDate={dates[0]} - EndDate={dates[1]}</p> */}
         <p>Price: {currentItem.price}</p>
         <p>Total: {diffInDays * currentItem.price }</p>
         <Button
           onClick={reserve}
+          variant="contained"
+          id="outlined-basic"
+          color="error"
         >RESERVE
         </Button>
       </div>

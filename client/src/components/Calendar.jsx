@@ -50,7 +50,7 @@ const Calendar = ({ currentItem, user }) => {
                 />
               </Stack>
             </LocalizationProvider>
-            <Button>Check Availability</Button>
+            <Button variant="contained" id="outlined-basic" color="error">Check Availability</Button>
           </div>
         </div>
       ) : (

@@ -18,7 +18,7 @@ const Image = ({item, handleClick}) => {
     getItemImg();
   }, []);
 
-  if (itemImg !== undefined && item.id === itemImg.itemId) {
+  if (item.id === itemImg.itemId) {
     return (
       <div>
         <Link to='/item'>

@@ -57,7 +57,7 @@ itemRoute.post('/newItems', (req, res) => {
 });
 
 itemRoute.put('/available/:id', (req, res) => {
-  console.log(req);
+  // console.log(req);
   itemAvailability(req.params.id)
     .then(([data]) => {
       console.log(data);

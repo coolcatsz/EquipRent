@@ -25,6 +25,12 @@ const SingleItem = ({user, currentItem}) => {
       }).catch((err) => console.error('ItemPost Err'));
   };
 
+  const updateAvailability = () => {
+    axios.put(`/item/available/${currentItem.id}`)
+      .then(() => console.log(currentItem.id))
+      .catch((err) => console.error('puterror'));
+  };
+
   useEffect(() => {
     allItemPost();
     oneItemImg();
@@ -56,7 +62,7 @@ const SingleItem = ({user, currentItem}) => {
           </ul>
         </div>
       </div>
-      <Calendar currentItem={currentItem} user={user}/>
+      <Calendar currentItem={currentItem} user={user} />
       <CreatePost user={user} currentItem={currentItem} allItemPost={allItemPost} />
       <div className='create-preview'>
         <ItemPost itemReview={itemReview}/>
