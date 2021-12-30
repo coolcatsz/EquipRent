@@ -1,6 +1,6 @@
+const differenceInDays = require('date-fns/differenceInDays/index.js');
 import React, { useState } from 'react';
 import axios from 'axios';
-const differenceInDays = require('/Users/chhotisherpa/EquipRent/node_modules/date-fns/differenceInDays/index.js');
 import { Button } from '@mui/material';
 
 const ItemReservation = ({ currentItem, dates, user}) => {
