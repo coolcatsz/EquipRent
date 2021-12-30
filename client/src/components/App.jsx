@@ -3,13 +3,14 @@ import Nav from './Navbar.jsx';
 import Profile from './Profile.jsx';
 import Lender from './Lender.jsx';
 import Chat from './Chat.jsx';
-import axios from 'axios';
 import { Button } from '@material-ui/core';
 import { BrowserRouter, Routes, Route, Link, useRouteMatch } from 'react-router-dom';
 import Login from './Login.jsx';
 import ItemList from './ItemList.jsx';
 import SingleItem from './SingleItem.jsx';
 import CreatePost from './CreatePost.jsx';
+import Paper from '@material-ui/core/Paper';
+import axios from 'axios';
 
 
 
@@ -48,23 +49,25 @@ const App = () => {
   }, []);
 
   return (
-    <div>
-      { user ? (
-        <div>
-          <Nav setItemList={setItemList}/>
-          <Routes>
-            <Route exact path ='/profile' element={<Profile/>}/>
-            <Route exact path ='/lender' element={<Lender user={user}/>}/>
-            <Route exact path ='/chat' element={<Chat/>}/>
-            <Route exact path ='/' element={<ItemList itemList={itemList} handleClick={oneItem}/>}/>
-            <Route exact path ='/item' element={ <SingleItem user={user} currentItem={currentItem}/> } />
-          </Routes>
-        </div>
-      ) : (
-        <Nav />
-      )}
-    </div>
 
+    <div>
+      <Paper elevation={0}>
+        { user ? (
+          <div>
+            <Nav setItemList={setItemList}/>
+            <Routes>
+              <Route exact path ='/profile' element={<Profile/>}/>
+              <Route exact path ='/lender' element={<Lender user={user}/>}/>
+              <Route exact path ='/chat' element={<Chat/>}/>
+              <Route exact path ='/' element={<ItemList itemList={itemList} handleClick={oneItem}/>}/>
+              <Route exact path ='/item' element={ <SingleItem user={user} currentItem={currentItem}/> } />
+            </Routes>
+          </div>
+        ) : (
+          <Nav />
+        )}
+      </Paper>
+    </div>
   );
 };
 
