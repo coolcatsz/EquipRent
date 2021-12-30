@@ -60,9 +60,9 @@ itemRoute.post('/newItemImg', (req, res) => {
   return newItemImg(imgUrl, itemId)
     .then(() => {
       res.sendStatus(201);
-  }).catch((err) => {
-    res.sendStatus(500);
-  });
+    }).catch((err) => {
+      res.sendStatus(500);
+    });
 });
 
 module.exports = itemRoute;

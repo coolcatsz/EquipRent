@@ -12,14 +12,50 @@ const authRouter = require('./routes/auth-router.js');
 const postRoute = require('./routes/post-router.js');
 const itemRoute = require('./routes/item-router.js');
 const searchRoute = require('./routes/search-router.js');
+const { Server } = require('socket.io');
+const http = require('http');
+const cors = require('cors');
 require('../config/passport-setup.js');
 require('dotenv').config();
+const { notifSocket } = require('./sockets/notif-sockets.js');
 
+app.use(cors());
 app.use(cookieParser());
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static(CLIENT_PATH));
+
+//socket io stuff
+const server = http.createServer(app);
+const io = new Server(server, {
+  cors: {
+    origin: 'http://localhost:3000',
+    methods: ['GET', 'POST', 'PUT', 'DELETE']
+  }
+});
+//run when client connects
+io.on('connection', (socket) => {
+  console.log(`User Connected ${socket.id}`);
+
+  socket.on('join_room', (data) => {
+    socket.join(data);
+    console.log(`user with id: ${socket.id} joined room: ${data}`);
+  });
+
+  socket.on('send_message', (data) => {
+    console.log('message: ', data);
+    socket.to(data.room).emit('receive_message', data);
+  });
+  socket.on('disconnect', () => {
+    console.log(`user disconnected ${socket.id}`);
+  });
+
+});
+
+server.listen(3001, () => {
+  console.log('server running');
+});
 
 app.use(cookieSession({
   keys: [process.env.COOKIE_KEY],

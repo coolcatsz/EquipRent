@@ -1,0 +1,48 @@
+const { app } = require('../app.js');
+const { createServer } = require('http');
+const { Server } = require('socket.io');
+
+//instantiating pg.client so we can call the pg.Client.on event handler inside of the socket event handler
+const { Client } = require('pg');
+
+const {
+  DATABASE,
+  USER_NAME,
+  USER_PASSWORD,
+  HOST,
+} = process.env;
+
+const connection = `postgres://${USER_NAME}:${USER_PASSWORD}@${HOST}/${DATABASE}`;
+
+const pgClient = new Client(connection);
+
+pgClient.connect();
+const query = pgClient.query('LISTEN reserve_event');
+
+const httpServer = createServer(app);
+
+const io = new Server(httpServer, {
+  cors: {
+    origin: 'http://localhost:3000',
+    methods: ['GET', 'POST']
+  }
+});
+
+httpServer.listen(3006, () => {
+  console.log('listening on port 3006');
+});
+
+io.on('connection', function (socket) {
+  socket.emit('connected', { connected: true });
+
+  socket.on('ready for data', function (data) {
+    pgClient.on('notification', function(title) {
+      socket.emit('update', { message: title });
+    });
+    console.log('ready 4 data :)');
+  });
+});
+
+module.exports = {
+  notifSocket: io
+};
