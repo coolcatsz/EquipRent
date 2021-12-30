@@ -12,11 +12,15 @@ const {
   HOST,
 } = process.env;
 
-const connection = `postgres://${USER_NAME}:${USER_PASSWORD}@${HOST}/${DATABASE}`;
-
-const pgClient = new Client(connection);
+const pgClient = new Client({
+  database: DATABASE,
+  user: USER_NAME,
+  password: USER_PASSWORD,
+  host: HOST,
+});
 
 pgClient.connect();
+
 const query = pgClient.query('LISTEN reserve_event');
 
 const httpServer = createServer(app);

@@ -6,11 +6,16 @@ const {
   USER_NAME,
   USER_PASSWORD,
   HOST,
+  DB_PORT
 } = process.env;
 
-const connection = `postgres://${USER_NAME}:${USER_PASSWORD}@${HOST}/${DATABASE}`;
-
-const pgClient = new pg.Client(connection);
+const pgClient = new pg.Client({
+  database: DATABASE,
+  user: USER_NAME,
+  password: USER_PASSWORD,
+  host: HOST,
+  port: DB_PORT,
+});
 
 pgClient.connect();
 
@@ -36,9 +41,7 @@ const triggerQuery = pgClient.query(`
     FOR EACH ROW EXECUTE FUNCTION new_reservation();
 `);
 
-const promisesArray = [functionQuery, triggerQuery];
-
-Promise.all(promisesArray)
+Promise.all([functionQuery, triggerQuery])
   .then(console.log('success at Promise.all invocation'))
   .catch(err => console.error(err));
 
