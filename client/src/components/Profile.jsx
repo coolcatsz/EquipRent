@@ -2,7 +2,10 @@ import React, { useState } from 'react';
 import { Button } from '@mui/material';
 import { Routes, Route, Link } from 'react-router-dom';
 import { useSharedUser } from './User.jsx';
+
+
 import axios from 'axios';
+
 
 
 const Profile = () => {
@@ -20,6 +23,7 @@ const Profile = () => {
   };
 
 
+
   return (
     <div>
       <div className='user-info'>
@@ -30,9 +34,6 @@ const Profile = () => {
       <Button>
         <Link to={'/lender'} style={{ textDecoration: 'none' }}>Upload Listing</Link>
       </Button>
-      {/* <Button>
-        <Link to={'/item'} style={{ textDecoration: 'none' }}>Write a Review</Link>
-      </Button> */}
     </div>
   );
 

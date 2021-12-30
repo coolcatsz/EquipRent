@@ -18,6 +18,8 @@ import Logout from '@mui/icons-material/Logout';
 import GoogleIcon from '@mui/icons-material/Google';
 import axios from 'axios';
 import SearchStub from './SearchStub.jsx';
+import DarkMode from './DarkMode.jsx';
+import Paper from '@material-ui/core/Paper';
 
 import { useBetween } from 'use-between';
 import { useSharedUser } from './User.jsx';
@@ -70,118 +72,130 @@ const NavBar = ({ setItemList }) => {
 
 
   return (
+    
     <Box sx={{ flexGrow: 1 }}>
       <AppBar position="static">
-        <Toolbar>
-          <IconButton
-            size="large"
-            edge="start"
-            color="inherit"
-            aria-label="menu"
-            sx={{ mr: 2 }}
-            component={Link}
-            to="/"
-          >
-            <MenuIcon />
-          </IconButton>
-          <Typography
-            variant="h6"
-            component="div"
-            sx={{ flexGrow: 1 }}
-          >
-            EquipRent
-          </Typography>
-          <SearchStub setItemList={setItemList} />
-          <Button
-            size="large"
-            component={Link}
-            to="/lender"
-            color="inherit"
-          >
-            Be a Lender
-          </Button>
-          {
-            (user && user.thumbnail) ?
-
-              <Box sx={{ display: 'flex', alignItems: 'center', textAlign: 'center' }}>
-                <Tooltip title="Account">
-                  <IconButton onClick={handleClick} size="small" sx={{ ml: 2 }}>
-                    <Avatar sx={{ width: 32, height: 32 }}>
-                      <img src={user.thumbnail} width={'100%'} />
-                    </Avatar>
-                  </IconButton>
-                </Tooltip>
-              </Box>
-              :
-              <Box sx={{ display: 'flex', alignItems: 'center', textAlign: 'center' }}>
-                <Tooltip title="Account">
-                  <IconButton size="small" sx={{ ml: 2 }}>
-                    <a href='/auth/google' style={{ textDecoration: 'none' }}>
-                      <GoogleIcon/>
-                    </a>
-                  </IconButton>
-                </Tooltip>
-              </Box>
-          }
-          <Menu
-            anchorEl={anchorEl}
-            open={open}
-            onClose={handleClose}
-            onClick={handleClose}
-            PaperProps={{
-              elevation: 0,
-              sx: {
-                overflow: 'visible',
-                filter: 'drop-shadow(0px 2px 8px rgba(0,0,0,0.32))',
-                mt: 1.5,
-                '& .MuiAvatar-root': {
-                  width: 32,
-                  height: 32,
-                  ml: -0.5,
-                  mr: 1,
-                },
-                '&:before': {
-                  content: '""',
-                  display: 'block',
-                  position: 'absolute',
-                  top: 0,
-                  right: 14,
-                  width: 10,
-                  height: 10,
-                  bgcolor: 'background.paper',
-                  transform: 'translateY(-50%) rotate(45deg)',
-                  zIndex: 0,
-                },
-              },
-            }}
-            transformOrigin={{ horizontal: 'right', vertical: 'top' }}
-            anchorOrigin={{ horizontal: 'right', vertical: 'bottom' }}
-          >
-            <MenuItem
+        <Paper>
+          <Toolbar>
+            <IconButton
+              size="large"
+              edge="start"
               color="inherit"
+              aria-label="menu"
+              sx={{ mr: 2 }}
+              component={Link}
+              to="/"
+            >
+              <MenuIcon />
+            </IconButton>
+            <Typography
+              variant="h6"
+              component="div"
+              sx={{ flexGrow: 1 }}
+            >
+            EquipRent
+            </Typography>
+            <DarkMode/>
+            <SearchStub setItemList={setItemList} />
+            <Button
               size="large"
               component={Link}
-              to="/profile"
+              to="/lender"
+              color="inherit"
             >
-              <Avatar /> Profile
-            </MenuItem>
-            <Divider />
-            <MenuItem>
-              <ListItemIcon>
-                <Settings fontSize="small" />
-              </ListItemIcon>
+            Be a Lender
+            </Button>
+            <Button
+              size="large"
+              component={Link}
+              to="/chat"
+              color="inherit"
+            >
+           Message
+            </Button>
+            {
+              (user && user.thumbnail) ?
+
+                <Box sx={{ display: 'flex', alignItems: 'center', textAlign: 'center' }}>
+                  <Tooltip title="Account">
+                    <IconButton onClick={handleClick} size="small" sx={{ ml: 2 }}>
+                      <Avatar sx={{ width: 32, height: 32 }}>
+                        <img src={user.thumbnail} width={'100%'} />
+                      </Avatar>
+                    </IconButton>
+                  </Tooltip>
+                </Box>
+                :
+                <Box sx={{ display: 'flex', alignItems: 'center', textAlign: 'center' }}>
+                  <Tooltip title="Account">
+                    <IconButton size="small" sx={{ ml: 2 }}>
+                      <a href='/auth/google' style={{ textDecoration: 'none' }}>
+                        <GoogleIcon/>
+                      </a>
+                    </IconButton>
+                  </Tooltip>
+                </Box>
+            }
+            <Menu
+              anchorEl={anchorEl}
+              open={open}
+              onClose={handleClose}
+              onClick={handleClose}
+              PaperProps={{
+                elevation: 0,
+                sx: {
+                  overflow: 'visible',
+                  filter: 'drop-shadow(0px 2px 8px rgba(0,0,0,0.32))',
+                  mt: 1.5,
+                  '& .MuiAvatar-root': {
+                    width: 32,
+                    height: 32,
+                    ml: -0.5,
+                    mr: 1,
+                  },
+                  '&:before': {
+                    content: '""',
+                    display: 'block',
+                    position: 'absolute',
+                    top: 0,
+                    right: 14,
+                    width: 10,
+                    height: 10,
+                    bgcolor: 'background.paper',
+                    transform: 'translateY(-50%) rotate(45deg)',
+                    zIndex: 0,
+                  },
+                },
+              }}
+              transformOrigin={{ horizontal: 'right', vertical: 'top' }}
+              anchorOrigin={{ horizontal: 'right', vertical: 'bottom' }}
+            >
+              <MenuItem
+                color="inherit"
+                size="large"
+                component={Link}
+                to="/profile"
+              >
+                <Avatar /> Profile
+              </MenuItem>
+              <Divider />
+              <MenuItem>
+                <ListItemIcon>
+                  <Settings fontSize="small" />
+                </ListItemIcon>
           Account Settings
-            </MenuItem>
-            <MenuItem
-              component={LogOut}
-            >
-              <ListItemIcon>
-                <Logout fontSize="small" />
-              </ListItemIcon>
+              </MenuItem>
+              <MenuItem
+                component={LogOut}
+              >
+                <ListItemIcon>
+                  <Logout fontSize="small" />
+                </ListItemIcon>
           Logout
-            </MenuItem>
-          </Menu>
-        </Toolbar>
+              </MenuItem>
+            </Menu>
+          </Toolbar>
+        </Paper>
       </AppBar>
     </Box>
   );
