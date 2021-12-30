@@ -39,7 +39,7 @@ const fakeItem = [
   {
     brand: 'BLACK+DECKER Electric Lawn Mower',
     type: 'Outdoor Power Tools',
-    price: 50,
+    price: 40,
     condition: 'Great',
     value: 200,
     availability: true,
@@ -49,7 +49,7 @@ const fakeItem = [
   {
     brand: 'JUNELILY',
     type: 'Camping Tents',
-    price: 80,
+    price: 20,
     condition: 'Good',
     value: 150,
     availability: true,
@@ -59,7 +59,7 @@ const fakeItem = [
   {
     brand: 'Blast Zone',
     type: 'Bounce house',
-    price: 300,
+    price: 100,
     condition: 'Premium Quality',
     value: 500,
     availability: true,
@@ -69,7 +69,7 @@ const fakeItem = [
   {
     brand: 'Kitchen Aid',
     type: 'kitchen appliance',
-    price: 150,
+    price: 50,
     condition: 'Good',
     value: 350,
     availability: true,
@@ -79,7 +79,7 @@ const fakeItem = [
   {
     brand: 'Crock Pot',
     type: 'kitchen appliance',
-    price: 80,
+    price: 30,
     condition: 'Great',
     value: 140,
     availability: true,
@@ -89,7 +89,7 @@ const fakeItem = [
   {
     brand: 'Coleman RoadTrip X-Cursion Propane Grill',
     type: 'Backyard Appliance',
-    price: 80,
+    price: 50,
     condition: 'Working condition',
     value: 200,
     availability: true,
@@ -99,7 +99,7 @@ const fakeItem = [
   {
     brand: 'Texas Instrument TI-83 Plus Calculator',
     type: 'Calculator',
-    price: 15,
+    price: 10,
     condition: 'Good',
     value: 100,
     availability: true,
@@ -109,7 +109,7 @@ const fakeItem = [
   {
     brand: 'YABER 7200 Lumen full HD projector',
     type: 'Home Entertainment',
-    price: 80,
+    price: 50,
     condition: 'Good',
     value: 200,
     user_id: 1,
