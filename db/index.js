@@ -2,6 +2,7 @@
 require('dotenv').config();
 const { Sequelize, DataTypes, DECIMAL, Deferrable } = require('sequelize');
 const { addSearchVectors } = require('./dbSearch.js');
+const { listener } = require('./dbTrigger.js');
 
 const {
   DATABASE,

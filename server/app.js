@@ -17,6 +17,7 @@ const http = require('http');
 const cors = require('cors');
 require('../config/passport-setup.js');
 require('dotenv').config();
+const { notifSocket } = require('./sockets/notif-sockets.js');
 
 app.use(cors());
 app.use(cookieParser());
