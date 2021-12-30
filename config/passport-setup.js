@@ -15,7 +15,7 @@ passport.deserializeUser((id, done) => {
   })
     .then(user => {
       done(null, user);
-    });
+    }).catch((err) => console.error('Passport Deserialize Err'));
 });
 
 passport.use(
@@ -47,6 +47,6 @@ passport.use(
               done(null, newUser);
             });
         }
-      });
+      }).catch((err) => console.error('Google Strategy Err'));
   })
 );

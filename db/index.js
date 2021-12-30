@@ -75,6 +75,13 @@ const Reservation = sequelize.define('Reservation', {
   total: DataTypes.INTEGER
 });
 
+const Bookmark = sequelize.define('Bookmark', {
+  id: {
+    type: Sequelize.INTEGER,
+    primaryKey: true,
+    autoIncrement: true,
+  }
+});
 
 ////Associations
 Post.belongsTo(Item, {as: 'itemPost', foreignKey: 'itemId'});
@@ -89,8 +96,12 @@ Reservation.belongsTo(User, {as: 'userReserve', foreignKey: 'userId'});
 
 Reservation.belongsTo(Item, {as: 'itemReserve', foreignKey: 'itemId'});
 
-// Item.hasOne(ItemImg);
+Bookmark.belongsTo(User, {as: 'userBookmark', foreignKey: 'userId'});
+
+Bookmark.belongsTo(Item, {as: 'itemBookmark', foreignKey: 'itemId'});
 ////////////////
+
+Bookmark.sync();
 
 sequelize.sync()
   .then(() => User.sync())
@@ -103,11 +114,13 @@ sequelize.sync()
   .catch((err) => console.error('Sync Error'));
 
 
+
 module.exports = {
   db: sequelize,
   User,
   ItemImg,
   Reservation,
   Post,
-  Item
+  Item,
+  Bookmark
 };
