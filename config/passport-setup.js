@@ -45,7 +45,7 @@ passport.use(
           })
             .then(newUser => {
               done(null, newUser);
-            });
+            }).catch((err) => console.error('Error'));
         }
       }).catch((err) => console.error('Google Strategy Err'));
   })
