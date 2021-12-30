@@ -26,8 +26,8 @@ const ItemReservation = ({ currentItem, dates, user}) => {
       <div>
         <h4>Reservation Info</h4>
         {/* <p>StartDate={dates[0]} - EndDate={dates[1]}</p> */}
-        <p>Price: {currentItem.price}</p>
-        <p>Total: {diffInDays * currentItem.price }</p>
+        <p>Price: ${currentItem.price}</p>
+        <p>Total: ${diffInDays * currentItem.price }</p>
         <Button
           onClick={reserve}
           variant="contained"

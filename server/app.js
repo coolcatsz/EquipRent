@@ -37,15 +37,15 @@ const io = new Server(server, {
 });
 //run when client connects
 io.on('connection', (socket) => {
-  console.log(`User Connected ${socket.id}`);
+  // console.log(`User Connected ${socket.id}`);
 
   socket.on('join_room', (data) => {
     socket.join(data);
-    console.log(`user with id: ${socket.id} joined room: ${data}`);
+    // console.log(`user with id: ${socket.id} joined room: ${data}`);
   });
 
   socket.on('send_message', (data) => {
-    console.log('message: ', data);
+    // console.log('message: ', data);
     socket.to(data.room).emit('receive_message', data);
   });
   socket.on('disconnect', () => {

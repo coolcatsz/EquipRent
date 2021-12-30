@@ -39,7 +39,7 @@ io.on('connection', function (socket) {
     pgClient.on('notification', function(title) {
       socket.emit('update', { message: title });
     });
-    console.log('ready 4 data :)');
+    // console.log('ready 4 data :)');
   });
 });
 
