@@ -8,14 +8,14 @@ reserveRoute.post('/insertReserve', (req, res) => {
   const reserve = {
     startDate: startDate,
     endDate: endDate,
-    // price: price,
+    price: price,
     total: total,
     userId: userId,
     itemId: itemId,
   };
   return newReserve(reserve)
     .then((data) => {
-      // console.log(data, 'DATA');
+      console.log(data, 'DATA');
       res.sendStatus(201).send(data);
     }).catch((err) => res.status(500));
 });

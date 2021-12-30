@@ -56,7 +56,7 @@ const SingleItem = ({user, currentItem}) => {
           </ul>
         </div>
       </div>
-      <Calendar />
+      <Calendar currentItem={currentItem} user={user}/>
       <CreatePost user={user} currentItem={currentItem} allItemPost={allItemPost} />
       <div className='create-preview'>
         <ItemPost itemReview={itemReview}/>
