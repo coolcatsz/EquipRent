@@ -86,7 +86,7 @@ const App = () => {
               <Route exact path ='/profile' element={<Profile/>}/>
               <Route exact path ='/lender' element={<Lender user={user}/>}/>
               <Route exact path ='/chat' element={<Chat/>}/>
-              <Route exact path ='/' element={<ItemList itemList={itemList} handleClick={oneItem}/>}/>
+              <Route exact path ='/' element={<ItemList itemList={itemList} handleClick={oneItem} user={user}/>}/>
               <Route exact path ='/item' element={ <SingleItem user={user} currentItem={currentItem}/> } />
               <Route exact path ='/bookmark' element={ <Bookmark/> } />
             </Routes>

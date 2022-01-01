@@ -1,7 +1,7 @@
 import React from 'react';
 
-const Bookmark = () => {
-  // console.log(item, 'BookItem');
+const Bookmark = ({user, item, itemImg}) => {
+  console.log(itemImg, 'BookItem');
   return (
     <div>
       <h1>Bookmark item page</h1>

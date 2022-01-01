@@ -20,7 +20,7 @@ const SingleItem = ({user, currentItem}) => {
   const allItemPost = () => {
     axios.get(`/post/itemPost/${currentItem.id}`)
       .then(({ data }) => {
-        console.log(data, 'DATA');
+        // console.log(data, 'DATA');
         setItemReview(data);
       }).catch((err) => console.error('ItemPost Err'));
   };

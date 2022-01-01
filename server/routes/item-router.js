@@ -98,7 +98,7 @@ itemRoute.post('/bookmark', (req, res) => {
   };
   return itemBookmark(newBookmark)
     .then(() => {
-      res.status(201);
+      res.sendStatus(201);
     }).catch((err) => {
       res.sendStatus(500);
     });
