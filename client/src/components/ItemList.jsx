@@ -2,7 +2,6 @@ import React from 'react';
 import axios from 'axios';
 import Image from './Image.jsx';
 
-
 // import SingleItem from './SingleItem.jsx';
 
 const ItemList = ({itemList, handleClick, user}) => {

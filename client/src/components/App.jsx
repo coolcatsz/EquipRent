@@ -9,6 +9,7 @@ import Login from './Login.jsx';
 import ItemList from './ItemList.jsx';
 import SingleItem from './SingleItem.jsx';
 import CreatePost from './CreatePost.jsx';
+import Bookmark from './Bookmark.jsx';
 import Paper from '@material-ui/core/Paper';
 import axios from 'axios';
 import { ToastContainer, toast } from 'react-toastify';
@@ -87,6 +88,7 @@ const App = () => {
               <Route exact path ='/chat' element={<Chat/>}/>
               <Route exact path ='/' element={<ItemList itemList={itemList} handleClick={oneItem}/>}/>
               <Route exact path ='/item' element={ <SingleItem user={user} currentItem={currentItem}/> } />
+              <Route exact path ='/bookmark' element={ <Bookmark/> } />
             </Routes>
           </div>
         ) : (

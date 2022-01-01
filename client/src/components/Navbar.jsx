@@ -178,11 +178,14 @@ const NavBar = ({ setItemList }) => {
                 <Avatar /> Profile
               </MenuItem>
               <Divider />
-              <MenuItem>
+              <MenuItem
+                component={Link}
+                to="/bookmark"
+              >
                 <ListItemIcon>
                   <Settings fontSize="small" />
                 </ListItemIcon>
-          Account Settings
+              BookMarks
               </MenuItem>
               <MenuItem
                 component={LogOut}

@@ -9,6 +9,12 @@ const findUserItem = (userId) => Item.findAll({
   }
 });
 
+const findItemById = (id) => Item.findOne({
+  where: {
+    id
+  }
+});
+
 const itemImgId = (itemId) => ItemImg.findAll({
   where: {
     itemId
@@ -28,6 +34,7 @@ const itemBookmark = (bookmark) => Bookmark.create({
   itemId: bookmark.itemId
 }).then(() => console.log('Bookmark Created'))
   .catch((err) => console.error('Bookmark create err'));
+
 
 const newItem = (item) => Item.create({
   brand: item.brand,
@@ -62,3 +69,4 @@ module.exports.findUserItem = findUserItem;
 module.exports.itemImgId = itemImgId;
 module.exports.itemAvailability = itemAvailability;
 module.exports.newItemImg = newItemImg;
+module.exports.findItemById = findItemById;

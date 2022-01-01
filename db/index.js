@@ -102,7 +102,6 @@ Bookmark.belongsTo(User, {as: 'userBookmark', foreignKey: 'userId'});
 Bookmark.belongsTo(Item, {as: 'itemBookmark', foreignKey: 'itemId'});
 ////////////////
 
-Bookmark.sync();
 
 sequelize.sync()
   .then(() => User.sync())
@@ -110,6 +109,7 @@ sequelize.sync()
   .then(() => Post.sync())
   .then(() => ItemImg.sync())
   .then(() => Reservation.sync())
+  .then(() => Bookmark.sync())
   .then(() => addSearchVectors(sequelize))
   // .then(() => console.log('table synced'))
   .catch((err) => console.error('Sync Error'));

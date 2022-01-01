@@ -43,7 +43,7 @@ const triggerQuery = pgClient.query(`
 
 Promise.all([functionQuery, triggerQuery])
   .then(console.log('success at Promise.all invocation'))
-  .catch(err => console.error(err));
+  .catch(err => console.error('Trigger Err'));
 
 const listener = () => {
   pgClient.on('notification', data => {
