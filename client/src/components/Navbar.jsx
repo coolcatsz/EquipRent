@@ -13,7 +13,7 @@ import MenuItem from '@mui/material/MenuItem';
 import Avatar from '@mui/material/Avatar';
 import Divider from '@mui/material/Divider';
 import ListItemIcon from '@mui/material/ListItemIcon';
-import Settings from '@mui/icons-material/Settings';
+import Bookmarks from '@mui/icons-material/Bookmarks';
 import Logout from '@mui/icons-material/Logout';
 import GoogleIcon from '@mui/icons-material/Google';
 import axios from 'axios';
@@ -183,7 +183,7 @@ const NavBar = ({ setItemList }) => {
                 to="/bookmark"
               >
                 <ListItemIcon>
-                  <Settings fontSize="small" />
+                  <Bookmarks fontSize="small" />
                 </ListItemIcon>
               BookMarks
               </MenuItem>

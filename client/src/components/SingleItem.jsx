@@ -3,8 +3,9 @@ import axios from 'axios';
 import CreatePost from './CreatePost.jsx';
 import ItemPost from './ItemPost.jsx';
 import Calendar from './Calendar.jsx';
+import Button from '@mui/material/Button';
 
-const SingleItem = ({user, currentItem}) => {
+const SingleItem = ({user, currentItem, addBookmark}) => {
   // console.log(currentItem, 'CURR');
   const [itemReview, setItemReview] = useState([]);
   const [singleItemImg, setSingleItemImg] = useState({});
@@ -25,18 +26,17 @@ const SingleItem = ({user, currentItem}) => {
       }).catch((err) => console.error('ItemPost Err'));
   };
 
-  const updateAvailability = () => {
-    axios.put(`/item/available/${currentItem.id}`)
-      .then(() => console.log(currentItem.id))
-      .catch((err) => console.error('puterror'));
-  };
+  // const updateAvailability = () => {
+  //   axios.put(`/item/available/${currentItem.id}`)
+  //     .then(() => console.log(currentItem.id))
+  //     .catch((err) => console.error('puterror'));
+  // };
 
   useEffect(() => {
     allItemPost();
     oneItemImg();
   }, []);
 
-  // console.log(currentItem, singleItemImg.imgUrl);
   let image;
   if (currentItem.id === singleItemImg.itemId) {
     image = singleItemImg.imgUrl;
@@ -51,6 +51,11 @@ const SingleItem = ({user, currentItem}) => {
             style ={{width: '200px', height: '200px', border: '5px solid black'}}
           ></img>
         </div>
+        <Button
+          onClick={addBookmark}
+        >
+            Bookmark
+        </Button>
         <div>
           <ul>
             <li>Brand: {currentItem.brand}</li>

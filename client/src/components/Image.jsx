@@ -2,10 +2,10 @@ import React, {useState, useEffect} from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
 import Button from '@mui/material/Button';
-import Bookmark from './Bookmark.jsx';
 
-const Image = ({item, handleClick, user}) => {
-  console.log(item, 'ITEM', user);
+
+const Image = ({item, handleClick, user, addBookmark}) => {
+  // console.log(item, 'ITEM', user);
   const [itemImg, setItemImg] = useState({});
 
   const getItemImg = () => {
@@ -14,14 +14,6 @@ const Image = ({item, handleClick, user}) => {
         // console.log(data[0], 'DATA');
         setItemImg(data[0]);
       }).catch((err) => console.error('GetAxiosErr'));
-  };
-
-  const addBookmark = () => {
-    axios.post('/item/bookmark', {
-      userId: user.id,
-      itemId: item.id
-    }).then(() => console.log('BookMarkSuccess'))
-      .catch((err) => console.error('BookMarkErr'));
   };
 
   useEffect(() => {
@@ -49,7 +41,6 @@ const Image = ({item, handleClick, user}) => {
           </span>
           <Button
             onClick={addBookmark}
-            element={<Bookmark user={user} item={item} itemImg={itemImg} />}
           >
             Bookmark
           </Button>

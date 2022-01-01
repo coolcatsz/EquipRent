@@ -13,6 +13,7 @@ const postRoute = require('./routes/post-router.js');
 const itemRoute = require('./routes/item-router.js');
 const searchRoute = require('./routes/search-router.js');
 const reserveRoute = require('./routes/reservation-router.js');
+const bookmarkRoute = require('./routes/bookmark-router.js');
 const { Server } = require('socket.io');
 const http = require('http');
 const cors = require('cors');
@@ -78,6 +79,7 @@ app.use('/post', postRoute);
 app.use('/item', itemRoute);
 app.use('/reserve', reserveRoute);
 app.use('/search', searchRoute);
+app.use('/mark', bookmarkRoute);
 app.get('/auth', (req, res) => console.log('body:', req.body));
 app.get('/logout', (req, res) => console.log('You Have Been Logged Out'));
 
