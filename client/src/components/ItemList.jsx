@@ -20,12 +20,6 @@ const ItemList = ({itemList, handleClick, user, addBookmark}) => {
                   style={{display: 'inline-block', padding: '10px'}}
                 >
                   <Image key={item.id} item={item} handleClick={handleClick} user={user} addBookmark={addBookmark}/>
-                  {/* <span
-                    style={{display: 'inline-flex'}}
-                  >
-                    <p>Item: {item.brand}</p>
-                  </span> */}
-                  {/* <span><p>Type: {item.type}</p></span> */}
                 </div>
               );
             })

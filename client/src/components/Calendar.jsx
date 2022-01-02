@@ -29,11 +29,10 @@ const Calendar = ({ currentItem, user }) => {
                 </React.Fragment>
               )} />
           </LocalizationProvider>
-          <div>
+          <div style={{marginLeft: '100px'}}>
             <LocalizationProvider dateAdapter={AdapterDateFns}>
               <Stack spacing={1}>
                 <DateRangePicker
-                  readOnly
                   startText="start"
                   endText="end"
                   value={dates}
@@ -50,11 +49,26 @@ const Calendar = ({ currentItem, user }) => {
                 />
               </Stack>
             </LocalizationProvider>
-            <Button variant="contained" id="outlined-basic" color="error">Check Availability</Button>
+            <Button variant="contained" id="outlined-basic" color="error" style={{marginLeft: '130px'}}>Check Availability</Button>
           </div>
         </div>
       ) : (
         <div>
+          <LocalizationProvider dateAdapter={AdapterDateFns}>
+            <StaticDateRangePicker
+              displayStaticWrapperAs="desktop"
+              value={dates}
+              onChange={(newValue) => {
+                setDates(newValue);
+              } }
+              renderInput={(startProps, endProps) => (
+                <React.Fragment>
+                  <TextField {...startProps} />
+                  <Box sx={{ mx: 2 }}> to </Box>
+                  <TextField {...endProps} />
+                </React.Fragment>
+              )} />
+          </LocalizationProvider>
           <LocalizationProvider dateAdapter={AdapterDateFns}>
             <DesktopDateRangePicker
               startText="Desktop start"
@@ -71,7 +85,9 @@ const Calendar = ({ currentItem, user }) => {
               )}
             />
           </LocalizationProvider>
-          <ItemReservation currentItem={currentItem} dates={dates} user={user}/>
+          <div>
+            <ItemReservation currentItem={currentItem} dates={dates} user={user}/>
+          </div>
         </div>
       )}
     </>

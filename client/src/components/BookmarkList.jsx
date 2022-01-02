@@ -2,7 +2,7 @@ import React, {useState, useEffect} from 'react';
 import axios from 'axios';
 import SingleBookmark from './SingleBookmark.jsx';
 
-const BookmarkList = ({user, itemList}) => {
+const BookmarkList = ({user, currentItem}) => {
 
   const [userBookmarkList, setUserBookmarkList] = useState([]);
 
@@ -23,10 +23,9 @@ const BookmarkList = ({user, itemList}) => {
       <h1>Bookmark item page</h1>
       {
         userBookmarkList.map((bookmark) => {
-          console.log(bookmark.itemId);
           return (
             <div key={bookmark.id}>
-              <SingleBookmark bookmark={bookmark}/>
+              <SingleBookmark bookmark={bookmark} currentItem={currentItem} />
             </div>
           );
         })

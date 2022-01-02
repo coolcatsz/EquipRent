@@ -39,11 +39,11 @@ const Image = ({item, handleClick, user, addBookmark}) => {
           >
             <p>Item: {item.brand}</p>
           </span>
-          <Button
+          {/* <Button
             onClick={addBookmark}
           >
             Bookmark
-          </Button>
+          </Button> */}
         </div>
       </div>
     );
