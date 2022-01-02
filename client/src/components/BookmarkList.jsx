@@ -23,7 +23,7 @@ const BookmarkList = ({user, itemList}) => {
       <h1>Bookmark item page</h1>
       {
         userBookmarkList.map((bookmark) => {
-          // console.log(bookmark.itemId);
+          console.log(bookmark.itemId);
           return (
             <div key={bookmark.id}>
               <SingleBookmark bookmark={bookmark}/>

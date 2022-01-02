@@ -2,15 +2,14 @@ import React, {useState, useEffect} from 'react';
 import axios from 'axios';
 
 const SingleBookmark = ({bookmark}) => {
-
+  console.log(bookmark, 'SINGLEBOOK');
   const [allBookmark, setAllBookmark] = useState({});
 
   const bookmarkItem = () => {
     axios.get(`/item/itemById/${bookmark.itemId}`)
       .then(({ data }) => {
-        console.log(data, 'bookmarkbyid');
         setAllBookmark(data);
-      }).catch((err) => console.error('Errr'));
+      }).catch((err) => console.error('BookErr'));
   };
 
   useEffect(() => {

@@ -54,7 +54,7 @@ const SingleItem = ({user, currentItem, addBookmark}) => {
         <Button
           onClick={addBookmark}
         >
-            Bookmark
+          Bookmark
         </Button>
         <div>
           <ul>

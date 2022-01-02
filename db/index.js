@@ -102,7 +102,6 @@ Bookmark.belongsTo(User, {as: 'userBookmark', foreignKey: 'userId'});
 Bookmark.belongsTo(Item, {as: 'itemBookmark', foreignKey: 'itemId'});
 ////////////////
 
-
 sequelize.sync()
   .then(() => User.sync())
   .then(() => Item.sync())
