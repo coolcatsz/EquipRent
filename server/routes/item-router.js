@@ -1,6 +1,6 @@
 const { Router } = require('express');
 const itemRoute = Router();
-const { findAllItem, findUserItem, itemImgId, newItem, itemAvailability, itemBookmark ,  newItemImg} = require('../helpers/itemHelper');
+const { findAllItem, findUserItem, itemImgId, newItem, itemAvailability, newItemImg, findItemById} = require('../helpers/itemHelper');
 // const { findAllItem, findUserItem, itemImgId, newItem, newItemImg } = require('../helpers/itemHelper');
 
 itemRoute.get('/allItem', (req, res) => {
@@ -18,6 +18,15 @@ itemRoute.get('/userItem/:userId', (req, res) => {
   findUserItem(req.params.userId)
     .then((data) => {
       // console.log(data, 'data');
+      res.status(200).send(data);
+    }).catch((err) => {
+      res.sendStatus(500);
+    });
+});
+
+itemRoute.get('/itemById/:id', (req, res) => {
+  findItemById(req.params.id)
+    .then((data) => {
       res.status(200).send(data);
     }).catch((err) => {
       res.sendStatus(500);
@@ -75,21 +84,6 @@ itemRoute.put('/available/:id', (req, res) => {
         res.sendStatus(404);
       }
       res.sendStatus(200);
-    }).catch((err) => {
-      res.sendStatus(500);
-    });
-});
-
-// item bookmarked
-itemRoute.post('/bookmark', (req, res) => {
-  const {userId, itemId} = req.body;
-  const newBookmark = {
-    userId: userId,
-    itemId: itemId
-  };
-  return itemBookmark(newBookmark)
-    .then(() => {
-      res.status(201);
     }).catch((err) => {
       res.sendStatus(500);
     });

@@ -7,7 +7,7 @@ const ItemReservation = ({ currentItem, dates, user}) => {
   const start = dates[0];
   const end = dates[1];
   const diffInDays = differenceInDays(new Date(end), new Date(start));
-
+  // console.log(diffInDays, 'night');
   const reserve = (e) => {
     e.preventDefault();
     axios.post('/reserve/insertReserve', {
@@ -26,7 +26,7 @@ const ItemReservation = ({ currentItem, dates, user}) => {
       <div>
         <h4>Reservation Info</h4>
         {/* <p>StartDate={dates[0]} - EndDate={dates[1]}</p> */}
-        <p>Price: ${currentItem.price}</p>
+        <p>Price: ${currentItem.price} x {diffInDays} nights</p>
         <p>Total: ${diffInDays * currentItem.price }</p>
         <Button
           onClick={reserve}
