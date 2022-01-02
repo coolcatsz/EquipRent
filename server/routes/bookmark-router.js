@@ -1,8 +1,17 @@
 const { Router } = require('express');
 const bookmarkRoute = Router();
-const { itemBookmark, findUserBookmark } = require('../helpers/bookmarkHelper');
+const { itemBookmark, findUserBookmark, allBookMarks } = require('../helpers/bookmarkHelper');
 
-// item bookmarked
+bookmarkRoute.get('/allBookMark', (req, res) => {
+  allBookMarks()
+    .then((data) => {
+      res.status(200).send(data);
+    }).catch((err) => {
+      console.log('Bookmark-router Err');
+      res.sendStatus(500);
+    });
+});
+
 bookmarkRoute.post('/bookmark', (req, res) => {
   const {userId, itemId} = req.body;
   const newBookmark = {

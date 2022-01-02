@@ -1,36 +1,36 @@
 import React, {useState, useEffect} from 'react';
 import axios from 'axios';
-
+import SingleBookmark from './SingleBookmark.jsx';
 
 const BookmarkList = ({user, itemList}) => {
-  console.log(user, 'BookItem');
-  console.log(currentItem, 'List');
-  const [bookmarkList, setBookmarkList] = useState([]);
-  const [bookmarkItemById, setBookmarkItemById] = useState({});
+
+  const [userBookmarkList, setUserBookmarkList] = useState([]);
 
   const userBookmark = () => {
     axios.get(`/mark/userBookmark/${user.id}`)
       .then(({data}) => {
-        console.log(data, 'bookDATA');
-        setBookmarkList(data);
+        // console.log(data, 'bookDATA');
+        setUserBookmarkList(data);
       }).catch((err) => console.error('BookMarkGetAxiosErr'));
   };
 
-  // const bookmarkItem = () => {
-  //   axios.get(`/item/itemById/${}`)
-  //     .then((data) => {
-  //       console.log(data, 'bookmarkbyid');
-  //     }).catch((err) => console.error('Errr'));
-  // };
-
   useEffect(() => {
     userBookmark();
-    // bookmarkItem();
   }, []);
 
   return (
     <div>
       <h1>Bookmark item page</h1>
+      {
+        userBookmarkList.map((bookmark) => {
+          // console.log(bookmark.itemId);
+          return (
+            <div key={bookmark.id}>
+              <SingleBookmark bookmark={bookmark}/>
+            </div>
+          );
+        })
+      }
     </div>
   );
 };
