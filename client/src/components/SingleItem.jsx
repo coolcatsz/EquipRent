@@ -54,7 +54,7 @@ const SingleItem = ({user, currentItem, addBookmark}) => {
           <Card sx={{ maxWidth: 345 }}>
             <CardMedia
               component="img"
-              alt="green iguana"
+              alt="Item Img"
               style ={{ width: '200px', height: '200px', border: '5px solid black', marginLeft: '65px', marginTop: '20px'}}
               image={`${image}`}
             />
