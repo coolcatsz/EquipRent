@@ -9,8 +9,10 @@ import Typography from '@mui/material/Typography';
 import Bookmark from '@mui/icons-material/Bookmark';
 
 const SingleBookmark = ({bookmark}) => {
-
   const [allBookmark, setAllBookmark] = useState({});
+  const [bookmarkImg, setBookmarkImg] = useState({});
+  // console.log(bookmark, 'bookmark');
+  // console.log(allBookmark, 'allbookmark');
 
   const bookmarkItem = () => {
     axios.get(`/item/itemById/${bookmark.itemId}`)
@@ -19,16 +21,31 @@ const SingleBookmark = ({bookmark}) => {
       }).catch((err) => console.error('BookErr'));
   };
 
+  const bookmarkItemImg = () => {
+    axios.get(`/item/itemImg/${bookmark.itemId}`)
+      .then(( {data} ) => {
+        setBookmarkImg(data[0]);
+      }).catch((err) => console.error('BookMarkImgErr'));
+  };
+
   useEffect(() => {
     bookmarkItem();
+    bookmarkItemImg();
   }, []);
+
+  console.log(bookmarkImg, '????');
+  let bookImg;
+  if (bookmark.itemId === bookmarkImg.itemId) {
+    bookImg = bookmarkImg.imgUrl;
+  }
 
   return (
     <Card sx={{ display: 'flex' }}>
       <CardMedia
         component="img"
-        sx={{ width: 151 }}
-        image=""
+        sx={{ width: 100 }}
+        style ={{ width: '200px', height: '200px'}}
+        image={`${bookImg}`}
         alt="Item Img"
       />
       <Box sx={{ display: 'flex', flexDirection: 'column' }}>

@@ -20,7 +20,7 @@ const BookmarkList = ({user, currentItem}) => {
 
   return (
     <div>
-      <h1>Bookmark item page</h1>
+      <h1>Bookmarks</h1>
       {
         userBookmarkList.map((bookmark) => {
           return (
