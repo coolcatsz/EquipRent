@@ -109,8 +109,6 @@ Bookmark.belongsTo(User, {as: 'userBookmark', foreignKey: 'userId'});
 
 Bookmark.belongsTo(Item, {as: 'itemBookmark', foreignKey: 'itemId'});
 
-Booking.belongsTo(User, {as: 'userBooking', foreignKey: 'userId'});
-
 Booking.belongsTo(Item, {as: 'itemBooking', foreignKey: 'itemId'});
 
 Booking.belongsTo(Reservation, {as: 'reserveBooking', foreignKey: 'reservationId'});
