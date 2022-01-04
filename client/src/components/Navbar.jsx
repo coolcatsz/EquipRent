@@ -21,6 +21,8 @@ import SearchStub from './SearchStub.jsx';
 import DarkMode from './DarkMode.jsx';
 import Paper from '@material-ui/core/Paper';
 
+import logo from '../img/logo.png';
+
 import { useBetween } from 'use-between';
 import { useSharedUser } from './User.jsx';
 
@@ -85,7 +87,7 @@ const NavBar = ({ setItemList }) => {
               component={Link}
               to="/"
             >
-              <MenuIcon />
+              <img height="50" width="50" alt="logo" src={logo} />
             </IconButton>
             <Typography
               variant="h6"
