@@ -1,5 +1,5 @@
 /* eslint-disable camelcase */
-const { Post } =  require('#db/index.js');
+const { Post } =  require('../../db');
 // const { Post } = require('/home/user/EquipRent/db/index.js');
 
 const newPost = (post) => Post.create({

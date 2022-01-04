@@ -1,4 +1,4 @@
-const { Bookmark } = require('#db/index.js');
+const { Bookmark } = require('../../db');
 // const { Bookmark } = require('home/user/EquipRent/db/index.js');
 
 const allBookMarks = () => Bookmark.findAll();
