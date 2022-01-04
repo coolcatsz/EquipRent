@@ -1,4 +1,5 @@
-const { Reservation } = require('#db/index.js');
+// const { Reservation } = require('#db/index.js');
+const { Reservation } = require('/home/user/EquipRent/db/index.js');
 
 const newReserve = (reservation) => Reservation.create({
   startDate: reservation.startDate,

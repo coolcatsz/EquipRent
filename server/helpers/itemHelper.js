@@ -1,5 +1,5 @@
-const { ItemImg, Item, Bookmark } = require('#db/index.js');
-// const { ItemImg, Item, Bookmark } = require('/home/user/EquipRent/db/index.js');
+// const { ItemImg, Item, Bookmark } = require('#db/index.js');
+const { ItemImg, Item, Bookmark } = require('/home/user/EquipRent/db/index.js');
 
 const findAllItem = () => Item.findAll();
 

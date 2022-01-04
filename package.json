@@ -10,6 +10,7 @@
     "build:client": "rimraf dist && webpack --config webpack.config.js --mode production",
     "dev": "rimraf dist && webpack --config webpack.config.js --mode development --watch",
     "lint": "eslint . --ext .js,.jsx",
+    "lint:fix": "eslint . --ext .js,.jsx --fix",
     "seed": "node db/seed.js"
   },
   "husky": {
