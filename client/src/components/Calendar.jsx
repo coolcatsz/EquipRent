@@ -17,6 +17,7 @@ const Calendar = ({ currentItem, user }) => {
           <LocalizationProvider dateAdapter={AdapterDateFns}>
             <StaticDateRangePicker
               displayStaticWrapperAs="desktop"
+              disablePast
               value={dates}
               onChange={(newValue) => {
                 setDates(newValue);
@@ -33,6 +34,7 @@ const Calendar = ({ currentItem, user }) => {
             <LocalizationProvider dateAdapter={AdapterDateFns}>
               <Stack spacing={1}>
                 <DateRangePicker
+                  disablePast
                   startText="start"
                   endText="end"
                   value={dates}
@@ -57,6 +59,7 @@ const Calendar = ({ currentItem, user }) => {
           <LocalizationProvider dateAdapter={AdapterDateFns}>
             <StaticDateRangePicker
               displayStaticWrapperAs="desktop"
+              disablePast
               value={dates}
               onChange={(newValue) => {
                 setDates(newValue);
@@ -71,6 +74,7 @@ const Calendar = ({ currentItem, user }) => {
           </LocalizationProvider>
           <LocalizationProvider dateAdapter={AdapterDateFns}>
             <DesktopDateRangePicker
+              disablePast
               startText="Desktop start"
               value={dates}
               onChange={(newValue) => {
