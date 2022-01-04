@@ -14,17 +14,23 @@ const Payment = () => {
     const headers = {
       'Content-Type': 'application/json'
     };
+    return axios.post("/payment/pay", body)
+    .then((response) => {
+        console.log(response);
+    }).catch((err) => {
+        console.error(err);
+    });
     // axios.post('/payment')
-    return fetch('http://localhost:3000/payment/pay', {
-      method: 'POST',
-      headers,
-      body: JSON.stringify(body)
-    }).then(response => {
-      console.log();
-      const {status} = response;
-      console.log(status);
-    })
-      .catch(error => console.log(error));
+    // return fetch('http://localhost:3000/payment/pay', {
+    //   method: 'POST',
+    //   headers,
+    //   body: JSON.stringify(body)
+    // }).then(response => {
+    //   console.log();
+    //   const {status} = response;
+    //   console.log(status);
+    // })
+    //   .catch(error => console.log(error));
   };
 
   return (
