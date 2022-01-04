@@ -37,7 +37,7 @@ const Chat = () => {
           <input
             type="text"
             placeholder="Room Name"
-            onKeyPress={(event) => event.key === 'Enter' && joinRoom}
+            onKeyDown={(event) => event.key === 'Enter' && joinRoom()}
             onChange={(event) => {
               setRoom(event.target.value);
             }}

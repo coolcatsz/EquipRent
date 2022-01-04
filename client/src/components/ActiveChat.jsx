@@ -18,15 +18,16 @@ const ActiveChat = ({socket, user, room}) => {
 
   const sendMessage = () => {
     if (currentMessage !== '') {
+     
     }
     socket.emit('send_message', messageData);
     setMessageList((list) => [...list, messageData]);
+    setCurrentMessage('');
   };
 
   useEffect(() => {
     socket.on('receive_message', (data) => {
       setMessageList((list) => [...list, data]);
-      setCurrentMessage('');
     });
   }, [socket]);
 
@@ -61,7 +62,7 @@ const ActiveChat = ({socket, user, room}) => {
           placeholder='Type Message' 
           onChange={(event) => setCurrentMessage(event.target.value)} 
           onKeyPress={(event) => {
-            event.key === 'Enter' && sendMessage;
+            event.key === 'Enter' && sendMessage();
           }} />
         <button onClick={sendMessage} >&#9658;</button>
       </div>
