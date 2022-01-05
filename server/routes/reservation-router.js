@@ -1,6 +1,6 @@
 const { Router } = require('express');
 const reserveRoute = Router();
-const {newReserve} = require('../helpers/reservationHelper');
+const {newReserve, getAllReserve, getReserveByItemId} = require('../helpers/reservationHelper');
 
 reserveRoute.post('/insertReserve', (req, res) => {
   // console.log(req.body);
@@ -18,6 +18,19 @@ reserveRoute.post('/insertReserve', (req, res) => {
       // console.log(data, 'DATA');
       res.sendStatus(201).send(data);
     }).catch((err) => res.status(500));
+});
+
+reserveRoute.get('/allReserve', (req, res) => {
+  getAllReserve()
+    .then((data) => {
+      res.status(200).send(data);
+    }).catch((err) => res.sendStatus(500));
+});
+
+reserveRoute.get('/itemReserve/:itemId', (req, res) => {
+  getReserveByItemId(req.params.itemId)
+    .then((data) => res.status(200).send(data))
+    .catch((err) => res.sendStatus(500));
 });
 
 module.exports = reserveRoute;

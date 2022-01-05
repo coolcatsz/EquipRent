@@ -9,4 +9,14 @@ const newReserve = (reservation) => Reservation.create({
   itemId: reservation.itemId
 });
 
+const getAllReserve = () => Reservation.findAll();
+
+const getReserveByItemId = (itemId) => Reservation.findAll({
+  where: {
+    itemId
+  }
+});
+
 module.exports.newReserve = newReserve;
+module.exports.getAllReserve = getAllReserve;
+module.exports.getReserveByItemId = getReserveByItemId;
