@@ -39,11 +39,6 @@ const Image = ({item, handleClick, user, addBookmark}) => {
           >
             <p>Item: {item.brand}</p>
           </span>
-          {/* <Button
-            onClick={addBookmark}
-          >
-            Bookmark
-          </Button> */}
         </div>
       </div>
     );

@@ -1,7 +1,5 @@
 import React, {useState, useEffect} from 'react';
 import axios from 'axios';
-import moment from 'moment';
-import MomentUtils from 'moment';
 import {TextField, Box, Stack, Button} from '@mui/material';
 import StaticDateRangePicker from '@mui/lab/StaticDateRangePicker';
 import AdapterDateFns from '@mui/lab/AdapterDateFns';
@@ -9,7 +7,9 @@ import LocalizationProvider from '@mui/lab/LocalizationProvider';
 import DateRangePicker from '@mui/lab/DateRangePicker';
 import ItemReservation from './ItemReservation.jsx';
 import DesktopDateRangePicker from '@mui/lab/DesktopDateRangePicker';
+const eachDayOfInterval = require('date-fns/eachDayOfInterval/index.js');
 const isWithinInterval = require('date-fns/isWithinInterval/index');
+const now = new Date();
 
 const Calendar = ({ currentItem, user }) => {
   const [dates, setDates] = useState([null, null]);
@@ -17,14 +17,17 @@ const Calendar = ({ currentItem, user }) => {
   const [startDate, setStartDate] = useState(null);
   const [endDate, setEndDate] = useState(null);
 
-  const disableDates = (date) => {
-    // return isWithinInterval(new Date(), {
-    //   start: new Date (startDate),
-    //   end: new Date (endDate)
-    // });
-  };
+  // const liveNow = isWithinInterval(
+  //   (2022, 1, 8),
+  //   { start: new Date(startDate), end: new Date(endDate) }
+  // );
+  // const disableDates = (date) => {
+  //   return isWithinInterval(new Date(), {
+  //     start: new Date (startDate),
+  //     end: new Date (endDate)
+  //   });
+  // };
 
-  // console.log(disableDates);
   const reserveDateOfItem = () => {
     axios.get(`/reserve/itemReserve/${currentItem.id}`)
       .then(({data}) => {
@@ -38,9 +41,13 @@ const Calendar = ({ currentItem, user }) => {
   useEffect(() => {
     reserveDateOfItem();
   }, []);
-
-  // console.log(startDate, 'start');
+  console.log(startDate, 'start', endDate);
   // console.log(endDate, 'endDate');
+  // const result = eachDayOfInterval({
+  //   start: new Date(startDate),
+  //   end: new Date(endDate)
+  // });
+
   return (
     <>
       {(dates[1] === null ) ? (
@@ -60,7 +67,7 @@ const Calendar = ({ currentItem, user }) => {
                   <TextField {...endProps} />
                 </React.Fragment>
               )}
-              shouldDisableDate={disableDates}
+              // shouldDisableDate={getDatesBetween}
               // maxDate={endDate}
               // minDate={startDate}
             />
@@ -76,7 +83,7 @@ const Calendar = ({ currentItem, user }) => {
                   onChange={(newValue) => {
                     value = newValue;
                   }}
-                  shouldDisableDate={disableDates}
+                  // shouldDisableDate={getDatesBetween}
                   // maxDate={endDate}
                   // minDate={startDate}
                   // {...rest}
@@ -103,7 +110,7 @@ const Calendar = ({ currentItem, user }) => {
               onChange={(newValue) => {
                 setDates(newValue);
               }}
-              shouldDisableDate={disableDates}
+              // shouldDisableDate={getDatesBetween}
               // maxDate={endDate}
               // minDate={startDate}
               // {...rest}
@@ -123,7 +130,7 @@ const Calendar = ({ currentItem, user }) => {
               onChange={(newValue) => {
                 setDates(newValue);
               }}
-              shouldDisableDate={disableDates}
+              // shouldDisableDate={getDatesBetween}
               // maxDate={endDate}
               // minDate={startDate}
               // {...rest}

@@ -1,6 +1,6 @@
 const { Router } = require('express');
 const reserveRoute = Router();
-const {newReserve, getAllReserve, getReserveByItemId} = require('../helpers/reservationHelper');
+const {newReserve, getAllReserve, getReserveByItemId, getUserReserve} = require('../helpers/reservationHelper');
 
 reserveRoute.post('/insertReserve', (req, res) => {
   // console.log(req.body);
@@ -29,6 +29,12 @@ reserveRoute.get('/allReserve', (req, res) => {
 
 reserveRoute.get('/itemReserve/:itemId', (req, res) => {
   getReserveByItemId(req.params.itemId)
+    .then((data) => res.status(200).send(data))
+    .catch((err) => res.sendStatus(500));
+});
+
+reserveRoute.get('/userReserve/:userId', (req, res) => {
+  getUserReserve(req.params.userId)
     .then((data) => res.status(200).send(data))
     .catch((err) => res.sendStatus(500));
 });

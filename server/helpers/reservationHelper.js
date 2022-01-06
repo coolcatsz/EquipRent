@@ -17,6 +17,13 @@ const getReserveByItemId = (itemId) => Reservation.findAll({
   }
 });
 
+const getUserReserve = (userId) => Reservation.findAll({
+  where: {
+    userId
+  }
+});
+
 module.exports.newReserve = newReserve;
 module.exports.getAllReserve = getAllReserve;
 module.exports.getReserveByItemId = getReserveByItemId;
+module.exports.getUserReserve = getUserReserve;

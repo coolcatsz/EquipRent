@@ -13,6 +13,7 @@ itemRoute.get('/allItem', (req, res) => {
     });
 });
 
+//items listed for rent by the user
 itemRoute.get('/userItem/:userId', (req, res) => {
   // console.log(req);
   findUserItem(req.params.userId)
