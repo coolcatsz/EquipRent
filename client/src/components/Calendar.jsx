@@ -1,4 +1,7 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
+import axios from 'axios';
+import moment from 'moment';
+import MomentUtils from 'moment';
 import {TextField, Box, Stack, Button} from '@mui/material';
 import StaticDateRangePicker from '@mui/lab/StaticDateRangePicker';
 import AdapterDateFns from '@mui/lab/AdapterDateFns';
@@ -6,10 +9,38 @@ import LocalizationProvider from '@mui/lab/LocalizationProvider';
 import DateRangePicker from '@mui/lab/DateRangePicker';
 import ItemReservation from './ItemReservation.jsx';
 import DesktopDateRangePicker from '@mui/lab/DesktopDateRangePicker';
+const isWithinInterval = require('date-fns/isWithinInterval/index');
 
 const Calendar = ({ currentItem, user }) => {
   const [dates, setDates] = useState([null, null]);
-  // console.log(dates);
+
+  const [startDate, setStartDate] = useState(null);
+  const [endDate, setEndDate] = useState(null);
+
+  const disableDates = (date) => {
+    // return isWithinInterval(new Date(), {
+    //   start: new Date (startDate),
+    //   end: new Date (endDate)
+    // });
+  };
+
+  // console.log(disableDates);
+  const reserveDateOfItem = () => {
+    axios.get(`/reserve/itemReserve/${currentItem.id}`)
+      .then(({data}) => {
+        data.forEach((dateValue) => {
+          setStartDate(dateValue.startDate);
+          setEndDate(dateValue.endDate);
+        });
+      }).catch((err) => console.error('ReserveDate Err'));
+  };
+
+  useEffect(() => {
+    reserveDateOfItem();
+  }, []);
+
+  // console.log(startDate, 'start');
+  // console.log(endDate, 'endDate');
   return (
     <>
       {(dates[1] === null ) ? (
@@ -21,14 +52,18 @@ const Calendar = ({ currentItem, user }) => {
               value={dates}
               onChange={(newValue) => {
                 setDates(newValue);
-              } }
+              }}
               renderInput={(startProps, endProps) => (
                 <React.Fragment>
                   <TextField {...startProps} />
                   <Box sx={{ mx: 2 }}> to </Box>
                   <TextField {...endProps} />
                 </React.Fragment>
-              )} />
+              )}
+              shouldDisableDate={disableDates}
+              // maxDate={endDate}
+              // minDate={startDate}
+            />
           </LocalizationProvider>
           <div style={{marginLeft: '100px'}}>
             <LocalizationProvider dateAdapter={AdapterDateFns}>
@@ -41,6 +76,10 @@ const Calendar = ({ currentItem, user }) => {
                   onChange={(newValue) => {
                     value = newValue;
                   }}
+                  shouldDisableDate={disableDates}
+                  // maxDate={endDate}
+                  // minDate={startDate}
+                  // {...rest}
                   renderInput={(startProps, endProps) => (
                     <React.Fragment>
                       <TextField {...startProps} />
@@ -63,7 +102,11 @@ const Calendar = ({ currentItem, user }) => {
               value={dates}
               onChange={(newValue) => {
                 setDates(newValue);
-              } }
+              }}
+              shouldDisableDate={disableDates}
+              // maxDate={endDate}
+              // minDate={startDate}
+              // {...rest}
               renderInput={(startProps, endProps) => (
                 <React.Fragment>
                   <TextField {...startProps} />
@@ -80,6 +123,10 @@ const Calendar = ({ currentItem, user }) => {
               onChange={(newValue) => {
                 setDates(newValue);
               }}
+              shouldDisableDate={disableDates}
+              // maxDate={endDate}
+              // minDate={startDate}
+              // {...rest}
               renderInput={(startProps, endProps) => (
                 <React.Fragment>
                   <TextField {...startProps} />

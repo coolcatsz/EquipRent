@@ -14,7 +14,6 @@ import Avatar from '@mui/material/Avatar';
 import Divider from '@mui/material/Divider';
 import ListItemIcon from '@mui/material/ListItemIcon';
 import Bookmarks from '@mui/icons-material/Bookmarks';
-import Logout from '@mui/icons-material/Logout';
 import GoogleIcon from '@mui/icons-material/Google';
 import axios from 'axios';
 import SearchStub from './SearchStub.jsx';
@@ -190,10 +189,7 @@ const NavBar = ({ setItemList }) => {
               <MenuItem
                 component={LogOut}
               >
-                <ListItemIcon>
-                  <Logout fontSize="small" />
-                </ListItemIcon>
-          Logout
+              Logout
               </MenuItem>
             </Menu>
           </Toolbar>
