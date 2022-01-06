@@ -9,12 +9,13 @@ paymentRoute.post('/pay', (req, res) => {
 
   return stripe.customers.create({
     email: token.email,
-    source: token.id
+    source: token.id,
+    mode: payment
   }).then(customer => {
     stripe.charges.create({
       amount: product.price * 100,
       currency: 'usd',
-      customer: customer.id,
+      customer: User.id,
       // eslint-disable-next-line camelcase
       receipt_email: token.email,
       description: `rental of ${item.brand}`
