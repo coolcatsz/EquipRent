@@ -41,7 +41,7 @@ const Calendar = ({ currentItem, user }) => {
   useEffect(() => {
     reserveDateOfItem();
   }, []);
-  console.log(startDate, 'start', endDate);
+  // console.log(startDate, 'start', endDate);
   // console.log(endDate, 'endDate');
   // const result = eachDayOfInterval({
   //   start: new Date(startDate),
