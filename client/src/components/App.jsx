@@ -22,6 +22,8 @@ const App = () => {
   const [itemList, setItemList] = useState([]);
   const [user, setUser] = useState(null);
   const [currentItem, setCurrentItem] = useState({});
+  const [allUsers, setAllUsers] = useState([]);
+  const [person, setPerson] = useState({});
 
   const authUser = () => {
     axios.get('/auth/verify')
@@ -54,6 +56,17 @@ const App = () => {
       .catch((err) => console.error('BookMarkErr'));
   };
 
+  const appUsers = () => {
+    axios.get('/users/allUser')
+      .then(({data}) => setAllUsers(data))
+      .catch((err) => console.error('Appusers Err'));
+  };
+
+  const oneUser = (person) => {
+    console.log(person), 'PERSON';
+    setPerson(person);
+  };
+
   const notify = (data) => toast(`User ID #${data.user_id} received a reservation!`, {
     position: 'top-right',
     autoClose: 5000,
@@ -67,6 +80,7 @@ const App = () => {
   useEffect(() => {
     getAllItem();
     authUser();
+    appUsers();
     /*
     initializing the socket connection inside of useEffect ensures that only a single connection is made, since useEffect is getting passed an empty array as 2nd arg
     */
@@ -90,11 +104,11 @@ const App = () => {
             <Nav setItemList={setItemList}/>
             <ToastContainer />
             <Routes>
-              <Route exact path ='/profile' element={<Profile/>}/>
+              <Route exact path ='/profile'element={<Profile appUser={person} authUser={user} user={user} allUsers={allUsers}/>}/>
               <Route exact path ='/lender' element={<Lender user={user}/>}/>
               <Route exact path ='/chat' element={<Chat/>}/>
               <Route exact path ='/' element={<ItemList itemList={itemList} handleClick={oneItem} user={user} addBookmark={addBookmark} />}/>
-              <Route exact path ='/item' element={ <SingleItem user={user} currentItem={currentItem} addBookmark={addBookmark}/> } />
+              <Route exact path ='/item' element={ <SingleItem user={user} currentItem={currentItem} addBookmark={addBookmark} appUser={allUsers} userClick={oneUser}/> } />
               <Route exact path ='/bookmark' element={ <BookmarkList user={user} itemList={itemList} currentItem={currentItem} /> } />
             </Routes>
           </div>
