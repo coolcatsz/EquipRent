@@ -1,5 +1,5 @@
-// const { ItemImg, Item, Bookmark } = require('#db/index.js');
-const { ItemImg, Item, Bookmark } = require('/home/user/EquipRent/db/index.js');
+const { ItemImg, Item } = require('../../db');
+// const { ItemImg, Item, Bookmark } = require('/home/user/EquipRent/db/index.js');
 
 const findAllItem = () => Item.findAll();
 
@@ -7,6 +7,13 @@ const findUserItem = (userId) => Item.findAll({
   where: {
     userId
   }
+});
+
+const findItemById = (id) => Item.findOne({
+  where: {
+    id
+  }
+
 });
 
 const itemImgId = (itemId) => ItemImg.findAll({
@@ -23,11 +30,6 @@ const itemAvailability = (id) => Item.update({
   },
 });
 
-const itemBookmark = (bookmark) => Bookmark.create({
-  userId: bookmark.userId,
-  itemId: bookmark.itemId
-}).then(() => console.log('Bookmark Created'))
-  .catch((err) => console.error('Bookmark create err'));
 
 const newItem = (item) => Item.create({
   brand: item.brand,
@@ -55,10 +57,11 @@ const newItemImg = (imgUrl, itemId) => ItemImg.create({
   console.log(err);
 });
 
-module.exports.itemBookmark = itemBookmark;
+
 module.exports.newItem = newItem;
 module.exports.findAllItem = findAllItem;
 module.exports.findUserItem = findUserItem;
 module.exports.itemImgId = itemImgId;
 module.exports.itemAvailability = itemAvailability;
 module.exports.newItemImg = newItemImg;
+module.exports.findItemById = findItemById;

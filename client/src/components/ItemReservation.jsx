@@ -47,7 +47,7 @@ const ItemReservation = ({ currentItem, dates, user}) => {
       <div>
         <h4>Reservation Info</h4>
         {/* <p>StartDate={dates[0]} - EndDate={dates[1]}</p> */}
-        <p>Price: ${currentItem.price}</p>
+        <p>Price: ${currentItem.price} x {diffInDays} nights</p>
         <p>Total: ${diffInDays * currentItem.price }</p>
         <StripeCheckout
           stripeKey="pk_test_51KCqrBFCYowGjKeLmllgUqBP54eEAQyAbtozJjg02KiCT2JhpmgAvLUiXR8C7OpumJNxfbOjhFmPDtztJCc4vjVI00rIlpowFQ"

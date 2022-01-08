@@ -1,7 +1,9 @@
+require('dotenv').config();
 const { Router } = require('express');
 const paymentRoute = Router();
 const uuid = require('uuid');
-const stripe = require("stripe")("sk_test_51KCqrBFCYowGjKeLUHgfCrwEJK7wr5bdzorkpqPlsrNtpaf7aPApfl5xQse2LUcvgMKC2Wf1r3J0ZldHjiv0mO8x00bljFi7rM");
+const stripeSecret = process.env.STRIPE_SECRET;
+const stripe = require('stripe')(stripeSecret);
 
 paymentRoute.post('/pay', (req, res) => {
   const {product, token} = req.body;

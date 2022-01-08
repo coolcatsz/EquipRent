@@ -9,6 +9,7 @@ import Login from './Login.jsx';
 import ItemList from './ItemList.jsx';
 import SingleItem from './SingleItem.jsx';
 import CreatePost from './CreatePost.jsx';
+import BookmarkList from './BookmarkList.jsx';
 import Paper from '@material-ui/core/Paper';
 import axios from 'axios';
 import { ToastContainer, toast } from 'react-toastify';
@@ -21,6 +22,8 @@ const App = () => {
   const [itemList, setItemList] = useState([]);
   const [user, setUser] = useState(null);
   const [currentItem, setCurrentItem] = useState({});
+  const [allUsers, setAllUsers] = useState([]);
+  const [person, setPerson] = useState({});
 
   const authUser = () => {
     axios.get('/auth/verify')
@@ -41,8 +44,27 @@ const App = () => {
   };
 
   const oneItem = (item) => {
-    console.log('curritem');
+    // console.log('curritem', item);
     setCurrentItem(item);
+  };
+
+  const addBookmark = () => {
+    axios.post('/mark/bookmark', {
+      userId: user.id,
+      itemId: currentItem.id
+    }).then(() => console.log('BookMarkSuccess'))
+      .catch((err) => console.error('BookMarkErr'));
+  };
+
+  const appUsers = () => {
+    axios.get('/users/allUser')
+      .then(({data}) => setAllUsers(data))
+      .catch((err) => console.error('Appusers Err'));
+  };
+
+  const oneUser = (person) => {
+    // console.log(person), 'PERSON';
+    setPerson(person);
   };
 
   const notify = (data) => toast(`User ID #${data.user_id} received a reservation!`, {
@@ -58,7 +80,7 @@ const App = () => {
   useEffect(() => {
     getAllItem();
     authUser();
-
+    appUsers();
     /*
     initializing the socket connection inside of useEffect ensures that only a single connection is made, since useEffect is getting passed an empty array as 2nd arg
     */
@@ -79,14 +101,15 @@ const App = () => {
       <Paper elevation={0}>
         { user ? (
           <div>
-            <Nav setItemList={setItemList}/>
+            <Nav setItemList={setItemList} authUser={user.id}/>
             <ToastContainer />
             <Routes>
-              <Route exact path ='/profile' element={<Profile/>}/>
+              <Route exact path ="/profile/:userId" element={<Profile authUser={user}/>}/>
               <Route exact path ='/lender' element={<Lender user={user}/>}/>
-              <Route exact path ='/chat' element={<Chat/>}/>
-              <Route exact path ='/' element={<ItemList itemList={itemList} handleClick={oneItem}/>}/>
-              <Route exact path ='/item' element={ <SingleItem user={user} currentItem={currentItem}/> } />
+              <Route exact path ='/chat' element={<Chat googleUser={user}/>}/>
+              <Route exact path ='/' element={<ItemList itemList={itemList} handleClick={oneItem} user={user} addBookmark={addBookmark} />}/>
+              <Route exact path ='/item' element={ <SingleItem user={user} currentItem={currentItem} addBookmark={addBookmark} appUser={allUsers} userClick={oneUser}/> } />
+              <Route exact path ='/bookmark' element={ <BookmarkList user={user} itemList={itemList} currentItem={currentItem} /> } />
             </Routes>
           </div>
         ) : (

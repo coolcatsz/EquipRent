@@ -3,7 +3,7 @@ const fakeUser = [
   {
     username: 'Bob',
     googleId: 'Bob@gmail.com',
-    thumbnail: 'Imagenotfound',
+    thumbnail: 'https://www.iconpacks.net/icons/2/free-user-icon-3296-thumb.png',
     name: 'Bob Builder',
     email: 'bob@builder.com',
     contact: '1112223456',
@@ -14,7 +14,7 @@ const fakeUser = [
   {
     username: 'Jared',
     googleId: 'Jared@gmail.com',
-    thumbnail: 'Imagenotfound',
+    thumbnail: 'https://www.iconpacks.net/icons/2/free-user-icon-3296-thumb.png',
     name: 'Jared Pickles',
     email: 'jared@pickles.com',
     contact: '1110002222',
@@ -25,7 +25,7 @@ const fakeUser = [
   {
     username: 'Diego',
     googleId: 'diego@gmail.com',
-    thumbnail: 'Imagenotfound',
+    thumbnail: 'https://www.iconpacks.net/icons/2/free-user-icon-3296-thumb.png',
     name: 'Diego Marquez',
     email: 'diego@marquez.com',
     contact: '1111113333',

@@ -1,13 +1,15 @@
 import React, { useState, useEffect } from 'react';
+import Paper from '@material-ui/core/Paper';
 import io from 'socket.io-client';
 
+import '../css/Chat.css';
 
 import ActiveChat from './ActiveChat.jsx';
 
+const socket = io.connect('http://localhost:3001');
 
-const Chat = () => {
+const Chat = ({googleUser}) => {
   
-  const socket = io.connect('http://localhost:3001');
 
 
   const [user, setUser] = useState('');
@@ -16,38 +18,40 @@ const Chat = () => {
 
   const joinRoom = () => {
     if (user !== '' && room !== '') {
-      socket.emit('join_room', room);
+      socket.emit('join_room', room, user);
     }
     setShowChat(true);
   };
 
 
   return (
-    <div className="Chat">
-      {!showChat ? (
-        <div className="joinChatContainer">
-          <h3>Chat about an Item</h3>
-          <input
-            type="text"
-            placeholder="username"
-            onChange={(event) => {
-              setUser(event.target.value);
-            }}
-          />
-          <input
-            type="text"
-            placeholder="Room Name"
-            onKeyPress={(event) => event.key === 'Enter' && joinRoom}
-            onChange={(event) => {
-              setRoom(event.target.value);
-            }}
-          />
-          <button onClick={joinRoom}>Join Room</button>
-        </div>
-      ) : (
-        <ActiveChat socket={socket} username={user} room={room} />
-      )}
-    </div>
+    <Paper>
+      <div className="Chat">
+        {!showChat ? (
+          <div className="joinChatContainer">
+            <h3>Message About an Item</h3>
+            <input
+              type="text"
+              placeholder="Enter Name"
+              onChange={(event) => {
+                setUser(event.target.value);
+              }}
+            />
+            <input
+              type="text"
+              placeholder="Enter Item Name"
+              onKeyDown={(event) => event.key === 'Enter' && joinRoom()}
+              onChange={(event) => {
+                setRoom(event.target.value);
+              }}
+            />
+            <button onClick={joinRoom}>Chat</button>
+          </div>
+        ) : (
+          <ActiveChat socket={socket} username={user} room={room} googleUser={googleUser} />
+        )}
+      </div>
+    </Paper>
   );
 
 

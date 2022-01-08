@@ -13,13 +13,16 @@ import MenuItem from '@mui/material/MenuItem';
 import Avatar from '@mui/material/Avatar';
 import Divider from '@mui/material/Divider';
 import ListItemIcon from '@mui/material/ListItemIcon';
-import Settings from '@mui/icons-material/Settings';
-import Logout from '@mui/icons-material/Logout';
+import Bookmarks from '@mui/icons-material/Bookmarks';
 import GoogleIcon from '@mui/icons-material/Google';
 import axios from 'axios';
 import SearchStub from './SearchStub.jsx';
 import DarkMode from './DarkMode.jsx';
 import Paper from '@material-ui/core/Paper';
+
+import logo from '../img/logo.png';
+
+
 
 import { useBetween } from 'use-between';
 import { useSharedUser } from './User.jsx';
@@ -27,11 +30,11 @@ import { useSharedUser } from './User.jsx';
 import LogOut from './LogOut.jsx';
 //ok
 
-const NavBar = ({ setItemList }) => {
-
+const NavBar = ({ setItemList, authUser }) => {
   const [anchorEl, setAnchorEl] = React.useState(null);
   const [isLoggedIn, setIsLoggedIn] = React.useState(false);
   const [user, setUser] = React.useState(null);
+
 
   const handleLogin = () => {
     setIsLoggedIn();
@@ -77,15 +80,16 @@ const NavBar = ({ setItemList }) => {
         <Paper>
           <Toolbar>
             <IconButton
-              size="large"
+              size="small"
               edge="start"
               color="inherit"
               aria-label="menu"
+              width={'100%'}
               sx={{ mr: 2 }}
               component={Link}
               to="/"
             >
-              <MenuIcon />
+              <img height="50" width="50" alt="logo" src={logo} />
             </IconButton>
             <Typography
               variant="h6"
@@ -173,24 +177,24 @@ const NavBar = ({ setItemList }) => {
                 color="inherit"
                 size="large"
                 component={Link}
-                to="/profile"
+                to={`/profile/${authUser}`}
               >
                 <Avatar /> Profile
               </MenuItem>
               <Divider />
-              <MenuItem>
+              <MenuItem
+                component={Link}
+                to="/bookmark"
+              >
                 <ListItemIcon>
-                  <Settings fontSize="small" />
+                  <Bookmarks fontSize="small" />
                 </ListItemIcon>
-          Account Settings
+              BookMarks
               </MenuItem>
               <MenuItem
                 component={LogOut}
               >
-                <ListItemIcon>
-                  <Logout fontSize="small" />
-                </ListItemIcon>
-          Logout
+              Logout
               </MenuItem>
             </Menu>
           </Toolbar>

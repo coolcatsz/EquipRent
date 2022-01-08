@@ -9,7 +9,7 @@ import DesktopDateRangePicker from '@mui/lab/DesktopDateRangePicker';
 
 const Calendar = ({ currentItem, user }) => {
   const [dates, setDates] = useState([null, null]);
-  // console.log(dates);
+  console.log(dates);
   return (
     <>
       {(dates[1] === null ) ? (

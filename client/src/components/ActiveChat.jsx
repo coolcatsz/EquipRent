@@ -1,52 +1,54 @@
 import React, { useState, useEffect } from 'react';
 import ScrollToBottom from 'react-scroll-to-bottom';
 
-const ActiveChat = ({socket, user, room}) => {
+const ActiveChat = ({socket, username, room, googleUser}) => {
 
   const [currentMessage, setCurrentMessage] = useState('');
   const [messageList, setMessageList] = useState([]);
-
-
-
   
   const messageData = {
+    thumbnail: googleUser.thumbnail,
     room: room,
-    author: user,
+    author: username,
     message: currentMessage,
     time: new Date(Date.now()).getHours() + ':' + new Date(Date.now()).getMinutes()
   };
-
+  console.log(messageData);
   const sendMessage = () => {
-    if (currentMessage !== '') {
+    if (currentMessage !== '') {  
+      socket.emit('send_message', messageData);
+      setMessageList(() => {
+        return [...messageList, messageData];
+      });
     }
-    socket.emit('send_message', messageData);
-    setMessageList((list) => [...list, messageData]);
+    console.log('messageList', messageList);
+    setCurrentMessage('');
   };
 
   useEffect(() => {
     socket.on('receive_message', (data) => {
       setMessageList((list) => [...list, data]);
-      setCurrentMessage('');
     });
   }, [socket]);
 
   return (
-    <div>
+    <div className='chat-window'>
       <div className='chat-header'>
-        <p>Live Chat</p>
+        <p>{`Now messaging as ${username}`}</p>
       </div>
       <div className='chat-body'>
         <ScrollToBottom className='message-container'>
           {
             messageList.map((messageBody) => {
-              return <div className='message' id={user === messageBody.author ? 'you' : 'other'}>
+              return <div className='message' id={username === messageBody.author ? 'you' : 'other'}>
                 <div>
+                  <div className='message-meta'>
+                    <p id='author'>{messageBody.author}</p>
+                    <img src={`${messageData.thumbnail}`} alt="profile pic" />
+                  </div>
                   <div className='message-content'>
                     <p>{messageBody.message}</p>
-                  </div>
-                  <div className='message-meta'>
                     <p id='time'>{messageBody.time}</p>
-                    <p id='author'>{messageBody.author}</p>
                   </div>
                 </div>
               </div>;
@@ -61,7 +63,7 @@ const ActiveChat = ({socket, user, room}) => {
           placeholder='Type Message' 
           onChange={(event) => setCurrentMessage(event.target.value)} 
           onKeyPress={(event) => {
-            event.key === 'Enter' && sendMessage;
+            event.key === 'Enter' && sendMessage();
           }} />
         <button onClick={sendMessage} >&#9658;</button>
       </div>
