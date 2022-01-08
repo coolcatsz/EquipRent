@@ -23,7 +23,7 @@ const addSearchVectors = (db => {
     `)
       .then(() =>
         db.query(`
-          UPDATE ${table} SET ${returnSearchString(table)} = to_tsvector('english', '${searchables[table].join("' || ' ' || '")}');
+          UPDATE ${table} SET ${returnSearchString(table)} = to_tsvector('english', '${searchables[table].join('\' || \' \' || \'')}');
         `)
       ).then(() =>
         db.query(`
