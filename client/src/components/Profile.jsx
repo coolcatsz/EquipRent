@@ -48,10 +48,10 @@ const Profile = ({ authUser }) => {
             <p>{profile.description}</p>
             <Divider variant="middle"/>
           </div>
-          {/* <div>
+          <div>
             <h3>{profile.username}'s listings</h3>
             <Listings/>
-          </div> */}
+          </div>
           <Divider variant="middle"/>
           <div>
             <h1>{profile.username}'s rented items</h1>

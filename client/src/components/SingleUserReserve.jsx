@@ -44,7 +44,6 @@ const SingleRentedItem = ({rentItem, authUser}) => {
     reserveImg();
   }, []);
 
-  console.log(userReserveImg);
   return (
     <div>
       <img src={userReserveImg.imgUrl} style ={{width: '200px', height: '200px'}}></img>

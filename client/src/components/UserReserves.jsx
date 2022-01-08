@@ -21,14 +21,20 @@ const RentedItems = ({ profile, authUser }) => {
     <div>
       {
         rentList.map((item) => {
-          // console.log(item, 'item');
-          // console.log(authUser.id, user.id);
           return (
             <div key={item.id}>
               <SingleRentedItem rentItem={item} authUser={authUser} />
             </div>
           );
-
+          // { item ? (
+          //   <div key={item.id}>
+          //     <SingleRentedItem rentItem={item} authUser={authUser} />
+          //   </div>
+          // ) : (
+          //   <div>
+          //     <h2>not there</h2>
+          //   </div>
+          // ); }
         })
       }
     </div>
