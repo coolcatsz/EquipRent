@@ -10,8 +10,9 @@ const ItemReservation = ({ currentItem, dates, user}) => {
   const end = dates[1];
   const diffInDays = differenceInDays(new Date(end), new Date(start));
 
-  const reserve = (e) => {
-    e.preventDefault();
+  const reserve = () => {
+    console.log('current item ->', currentItem);
+    // e.preventDefault();
     axios.post('/reserve/insertReserve', {
       startDate: dates[0],
       endDate: dates[1],
@@ -27,7 +28,7 @@ const ItemReservation = ({ currentItem, dates, user}) => {
   const makePayment = token => {
     const body = {
       token, 
-      product
+      product: currentItem,
     };
     const headers = {
       'Content-Type': 'application/json'
