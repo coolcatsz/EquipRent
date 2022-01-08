@@ -9,9 +9,15 @@ import Listings from './UserListings.jsx';
 import RentedItems from './UserReserves.jsx';
 
 const Profile = ({ authUser }) => {
-  console.log(authUser, 'AuthUser');
+  // console.log(authUser, 'AuthUser');
   const { userId } = useParams();
   const [profile, setProfile] = useState({});
+
+  const userRentListings = () => {
+    axios.get(`/item/userItem/${userId}`)
+      .then(({data}) => console.log(data, 'data'))
+      .catch((err) => console.error('listings error'));
+  };
 
   useEffect(() => {
     const currSignedUser = () => {
@@ -20,6 +26,7 @@ const Profile = ({ authUser }) => {
         .catch((err) => console.error('SignedUserErr'));
     };
     currSignedUser();
+    userRentListings;
   }, [userId]);
 
   return (
@@ -41,10 +48,10 @@ const Profile = ({ authUser }) => {
             <p>{profile.description}</p>
             <Divider variant="middle"/>
           </div>
-          <div>
+          {/* <div>
             <h3>{profile.username}'s listings</h3>
             <Listings/>
-          </div>
+          </div> */}
           <Divider variant="middle"/>
           <div>
             <h1>{profile.username}'s rented items</h1>

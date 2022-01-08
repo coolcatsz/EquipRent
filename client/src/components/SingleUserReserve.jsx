@@ -19,24 +19,35 @@ const style = {
 };
 
 const SingleRentedItem = ({rentItem, authUser}) => {
-  console.log(rentItem.userId, authUser.id, 'User');
+  // console.log(rentItem, authUser.id, 'User');
   const [open, setOpen] = React.useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
 
   const [bookedItem, setBookedItem] = useState({});
+  const [userReserveImg, setUserReserveImg] = useState({});
+
   const rentalItem = () => {
     axios.get(`/item/itemById/${rentItem.itemId}`)
       .then(({data}) => setBookedItem(data))
       .catch((err) => console.log('error'));
   };
 
+  const reserveImg = () => {
+    axios.get(`/item/itemImg/${rentItem.itemId}`)
+      .then(({data}) => setUserReserveImg(data[0]))
+      .catch((err) => console.error('ReserveImg Err'));
+  };
+
   useEffect(() => {
     rentalItem();
+    reserveImg();
   }, []);
 
+  console.log(userReserveImg);
   return (
     <div>
+      <img src={userReserveImg.imgUrl} style ={{width: '200px', height: '200px'}}></img>
       <h4>{bookedItem.brand}</h4>
       <div>
         { rentItem.userId === authUser.id ? (
