@@ -8,7 +8,8 @@ import axios from 'axios';
 import Listings from './UserListings.jsx';
 import RentedItems from './UserReserves.jsx';
 
-const Profile = ({authUser, appUser}) => {
+const Profile = ({ authUser }) => {
+  console.log(authUser, 'AuthUser');
   const { userId } = useParams();
   const [profile, setProfile] = useState({});
 
@@ -25,7 +26,7 @@ const Profile = ({authUser, appUser}) => {
     <div>
       <div>
         <div className='user-info'>
-          <img src={profile.thumbnail} alt="a user's portrait"/>
+          <img src={profile.thumbnail} alt="a user's portrait" style={{width: '100px', height: '100px'}}/>
           <h2>{profile.username}</h2>
           <h4>{profile.email}</h4>
           <Button>
@@ -34,8 +35,7 @@ const Profile = ({authUser, appUser}) => {
         </div>
         <div>
           <div>
-            <h2>Hi I'm {profile.username}</h2>
-            <p>Joined in {profile.createdAt}</p>
+            <h2>Hi I'm {profile.name}</h2>
             <h3>About</h3>
             <Home /> U.S.A
             <p>{profile.description}</p>
@@ -47,8 +47,8 @@ const Profile = ({authUser, appUser}) => {
           </div>
           <Divider variant="middle"/>
           <div>
-            <h3>{profile.username}'s reserved items</h3>
-            <RentedItems profile={profile} />
+            <h1>{profile.username}'s rented items</h1>
+            <RentedItems profile={profile} authUser={authUser} />
           </div>
         </div>
       </div>

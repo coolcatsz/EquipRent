@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import axios from 'axios';
 
 
-const CreatePost = ({user, currentItem, allItemPost }) => {
+const CreatePost = ({user, currentItem, allItemPost , authUser}) => {
   // console.log(postReview,);
 
   const [rating, setRating] = useState('');
@@ -15,8 +15,8 @@ const CreatePost = ({user, currentItem, allItemPost }) => {
     axios.post('/post/insertPost', {
       rating,
       description,
-      itemId: currentItem.id,
-      userId: user.id
+      itemId: currentItem,
+      userId: user
     }).then(() => {
       // console.log('Success Post');
       setRating('');
