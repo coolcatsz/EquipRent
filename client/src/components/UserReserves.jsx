@@ -1,35 +1,38 @@
 import React, {useState, useEffect} from 'react';
 import axios from 'axios';
-const RentedItems = ({user, authUser, appUser, allUsers}) => {
+import SingleRentedItem from './SingleUserReserve.jsx';
 
+const RentedItems = ({ profile }) => {
+  const { id } = profile;
+  console.log(profile, 'PROFILE', id);
   const [authRentList, setAuthRentList] = useState([]);
-  const [nonAuthRentList, setNonAuthRentList] = useState([]);
 
-  const authUserRentList = () => {
-    axios.get(`/reserve/userReserve/${authUser.id}`)
-      .then(({ data }) => setAuthRentList(data))
+  const userRentList = () => {
+    axios.get(`/reserve/userReserve/${id}`)
+      .then(({ data }) => console.log(data))
       .catch((err) => console.error('errr'));
   };
 
-  const nonAuthUserRentList = () => {
-    axios.get(`/reserve/userReserve/${appUser.id}`)
-      .then(({data}) => setNonAuthRentList(data))
-      .catch((err) => console.error('nonAuthUseErr'));
-  };
-
-  // const reservationItems = () => {
-  //   axios.get(`item/itemById/${}`)
-  // };
-
   useEffect(() => {
-    authUserRentList();
-    nonAuthUserRentList();
+    userRentList();
   }, []);
 
-  console.log(authRentList);
   return (
     <div>
-      <h1>User's Rented</h1>
+      {/* {
+        authRentList.map((item) => {
+          console.log(item, 'item');
+          // if (authUser.id) {
+          //   // console.log(authUser.id, user.id);
+          //   return (
+          //     <div key={item.id}>
+          //       <RentedItems/>
+          //     </div>
+          //   );
+          // }
+        })
+      } */}
+      <h1>User's Rented items list</h1>
     </div>
   );
 };

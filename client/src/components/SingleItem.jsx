@@ -89,7 +89,7 @@ const SingleItem = ({user, currentItem, addBookmark, appUser, userClick}) => {
                           <Button size="small" onClick={addBookmark} >Bookmark</Button>
                           <Button
                             component={Link}
-                            to="/profile"
+                            to={`/profile/${person.id}`}
                             onClick={() => userClick(person)}
                           >
                             <AccountCircleIcon/>

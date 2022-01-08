@@ -26,8 +26,7 @@ import { useSharedUser } from './User.jsx';
 import LogOut from './LogOut.jsx';
 //ok
 
-const NavBar = ({ setItemList }) => {
-
+const NavBar = ({ setItemList, authUser }) => {
   const [anchorEl, setAnchorEl] = React.useState(null);
   const [isLoggedIn, setIsLoggedIn] = React.useState(false);
   const [user, setUser] = React.useState(null);
@@ -172,7 +171,7 @@ const NavBar = ({ setItemList }) => {
                 color="inherit"
                 size="large"
                 component={Link}
-                to="/profile"
+                to={`/profile/${authUser}`}
               >
                 <Avatar /> Profile
               </MenuItem>

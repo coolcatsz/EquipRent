@@ -63,7 +63,7 @@ const App = () => {
   };
 
   const oneUser = (person) => {
-    console.log(person), 'PERSON';
+    // console.log(person), 'PERSON';
     setPerson(person);
   };
 
@@ -101,10 +101,10 @@ const App = () => {
       <Paper elevation={0}>
         { user ? (
           <div>
-            <Nav setItemList={setItemList}/>
+            <Nav setItemList={setItemList} authUser={user.id}/>
             <ToastContainer />
             <Routes>
-              <Route exact path ='/profile'element={<Profile appUser={person} authUser={user} user={user} allUsers={allUsers}/>}/>
+              <Route exact path ="/profile/:userId" element={<Profile appUser={person} authUser={user} allUsers={allUsers}/>}/>
               <Route exact path ='/lender' element={<Lender user={user}/>}/>
               <Route exact path ='/chat' element={<Chat/>}/>
               <Route exact path ='/' element={<ItemList itemList={itemList} handleClick={oneItem} user={user} addBookmark={addBookmark} />}/>
