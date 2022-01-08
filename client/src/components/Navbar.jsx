@@ -14,7 +14,6 @@ import Avatar from '@mui/material/Avatar';
 import Divider from '@mui/material/Divider';
 import ListItemIcon from '@mui/material/ListItemIcon';
 import Bookmarks from '@mui/icons-material/Bookmarks';
-import Logout from '@mui/icons-material/Logout';
 import GoogleIcon from '@mui/icons-material/Google';
 import axios from 'axios';
 import SearchStub from './SearchStub.jsx';
@@ -31,8 +30,7 @@ import { useSharedUser } from './User.jsx';
 import LogOut from './LogOut.jsx';
 //ok
 
-const NavBar = ({ setItemList }) => {
-
+const NavBar = ({ setItemList, authUser }) => {
   const [anchorEl, setAnchorEl] = React.useState(null);
   const [isLoggedIn, setIsLoggedIn] = React.useState(false);
   const [user, setUser] = React.useState(null);
@@ -179,7 +177,7 @@ const NavBar = ({ setItemList }) => {
                 color="inherit"
                 size="large"
                 component={Link}
-                to="/profile"
+                to={`/profile/${authUser}`}
               >
                 <Avatar /> Profile
               </MenuItem>
@@ -196,10 +194,7 @@ const NavBar = ({ setItemList }) => {
               <MenuItem
                 component={LogOut}
               >
-                <ListItemIcon>
-                  <Logout fontSize="small" />
-                </ListItemIcon>
-          Logout
+              Logout
               </MenuItem>
             </Menu>
           </Toolbar>

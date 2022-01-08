@@ -84,6 +84,14 @@ const Bookmark = sequelize.define('Bookmark', {
   }
 });
 
+const Booking = sequelize.define('Booking', {
+  id: {
+    type: Sequelize.INTEGER,
+    primaryKey: true,
+    autoIncrement: true,
+  }
+});
+
 ////Associations
 Post.belongsTo(Item, {as: 'itemPost', foreignKey: 'itemId'});
 
@@ -100,6 +108,10 @@ Reservation.belongsTo(Item, {as: 'itemReserve', foreignKey: 'itemId'});
 Bookmark.belongsTo(User, {as: 'userBookmark', foreignKey: 'userId'});
 
 Bookmark.belongsTo(Item, {as: 'itemBookmark', foreignKey: 'itemId'});
+
+Booking.belongsTo(Item, {as: 'itemBooking', foreignKey: 'itemId'});
+
+Booking.belongsTo(Reservation, {as: 'reserveBooking', foreignKey: 'reservationId'});
 ////////////////
 
 sequelize.sync()
@@ -109,6 +121,7 @@ sequelize.sync()
   .then(() => ItemImg.sync())
   .then(() => Reservation.sync())
   .then(() => Bookmark.sync())
+  .then(() => Booking.sync())
   .then(() => addSearchVectors(sequelize))
   // .then(() => console.log('table synced'))
   .catch((err) => console.error('Sync Error'));

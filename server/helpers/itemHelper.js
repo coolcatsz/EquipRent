@@ -1,4 +1,4 @@
-const { ItemImg, Item } = require('#db/index.js');
+const { ItemImg, Item } = require('../../db');
 // const { ItemImg, Item, Bookmark } = require('/home/user/EquipRent/db/index.js');
 
 const findAllItem = () => Item.findAll();
