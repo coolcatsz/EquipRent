@@ -13,6 +13,7 @@ const ActiveChat = ({socket, username, room, googleUser}) => {
     message: currentMessage,
     time: new Date(Date.now()).getHours() + ':' + new Date(Date.now()).getMinutes()
   };
+  console.log(messageData);
   const sendMessage = () => {
     if (currentMessage !== '') {  
       socket.emit('send_message', messageData);
