@@ -4,13 +4,15 @@ import MenuItem from '@mui/material/MenuItem';
 import Logout from '@mui/icons-material/Logout';
 import Button from '@mui/material/Button';
 import axios from 'axios';
-
+import ListItemIcon from '@mui/material/ListItemIcon';
 const LogOut = () => (
   <div>
-    <Logout fontSize="small"/>
     <Button style={{textTransform: 'none'}}>
       <MenuItem
       >
+        <ListItemIcon>
+          <Logout fontSize="medium" />
+        </ListItemIcon>
         <a href='/logout' style={{ textDecoration: 'none' }}>Log Out</a>
       </MenuItem>
     </Button>

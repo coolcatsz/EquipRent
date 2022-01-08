@@ -1,11 +1,10 @@
 import React from 'react';
 import axios from 'axios';
 import Image from './Image.jsx';
+import Button from '@mui/material/Button';
 
 
-// import SingleItem from './SingleItem.jsx';
-
-const ItemList = ({itemList, handleClick, user}) => {
+const ItemList = ({itemList, handleClick, user, addBookmark}) => {
   // console.log(itemList, 'ITEM');
   return (
     <div>
@@ -20,9 +19,7 @@ const ItemList = ({itemList, handleClick, user}) => {
                   key={item.id}
                   style={{display: 'inline-block', padding: '10px'}}
                 >
-                  <Image key={item.id} item={item} handleClick={handleClick} />
-                  <span><p>Item: {item.brand}</p></span>
-                  <span><p>Type: {item.type}</p></span>
+                  <Image key={item.id} item={item} handleClick={handleClick} user={user} addBookmark={addBookmark}/>
                 </div>
               );
             })

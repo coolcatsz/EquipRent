@@ -23,11 +23,11 @@ authRouter.get('/auth/verify', (req, res) => {
     .then((user) => {
       // console.log(user);
       res.status(200).send(user);
-    });
+    }).catch((err) => console.error(err, 'backendauthErr'));
   // console.log('cooookies', cookies);
 }
 );
-  
+
 //auth logout
 authRouter.get('/logout', (req, res) => {
   req.logout();

@@ -26,7 +26,7 @@ const ItemPost = ({ itemReview }) => {
   } else {
     return (
       <div>
-        <h4>Be the first to review this product</h4>
+        <h4>No Reviews Yet</h4>
       </div>
     );
   }

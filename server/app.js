@@ -12,6 +12,9 @@ const authRouter = require('./routes/auth-router.js');
 const postRoute = require('./routes/post-router.js');
 const itemRoute = require('./routes/item-router.js');
 const searchRoute = require('./routes/search-router.js');
+const reserveRoute = require('./routes/reservation-router.js');
+const bookmarkRoute = require('./routes/bookmark-router.js');
+const usersRoute = require('./routes/users-router.js');
 const { Server } = require('socket.io');
 const http = require('http');
 const cors = require('cors');
@@ -36,14 +39,15 @@ const io = new Server(server, {
 });
 //run when client connects
 io.on('connection', (socket) => {
-  console.log(`User Connected with id of: ${socket.id}`);
+  // console.log(`User Connected ${socket.id}`);
 
   socket.on('join_room', (data, user) => {
     socket.join(data);
-    console.log(`${user} with id: ${socket.id} joined room: ${data}`);
+    // console.log(`user with id: ${socket.id} joined room: ${data}`);
   });
 
   socket.on('send_message', (data) => {
+    // console.log('message: ', data);
     socket.to(data.room).emit('receive_message', data);
   });
   socket.on('disconnect', () => {
@@ -74,7 +78,10 @@ app.use(passport.session());
 app.use(authRouter);
 app.use('/post', postRoute);
 app.use('/item', itemRoute);
+app.use('/reserve', reserveRoute);
 app.use('/search', searchRoute);
+app.use('/mark', bookmarkRoute);
+app.use('/users', usersRoute);
 app.get('/auth', (req, res) => console.log('body:', req.body));
 app.get('/logout', (req, res) => console.log('You Have Been Logged Out'));
 

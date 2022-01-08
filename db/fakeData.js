@@ -3,7 +3,7 @@ const fakeUser = [
   {
     username: 'Bob',
     googleId: 'Bob@gmail.com',
-    thumbnail: 'Imagenotfound',
+    thumbnail: 'https://www.iconpacks.net/icons/2/free-user-icon-3296-thumb.png',
     name: 'Bob Builder',
     email: 'bob@builder.com',
     contact: '1112223456',
@@ -14,7 +14,7 @@ const fakeUser = [
   {
     username: 'Jared',
     googleId: 'Jared@gmail.com',
-    thumbnail: 'Imagenotfound',
+    thumbnail: 'https://www.iconpacks.net/icons/2/free-user-icon-3296-thumb.png',
     name: 'Jared Pickles',
     email: 'jared@pickles.com',
     contact: '1110002222',
@@ -25,7 +25,7 @@ const fakeUser = [
   {
     username: 'Diego',
     googleId: 'diego@gmail.com',
-    thumbnail: 'Imagenotfound',
+    thumbnail: 'https://www.iconpacks.net/icons/2/free-user-icon-3296-thumb.png',
     name: 'Diego Marquez',
     email: 'diego@marquez.com',
     contact: '1111113333',
@@ -39,7 +39,7 @@ const fakeItem = [
   {
     brand: 'BLACK+DECKER Electric Lawn Mower',
     type: 'Outdoor Power Tools',
-    price: 50,
+    price: 40,
     condition: 'Great',
     value: 200,
     availability: true,
@@ -49,7 +49,7 @@ const fakeItem = [
   {
     brand: 'JUNELILY',
     type: 'Camping Tents',
-    price: 80,
+    price: 20,
     condition: 'Good',
     value: 150,
     availability: true,
@@ -59,7 +59,7 @@ const fakeItem = [
   {
     brand: 'Blast Zone',
     type: 'Bounce house',
-    price: 300,
+    price: 100,
     condition: 'Premium Quality',
     value: 500,
     availability: true,
@@ -69,7 +69,7 @@ const fakeItem = [
   {
     brand: 'Kitchen Aid',
     type: 'kitchen appliance',
-    price: 150,
+    price: 50,
     condition: 'Good',
     value: 350,
     availability: true,
@@ -79,7 +79,7 @@ const fakeItem = [
   {
     brand: 'Crock Pot',
     type: 'kitchen appliance',
-    price: 80,
+    price: 30,
     condition: 'Great',
     value: 140,
     availability: true,
@@ -89,7 +89,7 @@ const fakeItem = [
   {
     brand: 'Coleman RoadTrip X-Cursion Propane Grill',
     type: 'Backyard Appliance',
-    price: 80,
+    price: 50,
     condition: 'Working condition',
     value: 200,
     availability: true,
@@ -99,7 +99,7 @@ const fakeItem = [
   {
     brand: 'Texas Instrument TI-83 Plus Calculator',
     type: 'Calculator',
-    price: 15,
+    price: 10,
     condition: 'Good',
     value: 100,
     availability: true,
@@ -109,7 +109,7 @@ const fakeItem = [
   {
     brand: 'YABER 7200 Lumen full HD projector',
     type: 'Home Entertainment',
-    price: 80,
+    price: 50,
     condition: 'Good',
     value: 200,
     user_id: 1,
@@ -142,11 +142,11 @@ const fakeImg = [
     itemId: 3,
   },
   {
-    imgUrl: 'https://media.kohlsimg.com/is/image/kohls/25941_Aqua_Sky?wid=600&hei=600&op_sharpen=1',
+    imgUrl: 'https://m.media-amazon.com/images/I/91BB48YfvFL._AC_SL1500_.jpg',
     itemId: 4,
   },
   {
-    imgUrl: 'https://m.media-amazon.com/images/I/91BB48YfvFL._AC_SL1500_.jpg',
+    imgUrl: 'https://media.kohlsimg.com/is/image/kohls/25941_Aqua_Sky?wid=600&hei=600&op_sharpen=1',
     itemId: 5,
   },
   {
@@ -162,7 +162,9 @@ const fakeImg = [
     itemId: 8,
   },
 ];
+
 module.exports.fakeUser = fakeUser;
 module.exports.fakeItem = fakeItem;
 module.exports.fakePost = fakePost;
 module.exports.fakeImg = fakeImg;
+

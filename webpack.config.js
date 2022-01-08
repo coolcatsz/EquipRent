@@ -5,6 +5,7 @@ const SRC_DIR = path.join(__dirname, '/client/src');
 const DIST_DIR = path.join(__dirname, '/client/dist');
 
 module.exports = {
+  
   devtool: 'eval-source-map',
   entry: `${SRC_DIR}/index.jsx`,
   output: {
@@ -17,6 +18,14 @@ module.exports = {
         test: /\.jsx$/,
         exclude: /node_modules/,
         use: ['babel-loader'],
+      },
+      {
+        test: /\.(png|jpe?g|gif)$/i,
+        use: [
+          {
+            loader: 'file-loader',
+          },
+        ],
       },
       {
         test: /\.css$/,

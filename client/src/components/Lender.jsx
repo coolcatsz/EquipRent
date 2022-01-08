@@ -1,13 +1,26 @@
 import React from 'react';
 import { useForm } from "react-hook-form";
 import axios from 'axios';
+const CLOUDINARY_URL = "https://api.cloudinary.com/v1_1/coolcatz/image/upload";
+const CLOUDINARY_UPLOAD_PRESET = "ny4zarxq";
 
 const Lender = ({user}) => {
   const { register, handleSubmit } = useForm();
 
-  const listItem = data => {
-    // e.preventDefault();
-    // console.log(data);
+  const uploadImage = (files, id) => {
+    const formData = new FormData();
+    formData.append("file", files);
+    formData.append("upload_preset", CLOUDINARY_UPLOAD_PRESET);
+    axios.post(
+      CLOUDINARY_URL, formData)
+      .then((response) => {
+        const { url } = response.data;
+        console.log(url);
+        console.log(id);
+        saveUrlToDb(url, id);
+    });
+  }
+  const listItem = data => { 
     axios.post('item/newItems', {
       brand: data.brand,
       type: data.type,
@@ -17,11 +30,22 @@ const Lender = ({user}) => {
       availability: true,
       description: data.description,
       userId: user.id
-    }).then(() => {
-      console.log('Item successfully Listed!');
+    }).then((response) => {
+      uploadImage(data.itemImg[0], response.data.id);
     }).catch((err) => {
       console.error('Item listing error')
     });
+  }
+
+  const saveUrlToDb = (imgUrl, itemId) => {
+    axios.post('item/newItemImg', {
+      imgUrl: imgUrl,
+      itemId: itemId,
+    }).then(() => {
+      console.log('successful image upload!');
+    }).catch((err) => {
+      console.error('image upload error');
+    })
   }
 
   return (

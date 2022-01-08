@@ -1,9 +1,11 @@
 import React, {useState, useEffect} from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
+import Button from '@mui/material/Button';
 
-const Image = ({item, handleClick}) => {
-  // console.log(item.id, 'ITEM');
+
+const Image = ({item, handleClick, user, addBookmark}) => {
+  // console.log(item, 'ITEM', user);
   const [itemImg, setItemImg] = useState({});
 
   const getItemImg = () => {
@@ -21,14 +23,23 @@ const Image = ({item, handleClick}) => {
   if (itemImg !== undefined && item.id === itemImg.itemId) {
     return (
       <div>
-        <Link to='/item'>
-          <img
-            src={`${itemImg.imgUrl}`}
-            style ={{width: '300px', height: '300px', border: '5px solid black'}}
-            onClick={() => handleClick(item)}
+        <div>
+          <Link to='/item'>
+            <img
+              src={`${itemImg.imgUrl}`}
+              style ={{width: '300px', height: '300px', border: '5px solid black'}}
+              onClick={() => handleClick(item)}
+            >
+            </img>
+          </Link>
+        </div>
+        <div>
+          <span
+            style={{display: 'inline-flex'}}
           >
-          </img>
-        </Link>
+            <p>Item: {item.brand}</p>
+          </span>
+        </div>
       </div>
     );
   } else {

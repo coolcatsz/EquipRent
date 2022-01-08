@@ -35,7 +35,7 @@ const addSearchVectors = (db => {
           BEFORE INSERT OR UPDATE ON ${table}
           FOR EACH ROW EXECUTE PROCEDURE tsvector_update_trigger(${returnSearchString(table)}, 'pg_catalog.english', ${searchables[table].join(', ')});
         `)
-      ).catch(err => console.error(err))
+      ).catch(err => console.error('Db Search Error'))
   )
   );
 }
