@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import { Button } from '@mui/material';
 import { Routes, Route, Link, useParams } from 'react-router-dom';
 import { useSharedUser } from './User.jsx';
 import Divider from '@mui/material/Divider';
@@ -52,13 +51,6 @@ const Profile = ({ authUser }) => {
               <Typography variant="h6" color="text.secondary">
                 {profile.email}
               </Typography>
-              <Button
-                component={Link}
-                to="/lender"
-                style={{ textDecoration: 'none' }}
-              >
-            Upload Listing
-              </Button>
             </CardContent>
           </Card>
         </div>

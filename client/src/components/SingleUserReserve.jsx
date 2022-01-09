@@ -59,10 +59,8 @@ const SingleRentedItem = ({rentItem, authUser}) => {
   // console.log(bookedItem);
   return (
     <div>
-      <Link to={`/item/${rentItem.itemId}`}>
-        <img src={userReserveImg.imgUrl} style ={{width: '200px', height: '200px'}}></img>
-        <h5>{bookedItem.brand}</h5>
-      </Link>
+      <img src={userReserveImg.imgUrl} style ={{width: '200px', height: '200px'}}></img>
+      <h5>{bookedItem.brand}</h5>
       <div>
         { rentItem.userId === authUser.id ? (
           <><Button onClick={handleOpen}>Review</Button><Modal

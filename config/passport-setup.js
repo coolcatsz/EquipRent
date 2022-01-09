@@ -39,9 +39,10 @@ passport.use(
         } else {
           //user doesn't exist, create new user
           User.create({
-            username: profile.displayName,
+            username: profile.givenName,
             googleId: profile.id,
-            thumbnail: profile.photos[0].value
+            thumbnail: profile.photos[0].value,
+            name: profile.name,
           })
             .then(newUser => {
               done(null, newUser);

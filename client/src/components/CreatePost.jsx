@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { Link, useParams } from 'react-router-dom';
 import Box from '@mui/material/Box';
@@ -46,26 +46,25 @@ const CreatePost = ({user, currentItem, allItemPost, handleClose}) => {
             }}
           />
           <div>
-            <Link to={`/item/${currentItem}`}>
-              <form onSubmit={postReview}>
-                <TextField
-                  id="filled-multiline-static"
-                  label="Write a Review"
-                  multiline
-                  rows={4}
-                  variant="filled"
-                  autoFocus
-                  margin="dense"
-                  fullWidth
-                  value={description}
-                  onChange={(event) => {
-                    setDescription(event.target.value);
-                  }}
-                />
-                <Button type='submit' onClose={handleClose} >Post Review</Button>
-              
-              </form>
-            </Link>
+            <TextField
+              id="filled-multiline-static"
+              label="Write a Review"
+              multiline
+              rows={4}
+              variant="filled"
+              autoFocus
+              margin="dense"
+              fullWidth
+              value={description}
+              onChange={(event) => {
+                setDescription(event.target.value);
+              }}
+            />
+            <form onSubmit={postReview}>
+              {/* <Link to={`/item/${currentItem}`}> */}
+              <Button type='submit' onClose={handleClose} >Post Review</Button>
+              {/* </Link> */}
+            </form>
           </div>
         </Box>
       </div>
