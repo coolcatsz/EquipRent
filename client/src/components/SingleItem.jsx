@@ -107,7 +107,7 @@ const SingleItem = ({user, currentItem, addBookmark, appUser, userClick}) => {
                   <CreatePost user={user} currentItem={currentItem} allItemPost={allItemPost} />
                 </div> */}
                 <div style={{marginLeft: '100px'}}>
-                  <ItemPost itemReview={itemReview}/>
+                  <ItemPost itemReview={itemReview} currentItem={currentItem} />
                 </div>
               </div>
             );

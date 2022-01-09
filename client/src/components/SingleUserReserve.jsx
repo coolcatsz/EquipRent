@@ -26,6 +26,7 @@ const SingleRentedItem = ({rentItem, authUser}) => {
 
   const [bookedItem, setBookedItem] = useState({});
   const [userReserveImg, setUserReserveImg] = useState({});
+  const [itemReview, setItemReview] = useState([]);
 
   const rentalItem = () => {
     axios.get(`/item/itemById/${rentItem.itemId}`)
@@ -39,9 +40,18 @@ const SingleRentedItem = ({rentItem, authUser}) => {
       .catch((err) => console.error('ReserveImg Err'));
   };
 
+  const allItemPost = () => {
+    axios.get(`/post/itemPost/${rentItem.itemId}`)
+      .then(({ data }) => {
+        // console.log(data, 'DATA');
+        setItemReview(data);
+      }).catch((err) => console.error('ItemPost Err'));
+  };
+
   useEffect(() => {
     rentalItem();
     reserveImg();
+    allItemPost();
   }, []);
 
   return (
@@ -50,16 +60,17 @@ const SingleRentedItem = ({rentItem, authUser}) => {
       <h4>{bookedItem.brand}</h4>
       <div>
         { rentItem.userId === authUser.id ? (
-          <><Button onClick={handleOpen}>Review</Button><Modal
-            open={open}
-            onClose={handleClose}
-            aria-labelledby="modal-modal-title"
-            aria-describedby="modal-modal-description"
-          >
-            <Box sx={style}>
-              <CreatePost user={rentItem.userId} currentItem={rentItem.itemId} authUser={authUser} />
-            </Box>
-          </Modal></>
+          <CreatePost user={rentItem.userId} currentItem={rentItem.itemId} authUser={authUser} allItemPost={allItemPost}/>
+          // <><Button onClick={handleOpen}>Review</Button><Modal
+          //   open={open}
+          //   onClose={handleClose}
+          //   aria-labelledby="modal-modal-title"
+          //   aria-describedby="modal-modal-description"
+          // >
+          //   <Box sx={style}>
+          //     <CreatePost user={rentItem.userId} currentItem={rentItem.itemId} authUser={authUser} allItemPost={allItemPost}/>
+          //   </Box>
+          // </Modal></>
         ) : (
           null
         )}
