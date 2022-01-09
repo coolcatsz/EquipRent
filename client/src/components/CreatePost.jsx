@@ -11,17 +11,17 @@ import DialogActions from '@mui/material/DialogActions';
 import DialogContent from '@mui/material/DialogContent';
 import DialogTitle from '@mui/material/DialogTitle';
 
-const CreatePost = ({user, currentItem, allItemPost}) => {
+const CreatePost = ({user, currentItem, allItemPost, handleClose}) => {
 
-  const [open, setOpen] = React.useState(false);
+  // const [open, setOpen] = React.useState(false);
 
-  const handleClickOpen = () => {
-    setOpen(true);
-  };
+  // const handleClickOpen = () => {
+  //   setOpen(true);
+  // };
 
-  const handleClose = () => {
-    setOpen(false);
-  };
+  // const handleClose = () => {
+  //   setOpen(false);
+  // };
 
   // console.log(postReview,);
   const [rating, setRating] = useState(0);
@@ -40,26 +40,20 @@ const CreatePost = ({user, currentItem, allItemPost}) => {
       // console.log('Success Post');
       setRating(0);
       setDescription('');
+      handleClose();
     }).then(() => allItemPost())
       .catch((err) => console.error('PostReview Err'));
   };
 
-  const FancyButton = React.forwardRef((props, ref) => (
-    <button ref={ref} className="FancyButton">
-      {props.children}
-    </button>
-  ));
-
-  const ref = React.createRef();
-
   return (
     <div>
-      {/* <div>
+      <div>
         <Typography component="legend">Write Review</Typography>
         <Box
           sx={{
             '& > legend': { mt: 2 },
           }}
+          // onClose={handleClose}
         >
           <Typography component="legend">Rate this item</Typography>
           <Rating
@@ -70,17 +64,29 @@ const CreatePost = ({user, currentItem, allItemPost}) => {
               setRating(newValue);
             }}
           />
+          <div>
+            <form onSubmit={postReview}>
+              <TextField
+                id="filled-multiline-static"
+                label="Write a Review"
+                multiline
+                rows={4}
+                variant="filled"
+                autoFocus
+                margin="dense"
+                fullWidth
+                value={description}
+                onChange={(event) => {
+                  setDescription(event.target.value);
+                }}
+              />
+              <Button type='submit' onClose={handleClose}>Post Review</Button>
+            </form>
+          </div>
         </Box>
-        <div>
-          <form onSubmit={postReview}>
-            <input className='create-input' type='text' value={rating} onChange={event => setRating(event.target.value)} placeholder='Rate 1 - 5' />
-            <input className='create-body-textarea' value={description} onChange={event => setDescription(event.target.value)}placeholder='Review Body'/>
-            <button className='create-submit-button' type='submit' onClose={handleClose}>Add</button>
-          </form>
-        </div>
-      </div> */}
+      </div>
 
-      <div>
+      {/* <div>
         <Button variant="outlined" onClick={handleClickOpen}>
         Review
         </Button>
@@ -121,13 +127,13 @@ const CreatePost = ({user, currentItem, allItemPost}) => {
           </DialogContent>
           <DialogActions>
             <form onSubmit={postReview}>
-              <FancyButton ref={ref} onClose={handleClose} >
+              <Button onClose={handleClose} type='submit' >
               Post Review
-              </FancyButton>
+              </Button>
             </form>
           </DialogActions>
         </Dialog>
-      </div>
+      </div> */}
     </div>
   );
 };

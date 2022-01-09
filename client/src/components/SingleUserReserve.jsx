@@ -60,17 +60,16 @@ const SingleRentedItem = ({rentItem, authUser}) => {
       <h4>{bookedItem.brand}</h4>
       <div>
         { rentItem.userId === authUser.id ? (
-          <CreatePost user={rentItem.userId} currentItem={rentItem.itemId} authUser={authUser} allItemPost={allItemPost}/>
-          // <><Button onClick={handleOpen}>Review</Button><Modal
-          //   open={open}
-          //   onClose={handleClose}
-          //   aria-labelledby="modal-modal-title"
-          //   aria-describedby="modal-modal-description"
-          // >
-          //   <Box sx={style}>
-          //     <CreatePost user={rentItem.userId} currentItem={rentItem.itemId} authUser={authUser} allItemPost={allItemPost}/>
-          //   </Box>
-          // </Modal></>
+          <><Button onClick={handleOpen}>Review</Button><Modal
+            open={open}
+            onClose={handleClose}
+            aria-labelledby="modal-modal-title"
+            aria-describedby="modal-modal-description"
+          >
+            <Box sx={style}>
+              <CreatePost user={rentItem.userId} currentItem={rentItem.itemId} allItemPost={allItemPost} handleClose={handleClose} handleOpen={handleOpen}/>
+            </Box>
+          </Modal></>
         ) : (
           null
         )}
