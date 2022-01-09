@@ -6,10 +6,6 @@ import Rating from '@mui/material/Rating';
 import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
 import TextField from '@mui/material/TextField';
-import Dialog from '@mui/material/Dialog';
-import DialogActions from '@mui/material/DialogActions';
-import DialogContent from '@mui/material/DialogContent';
-import DialogTitle from '@mui/material/DialogTitle';
 
 const CreatePost = ({user, currentItem, allItemPost, handleClose}) => {
 
@@ -39,7 +35,6 @@ const CreatePost = ({user, currentItem, allItemPost, handleClose}) => {
           sx={{
             '& > legend': { mt: 2 },
           }}
-          // onClose={handleClose}
         >
           <Typography component="legend">Rate this item</Typography>
           <Rating
@@ -51,75 +46,29 @@ const CreatePost = ({user, currentItem, allItemPost, handleClose}) => {
             }}
           />
           <div>
-            <form onSubmit={postReview}>
-              <TextField
-                id="filled-multiline-static"
-                label="Write a Review"
-                multiline
-                rows={4}
-                variant="filled"
-                autoFocus
-                margin="dense"
-                fullWidth
-                value={description}
-                onChange={(event) => {
-                  setDescription(event.target.value);
-                }}
-              />
-              <Button type='submit' onClose={handleClose}>Post Review</Button>
-            </form>
+            <Link to={`/item/${currentItem}`}>
+              <form onSubmit={postReview}>
+                <TextField
+                  id="filled-multiline-static"
+                  label="Write a Review"
+                  multiline
+                  rows={4}
+                  variant="filled"
+                  autoFocus
+                  margin="dense"
+                  fullWidth
+                  value={description}
+                  onChange={(event) => {
+                    setDescription(event.target.value);
+                  }}
+                />
+                <Button type='submit' onClose={handleClose} >Post Review</Button>
+              
+              </form>
+            </Link>
           </div>
         </Box>
       </div>
-
-      {/* <div>
-        <Button variant="outlined" onClick={handleClickOpen}>
-        Review
-        </Button>
-        <Dialog open={open} onClose={handleClose}>
-          <DialogTitle>Write a Review</DialogTitle>
-          <DialogContent>
-            <Box
-              sx={{
-                '& > legend': { mt: 2 },
-              }}
-            >
-              <Typography component="legend">Rate this item</Typography>
-              <Rating
-                name="simple-controlled"
-                size="large"
-                value={rating}
-                onChange={(event, newValue) => {
-                  setRating(newValue);
-                }}
-              />
-            </Box>
-          </DialogContent>
-          <DialogContent>
-            <TextField
-              id="filled-multiline-static"
-              label="Write a Review"
-              multiline
-              rows={4}
-              variant="filled"
-              autoFocus
-              margin="dense"
-              fullWidth
-              value={description}
-              onChange={(event) => {
-                setDescription(event.target.value);
-              }}
-            />
-          </DialogContent>
-          <DialogActions>
-            <form onSubmit={postReview}>
-              <Button onClose={handleClose} type='submit' >
-              Post Review
-              </Button>
-            </form>
-          </DialogActions>
-        </Dialog>
-      </div> */}
     </div>
   );
 };

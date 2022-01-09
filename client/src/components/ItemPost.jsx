@@ -3,7 +3,6 @@ import Grid from '@mui/material/Grid';
 
 
 const ItemPost = ({ itemReview, user }) => {
-  console.log(user, 'REVIEWITEM');
 
   if (itemReview.length !== 0) {
     return (

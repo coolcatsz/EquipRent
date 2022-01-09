@@ -24,7 +24,7 @@ const Image = ({item, handleClick, user, addBookmark}) => {
     return (
       <div>
         <div>
-          <Link to='/item'>
+          <Link to={`/item/${item.id}`}>
             <img
               src={`${itemImg.imgUrl}`}
               style ={{width: '300px', height: '300px', border: '5px solid black'}}

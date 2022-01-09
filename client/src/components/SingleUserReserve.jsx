@@ -5,6 +5,7 @@ import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import Modal from '@mui/material/Modal';
 import CreatePost from './CreatePost.jsx';
+import { Link, useParams } from 'react-router-dom';
 
 const style = {
   position: 'absolute',
@@ -19,6 +20,7 @@ const style = {
 };
 
 const SingleRentedItem = ({rentItem, authUser}) => {
+
   // console.log(rentItem, authUser.id, 'User');
   const [open, setOpen] = React.useState(false);
   const handleOpen = () => setOpen(true);
@@ -54,11 +56,13 @@ const SingleRentedItem = ({rentItem, authUser}) => {
     allItemPost();
     handleClose();
   }, []);
-
+  // console.log(bookedItem);
   return (
     <div>
-      <img src={userReserveImg.imgUrl} style ={{width: '200px', height: '200px'}}></img>
-      <h5>{bookedItem.brand}</h5>
+      <Link to={`/item/${rentItem.itemId}`}>
+        <img src={userReserveImg.imgUrl} style ={{width: '200px', height: '200px'}}></img>
+        <h5>{bookedItem.brand}</h5>
+      </Link>
       <div>
         { rentItem.userId === authUser.id ? (
           <><Button onClick={handleOpen}>Review</Button><Modal
