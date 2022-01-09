@@ -92,24 +92,26 @@ const Calendar = ({ currentItem, user }) => {
                 </React.Fragment>
               )} />
           </LocalizationProvider>
-          <LocalizationProvider dateAdapter={AdapterDateFns}>
-            <DesktopDateRangePicker
-              disablePast
-              startText="Desktop start"
-              value={dates}
-              onChange={(newValue) => {
-                setDates(newValue);
-              }}
-              renderInput={(startProps, endProps) => (
-                <React.Fragment>
-                  <TextField {...startProps} />
-                  <Box sx={{ mx: 2 }}> to </Box>
-                  <TextField {...endProps} />
-                </React.Fragment>
-              )}
-            />
-          </LocalizationProvider>
-          <div>
+          <div style={{marginLeft: '100px'}}>
+            <LocalizationProvider dateAdapter={AdapterDateFns}>
+              <DesktopDateRangePicker
+                disablePast
+                startText="Desktop start"
+                value={dates}
+                onChange={(newValue) => {
+                  setDates(newValue);
+                }}
+                renderInput={(startProps, endProps) => (
+                  <React.Fragment>
+                    <TextField {...startProps} />
+                    <Box sx={{ mx: 2 }}> to </Box>
+                    <TextField {...endProps} />
+                  </React.Fragment>
+                )}
+              />
+            </LocalizationProvider>
+          </div>
+          <div style={{marginLeft: '200px'}}>
             <ItemReservation currentItem={currentItem} dates={dates} user={user}/>
           </div>
         </div>

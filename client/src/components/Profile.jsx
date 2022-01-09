@@ -11,6 +11,7 @@ import CardActions from '@mui/material/CardActions';
 import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
+import { Button } from '@mui/material';
 
 const Profile = ({ authUser }) => {
   // console.log(authUser, 'AuthUser');
@@ -56,10 +57,15 @@ const Profile = ({ authUser }) => {
         </div>
         <div style={{marginLeft: '150px'}}>
           <div>
-            <h2>Hi I'm {profile.name}</h2>
-            <h3>About</h3>
-            <Home /> U.S.A
-            <p>{profile.description}</p>
+            <div>
+              <h2>Hi I'm {profile.username}</h2>
+              <Button>Edit Profile</Button>
+            </div>
+            <div>
+              <h3>About</h3>
+              <Home /> U.S.A
+              <p>{profile.description}</p>
+            </div>
             <Divider variant="middle"/>
           </div>
           <div>

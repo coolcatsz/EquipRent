@@ -11,7 +11,7 @@ const ItemReservation = ({ currentItem, dates, user}) => {
   const diffInDays = differenceInDays(new Date(end), new Date(start));
 
   const reserve = () => {
-    console.log('current item ->', currentItem);
+    // console.log('current item ->', currentItem);
     // e.preventDefault();
     axios.post('/reserve/insertReserve', {
       startDate: dates[0],
