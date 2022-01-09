@@ -13,21 +13,8 @@ import DialogTitle from '@mui/material/DialogTitle';
 
 const CreatePost = ({user, currentItem, allItemPost, handleClose}) => {
 
-  // const [open, setOpen] = React.useState(false);
-
-  // const handleClickOpen = () => {
-  //   setOpen(true);
-  // };
-
-  // const handleClose = () => {
-  //   setOpen(false);
-  // };
-
-  // console.log(postReview,);
   const [rating, setRating] = useState(0);
   const [description, setDescription] = useState('');
-
-  // console.log(user.id,'USER', currentItem.id, 'CREATE');
 
   const postReview = (e) => {
     e.preventDefault();
@@ -40,7 +27,6 @@ const CreatePost = ({user, currentItem, allItemPost, handleClose}) => {
       // console.log('Success Post');
       setRating(0);
       setDescription('');
-      handleClose();
     }).then(() => allItemPost())
       .catch((err) => console.error('PostReview Err'));
   };

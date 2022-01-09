@@ -19,26 +19,18 @@ const Listings = () => {
   }, [userId]);
 
   return (
-    <div>
-      <h1>User's Listings</h1>
-      {
-        userListing.map((list) => {
-          return (
-            <div key={list.id}>
-              <SingleListing list={list} />
-            </div>
-          );
-          // { userListing.length > 1 ? (
-          //   <div>
-          //     <SingleListing/>
-          //   </div>
-          // ) : (
-          //   <div>
-          //     <h5>no items posted yet!!</h5>
-          //   </div>
-          // ); }
-        })
-      }
+    <div >
+      <div style={{display: '-webkit-inline-flex'}}>
+        {
+          userListing.map((list) => {
+            return (
+              <div key={list.id}>
+                <SingleListing list={list} userListing={userListing}/>
+              </div>
+            );
+          })
+        }
+      </div>
     </div>
   );
 };

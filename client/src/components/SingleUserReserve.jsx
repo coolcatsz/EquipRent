@@ -52,12 +52,13 @@ const SingleRentedItem = ({rentItem, authUser}) => {
     rentalItem();
     reserveImg();
     allItemPost();
+    handleClose();
   }, []);
 
   return (
     <div>
       <img src={userReserveImg.imgUrl} style ={{width: '200px', height: '200px'}}></img>
-      <h4>{bookedItem.brand}</h4>
+      <h5>{bookedItem.brand}</h5>
       <div>
         { rentItem.userId === authUser.id ? (
           <><Button onClick={handleOpen}>Review</Button><Modal
