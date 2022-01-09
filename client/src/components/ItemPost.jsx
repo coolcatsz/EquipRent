@@ -12,7 +12,17 @@ const ItemPost = ({ itemReview, user }) => {
         <div>
           <Grid container spacing={2} rowSpacing={1} columnSpacing={{ xs: 1, sm: 2, md: 3 }} >
             {
-              itemReview.map((post) => {
+              itemReview.sort((a, b) => {
+                if (a.createdAt > b.createdAt) {
+                  return 1;
+                }
+                if (a.createdAt < b.createdAt) {
+                  return -1;
+                }
+                if (a.createdAt === b.createAt) {
+                  return 0;
+                }
+              }).reverse().map((post) => {
                 return (
                   <Grid item xs={6} key={post.id}>
                     <div key={post.id}>
