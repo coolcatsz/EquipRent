@@ -5,6 +5,7 @@ import '../css/Map.css';
 import { Link } from 'react-router-dom';
 import mapStyles from '../../../config/mapStyles.js';
 const apiKey = require('../../../config/keys.js').GOOGLE_MAPS_API.KEY;
+import axios from 'axios';
 
 const Marker = ({children}) => children;
 
@@ -112,7 +113,7 @@ export default function Map({ itemList, setCurrentItem, lat, long }) {
               lat={latitude}
               lng={longitude}
             >
-              <Link to='/item' className="result-link">
+              <Link to={`/item/${cluster.properties.resultId}`} className="result-link">
                 <button
                   className="result-marker"
                   // style={{
