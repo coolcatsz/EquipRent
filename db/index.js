@@ -51,6 +51,8 @@ const Item = sequelize.define('Item', {
   value: DataTypes.INTEGER,
   availability: DataTypes.BOOLEAN,
   description: DataTypes.STRING,
+  loc_lat: DataTypes.DECIMAL(11, 5),
+  loc_lng: DataTypes.DECIMAL(11, 5)
 }, {
   timestamps: true
 });

@@ -1,7 +1,9 @@
 const { Server } = require('socket.io');
 const http = require('http');
 const cors = require('cors');
-const { BASEURL } = require('dotenv').config();
+require('dotenv').config();
+
+const {BASEURL} = process.env;
 // const BASEURL = 'http://localhost';
 app.use(cors());
 

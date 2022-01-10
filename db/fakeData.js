@@ -3,35 +3,35 @@ const fakeUser = [
   {
     username: 'Bob',
     googleId: 'Bob@gmail.com',
-    thumbnail: 'https://www.iconpacks.net/icons/2/free-user-icon-3296-thumb.png',
+    thumbnail: 'Imagenotfound',
     name: 'Bob Builder',
     email: 'bob@builder.com',
     contact: '1112223456',
     description: 'Tools Collector',
     rating: 5,
-    type: 'lender'
+    type: 'lender',
   },
   {
     username: 'Jared',
     googleId: 'Jared@gmail.com',
-    thumbnail: 'https://www.iconpacks.net/icons/2/free-user-icon-3296-thumb.png',
+    thumbnail: 'Imagenotfound',
     name: 'Jared Pickles',
     email: 'jared@pickles.com',
     contact: '1110002222',
     description: 'New Lender',
     rating: 0,
-    type: 'lender'
+    type: 'lender',
   },
   {
     username: 'Diego',
     googleId: 'diego@gmail.com',
-    thumbnail: 'https://www.iconpacks.net/icons/2/free-user-icon-3296-thumb.png',
+    thumbnail: 'Imagenotfound',
     name: 'Diego Marquez',
     email: 'diego@marquez.com',
     contact: '1111113333',
     description: 'Rent my tools for cheap',
     rating: 3,
-    type: 'lender'
+    type: 'lender',
   },
 ];
 
@@ -44,7 +44,9 @@ const fakeItem = [
     value: 200,
     availability: true,
     description: 'Lightweight corded electric mower gasless 10 Amp 15 inch electric mower for powering through rough grass',
-    userId: 1
+    userId: 1,
+    loc_lat: 30.51234,
+    loc_lng: -90.82345
   },
   {
     brand: 'JUNELILY',
@@ -54,7 +56,9 @@ const fakeItem = [
     value: 150,
     availability: true,
     description: '9-Person Family Tent 3-Room for Parties',
-    userId: 2
+    userId: 2,
+    loc_lat: 30.42345,
+    loc_lng: -90.03456
   },
   {
     brand: 'Blast Zone',
@@ -64,7 +68,9 @@ const fakeItem = [
     value: 500,
     availability: true,
     description: 'Inflatable Bounce House with Blower',
-    userId: 3
+    userId: 3,
+    loc_lat: 30.63456,
+    loc_lng: -90.94567
   },
   {
     brand: 'Kitchen Aid',
@@ -74,7 +80,9 @@ const fakeItem = [
     value: 350,
     availability: true,
     description: 'KitchenAid® Artisan® 5 qt. Tilt-Head Stand Mixer in Empire Red',
-    userId: 1
+    userId: 1,
+    loc_lat: 30.44567,
+    loc_lng: -90.25678
   },
   {
     brand: 'Crock Pot',
@@ -84,7 +92,9 @@ const fakeItem = [
     value: 140,
     availability: true,
     description: 'Crock-Pot - 10qt Digital Multi Cooker - Stainless Steel',
-    userId: 1
+    userId: 1,
+    loc_lat: 30.85678,
+    loc_lng: -90.76789
   },
   {
     brand: 'Coleman RoadTrip X-Cursion Propane Grill',
@@ -94,7 +104,9 @@ const fakeItem = [
     value: 200,
     availability: true,
     description: 'Propane Grill; Need to get your own propane gas',
-    userId: 1
+    userId: 1,
+    loc_lat: 30.24321,
+    loc_lng: -90.45432
   },
   {
     brand: 'Texas Instrument TI-83 Plus Calculator',
@@ -104,7 +116,9 @@ const fakeItem = [
     value: 100,
     availability: true,
     description: 'The TI-83 Plus is an easy-to-use graphing calculator for math and science.',
-    userId: 1
+    userId: 1,
+    loc_lat: 30.55432,
+    loc_lng: -90.16543
   },
   {
     brand: 'YABER 7200 Lumen full HD projector',
@@ -115,7 +129,9 @@ const fakeItem = [
     user_id: 1,
     availability: true,
     description: 'YABER Y31 home projector adopts an advanced German LED light source, high quality materials and delicate manufacturing process',
-    userId: 1
+    userId: 1,
+    loc_lat: 30.46543,
+    loc_lng: -90.07654
   },
 ];
 

@@ -116,6 +116,14 @@ const NavBar = ({ setItemList, authUser }) => {
             >
            Message
             </Button>
+            <Button
+              size="large"
+              component={Link}
+              to="/map"
+              color="inherit"
+            >
+           Map
+            </Button>
             {
               (user && user.thumbnail) ?
 
