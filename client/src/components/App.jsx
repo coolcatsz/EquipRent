@@ -62,7 +62,7 @@ const App = () => {
     setPerson(person);
   };
 
-  const notify = (data) => toast('You\'ve made a reservation!', {
+  const notify = (data) => toast.success('You\'ve made a reservation!', {
     position: 'top-right',
     autoClose: 5000,
     hideProgressBar: false,
