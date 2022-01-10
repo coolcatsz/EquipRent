@@ -1,7 +1,6 @@
 import React, {useState, useEffect} from 'react';
 import axios from 'axios';
 import { Link , useParams } from 'react-router-dom';
-import CreatePost from './CreatePost.jsx';
 import ItemPost from './ItemPost.jsx';
 import Calendar from './Calendar.jsx';
 import Button from '@mui/material/Button';
