@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from 'react';
 import Grid from '@mui/material/Grid';
-
+import Box from '@mui/material/Box';
 
 const ItemPost = ({ itemReview, user }) => {
 
@@ -24,6 +24,15 @@ const ItemPost = ({ itemReview, user }) => {
               }).reverse().map((post) => {
                 return (
                   <Grid item xs={6} key={post.id}>
+                    <Box
+                      sx={{
+                        p: 2,
+                        bgcolor: 'background.default',
+                        display: 'grid',
+                        gridTemplateColumns: { md: '1fr 1fr' },
+                        gap: 2,
+                      }}
+                    ></Box>
                     <div key={post.id}>
                       <div>
                         <ul>
