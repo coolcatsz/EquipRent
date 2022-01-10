@@ -34,7 +34,8 @@ const User = sequelize.define('User', {
   contact: DataTypes.STRING,
   description: DataTypes.STRING,
   rating: DataTypes.INTEGER,
-  type: DataTypes.STRING
+  type: DataTypes.STRING,
+  theme: DataTypes.BOOLEAN
 },
 {
   timestamps: true
