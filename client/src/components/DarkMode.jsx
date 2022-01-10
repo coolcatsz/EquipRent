@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import axios from 'axios';
 
 import { createTheme, ThemeProvider } from '@material-ui/core/styles';
 import Switch from '@mui/material/Switch';
@@ -17,7 +18,12 @@ const DarkMode = () => {
       type: darkMode ? 'dark' : 'light',
     },
   });
-  //
+  //setting the users state
+  const addTheme = () => {
+    axios.patch('/users/theme/:id')
+      .then(data => res.send(data))
+      .catch(err => console.error(err));
+  };
 
 
   return (

@@ -15,6 +15,7 @@ import axios from 'axios';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { io } from 'socket.io-client';
+const baseurl = require('../../../config/keys.js').BASEURL.url;
 
 
 const App = () => {
@@ -84,7 +85,7 @@ const App = () => {
     /*
     initializing the socket connection inside of useEffect ensures that only a single connection is made, since useEffect is getting passed an empty array as 2nd arg
     */
-    const socket = io.connect('http://localhost:3006');
+    const socket = io.connect(`${baseurl}:3006`);
     socket.on('connect', data => {
       socket.emit('ready for data', {});
     });

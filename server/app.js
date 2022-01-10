@@ -34,7 +34,7 @@ app.use(express.static(CLIENT_PATH));
 const server = http.createServer(app);
 const io = new Server(server, {
   cors: {
-    origin: 'http://localhost:3000',
+    origin: `${process.env.BASEURL}:3000`,
     methods: ['GET', 'POST', 'PUT', 'DELETE']
   }
 });
