@@ -9,6 +9,7 @@ import Login from './Login.jsx';
 import ItemList from './ItemList.jsx';
 import SingleItem from './SingleItem.jsx';
 import BookmarkList from './BookmarkList.jsx';
+import Map from './Map.jsx';
 import Paper from '@material-ui/core/Paper';
 import axios from 'axios';
 import { ToastContainer, toast } from 'react-toastify';
@@ -24,6 +25,8 @@ const App = () => {
   const [currentItem, setCurrentItem] = useState({});
   const [allUsers, setAllUsers] = useState([]);
   const [person, setPerson] = useState({});
+  const [lat, setLat] = useState([]);
+  const [long, setLong] = useState([]);
 
   const authUser = () => {
     axios.get('/auth/verify')
@@ -59,7 +62,7 @@ const App = () => {
     setPerson(person);
   };
 
-  const notify = (data) => toast(`User ID #${data.user_id} received a reservation!`, {
+  const notify = (data) => toast('You\'ve made a reservation!', {
     position: 'top-right',
     autoClose: 5000,
     hideProgressBar: false,
@@ -82,10 +85,17 @@ const App = () => {
     });
     socket.on('update', data => {
       notify(JSON.parse(data.message.payload));
-      console.log('DATA RECEIVED notify FROM DB: ', data.message.payload);
     });
 
   }, []);
+
+  useEffect(() => {
+    navigator.geolocation.getCurrentPosition(function(position) {
+      setLat(position.coords.latitude);
+      setLong(position.coords.longitude);
+      console.log('latitude: ', lat, 'longitude: ', long);
+    });
+  }, [lat, long]);
 
   return (
 
@@ -102,6 +112,7 @@ const App = () => {
               <Route exact path ='/' element={<ItemList itemList={itemList} handleClick={oneItem} user={user} addBookmark={addBookmark} />}/>
               <Route exact path ='/item/:itemId' element={ <SingleItem user={user} currentItem={currentItem} addBookmark={addBookmark} appUser={allUsers} userClick={oneUser}/> } />
               <Route exact path ='/bookmark' element={ <BookmarkList user={user} itemList={itemList} currentItem={currentItem} /> } />
+              <Route exact path ='/map' element={<Map lat={lat} long={long} itemList={itemList} setCurrentItem={setCurrentItem}/>}/>
             </Routes>
           </div>
         ) : (
