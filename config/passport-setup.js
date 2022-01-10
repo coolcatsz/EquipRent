@@ -4,6 +4,7 @@ const { User } = require('../db/index.js');
 require('dotenv').config();
 
 const {BASEURL} = process.env;
+// const BASEURL = 'http://localhost';
 
 passport.serializeUser((user, done) => {
   done(null, user.id);

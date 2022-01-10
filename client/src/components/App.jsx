@@ -15,7 +15,7 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { io } from 'socket.io-client';
 const baseurl = require('../../../config/keys.js').BASEURL.url;
-
+// const baseurl = 'http://localhost';
 
 const App = () => {
 

@@ -2,6 +2,7 @@ const { Server } = require('socket.io');
 const http = require('http');
 const cors = require('cors');
 const { BASEURL } = require('dotenv').config();
+// const BASEURL = 'http://localhost';
 app.use(cors());
 
 const server = http.createServer(app);

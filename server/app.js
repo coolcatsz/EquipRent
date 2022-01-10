@@ -22,6 +22,7 @@ const cors = require('cors');
 require('../config/passport-setup.js');
 require('dotenv').config();
 const {BASEURL} = process.env;
+// const BASEURL = 'http://localhost';
 const { notifSocket } = require('./sockets/notif-sockets.js');
 
 app.use(cors());
