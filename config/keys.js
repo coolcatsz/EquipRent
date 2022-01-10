@@ -1,5 +1,5 @@
 module.exports = {
   BASEURL: {
-    url: 'https://www.equiprent.live'
+    url: 'http://localhost:3000'
   }
 };

@@ -76,7 +76,7 @@ const App = () => {
     /*
     initializing the socket connection inside of useEffect ensures that only a single connection is made, since useEffect is getting passed an empty array as 2nd arg
     */
-    const socket = io.connect(`${baseurl}:3006`);
+    const socket = io.connect(`http://localhost:3006`);
     socket.on('connect', data => {
       socket.emit('ready for data', {});
     });
