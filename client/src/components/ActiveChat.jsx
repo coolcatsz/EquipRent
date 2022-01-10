@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import Avatar from '@mui/material/Avatar';
 import ScrollToBottom from 'react-scroll-to-bottom';
 
 const ActiveChat = ({socket, username, room, googleUser}) => {
@@ -20,7 +21,7 @@ const ActiveChat = ({socket, username, room, googleUser}) => {
         return [...messageList, messageData];
       });
     }
-    console.log('messageList', messageList);
+    // console.log('messageList', messageList);
     setCurrentMessage('');
   };
 
@@ -33,21 +34,21 @@ const ActiveChat = ({socket, username, room, googleUser}) => {
   return (
     <div className='chat-window'>
       <div className='chat-header'>
-        <p>{`Now messaging as ${username}`}</p>
+        <p>{`Item: ${room}`}</p>
       </div>
       <div className='chat-body'>
         <ScrollToBottom className='message-container'>
           {
-            messageList.map((messageBody) => {
-              return <div className='message' id={username === messageBody.author ? 'you' : 'other'}>
+            messageList.map((messageBody, i) => {
+              return <div key={i} className='message' id={username === messageBody.author ? 'you' : 'other'}>
                 <div>
                   <div className='message-meta'>
+                    {/* <img width={'100%'} src={`${messageData.thumbnail}`} alt="profile pic" /> */}
                     <p id='author'>{messageBody.author}</p>
-                    <img src={`${messageData.thumbnail}`} alt="profile pic" />
                   </div>
                   <div className='message-content'>
                     <p>{messageBody.message}</p>
-                    <p id='time'>{messageBody.time}</p>
+                    {/* <p id='time'>{messageBody.time}</p> */}
                   </div>
                 </div>
               </div>;

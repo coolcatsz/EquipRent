@@ -1,6 +1,7 @@
 const { app } = require('../app.js');
 const { createServer } = require('http');
 const { Server } = require('socket.io');
+const { BASEURL } = require('dotenv').config();
 
 //instantiating pg.client so we can call the pg.Client.on event handler inside of the socket event handler
 const { Client } = require('pg');
@@ -27,7 +28,7 @@ const httpServer = createServer(app);
 
 const io = new Server(httpServer, {
   cors: {
-    origin: 'http://localhost:3000',
+    origin: `${BASEURL}:3000`,
     methods: ['GET', 'POST']
   }
 });
