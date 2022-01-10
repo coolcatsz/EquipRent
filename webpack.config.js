@@ -8,6 +8,11 @@ module.exports = {
   
   devtool: 'eval-source-map',
   entry: `${SRC_DIR}/index.jsx`,
+  performance: {
+    hints: false,
+    maxEntrypointSize: 512000,
+    maxAssetSize: 512000
+  },
   output: {
     filename: 'bundle.js',
     path: DIST_DIR,
@@ -33,13 +38,6 @@ module.exports = {
           { loader: 'style-loader' },
           { loader: 'css-loader' },
         ]
-      },
-      {
-        performance: {
-          hints: false,
-          maxEntrypointSize: 512000,
-          maxAssetSize: 512000
-        }
       },
     ],
   },
