@@ -23,9 +23,8 @@ const SingleRentedItem = ({rentItem}) => {
 
   const allItemPost = () => {
     axios.get(`/post/itemPost/${rentItem.itemId}`)
-      .then(({ data }) => {
-        setItemReview(data);
-      }).catch((err) => console.error('ItemPost Err'));
+      .then(({ data }) => setItemReview(data))
+      .catch((err) => console.error('ItemPost Err'));
   };
 
   useEffect(() => {

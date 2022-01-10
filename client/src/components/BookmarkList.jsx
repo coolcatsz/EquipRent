@@ -8,10 +8,8 @@ const BookmarkList = ({user, currentItem}) => {
 
   const userBookmark = () => {
     axios.get(`/mark/userBookmark/${user.id}`)
-      .then(({data}) => {
-        // console.log(data, 'bookDATA');
-        setUserBookmarkList(data);
-      }).catch((err) => console.error('BookMarkGetAxiosErr'));
+      .then(({data}) => setUserBookmarkList(data))
+      .catch((err) => console.error('BookMarkGetAxiosErr'));
   };
 
   useEffect(() => {

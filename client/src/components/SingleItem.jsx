@@ -19,18 +19,14 @@ const SingleItem = ({user, currentItem, addBookmark, appUser, userClick}) => {
 
   const oneItemImg = () => {
     axios.get(`/item/itemImg/${currentItem.id}`)
-      .then(( {data} ) => {
-        // console.log(data[0], 'SINGLE DATA');
-        setSingleItemImg(data[0]);
-      }).catch((err) => console.error('GetAxiosErr'));
+      .then(( {data} ) => setSingleItemImg(data[0]))
+      .catch((err) => console.error('GetAxiosErr'));
   };
 
   const allItemPost = () => {
     axios.get(`/post/itemPost/${itemId}`)
-      .then(({ data }) => {
-        // console.log(data, 'DATA');
-        setItemReview(data);
-      }).catch((err) => console.error('ItemPost Err'));
+      .then(({ data }) => setItemReview(data))
+      .catch((err) => console.error('ItemPost Err'));
   };
 
   useEffect(() => {

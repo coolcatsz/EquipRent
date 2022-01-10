@@ -1,11 +1,10 @@
 import React from 'react';
-import axios from 'axios';
 import Image from './Image.jsx';
-import Button from '@mui/material/Button';
+
 
 
 const ItemList = ({itemList, handleClick, user, addBookmark}) => {
-  // console.log(itemList, 'ITEM');
+
   return (
     <div>
       <h1>Item</h1>

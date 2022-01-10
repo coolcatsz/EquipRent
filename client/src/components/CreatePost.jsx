@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import axios from 'axios';
 import Box from '@mui/material/Box';
 import Rating from '@mui/material/Rating';
@@ -10,7 +10,7 @@ import DialogActions from '@mui/material/DialogActions';
 import DialogContent from '@mui/material/DialogContent';
 import DialogTitle from '@mui/material/DialogTitle';
 
-const CreatePost = ({user, currentItem, allItemPost}) => {
+const CreatePost = ({user, currentItem}) => {
 
   const [open, setOpen] = React.useState(false);
 
@@ -21,7 +21,6 @@ const CreatePost = ({user, currentItem, allItemPost}) => {
   const handleClose = () => {
     setOpen(false);
   };
-
 
   const [rating, setRating] = useState(0);
   const [description, setDescription] = useState('');
@@ -34,16 +33,11 @@ const CreatePost = ({user, currentItem, allItemPost}) => {
       itemId: currentItem,
       userId: user
     }).then(() => {
-      // console.log('Success Post');
       setRating(0);
       setDescription('');
     }).then(() => allItemPost())
       .catch((err) => console.error('PostReview Err'));
   };
-
-  useEffect(() => {
-    allItemPost();
-  }, []);
 
   return (
     <div>

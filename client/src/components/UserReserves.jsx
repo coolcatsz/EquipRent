@@ -3,7 +3,7 @@ import axios from 'axios';
 import SingleRentedItem from './SingleUserReserve.jsx';
 
 const RentedItems = ({ profile, authUser }) => {
-  // console.log(profile, 'PROFILE', profile.id);
+
   const [rentList, setRentList] = useState([]);
 
   useEffect(() => {

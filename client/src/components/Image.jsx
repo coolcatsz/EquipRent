@@ -1,19 +1,16 @@
 import React, {useState, useEffect} from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
-import Button from '@mui/material/Button';
 
 
-const Image = ({item, handleClick, user, addBookmark}) => {
-  // console.log(item, 'ITEM', user);
+
+const Image = ({item, handleClick}) => {
   const [itemImg, setItemImg] = useState({});
 
   const getItemImg = () => {
     axios.get(`/item/itemImg/${item.id}`)
-      .then(( {data} ) => {
-        // console.log(data[0], 'DATA');
-        setItemImg(data[0]);
-      }).catch((err) => console.error('GetAxiosErr'));
+      .then(( {data} ) => setItemImg(data[0]))
+      .catch((err) => console.error('GetAxiosErr'));
   };
 
   useEffect(() => {

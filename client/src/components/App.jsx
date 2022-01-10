@@ -8,7 +8,6 @@ import { BrowserRouter, Routes, Route, Link, useRouteMatch } from 'react-router-
 import Login from './Login.jsx';
 import ItemList from './ItemList.jsx';
 import SingleItem from './SingleItem.jsx';
-import CreatePost from './CreatePost.jsx';
 import BookmarkList from './BookmarkList.jsx';
 import Paper from '@material-ui/core/Paper';
 import axios from 'axios';
@@ -27,24 +26,17 @@ const App = () => {
 
   const authUser = () => {
     axios.get('/auth/verify')
-      .then(({ data }) => {
-        // console.log(data, "userdata");
-        setUser(data);
-      }).catch((err) => {
-        console.error('AuthErr');
-      });
+      .then(({ data }) => setUser(data))
+      .catch((err) => console.error('AuthErr'));
   };
 
   const getAllItem = () => {
     axios.get('/item/allItem')
-      .then(({ data }) => {
-        // console.log(data, 'DATA');
-        setItemList(data);
-      }).catch((err) => console.error('GetAxiosErr'));
+      .then(({ data }) => setItemList(data))
+      .catch((err) => console.error('GetAxiosErr'));
   };
 
   const oneItem = (item) => {
-    // console.log('curritem', item);
     setCurrentItem(item);
   };
 
@@ -63,7 +55,6 @@ const App = () => {
   };
 
   const oneUser = (person) => {
-    // console.log(person), 'PERSON';
     setPerson(person);
   };
 
