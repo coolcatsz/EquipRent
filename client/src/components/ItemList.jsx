@@ -1,28 +1,29 @@
 import React from 'react';
-import axios from 'axios';
-import Item from './Item.jsx';
+import Image from './Image.jsx';
 
-const ItemList = ({itemList}) => {
-  // console.log(itemList, 'ITEM');
+
+
+const ItemList = ({itemList, handleClick, user, addBookmark}) => {
 
   return (
     <div>
       <h1>Item</h1>
       <div style={{display: 'inline-block'}}>
         {
-          itemList.map((item) => {
-            // console.log(item, 'Single');
-            return (
-              <div
-                key={item.id}
-                style={{display: 'inline-block', padding: '10px'}}
-              >
-                <Item key={item.id} item={item}/>
-                <span><p>Item: {item.brand}</p></span>
-                <span><p>Type: {item.type}</p></span>
-              </div>
-            );
-          })
+          (itemList.length > 0) ? (
+            itemList.map((item) => {
+              // console.log(item, 'Single');
+              return (
+                <div
+                  key={item.id}
+                  style={{display: 'inline-block', padding: '10px'}}
+                >
+                  <Image key={item.id} item={item} handleClick={handleClick} user={user} addBookmark={addBookmark}/>
+                </div>
+              );
+            })
+          )
+            : (<p>No items match your search terms :(</p>)
         }
       </div>
     </div>

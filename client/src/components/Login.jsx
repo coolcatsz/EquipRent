@@ -16,16 +16,6 @@ const Login = () => (
         <a href='/auth/google' style={{ textDecoration: 'none' }}>Login With Google</a>
       </MenuItem>
     </Button>
-    {/* <Button>
-      <MenuItem
-        color="inherit"
-        size="large"
-        component={Link}
-        to="/auth/google"
-      >
-      </MenuItem>
-     
-    </Button> */}
   </div>
 );
 export default Login;

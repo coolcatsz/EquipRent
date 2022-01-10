@@ -13,183 +13,192 @@ import MenuItem from '@mui/material/MenuItem';
 import Avatar from '@mui/material/Avatar';
 import Divider from '@mui/material/Divider';
 import ListItemIcon from '@mui/material/ListItemIcon';
-import Settings from '@mui/icons-material/Settings';
-import Logout from '@mui/icons-material/Logout';
-import SearchIcon from '@mui/icons-material/Search';
-import { styled, alpha } from '@mui/material/styles';
-import InputBase from '@mui/material/InputBase';
+import Bookmarks from '@mui/icons-material/Bookmarks';
+import GoogleIcon from '@mui/icons-material/Google';
+import axios from 'axios';
+import SearchStub from './SearchStub.jsx';
+import DarkMode from './DarkMode.jsx';
+import Paper from '@material-ui/core/Paper';
 
-import Login from './Login.jsx';
+import logo from '../img/logo.png';
+
+
+
+import { useBetween } from 'use-between';
+import { useSharedUser } from './User.jsx';
+
 import LogOut from './LogOut.jsx';
 //ok
 
-const Search = styled('div')(({ theme }) => ({
-  position: 'relative',
-  borderRadius: theme.shape.borderRadius,
-  backgroundColor: alpha(theme.palette.common.white, 0.15),
-  '&:hover': {
-    backgroundColor: alpha(theme.palette.common.white, 0.25),
-  },
-  marginLeft: 0,
-  width: '100%',
-  [theme.breakpoints.up('sm')]: {
-    marginLeft: theme.spacing(1),
-    width: 'auto',
-  },
-}));
-
-const SearchIconWrapper = styled('div')(({ theme }) => ({
-  padding: theme.spacing(0, 2),
-  height: '100%',
-  position: 'absolute',
-  pointerEvents: 'none',
-  display: 'flex',
-  alignItems: 'center',
-  justifyContent: 'center',
-}));
-
-const StyledInputBase = styled(InputBase)(({ theme }) => ({
-  color: 'inherit',
-  '& .MuiInputBase-input': {
-    padding: theme.spacing(1, 1, 1, 0),
-    // vertical padding + font size from searchIcon
-    paddingLeft: `calc(1em + ${theme.spacing(4)})`,
-    transition: theme.transitions.create('width'),
-    width: '100%',
-    [theme.breakpoints.up('sm')]: {
-      width: '12ch',
-      '&:focus': {
-        width: '20ch',
-      },
-    },
-  },
-}));
-
-const NavBar = () => {
-
+const NavBar = ({ setItemList, authUser }) => {
   const [anchorEl, setAnchorEl] = React.useState(null);
+  const [isLoggedIn, setIsLoggedIn] = React.useState(false);
+  const [user, setUser] = React.useState(null);
+
+
+  const handleLogin = () => {
+    setIsLoggedIn();
+  };
+  // const clickLogin = () => {
+  //   setToggleLogin(!toggleLogin);
+  // };
+
+
   const open = Boolean(anchorEl);
+
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
   };
+
+  const handleLogout = () => {
+    axios.get('/logout')
+      .then(() => setIsLoggedIn(false))
+      .catch((err) => console.error('handleLogout error'));
+  };
+
   const handleClose = () => {
     setAnchorEl(null);
   };
 
+  const { currentUser, changeCurrentUser } = useSharedUser();
+  React.useEffect(() => {
+    axios.get('/auth/verify')
+      .then(({data}) => {
+        setIsLoggedIn(!!data);
+        setUser(data);
+        changeCurrentUser(data);
+      })
+      .catch(err => console.error(err))
+    ;
+  }, []);
+
 
   return (
+    
     <Box sx={{ flexGrow: 1 }}>
       <AppBar position="static">
-        <Toolbar>
-          <IconButton
-            size="large"
-            edge="start"
-            color="inherit"
-            aria-label="menu"
-            sx={{ mr: 2 }}
-            component={Link}
-            to="/"
-          >
-            <MenuIcon />
-          </IconButton>
-          <Typography
-            variant="h6"
-            component="div"
-            sx={{ flexGrow: 1 }}
-          >
+        <Paper>
+          <Toolbar>
+            <IconButton
+              size="small"
+              edge="start"
+              color="inherit"
+              aria-label="menu"
+              width={'100%'}
+              sx={{ mr: 2 }}
+              component={Link}
+              to="/"
+            >
+              <img height="50" width="50" alt="logo" src={logo} />
+            </IconButton>
+            <Typography
+              variant="h6"
+              component="div"
+              sx={{ flexGrow: 1 }}
+            >
             EquipRent
-          </Typography>
-          <Search>
-            <SearchIconWrapper>
-              <SearchIcon />
-            </SearchIconWrapper>
-            <StyledInputBase
-              placeholder="Search…"
-              inputProps={{ 'aria-label': 'search' }}
-            />
-          </Search>
-          <Button
-            size="large"
-            component={Link}
-            to="/lender"
-            color="inherit"
-          >
+            </Typography>
+            <DarkMode/>
+            <SearchStub setItemList={setItemList} />
+            <Button
+              size="large"
+              component={Link}
+              to="/lender"
+              color="inherit"
+            >
             Be a Lender
-          </Button>
-          <Box sx={{ display: 'flex', alignItems: 'center', textAlign: 'center' }}>
-            <Tooltip title="Account">
-              <IconButton onClick={handleClick} size="small" sx={{ ml: 2 }}>
-                <Avatar sx={{ width: 32, height: 32 }}>E</Avatar>
-              </IconButton>
-            </Tooltip>
-          </Box>
-          <Menu
-            anchorEl={anchorEl}
-            open={open}
-            onClose={handleClose}
-            onClick={handleClose}
-            PaperProps={{
-              elevation: 0,
-              sx: {
-                overflow: 'visible',
-                filter: 'drop-shadow(0px 2px 8px rgba(0,0,0,0.32))',
-                mt: 1.5,
-                '& .MuiAvatar-root': {
-                  width: 32,
-                  height: 32,
-                  ml: -0.5,
-                  mr: 1,
+            </Button>
+            <Button
+              size="large"
+              component={Link}
+              to="/chat"
+              color="inherit"
+            >
+           Message
+            </Button>
+            {
+              (user && user.thumbnail) ?
+
+                <Box sx={{ display: 'flex', alignItems: 'center', textAlign: 'center' }}>
+                  <Tooltip title="Account">
+                    <IconButton onClick={handleClick} size="small" sx={{ ml: 2 }}>
+                      <Avatar sx={{ width: 32, height: 32 }}>
+                        <img src={user.thumbnail} width={'100%'} />
+                      </Avatar>
+                    </IconButton>
+                  </Tooltip>
+                </Box>
+                :
+                <Box sx={{ display: 'flex', alignItems: 'center', textAlign: 'center' }}>
+                  <Tooltip title="Account">
+                    <IconButton size="small" sx={{ ml: 2 }}>
+                      <a href='/auth/google' style={{ textDecoration: 'none' }}>
+                        <GoogleIcon/>
+                      </a>
+                    </IconButton>
+                  </Tooltip>
+                </Box>
+            }
+            <Menu
+              anchorEl={anchorEl}
+              open={open}
+              onClose={handleClose}
+              onClick={handleClose}
+              PaperProps={{
+                elevation: 0,
+                sx: {
+                  overflow: 'visible',
+                  filter: 'drop-shadow(0px 2px 8px rgba(0,0,0,0.32))',
+                  mt: 1.5,
+                  '& .MuiAvatar-root': {
+                    width: 32,
+                    height: 32,
+                    ml: -0.5,
+                    mr: 1,
+                  },
+                  '&:before': {
+                    content: '""',
+                    display: 'block',
+                    position: 'absolute',
+                    top: 0,
+                    right: 14,
+                    width: 10,
+                    height: 10,
+                    bgcolor: 'background.paper',
+                    transform: 'translateY(-50%) rotate(45deg)',
+                    zIndex: 0,
+                  },
                 },
-                '&:before': {
-                  content: '""',
-                  display: 'block',
-                  position: 'absolute',
-                  top: 0,
-                  right: 14,
-                  width: 10,
-                  height: 10,
-                  bgcolor: 'background.paper',
-                  transform: 'translateY(-50%) rotate(45deg)',
-                  zIndex: 0,
-                },
-              },
-            }}
-            transformOrigin={{ horizontal: 'right', vertical: 'top' }}
-            anchorOrigin={{ horizontal: 'right', vertical: 'bottom' }}
-          >
-            <Button>
+              }}
+              transformOrigin={{ horizontal: 'right', vertical: 'top' }}
+              anchorOrigin={{ horizontal: 'right', vertical: 'bottom' }}
+            >
               <MenuItem
                 color="inherit"
                 size="large"
-                component={Login}
+                component={Link}
+                to={`/profile/${authUser}`}
               >
+                <Avatar /> Profile
               </MenuItem>
-            </Button>
-            <MenuItem
-              color="inherit"
-              size="large"
-              component={Link}
-              to="/profile"
-            >
-              <Avatar /> Profile
-            </MenuItem>
-            <Divider />
-            <MenuItem>
-              <ListItemIcon>
-                <Settings fontSize="small" />
-              </ListItemIcon>
-          Account Settings
-            </MenuItem>
-            <MenuItem
-              component={LogOut}
-            >
-              <ListItemIcon>
-                <Logout fontSize="small" />
-              </ListItemIcon>
-          Logout
-            </MenuItem>
-          </Menu>
-        </Toolbar>
+              <Divider />
+              <MenuItem
+                component={Link}
+                to="/bookmark"
+              >
+                <ListItemIcon>
+                  <Bookmarks fontSize="small" />
+                </ListItemIcon>
+              BookMarks
+              </MenuItem>
+              <MenuItem
+                component={LogOut}
+              >
+              Logout
+              </MenuItem>
+            </Menu>
+          </Toolbar>
+        </Paper>
       </AppBar>
     </Box>
   );

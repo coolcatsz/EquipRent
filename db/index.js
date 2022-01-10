@@ -1,6 +1,8 @@
 /* eslint-disable camelcase */
 require('dotenv').config();
 const { Sequelize, DataTypes, DECIMAL, Deferrable } = require('sequelize');
+const { addSearchVectors } = require('./dbSearch.js');
+const { listener } = require('./dbTrigger.js');
 
 const {
   DATABASE,
@@ -32,7 +34,8 @@ const User = sequelize.define('User', {
   contact: DataTypes.STRING,
   description: DataTypes.STRING,
   rating: DataTypes.INTEGER,
-  type: DataTypes.STRING
+  type: DataTypes.STRING,
+  theme: DataTypes.BOOLEAN
 },
 {
   timestamps: true
@@ -68,28 +71,27 @@ const ItemImg = sequelize.define('ItemImg', {
 
 
 const Reservation = sequelize.define('Reservation', {
-  user_id: {
-    type: DataTypes.INTEGER,
-    references: {
-      model: User,
-      key: 'id',
-      deferrable: Deferrable.INITIALLY_IMMEDIATE
-    }
-  },
-  item_id: {
-    type: DataTypes.INTEGER,
-    references: {
-      model: Item,
-      key: 'id',
-      deferrable: Deferrable.INITIALLY_IMMEDIATE
-    }
-  },
-  startDate: DataTypes.INTEGER,
-  endDate: DataTypes.INTEGER,
+  startDate: DataTypes.STRING,
+  endDate: DataTypes.STRING,
   price: DataTypes.INTEGER,
   total: DataTypes.INTEGER
 });
 
+const Bookmark = sequelize.define('Bookmark', {
+  id: {
+    type: Sequelize.INTEGER,
+    primaryKey: true,
+    autoIncrement: true,
+  }
+});
+
+const Booking = sequelize.define('Booking', {
+  id: {
+    type: Sequelize.INTEGER,
+    primaryKey: true,
+    autoIncrement: true,
+  }
+});
 
 ////Associations
 Post.belongsTo(Item, {as: 'itemPost', foreignKey: 'itemId'});
@@ -99,15 +101,27 @@ Post.belongsTo(User, {as: 'userPost', foreignKey: 'userId'});
 Item.belongsTo(User, {as: 'userItem', foreignKey: 'userId'});
 
 ItemImg.belongsTo(Item, {as: 'itemImg', foreignKey: 'itemId'});
-// Item.hasOne(ItemImg);
+
+Reservation.belongsTo(User, {as: 'userReserve', foreignKey: 'userId'});
+
+Reservation.belongsTo(Item, {as: 'itemReserve', foreignKey: 'itemId'});
+
+Bookmark.belongsTo(User, {as: 'userBookmark', foreignKey: 'userId'});
+
+Bookmark.belongsTo(Item, {as: 'itemBookmark', foreignKey: 'itemId'});
+
+Booking.belongsTo(Item, {as: 'itemBooking', foreignKey: 'itemId'});
+
+Booking.belongsTo(Reservation, {as: 'reserveBooking', foreignKey: 'reservationId'});
 ////////////////
 
-sequelize.sync({force: false})
+sequelize.sync()
   .then(() => User.sync())
   .then(() => Item.sync())
   .then(() => Post.sync())
   .then(() => ItemImg.sync())
   .then(() => Reservation.sync())
+<<<<<<< HEAD
   .then(() => addSearchVectors())
   // .then(() => console.log('table synced'))
   .catch((err) => console.error('Sync Error'));
@@ -169,11 +183,22 @@ const addSearchVectors = (() => {
 //     `))
 // })
 
+=======
+  .then(() => Bookmark.sync())
+  .then(() => Booking.sync())
+  .then(() => addSearchVectors(sequelize))
+  // .then(() => console.log('table synced'))
+  .catch((err) => console.error('Sync Error'));
+
+
+
+>>>>>>> cc2e55737236d0ea54c5451bbfb4e197f8eb7537
 module.exports = {
   db: sequelize,
   User,
   ItemImg,
   Reservation,
   Post,
-  Item
+  Item,
+  Bookmark
 };
