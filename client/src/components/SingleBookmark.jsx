@@ -1,6 +1,5 @@
 import React, {useState, useEffect} from 'react';
 import axios from 'axios';
-import { Link } from 'react-router-dom';
 import Box from '@mui/material/Box';
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
@@ -12,21 +11,17 @@ import Bookmark from '@mui/icons-material/Bookmark';
 const SingleBookmark = ({bookmark}) => {
   const [allBookmark, setAllBookmark] = useState({});
   const [bookmarkImg, setBookmarkImg] = useState({});
-  // console.log(bookmark, 'bookmark');
-  // console.log(allBookmark, 'allbookmark');
 
   const bookmarkItem = () => {
     axios.get(`/item/itemById/${bookmark.itemId}`)
-      .then(({ data }) => {
-        setAllBookmark(data);
-      }).catch((err) => console.error('BookErr'));
+      .then(({ data }) => setAllBookmark(data))
+      .catch((err) => console.error('BookErr'));
   };
 
   const bookmarkItemImg = () => {
     axios.get(`/item/itemImg/${bookmark.itemId}`)
-      .then(( {data} ) => {
-        setBookmarkImg(data[0]);
-      }).catch((err) => console.error('BookMarkImgErr'));
+      .then(( {data} ) => setBookmarkImg(data[0]))
+      .catch((err) => console.error('BookMarkImgErr'));
   };
 
   useEffect(() => {
@@ -34,7 +29,6 @@ const SingleBookmark = ({bookmark}) => {
     bookmarkItemImg();
   }, []);
 
-  console.log(bookmarkImg, '????');
   let bookImg;
   if (bookmark.itemId === bookmarkImg.itemId) {
     bookImg = bookmarkImg.imgUrl;

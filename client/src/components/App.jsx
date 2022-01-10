@@ -8,7 +8,6 @@ import { BrowserRouter, Routes, Route, Link, useRouteMatch } from 'react-router-
 import Login from './Login.jsx';
 import ItemList from './ItemList.jsx';
 import SingleItem from './SingleItem.jsx';
-import CreatePost from './CreatePost.jsx';
 import BookmarkList from './BookmarkList.jsx';
 import Paper from '@material-ui/core/Paper';
 import axios from 'axios';
@@ -16,7 +15,7 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { io } from 'socket.io-client';
 const baseurl = require('../../../config/keys.js').BASEURL.url;
-
+// const baseurl = 'http://localhost';
 
 const App = () => {
 
@@ -28,24 +27,17 @@ const App = () => {
 
   const authUser = () => {
     axios.get('/auth/verify')
-      .then(({ data }) => {
-        // console.log(data, "userdata");
-        setUser(data);
-      }).catch((err) => {
-        console.error('AuthErr');
-      });
+      .then(({ data }) => setUser(data))
+      .catch((err) => console.error('AuthErr'));
   };
 
   const getAllItem = () => {
     axios.get('/item/allItem')
-      .then(({ data }) => {
-        // console.log(data, 'DATA');
-        setItemList(data);
-      }).catch((err) => console.error('GetAxiosErr'));
+      .then(({ data }) => setItemList(data))
+      .catch((err) => console.error('GetAxiosErr'));
   };
 
   const oneItem = (item) => {
-    // console.log('curritem', item);
     setCurrentItem(item);
   };
 
@@ -64,7 +56,6 @@ const App = () => {
   };
 
   const oneUser = (person) => {
-    // console.log(person), 'PERSON';
     setPerson(person);
   };
 
@@ -109,7 +100,7 @@ const App = () => {
               <Route exact path ='/lender' element={<Lender user={user}/>}/>
               <Route exact path ='/chat' element={<Chat googleUser={user}/>}/>
               <Route exact path ='/' element={<ItemList itemList={itemList} handleClick={oneItem} user={user} addBookmark={addBookmark} />}/>
-              <Route exact path ='/item' element={ <SingleItem user={user} currentItem={currentItem} addBookmark={addBookmark} appUser={allUsers} userClick={oneUser}/> } />
+              <Route exact path ='/item/:itemId' element={ <SingleItem user={user} currentItem={currentItem} addBookmark={addBookmark} appUser={allUsers} userClick={oneUser}/> } />
               <Route exact path ='/bookmark' element={ <BookmarkList user={user} itemList={itemList} currentItem={currentItem} /> } />
             </Routes>
           </div>

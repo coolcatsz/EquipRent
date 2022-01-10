@@ -1,7 +1,6 @@
 import React, {useState, useEffect} from 'react';
 import axios from 'axios';
-import { Link } from 'react-router-dom';
-import CreatePost from './CreatePost.jsx';
+import { Link , useParams } from 'react-router-dom';
 import ItemPost from './ItemPost.jsx';
 import Calendar from './Calendar.jsx';
 import Button from '@mui/material/Button';
@@ -13,36 +12,28 @@ import Typography from '@mui/material/Typography';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 
 const SingleItem = ({user, currentItem, addBookmark, appUser, userClick}) => {
+  const {itemId} = useParams();
+
   const [itemReview, setItemReview] = useState([]);
   const [singleItemImg, setSingleItemImg] = useState({});
 
-
   const oneItemImg = () => {
     axios.get(`/item/itemImg/${currentItem.id}`)
-      .then(( {data} ) => {
-        // console.log(data[0], 'SINGLE DATA');
-        setSingleItemImg(data[0]);
-      }).catch((err) => console.error('GetAxiosErr'));
+      .then(( {data} ) => setSingleItemImg(data[0]))
+      .catch((err) => console.error('GetAxiosErr'));
   };
 
   const allItemPost = () => {
-    axios.get(`/post/itemPost/${currentItem.id}`)
-      .then(({ data }) => {
-        // console.log(data, 'DATA');
-        setItemReview(data);
-      }).catch((err) => console.error('ItemPost Err'));
+    axios.get(`/post/itemPost/${itemId}`)
+      .then(({ data }) => setItemReview(data))
+      .catch((err) => console.error('ItemPost Err'));
   };
 
-  // const updateAvailability = () => {
-  //   axios.put(`/item/available/${currentItem.id}`)
-  //     .then(() => console.log(currentItem.id))
-  //     .catch((err) => console.error('puterror'));
-  // };
-
   useEffect(() => {
-    allItemPost();
     oneItemImg();
-  }, []);
+    allItemPost();
+  }, [itemId]);
+
   let image;
   if (currentItem.id === singleItemImg.itemId) {
     image = singleItemImg.imgUrl;
@@ -103,11 +94,8 @@ const SingleItem = ({user, currentItem, addBookmark, appUser, userClick}) => {
                     <Calendar currentItem={currentItem} user={user} />
                   </div>
                 </div>
-                {/* <div style={{marginLeft: '100px'}}>
-                  <CreatePost user={user} currentItem={currentItem} allItemPost={allItemPost} />
-                </div> */}
                 <div style={{marginLeft: '100px'}}>
-                  <ItemPost itemReview={itemReview}/>
+                  <ItemPost itemReview={itemReview} currentItem={currentItem} user={user}/>
                 </div>
               </div>
             );

@@ -10,7 +10,7 @@ const newPost = (post) => Post.create({
 }).then((data) => {
   console.log('success', data.toJSON());
 }).catch((err) => {
-  console.log(err);
+  console.log(err, 'postHelperErr');
 });
 
 const findAllPost = () => Post.findAll();

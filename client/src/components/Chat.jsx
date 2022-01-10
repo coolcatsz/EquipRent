@@ -3,6 +3,7 @@ import Paper from '@material-ui/core/Paper';
 import io from 'socket.io-client';
 
 const baseurl = require('../../../config/keys.js').BASEURL.url;
+// const baseurl = 'http://localhost';
 import '../css/Chat.css';
 
 import ActiveChat from './ActiveChat.jsx';

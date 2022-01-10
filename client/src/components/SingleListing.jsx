@@ -1,9 +1,8 @@
 import React, {useState, useEffect} from 'react';
 import axios from 'axios';
 
-const SingleListing = ({ list }) => {
+const SingleListing = ({ list, userListing }) => {
 
-  console.log(list);
   const [listImg, setListImg] = useState({});
 
   const listingImg = () => {
@@ -24,6 +23,7 @@ const SingleListing = ({ list }) => {
       </h3>
     </div>
   );
+
 };
 
 export default SingleListing;

@@ -3,6 +3,9 @@ const GoogleStrategy = require('passport-google-oauth20').Strategy;
 const { User } = require('../db/index.js');
 require('dotenv').config();
 
+const {BASEURL} = process.env;
+// const BASEURL = 'http://localhost';
+
 passport.serializeUser((user, done) => {
   done(null, user.id);
 });
@@ -23,7 +26,7 @@ passport.use(
     //options for google strategy
     clientID: process.env.GOOGLE_CLIENTID,
     clientSecret: process.env.GOOGLE_CLIENT_SECRET,
-    callbackURL: 'http://localhost:3000/auth/google/callback'
+    callbackURL: `${BASEURL}:3000/auth/google/callback`
   }, (accessToken, refreshToken, profile, done) => {
     // console.log('profile:', profile);
     //passport cb

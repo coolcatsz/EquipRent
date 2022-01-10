@@ -39,10 +39,7 @@ postRoute.post('/insertPost', (req, res) => {
     itemId: itemId,
     userId: userId
   };
-  return newPost(post)
-    .then((data) => {
-      res.sendStatus(201).send(data);
-    }).catch((err) => res.sendStatus(500));
+  return newPost(post);
 });
 
 module.exports = postRoute;

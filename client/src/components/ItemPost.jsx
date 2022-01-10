@@ -1,32 +1,58 @@
 import React, {useState, useEffect} from 'react';
-import axios from 'axios';
+import Grid from '@mui/material/Grid';
+import Box from '@mui/material/Box';
 
-
-const ItemPost = ({ itemReview }) => {
+const ItemPost = ({ itemReview, user }) => {
 
   if (itemReview.length !== 0) {
     return (
       <div>
-        <h4>Item Post</h4>
-        {
-          itemReview.map((post) => {
-            // console.log(post, 'POST');
-            return (
-              <div key={post.id}>
-                <ul>
-                  <li>Rating: {post.rating}</li>
-                  <li>Description: {post.description}</li>
-                </ul>
-              </div>
-            );
-          })
-        }
+        <h1>Reviews</h1>
+        <div>
+          <Grid container spacing={2} rowSpacing={1} columnSpacing={{ xs: 1, sm: 2, md: 3 }} >
+            {
+              itemReview.sort((a, b) => {
+                if (a.createdAt > b.createdAt) {
+                  return 1;
+                }
+                if (a.createdAt < b.createdAt) {
+                  return -1;
+                }
+                if (a.createdAt === b.createAt) {
+                  return 0;
+                }
+              }).reverse().map((post) => {
+                return (
+                  <Grid item xs={6} key={post.id}>
+                    <Box
+                      sx={{
+                        p: 2,
+                        bgcolor: 'background.default',
+                        display: 'grid',
+                        gridTemplateColumns: { md: '1fr 1fr' },
+                        gap: 2,
+                      }}
+                    ></Box>
+                    <div key={post.id}>
+                      <div>
+                        <ul>
+                          <li>Rating: {post.rating}</li>
+                          <li>Description: {post.description}</li>
+                        </ul>
+                      </div>
+                    </div>
+                  </Grid>
+                );
+              })
+            }
+          </Grid>
+        </div>
       </div>
     );
   } else {
     return (
       <div>
-        <h4>No Reviews Yet</h4>
+        <h1>No Reviews Yet</h1>
       </div>
     );
   }
