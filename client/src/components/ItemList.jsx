@@ -7,8 +7,7 @@ const ItemList = ({itemList, handleClick, user, addBookmark}) => {
 
   return (
     <div>
-      <h1>Item</h1>
-      <div style={{display: 'inline-block'}}>
+      <div style={{display: 'inherit'}}>
         {
           (itemList.length > 0) ? (
             itemList.map((item) => {
@@ -16,7 +15,7 @@ const ItemList = ({itemList, handleClick, user, addBookmark}) => {
               return (
                 <div
                   key={item.id}
-                  style={{display: 'inline-block', padding: '10px'}}
+                  style={{display: 'inline-block', padding: '10px', marginLeft: '25px', marginTop: '5px'}}
                 >
                   <Image key={item.id} item={item} handleClick={handleClick} user={user} addBookmark={addBookmark}/>
                 </div>

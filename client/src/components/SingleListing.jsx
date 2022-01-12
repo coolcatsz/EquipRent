@@ -1,5 +1,6 @@
 import React, {useState, useEffect} from 'react';
 import axios from 'axios';
+import Typography from '@mui/material/Typography';
 
 const SingleListing = ({ list, userListing }) => {
 
@@ -17,10 +18,12 @@ const SingleListing = ({ list, userListing }) => {
 
   return (
     <div>
-      <img src={listImg.imgUrl} style ={{width: '200px', height: '200px'}}></img>
-      <h3>
-        {list.brand}
-      </h3>
+      <Typography>
+        <img src={listImg.imgUrl} style ={{width: '200px', height: '200px'}}></img>
+        <h4>
+          {list.type}
+        </h4>
+      </Typography>
     </div>
   );
 

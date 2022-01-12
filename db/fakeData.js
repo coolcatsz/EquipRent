@@ -3,7 +3,7 @@ const fakeUser = [
   {
     username: 'Bob',
     googleId: 'Bob@gmail.com',
-    thumbnail: 'Imagenotfound',
+    thumbnail: 'https://www.dvdtalk.com/reviews/images/reviews/190/1193912899_1.jpg',
     name: 'Bob Builder',
     email: 'bob@builder.com',
     contact: '1112223456',
@@ -14,8 +14,8 @@ const fakeUser = [
   {
     username: 'Jared',
     googleId: 'Jared@gmail.com',
-    thumbnail: 'Imagenotfound',
-    name: 'Jared Pickles',
+    thumbnail: 'https://s3-prod.adage.com/s3fs-public/styles/800x600/public/JaredLeto_portrait_3x2.jpg',
+    name: 'Jared leto',
     email: 'jared@pickles.com',
     contact: '1110002222',
     description: 'New Lender',
@@ -25,7 +25,7 @@ const fakeUser = [
   {
     username: 'Diego',
     googleId: 'diego@gmail.com',
-    thumbnail: 'Imagenotfound',
+    thumbnail: 'https://i.pinimg.com/236x/30/48/97/304897d1dfcdb33f399cd4ca5523b1fc.jpg',
     name: 'Diego Marquez',
     email: 'diego@marquez.com',
     contact: '1111113333',
@@ -38,7 +38,7 @@ const fakeUser = [
 const fakeItem = [
   {
     brand: 'BLACK+DECKER Electric Lawn Mower',
-    type: 'Outdoor Power Tools',
+    type: 'Lawn Mower',
     price: 40,
     condition: 'Great',
     value: 200,
@@ -62,7 +62,7 @@ const fakeItem = [
   },
   {
     brand: 'Blast Zone',
-    type: 'Bounce house',
+    type: 'Bounce House',
     price: 100,
     condition: 'Premium Quality',
     value: 500,
@@ -74,7 +74,7 @@ const fakeItem = [
   },
   {
     brand: 'Kitchen Aid',
-    type: 'kitchen appliance',
+    type: 'Stand Mixer',
     price: 50,
     condition: 'Good',
     value: 350,
@@ -86,7 +86,7 @@ const fakeItem = [
   },
   {
     brand: 'Crock Pot',
-    type: 'kitchen appliance',
+    type: 'Crock Pot',
     price: 30,
     condition: 'Great',
     value: 140,
@@ -98,7 +98,7 @@ const fakeItem = [
   },
   {
     brand: 'Coleman RoadTrip X-Cursion Propane Grill',
-    type: 'Backyard Appliance',
+    type: 'Outdoor Grill',
     price: 50,
     condition: 'Working condition',
     value: 200,
@@ -122,7 +122,7 @@ const fakeItem = [
   },
   {
     brand: 'YABER 7200 Lumen full HD projector',
-    type: 'Home Entertainment',
+    type: 'Projector',
     price: 50,
     condition: 'Good',
     value: 200,

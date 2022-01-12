@@ -9,7 +9,7 @@ import '../css/Chat.css';
 import ActiveChat from './ActiveChat.jsx';
 
 // const socket = io.connect(`${baseurl}:3001`);
-const socket = io.connect(`http://localhost:3001`);
+const socket = io.connect('http://localhost:3001');
 
 const Chat = ({googleUser}) => {
   
