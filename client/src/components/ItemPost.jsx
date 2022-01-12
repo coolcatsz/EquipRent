@@ -1,58 +1,64 @@
 import React, {useState, useEffect} from 'react';
 import Grid from '@mui/material/Grid';
 import Box from '@mui/material/Box';
+import Typography from '@mui/material/Typography';
+import Paper from '@material-ui/core/Paper';
 
 const ItemPost = ({ itemReview, user }) => {
 
   if (itemReview.length !== 0) {
     return (
       <div>
-        <h1>Reviews</h1>
-        <div>
-          <Grid container spacing={2} rowSpacing={1} columnSpacing={{ xs: 1, sm: 2, md: 3 }} >
-            {
-              itemReview.sort((a, b) => {
-                if (a.createdAt > b.createdAt) {
-                  return 1;
+        <Typography>
+          <div>
+            <h2>Reviews</h2>
+            <Paper>
+              <Grid container spacing={2} rowSpacing={1} columnSpacing={{ xs: 1, sm: 2, md: 3 }} >
+                {
+                  itemReview.sort((a, b) => {
+                    if (a.createdAt > b.createdAt) {
+                      return 1;
+                    }
+                    if (a.createdAt < b.createdAt) {
+                      return -1;
+                    }
+                    if (a.createdAt === b.createAt) {
+                      return 0;
+                    }
+                  }).reverse().map((post) => {
+                    return (
+                      <Grid item xs={6} key={post.id}>
+                        <Box
+                          sx={{
+                            bgcolor: 'background.default',
+                            display: 'grid',
+                            gridTemplateColumns: { md: '1fr 1fr' },
+                          }}
+                        ></Box>
+                        <div key={post.id}>
+                          <div>
+                            <ul>
+                              <li>Rating: {post.rating}</li>
+                              <li>Description: {post.description}</li>
+                            </ul>
+                          </div>
+                        </div>
+                      </Grid>
+                    );
+                  })
                 }
-                if (a.createdAt < b.createdAt) {
-                  return -1;
-                }
-                if (a.createdAt === b.createAt) {
-                  return 0;
-                }
-              }).reverse().map((post) => {
-                return (
-                  <Grid item xs={6} key={post.id}>
-                    <Box
-                      sx={{
-                        p: 2,
-                        bgcolor: 'background.default',
-                        display: 'grid',
-                        gridTemplateColumns: { md: '1fr 1fr' },
-                        gap: 2,
-                      }}
-                    ></Box>
-                    <div key={post.id}>
-                      <div>
-                        <ul>
-                          <li>Rating: {post.rating}</li>
-                          <li>Description: {post.description}</li>
-                        </ul>
-                      </div>
-                    </div>
-                  </Grid>
-                );
-              })
-            }
-          </Grid>
-        </div>
+              </Grid>
+            </Paper>
+          </div>
+        </Typography>
       </div>
     );
   } else {
     return (
       <div>
-        <h1>No Reviews Yet</h1>
+        <Typography>
+          <h2>No Reviews Yet</h2>
+        </Typography>
       </div>
     );
   }

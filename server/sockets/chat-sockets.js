@@ -3,8 +3,8 @@ const http = require('http');
 const cors = require('cors');
 require('dotenv').config();
 
-const {BASEURL} = process.env;
-// const BASEURL = 'http://localhost';
+// const {BASEURL} = process.env;
+const BASEURL = 'http://localhost';
 app.use(cors());
 
 const server = http.createServer(app);
