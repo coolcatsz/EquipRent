@@ -103,7 +103,7 @@ const App = () => {
       <Paper elevation={0}>
         { user ? (
           <div>
-            <Nav setItemList={setItemList} authUser={user.id}/>
+            <Nav setItemList={setItemList} authUser={user.id} darkUser={user}/>
             <ToastContainer />
             <Routes>
               <Route exact path ="/profile/:userId" element={<Profile authUser={user}/>}/>

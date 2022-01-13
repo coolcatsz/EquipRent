@@ -17,7 +17,7 @@ const BookmarkList = ({user, currentItem}) => {
   }, []);
 
   return (
-    <div>
+    <div style={{ height: '100vh', width: '100%' }}>
       <h1>Bookmarks</h1>
       {
         userBookmarkList.map((bookmark) => {

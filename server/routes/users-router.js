@@ -15,23 +15,21 @@ usersRoute.get('/show/:id', (req, res) => {
     .catch((err) => res.sendStatus(500));
 });
 
-usersRoute.patch('/theme/:id', (req, res) => {
+usersRoute.put('/theme/:id', (req, res) => {
 
-  console.log('body', req.params.id);
-  User.update( 
-    {theme: req.body.theme},
-    {where: { id: req.params.id }}
-  )
-    .then((data) => res.sendStatus(200))
-    .catch(err => console.error(err));
-  // User.update(
-  //   { theme: theme },
-  //   { where: { id: id }}
-  // )
-  //   .then(() => {
-  //     res.sendStatus(204);
-  //   })
-  //   .catch(err => console.error(err));
+  const theme = req.body;
+  User.update(theme, {where: { id: req.params.id }})
+    // .then(() => {
+    //   res.sendStatus(204);
+    // })
+    .then(([data]) => {
+      console.log(data);
+      if (data === 0) {
+        res.status(404);
+      }
+      res.sendStatus(200);
+    })
+    .catch(err => console.error(err, 'backErr'));
 });
 
 module.exports = usersRoute;
