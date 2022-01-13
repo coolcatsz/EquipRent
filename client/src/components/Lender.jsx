@@ -3,8 +3,7 @@ import { useForm } from 'react-hook-form';
 import axios from 'axios';
 const CLOUDINARY_URL = 'https://api.cloudinary.com/v1_1/coolcatz/image/upload';
 const CLOUDINARY_UPLOAD_PRESET = 'ny4zarxq';
-import { Button } from '@mui/material';
-import TextField from '@material-ui/core/TextField';
+import { Paper, Typography, Button, TextField, Grid } from '@mui/material';
 
 const Lender = ({user}) => {
   const { register, handleSubmit } = useForm();
@@ -51,23 +50,34 @@ const Lender = ({user}) => {
   };
 
   return (
-    <div style={{display: 'inline-block'}}>
-      <h2>Make a listing for an Item:</h2>
-      <form onSubmit={handleSubmit(listItem)}>
-        <div style={{ padding: '10px' }} spacing={5}>
-          <ul>
-            <div><TextField id="outlined-basic" fullWidth label="Item For Rent" variant="outlined" input {...register('brand')}/></div>
-            <div><TextField id="outlined-basic" fullWidth label="Category" variant="outlined" input {...register('type')}/></div>
-            <div><TextField id="outlined-basic" fullWidth label="Item Description" variant="outlined" input {...register('description')}/></div>
-            <div><TextField id="outlined-basic" fullWidth label="Rental Fee" variant="outlined" input {...register('price')}/></div>
-            <div><TextField id="outlined-basic" fullWidth label="Accessed Value" variant="outlined" input {...register('value')}/></div>
-            <div><TextField id="outlined-basic" fullWidth label="Condition" variant="outlined" input {...register('condition')}/></div>
-            <div><label>Upload an image of the item</label><input {...register('itemImg')} type="file"/></div>
-            <div><Button type="submit" fullWidth variant="contained" style={{padding: '10px'}} color="error">Upload Item</Button></div>
-          </ul>
-        </div>
-      </form>
-    </div>
+    <Grid container
+      spacing={5}
+      direction="column"
+      alignItems="center"
+      justifyContent="center"
+      style={{ minHeight: '100vh' }}
+
+    >
+      <div style={{display: 'inline-block'}}>
+        <Paper>
+          <Typography align="center" variant="h2">List an Item</Typography>
+          <form onSubmit={handleSubmit(listItem)}>
+            <div style={{ padding: '10px' }} spacing={5}>
+   
+              <div style={{ padding: '6px' }}><TextField id="outlined-basic" fullWidth label="Item For Rent" variant="outlined" input {...register('brand')}/></div>
+              <div style={{ padding: '6px' }}><TextField id="outlined-basic" fullWidth label="Category" variant="outlined" input {...register('type')}/></div>
+              <div style={{ padding: '6px' }}><TextField id="outlined-basic" fullWidth label="Item Description" variant="outlined" input {...register('description')}/></div>
+              <div style={{ padding: '6px' }}><TextField id="outlined-basic" fullWidth label="Rental Fee" variant="outlined" input {...register('price')}/></div>
+              <div style={{ padding: '6px' }}><TextField id="outlined-basic" fullWidth label="Accessed Value" variant="outlined" input {...register('value')}/></div>
+              <div style={{ padding: '6px' }}><TextField id="outlined-basic" fullWidth label="Condition" variant="outlined" input {...register('condition')}/></div>
+              <div style={{ padding: '6px' }}><label>Upload an image of the item</label><input {...register('itemImg')} type="file"/></div>
+              <div style={{ padding: '6px' }}><Button type="submit" fullWidth variant="contained" style={{padding: '10px'}} color="success">Upload Item</Button></div>
+           
+            </div>
+          </form>
+        </Paper>
+      </div>
+    </Grid>
   );
 };
 
