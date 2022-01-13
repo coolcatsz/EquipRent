@@ -98,7 +98,7 @@ const NavBar = ({ setItemList, authUser }) => {
             >
             EquipRent
             </Typography>
-            <DarkMode/>
+            <DarkMode authUser={authUser}/>
             <SearchStub setItemList={setItemList} />
             <Button
               size="large"
