@@ -11,6 +11,7 @@ import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import Paper from '@material-ui/core/Paper';
+import { Grid } from '@mui/material';
 
 const SingleItem = ({user, currentItem, addBookmark, appUser, userClick}) => {
   const {itemId} = useParams();
@@ -41,7 +42,7 @@ const SingleItem = ({user, currentItem, addBookmark, appUser, userClick}) => {
   }
 
   return (
-    <div>
+    <Grid style={{ height: '100vh', width: '100%' }}>
       {
         appUser.map((person) => {
           if (person.id === currentItem.userId) {
@@ -61,19 +62,19 @@ const SingleItem = ({user, currentItem, addBookmark, appUser, userClick}) => {
                           <Typography gutterBottom variant="h5" component="div">
                           Brand: {currentItem.brand}
                           </Typography>
-                          <Typography variant="h6" color="text.secondary">
+                          <Typography variant="h6" >
                           Type: {currentItem.type}
                           </Typography>
-                          <Typography variant="body2" color="text.secondary">
+                          <Typography variant="body2" >
                           Description: {currentItem.description}
                           </Typography>
-                          <Typography variant="body2" color="text.secondary">
+                          <Typography variant="body2" >
                           Condition: {currentItem.condition}
                           </Typography>
-                          <Typography variant="body2" color="text.secondary">
+                          <Typography variant="body2" >
                           Price: ${currentItem.price}
                           </Typography>
-                          <Typography variant="body2" color="text.secondary">
+                          <Typography variant="body2" >
                           Product Value: ${currentItem.value}
                           </Typography>
                         </CardContent>
@@ -108,7 +109,7 @@ const SingleItem = ({user, currentItem, addBookmark, appUser, userClick}) => {
           }
         })
       }
-    </div>
+    </Grid>
   );
 };
 

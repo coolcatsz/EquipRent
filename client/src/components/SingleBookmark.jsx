@@ -7,8 +7,10 @@ import CardMedia from '@mui/material/CardMedia';
 import IconButton from '@mui/material/IconButton';
 import Typography from '@mui/material/Typography';
 import Bookmark from '@mui/icons-material/Bookmark';
+import Paper from '@material-ui/core/Paper';
 
 const SingleBookmark = ({bookmark}) => {
+
   const [allBookmark, setAllBookmark] = useState({});
   const [bookmarkImg, setBookmarkImg] = useState({});
 
@@ -35,30 +37,34 @@ const SingleBookmark = ({bookmark}) => {
   }
 
   return (
-    <Card sx={{ display: 'flex' }}>
-      <CardMedia
-        component="img"
-        sx={{ width: 100 }}
-        style ={{ width: '200px', height: '200px'}}
-        image={`${bookImg}`}
-        alt="Item Img"
-      />
-      <Box sx={{ display: 'flex', flexDirection: 'column' }}>
-        <CardContent sx={{ flex: '1 0 auto' }}>
-          <Typography component="div" variant="h5">
-            {allBookmark.brand}
-          </Typography>
-          <Typography variant="subtitle1" color="text.secondary" component="div">
-            {allBookmark.type}
-          </Typography>
-        </CardContent>
-        <Box sx={{ display: 'flex', alignItems: 'center', pl: 1, pb: 1 }}>
-          <IconButton aria-label="play/pause">
-            <Bookmark sx={{ height: 38, width: 38 }} />
-          </IconButton>
-        </Box>
-      </Box>
-    </Card>
+    <Paper elevation={0}>
+      <Card sx={{ display: 'inline-flex', marginLeft: '25px', marginTop: '25px' }}>
+        <CardMedia
+          component="img"
+          sx={{ width: 100 }}
+          style ={{width: '200px', height: '200px', border: '2px solid black'}}
+          image={`${bookImg}`}
+          alt="Item Img"
+        />
+        <Paper elevation={0}>
+          <Box sx={{ display: 'inline-flex', flexDirection: 'column' }}>
+            <CardContent sx={{ flex: '1 0 auto' }}>
+              <Typography component="div" variant="h6">
+                {allBookmark.brand}
+              </Typography>
+              <Typography variant="subtitle1" component="div">
+                {allBookmark.type}
+              </Typography>
+            </CardContent>
+            <Box sx={{ display: 'flex', alignItems: 'center', pl: 1, pb: 1 }}>
+              <IconButton>
+                <Bookmark sx={{ height: 25, width: 25 }} />
+              </IconButton>
+            </Box>
+          </Box>
+        </Paper>
+      </Card>
+    </Paper>
   );
 };
 

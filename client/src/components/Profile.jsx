@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Routes, Route, Link, useParams } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import { useSharedUser } from './User.jsx';
 import Divider from '@mui/material/Divider';
 import Home from '@mui/icons-material/Home';
@@ -7,7 +7,6 @@ import axios from 'axios';
 import Listings from './UserListings.jsx';
 import RentedItems from './UserReserves.jsx';
 import Card from '@mui/material/Card';
-import CardActions from '@mui/material/CardActions';
 import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
