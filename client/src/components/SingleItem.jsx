@@ -48,14 +48,13 @@ const SingleItem = ({user, currentItem, addBookmark, appUser, userClick}) => {
           if (person.id === currentItem.userId) {
             return (
               <div key={person.id} style={{marginTop: '50px'}}>
-                <div style={{display: 'inline-flex', padding: '10px', marginLeft: '70px'}}>
+                <div style={{display: 'inline-flex', padding: '10px', marginLeft: '80px'}}>
                   <div style={{marginLeft: '20px'}}>
-                    <Card sx={{ maxWidth: 345 }}>
+                    <Card sx={{ maxWidth: 350 }} variant='outlined'>
                       <Paper>
                         <CardMedia
                           component="img"
                           alt="Item Img"
-                          style ={{ width: '200px', height: '200px', border: '5px solid black', marginLeft: '65px'}}
                           image={`${image}`}
                         />
                         <CardContent>

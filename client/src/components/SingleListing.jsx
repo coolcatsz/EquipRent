@@ -18,12 +18,14 @@ const SingleListing = ({ list, userListing }) => {
 
   return (
     <div>
-      <Typography>
-        <img src={listImg.imgUrl} style ={{width: '200px', height: '200px'}}></img>
-        <h4>
-          {list.type}
-        </h4>
-      </Typography>
+      <div>
+        <Typography>
+          <img src={listImg.imgUrl} style ={{width: '200px', height: '200px', border: '2px solid black'}}></img>
+          <h5>
+            {list.type}
+          </h5>
+        </Typography>
+      </div>
     </div>
   );
 

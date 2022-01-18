@@ -22,7 +22,7 @@ const Listings = () => {
   if (userListing.length !== 0) {
     return (
       <div >
-        <div style={{display: '-webkit-inline-flex'}}>
+        <div>
           {
             userListing.map((list) => {
               return (

@@ -12,7 +12,7 @@ const ItemPost = ({ itemReview, user }) => {
         <Typography>
           <div>
             <h2>Reviews</h2>
-            <Paper>
+            <Paper elevation={0}>
               <Grid container spacing={2} rowSpacing={1} columnSpacing={{ xs: 1, sm: 2, md: 3 }} >
                 {
                   itemReview.sort((a, b) => {
