@@ -3,8 +3,8 @@ const { createServer } = require('http');
 const { Server } = require('socket.io');
 require('dotenv').config();
 
-// const {BASEURL} = process.env;
-const BASEURL = 'http://localhost';
+const {BASEURL} = process.env;
+// const BASEURL = 'http://localhost';
 
 //instantiating pg.client so we can call the pg.Client.on event handler inside of the socket event handler
 const { Client } = require('pg');
@@ -30,6 +30,7 @@ const query = pgClient.query('LISTEN reserve_event');
 const httpServer = createServer(app);
 
 const io = new Server(httpServer, {
+  path: '/notification',
   cors: {
     origin: `${BASEURL}:3000`,
     methods: ['GET', 'POST']

@@ -82,6 +82,14 @@ const SingleItem = ({user, currentItem, addBookmark, appUser, userClick}) => {
                             <Typography>
                               <Button size="small" color="success" onClick={addBookmark} >Bookmark</Button>
                               <Button
+                                size="small"
+                                component={Link}
+                                to={`/chat/${currentItem.type}`}
+                                color="success"
+                              >
+                                Chat
+                              </Button>
+                              <Button
                                 color="success"
                                 component={Link}
                                 to={`/profile/${person.id}`}
