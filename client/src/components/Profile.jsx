@@ -11,8 +11,8 @@ import CardActions from '@mui/material/CardActions';
 import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
-import { Button } from '@mui/material';
 import Paper from '@material-ui/core/Paper';
+import ProfileEdit from './ProfileEdit.jsx';
 
 const Profile = ({ authUser }) => {
   // console.log(authUser, 'AuthUser');
@@ -63,7 +63,8 @@ const Profile = ({ authUser }) => {
             <div>
               <Typography>
                 <h2>Hi I'm {profile.username}</h2>
-                <Button>Edit Profile</Button>
+                <ProfileEdit authUser={authUser}/>
+                {/* <Button>Edit Profile</Button> */}
               </Typography>
             </div>
             <div>

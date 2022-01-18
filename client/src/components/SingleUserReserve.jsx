@@ -36,7 +36,7 @@ const SingleRentedItem = ({rentItem}) => {
     <div>
       <Typography>
         <img src={userReserveImg.imgUrl} style ={{width: '200px', height: '200px'}}></img>
-        <h5>{bookedItem.type}</h5>
+        <p>{bookedItem.type}</p>
         <CreatePost user={rentItem.userId} currentItem={rentItem.itemId} allItemPost={allItemPost} />
       </Typography>
     </div>
