@@ -9,6 +9,7 @@ import Login from './Login.jsx';
 import ItemList from './ItemList.jsx';
 import SingleItem from './SingleItem.jsx';
 import BookmarkList from './BookmarkList.jsx';
+import ActiveChat from './ActiveChat.jsx';
 import Map from './Map.jsx';
 import Paper from '@material-ui/core/Paper';
 import axios from 'axios';
@@ -108,7 +109,8 @@ const App = () => {
             <Routes>
               <Route exact path ="/profile/:userId" element={<Profile authUser={user}/>}/>
               <Route exact path ='/lender' element={<Lender user={user}/>}/>
-              <Route exact path ='/chat' element={<Chat googleUser={user}/>}/>
+              {/* <Route exact path ='/chat' element={<Chat googleUser={user}/>} /> */}
+              <Route exact path ='/chat/:room' element={<ActiveChat googleUser={user}/>} />
               <Route exact path ='/' element={<ItemList itemList={itemList} handleClick={oneItem} user={user} addBookmark={addBookmark} />}/>
               <Route exact path ='/item/:itemId' element={ <SingleItem user={user} currentItem={currentItem} addBookmark={addBookmark} appUser={allUsers} userClick={oneUser}/> } />
               <Route exact path ='/bookmark' element={ <BookmarkList user={user} itemList={itemList} currentItem={currentItem} /> } />
