@@ -42,21 +42,23 @@ const SingleItem = ({user, currentItem, addBookmark, appUser, userClick}) => {
   }
 
   return (
-    <Grid style={{ height: '100vh', width: '100%' }}>
+    <div style={{height: '100vh', width: '100%'}}>
       {
         appUser.map((person) => {
           if (person.id === currentItem.userId) {
             return (
-              <div key={person.id} style={{marginTop: '50px'}}>
-                <div style={{display: 'inline-flex', padding: '10px', marginLeft: '80px'}}>
+              <Grid key={person.id} >
+                <div style={{ marginTop: '50px', display: 'inline-flex', padding: '10px', marginLeft: '30px'}}>
                   <div style={{marginLeft: '20px'}}>
-                    <Card sx={{ maxWidth: 350 }} variant='outlined'>
+                    <Card sx={{ width: 320 }} variant='outlined'>
+                      <CardMedia
+                        component="img"
+                        alt="Item Img"
+                        image={`${image}`}
+                        sx={{ width: 320}}
+                        // style={{width: '300px'}}
+                      />
                       <Paper>
-                        <CardMedia
-                          component="img"
-                          alt="Item Img"
-                          image={`${image}`}
-                        />
                         <CardContent>
                           <Typography gutterBottom variant="h5" component="div">
                           Brand: {currentItem.brand}
@@ -108,15 +110,15 @@ const SingleItem = ({user, currentItem, addBookmark, appUser, userClick}) => {
                     <Calendar currentItem={currentItem} user={user} />
                   </div>
                 </div>
-                <div style={{marginLeft: '100px'}}>
+                <div>
                   <ItemPost itemReview={itemReview} currentItem={currentItem} user={user}/>
                 </div>
-              </div>
+              </Grid>
             );
           }
         })
       }
-    </Grid>
+    </div>
   );
 };
 

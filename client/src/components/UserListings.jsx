@@ -2,7 +2,8 @@ import React, {useState, useEffect} from 'react';
 import axios from 'axios';
 import { Link, useParams } from 'react-router-dom';
 import SingleListing from './SingleListing.jsx';
-import { Button } from '@mui/material';
+import { Paper, Button } from '@mui/material';
+import Carousel from 'react-material-ui-carousel';
 
 const Listings = () => {
   const { userId } = useParams();
@@ -21,7 +22,7 @@ const Listings = () => {
 
   if (userListing.length !== 0) {
     return (
-      <div >
+      <div>
         <div>
           {
             userListing.map((list) => {
