@@ -10,6 +10,7 @@ import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
+import EmailIcon from '@mui/icons-material/Email';
 import Paper from '@material-ui/core/Paper';
 import { Grid } from '@mui/material';
 
@@ -88,6 +89,7 @@ const SingleItem = ({user, currentItem, addBookmark, appUser, userClick}) => {
                                 to={`/chat/${currentItem.type}`}
                                 color="success"
                               >
+                                <EmailIcon/>
                                 Chat
                               </Button>
                               <Button

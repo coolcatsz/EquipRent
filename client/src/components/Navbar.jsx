@@ -19,6 +19,7 @@ import axios from 'axios';
 import SearchStub from './SearchStub.jsx';
 import DarkMode from './DarkMode.jsx';
 import Paper from '@material-ui/core/Paper';
+import EmailIcon from '@mui/icons-material/Email';
 
 import logo from '../img/logo.png';
 
@@ -111,18 +112,18 @@ const NavBar = ({ setItemList, authUser }) => {
             <Button
               size="large"
               component={Link}
-              to="/chat"
-              color="inherit"
-            >
-           Message
-            </Button>
-            <Button
-              size="large"
-              component={Link}
               to="/map"
               color="inherit"
             >
            Map
+            </Button>
+            <Button
+              size="large"
+              component={Link}
+              to="/chat"
+              color="inherit"
+            >
+              <EmailIcon/>
             </Button>
             {
               (user && user.thumbnail) ?

@@ -2,6 +2,8 @@ import React, { useState, useEffect } from 'react';
 import Avatar from '@mui/material/Avatar';
 import ScrollToBottom from 'react-scroll-to-bottom';
 import Paper from '@material-ui/core/Paper';
+import moment from 'moment';
+
 import { useParams } from 'react-router-dom';
 import io from 'socket.io-client';
 const socket = io.connect('http://localhost:3001');
@@ -13,6 +15,8 @@ const ActiveChat = ({ googleUser}) => {
   console.log('room: ', room);
   const [currentMessage, setCurrentMessage] = useState('');
   const [messageList, setMessageList] = useState([]);
+  const currentDate = moment().format('h:mm a');
+  // console.log('date:', currentDate);
 
   
   const messageData = {
@@ -20,7 +24,7 @@ const ActiveChat = ({ googleUser}) => {
     room: room,
     author: googleUser.username,
     message: currentMessage,
-    time: new Date(Date.now()).getHours() + ':' + new Date(Date.now()).getMinutes()
+    time: currentDate
   };
   console.log(messageData);
   const sendMessage = () => {
@@ -41,6 +45,7 @@ const ActiveChat = ({ googleUser}) => {
     socket.on('receive_message', (data) => {
       // console.log('received message, data: ', data);
       setMessageList((list) => [...list, data]);
+      console.log('list', messageList);
     });
   }, [socket]);
 
@@ -49,7 +54,7 @@ const ActiveChat = ({ googleUser}) => {
       <div className="Chat">
         <div className='chat-window'>
           <div className='chat-header'>
-            <p>{`Item: ${room}`}</p>
+            <p>{`${room}`}</p>
           </div>
           <div className='chat-body'>
             <ScrollToBottom className='message-container'>
@@ -58,12 +63,14 @@ const ActiveChat = ({ googleUser}) => {
                   return <div key={i} className='message' id={googleUser.username === messageBody.author ? 'you' : 'other'}>
                     <div>
                       <div className='message-meta'>
-                        <img width={'100%'} src={`${messageData.thumbnail}`} alt="profile pic" />
                         <p id='author'>{messageBody.author}</p>
+                        {/* <Avatar>
+                          <img width={'100%'} src={`${messageData.thumbnail}`} alt="profile pic" />
+                        </Avatar> */}
                       </div>
                       <div className='message-content'>
                         <p>{messageBody.message}</p>
-                        {/* <p id='time'>{messageBody.time}</p> */}
+                        <span id='time'>{messageBody.time}</span>
                       </div>
                     </div>
                   </div>;
