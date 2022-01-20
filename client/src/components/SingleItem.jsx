@@ -55,7 +55,7 @@ const SingleItem = ({user, currentItem, addBookmark, appUser, userClick}) => {
                         component="img"
                         alt="Item Img"
                         image={`${image}`}
-                        // style={{height: 290}}
+                        style={{height: 290}}
                       />
                       <Paper>
                         <CardContent>
