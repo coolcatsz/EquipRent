@@ -11,7 +11,7 @@ const Lender = ({ user, getAllItem }) => {
   const { register, handleSubmit } = useForm();
   const navigate = useNavigate();
 
-  const notify = (data) => toast.success('Image successfully uploaded!', {
+  const notify = (data) => toast.success('Successfully created listing!', {
     position: 'top-right',
     autoClose: 5000,
     hideProgressBar: false,
