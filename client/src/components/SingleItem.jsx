@@ -12,6 +12,7 @@ import Typography from '@mui/material/Typography';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import EmailIcon from '@mui/icons-material/Email';
 import Paper from '@material-ui/core/Paper';
+import { Grid } from '@mui/material';
 
 const SingleItem = ({user, currentItem, addBookmark, appUser, userClick}) => {
   const {itemId} = useParams();
@@ -42,39 +43,39 @@ const SingleItem = ({user, currentItem, addBookmark, appUser, userClick}) => {
   }
 
   return (
-    <div>
+    <div style={{height: '100vh', width: '100%'}}>
       {
         appUser.map((person) => {
           if (person.id === currentItem.userId) {
             return (
-              <div key={person.id} style={{marginTop: '50px'}}>
-                <div style={{display: 'inline-flex', padding: '10px', marginLeft: '70px'}}>
+              <Grid key={person.id} >
+                <div style={{ marginTop: '50px', display: 'inline-flex', marginLeft: '20px'}}>
                   <div style={{marginLeft: '20px'}}>
-                    <Card sx={{ maxWidth: 345 }}>
+                    <Card sx={{ width: 350}} variant='outlined'>
+                      <CardMedia
+                        component="img"
+                        alt="Item Img"
+                        image={`${image}`}
+                        style={{height: 290}}
+                      />
                       <Paper>
-                        <CardMedia
-                          component="img"
-                          alt="Item Img"
-                          style ={{ width: '200px', height: '200px', border: '5px solid black', marginLeft: '65px'}}
-                          image={`${image}`}
-                        />
                         <CardContent>
                           <Typography gutterBottom variant="h5" component="div">
                           Brand: {currentItem.brand}
                           </Typography>
-                          <Typography variant="h6" color="text.secondary">
+                          <Typography variant="h6" >
                           Type: {currentItem.type}
                           </Typography>
-                          <Typography variant="body2" color="text.secondary">
+                          <Typography variant="body2" >
                           Description: {currentItem.description}
                           </Typography>
-                          <Typography variant="body2" color="text.secondary">
+                          <Typography variant="body2" >
                           Condition: {currentItem.condition}
                           </Typography>
-                          <Typography variant="body2" color="text.secondary">
+                          <Typography variant="body2" >
                           Price: ${currentItem.price}
                           </Typography>
-                          <Typography variant="body2" color="text.secondary">
+                          <Typography variant="body2" >
                           Product Value: ${currentItem.value}
                           </Typography>
                         </CardContent>
@@ -110,10 +111,10 @@ const SingleItem = ({user, currentItem, addBookmark, appUser, userClick}) => {
                     <Calendar currentItem={currentItem} user={user} />
                   </div>
                 </div>
-                <div style={{marginLeft: '100px'}}>
+                <div>
                   <ItemPost itemReview={itemReview} currentItem={currentItem} user={user}/>
                 </div>
-              </div>
+              </Grid>
             );
           }
         })

@@ -16,14 +16,9 @@ usersRoute.get('/show/:id', (req, res) => {
 });
 
 usersRoute.put('/theme/:id', (req, res) => {
-
   const theme = req.body;
   User.update(theme, {where: { id: req.params.id }})
-    // .then(() => {
-    //   res.sendStatus(204);
-    // })
     .then(([data]) => {
-      console.log(data);
       if (data === 0) {
         res.status(404);
       }

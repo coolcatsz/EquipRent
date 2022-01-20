@@ -3,6 +3,7 @@ import axios from 'axios';
 import { Link, useParams } from 'react-router-dom';
 import SingleListing from './SingleListing.jsx';
 import { Button } from '@mui/material';
+import Carousel from 'react-grid-carousel';
 
 const Listings = () => {
   const { userId } = useParams();
@@ -21,18 +22,18 @@ const Listings = () => {
 
   if (userListing.length !== 0) {
     return (
-      <div >
-        <div style={{display: '-webkit-inline-flex'}}>
+      <div>
+        <Carousel cols={3}>
           {
             userListing.map((list) => {
               return (
-                <div key={list.id}>
+                <Carousel.Item key={list.id}>
                   <SingleListing list={list} userListing={userListing}/>
-                </div>
+                </Carousel.Item>
               );
             })
           }
-        </div>
+        </Carousel>
       </div>
     );
   } else {

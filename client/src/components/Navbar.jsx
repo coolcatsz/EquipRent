@@ -90,7 +90,7 @@ const NavBar = ({ setItemList, authUser }) => {
               component={Link}
               to="/"
             >
-              <img height="50" width="50" alt="logo" src={logo} />
+              <img height="30" width="65" alt="logo" src={logo} />
             </IconButton>
             <Typography
               variant="h6"

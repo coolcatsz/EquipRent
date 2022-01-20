@@ -35,7 +35,7 @@ const Calendar = ({ currentItem, user }) => {
 
         {(dates[1] === null ) ? (
           <div>
-            <Paper elevation={0}>
+            <Paper elevation={0} style={{color: 'black'}}>
               <LocalizationProvider dateAdapter={AdapterDateFns}>
                 <StaticDateRangePicker
                   displayStaticWrapperAs="desktop"
@@ -45,22 +45,21 @@ const Calendar = ({ currentItem, user }) => {
                     setDates(newValue);
                   }}
                   renderInput={(startProps, endProps) => (
-                    <Paper>
-                      <React.Fragment>
-                        <TextField {...startProps} />
-                        <Box sx={{ mx: 2 }}> to </Box>
-                        <TextField {...endProps} />
-                      </React.Fragment>
-                    </Paper>
+                    <React.Fragment>
+                      <TextField {...startProps} />
+                      <Box sx={{ mx: 2 }}> to </Box>
+                      <TextField {...endProps} />
+                    </React.Fragment>
                   )}
                 />
               </LocalizationProvider>
-              <div style={{marginLeft: '100px'}}>
+              <div style={{marginLeft: '100px', marginTop: '20px'}}>
                 <LocalizationProvider dateAdapter={AdapterDateFns}>
                   <Stack spacing={1}>
-                    <Paper>
+                    <Paper elevation={0}>
                       <DateRangePicker
                         disablePast
+                        readOnly
                         startText="start"
                         endText="end"
                         value={dates}
@@ -84,32 +83,30 @@ const Calendar = ({ currentItem, user }) => {
           </div>
         ) : (
           <div>
-            <Paper elevation={0}>
-
+            <Paper elevation={0} style={{color: 'black'}}>
               <LocalizationProvider dateAdapter={AdapterDateFns}>
-                <Paper>
-                  <StaticDateRangePicker
-                    displayStaticWrapperAs="desktop"
-                    disablePast
-                    value={dates}
-                    onChange={(newValue) => {
-                      setDates(newValue);
-                    }}
-                    renderInput={(startProps, endProps) => (
-                      <React.Fragment>
-                        <TextField {...startProps} />
-                        <Box sx={{ mx: 2 }}> to </Box>
-                        <TextField {...endProps} />
-                      </React.Fragment>
-                    )} />
-                </Paper>
+                <StaticDateRangePicker
+                  displayStaticWrapperAs="desktop"
+                  disablePast
+                  value={dates}
+                  onChange={(newValue) => {
+                    setDates(newValue);
+                  }}
+                  renderInput={(startProps, endProps) => (
+                    <React.Fragment>
+                      <TextField {...startProps} />
+                      <Box sx={{ mx: 2 }}> to </Box>
+                      <TextField {...endProps} />
+                    </React.Fragment>
+                  )} />
               </LocalizationProvider>
-              <div style={{marginLeft: '100px'}}>
+              <div style={{marginLeft: '100px', marginTop: '20px'}}>
                 <LocalizationProvider dateAdapter={AdapterDateFns}>
-                  <Paper>
+                  <Paper elevation={0}>
                     <DesktopDateRangePicker
                       disablePast
-                      startText="Desktop start"
+                      readOnly
+                      startText="Start"
                       value={dates}
                       onChange={(newValue) => {
                         setDates(newValue);

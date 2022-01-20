@@ -2,6 +2,7 @@ import React, {useState, useEffect} from 'react';
 import axios from 'axios';
 import CreatePost from './CreatePost.jsx';
 import Typography from '@mui/material/Typography';
+import Grid from '@mui/material/Grid';
 
 const SingleRentedItem = ({rentItem}) => {
 
@@ -34,11 +35,13 @@ const SingleRentedItem = ({rentItem}) => {
   }, []);
   return (
     <div>
-      <Typography>
-        <img src={userReserveImg.imgUrl} style ={{width: '200px', height: '200px'}}></img>
-        <h5>{bookedItem.type}</h5>
-        <CreatePost user={rentItem.userId} currentItem={rentItem.itemId} allItemPost={allItemPost} />
-      </Typography>
+      <Grid container spacing={1} style={{marginLeft: '10px', marginTop: '10px'}}>
+        <Typography>
+          <img src={userReserveImg.imgUrl} style ={{width: 150, height: 200}}></img>
+          <p>{bookedItem.type}</p>
+          <CreatePost user={rentItem.userId} currentItem={rentItem.itemId} allItemPost={allItemPost} />
+        </Typography>
+      </Grid>
     </div>
   );
 };

@@ -77,10 +77,8 @@ itemRoute.post('/newItemImg', (req, res) => {
 });
 
 itemRoute.put('/available/:id', (req, res) => {
-  // console.log(req);
   itemAvailability(req.params.id)
     .then(([data]) => {
-      console.log(data);
       if (data === 0) {
         res.sendStatus(404);
       }
