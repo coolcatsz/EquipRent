@@ -4,9 +4,20 @@ import axios from 'axios';
 const CLOUDINARY_URL = 'https://api.cloudinary.com/v1_1/coolcatz/image/upload';
 const CLOUDINARY_UPLOAD_PRESET = 'ny4zarxq';
 import { Paper, Typography, Button, TextField, Grid } from '@mui/material';
+import { toast } from 'react-toastify';
 
 const Lender = ({user}) => {
   const { register, handleSubmit } = useForm();
+
+  const notify = (data) => toast.success('Image successfully uploaded!', {
+    position: 'top-right',
+    autoClose: 5000,
+    hideProgressBar: false,
+    closeOnClick: true,
+    pauseOnHover: true,
+    draggable: true,
+    progress: undefined,
+  });
 
   const uploadImage = (files, id) => {
     const formData = new FormData();
@@ -19,6 +30,7 @@ const Lender = ({user}) => {
         console.log(url);
         console.log(id);
         saveUrlToDb(url, id);
+        notify();
       });
   };
   const listItem = data => { 
