@@ -100,7 +100,7 @@ const App = () => {
 
   return (
 
-    <div>
+    <div style={{height: '100vh'}}>
       <Paper elevation={0}>
         { user ? (
           <div>
