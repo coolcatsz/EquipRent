@@ -84,8 +84,8 @@ const Lender = ({ user, getAllItem }) => {
               <div style={{ padding: '6px' }}><TextField id="outlined-basic" fullWidth label="Item For Rent" variant="outlined" input {...register('brand')}/></div>
               <div style={{ padding: '6px' }}><TextField id="outlined-basic" fullWidth label="Category" variant="outlined" input {...register('type')}/></div>
               <div style={{ padding: '6px' }}><TextField id="outlined-basic" fullWidth label="Item Description" variant="outlined" input {...register('description')}/></div>
-              <div style={{ padding: '6px' }}><TextField id="outlined-basic" fullWidth label="Rental Fee" variant="outlined" input {...register('price')}/></div>
-              <div style={{ padding: '6px' }}><TextField id="outlined-basic" fullWidth label="Accessed Value" variant="outlined" input {...register('value')}/></div>
+              <div style={{ padding: '6px' }}><TextField id="outlined-basic" fullWidth label="Rental Fee" variant="outlined" type='number' input {...register('price')}/></div>
+              <div style={{ padding: '6px' }}><TextField id="outlined-basic" fullWidth label="Accessed Value" variant="outlined" type='number' input {...register('value')}/></div>
               <div style={{ padding: '6px' }}><TextField id="outlined-basic" fullWidth label="Condition" variant="outlined" input {...register('condition')}/></div>
               <div style={{ padding: '6px' }}><label>Upload an image of the item</label><input {...register('itemImg')} type="file"/></div>
               <div style={{ padding: '6px' }}><Button type="submit" fullWidth variant="contained" style={{padding: '10px'}} color="success">Upload Item</Button></div>
