@@ -53,26 +53,28 @@ const Calendar = ({ currentItem, user }) => {
                   )}
                 />
               </LocalizationProvider>
-              <div style={{marginLeft: '100px'}}>
+              <div style={{marginLeft: '100px', marginTop: '20px'}}>
                 <LocalizationProvider dateAdapter={AdapterDateFns}>
                   <Stack spacing={1}>
-                    <DateRangePicker
-                      disablePast
-                      readOnly
-                      startText="start"
-                      endText="end"
-                      value={dates}
-                      onChange={(newValue) => {
-                        value = newValue;
-                      }}
-                      renderInput={(startProps, endProps) => (
-                        <React.Fragment>
-                          <TextField {...startProps} />
-                          <Box sx={{ mx: 2 }}> to </Box>
-                          <TextField {...endProps} />
-                        </React.Fragment>
-                      )}
-                    />
+                    <Paper elevation={0}>
+                      <DateRangePicker
+                        disablePast
+                        readOnly
+                        startText="start"
+                        endText="end"
+                        value={dates}
+                        onChange={(newValue) => {
+                          value = newValue;
+                        }}
+                        renderInput={(startProps, endProps) => (
+                          <React.Fragment>
+                            <TextField {...startProps} />
+                            <Box sx={{ mx: 2 }}> to </Box>
+                            <TextField {...endProps} />
+                          </React.Fragment>
+                        )}
+                      />
+                    </Paper>
                   </Stack>
                 </LocalizationProvider>
                 <Button variant="contained" id="outlined-basic" color="success" style={{marginLeft: '130px'}}>Check Availability</Button>
@@ -81,7 +83,7 @@ const Calendar = ({ currentItem, user }) => {
           </div>
         ) : (
           <div>
-            <Paper elevation={0}>
+            <Paper elevation={0} style={{color: 'black'}}>
               <LocalizationProvider dateAdapter={AdapterDateFns}>
                 <StaticDateRangePicker
                   displayStaticWrapperAs="desktop"
@@ -100,22 +102,24 @@ const Calendar = ({ currentItem, user }) => {
               </LocalizationProvider>
               <div style={{marginLeft: '100px', marginTop: '20px'}}>
                 <LocalizationProvider dateAdapter={AdapterDateFns}>
-                  <DesktopDateRangePicker
-                    disablePast
-                    readOnly
-                    startText="Desktop start"
-                    value={dates}
-                    onChange={(newValue) => {
-                      setDates(newValue);
-                    }}
-                    renderInput={(startProps, endProps) => (
-                      <React.Fragment>
-                        <TextField {...startProps} />
-                        <Box sx={{ mx: 2 }}> to </Box>
-                        <TextField {...endProps} />
-                      </React.Fragment>
-                    )}
-                  />
+                  <Paper elevation={0}>
+                    <DesktopDateRangePicker
+                      disablePast
+                      readOnly
+                      startText="Start"
+                      value={dates}
+                      onChange={(newValue) => {
+                        setDates(newValue);
+                      }}
+                      renderInput={(startProps, endProps) => (
+                        <React.Fragment>
+                          <TextField {...startProps} />
+                          <Box sx={{ mx: 2 }}> to </Box>
+                          <TextField {...endProps} />
+                        </React.Fragment>
+                      )}
+                    />
+                  </Paper>
                 </LocalizationProvider>
               </div>
               <div style={{marginLeft: '200px'}}>
