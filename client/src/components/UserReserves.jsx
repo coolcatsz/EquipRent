@@ -21,7 +21,7 @@ const RentedItems = ({ profile, authUser }) => {
   if (rentList.length !== 0) {
     return (
       <div >
-        <Carousel cols={4}>
+        <Carousel cols={3}>
           {
             rentList.map((item) => {
               return (

@@ -22,9 +22,9 @@ const SingleListing = ({ list, userListing }) => {
 
   return (
     <div>
-      <Grid container spacing={2}>
+      <Grid container spacing={1} style={{marginLeft: '20px'}}>
         <Typography>
-          <img src={listImg.imgUrl} style ={{width: 170, height: 200}}></img>
+          <img src={listImg.imgUrl} style ={{width: 150, height: 200}}></img>
           <p>{list.type}</p>
         </Typography>
       </Grid>

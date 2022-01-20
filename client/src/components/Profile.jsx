@@ -36,7 +36,7 @@ const Profile = ({ authUser }) => {
 
   return (
     <div>
-      <div style={{display: 'inline-flex', marginLeft: 30, marginTop: 40}}>
+      <div style={{display: 'inline-flex', marginLeft: 60, marginTop: 70}}>
         <div className='user-info'>
           <Card sx={{ maxWidth: 300 }}>
             <Paper elevation={0}>
@@ -56,7 +56,7 @@ const Profile = ({ authUser }) => {
             </Paper>
           </Card>
         </div>
-        <div style={{marginLeft: '40px'}}>
+        <div style={{marginLeft: '50px'}}>
           <div>
             <div>
               <Typography>
