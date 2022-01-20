@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import { Button } from '@mui/material';
 import StripeCheckout from 'react-stripe-checkout';
-
+import Paper from '@material-ui/core/Paper';
 
 const ItemReservation = ({ currentItem, dates, user}) => {
   const start = dates[0];
@@ -43,14 +43,16 @@ const ItemReservation = ({ currentItem, dates, user}) => {
   return (
     <div>
       <div>
-        <h4>Reservation Info</h4>
-        <p>Price: ${currentItem.price} x {diffInDays} nights</p>
-        <p>Total: ${diffInDays * currentItem.price }</p>
+        <Paper elevation={0}>
+          <h4>Reservation Info</h4>
+          <p>Price: ${currentItem.price} x {diffInDays} nights</p>
+          <p>Total: ${diffInDays * currentItem.price }</p>
+        </Paper>
         <StripeCheckout
           stripeKey="pk_test_51KCqrBFCYowGjKeLmllgUqBP54eEAQyAbtozJjg02KiCT2JhpmgAvLUiXR8C7OpumJNxfbOjhFmPDtztJCc4vjVI00rIlpowFQ"
           token={makePayment}
           amount={diffInDays * currentItem.price * 100}>
-          <Button 
+          <Button
             variant="contained"
             id="outlined-basic"
             color="error">

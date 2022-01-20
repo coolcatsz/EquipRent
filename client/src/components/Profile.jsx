@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Routes, Route, Link, useParams } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import { useSharedUser } from './User.jsx';
 import Divider from '@mui/material/Divider';
 import Home from '@mui/icons-material/Home';
@@ -7,12 +7,11 @@ import axios from 'axios';
 import Listings from './UserListings.jsx';
 import RentedItems from './UserReserves.jsx';
 import Card from '@mui/material/Card';
-import CardActions from '@mui/material/CardActions';
 import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
-import { Button } from '@mui/material';
 import Paper from '@material-ui/core/Paper';
+import ProfileEdit from './ProfileEdit.jsx';
 
 const Profile = ({ authUser }) => {
   // console.log(authUser, 'AuthUser');
@@ -37,14 +36,13 @@ const Profile = ({ authUser }) => {
 
   return (
     <div>
-      <div style={{display: 'inline-flex', padding: '30px', marginLeft: '70px'}}>
+      <div style={{display: 'inline-flex', marginLeft: 60, marginTop: 70}}>
         <div className='user-info'>
-          <Card sx={{ maxWidth: 345 }}>
+          <Card sx={{ maxWidth: 300 }}>
             <Paper elevation={0}>
               <CardMedia
                 component="img"
                 alt="Item Img"
-                style ={{ width: '100px', height: '100px', padding: '20px', marginLeft: '15px'}}
                 image={profile.thumbnail}
               />
               <CardContent>
@@ -58,12 +56,13 @@ const Profile = ({ authUser }) => {
             </Paper>
           </Card>
         </div>
-        <div style={{marginLeft: '150px'}}>
+        <div style={{marginLeft: '70px'}}>
           <div>
             <div>
               <Typography>
                 <h2>Hi I'm {profile.username}</h2>
-                <Button>Edit Profile</Button>
+                <ProfileEdit authUser={authUser}/>
+                {/* <Button>Edit Profile</Button> */}
               </Typography>
             </div>
             <div>

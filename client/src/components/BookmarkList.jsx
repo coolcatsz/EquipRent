@@ -16,20 +16,29 @@ const BookmarkList = ({user, currentItem}) => {
     userBookmark();
   }, []);
 
-  return (
-    <div style={{ height: '100vh', width: '100%' }}>
-      <h1>Bookmarks</h1>
-      {
-        userBookmarkList.map((bookmark) => {
-          return (
-            <div key={bookmark.id}>
-              <SingleBookmark bookmark={bookmark} currentItem={currentItem} />
-            </div>
-          );
-        })
-      }
-    </div>
-  );
+  const uniqueObjects = [...new Map(userBookmarkList.map(item => [item.itemId, item])).values()];
+
+  if (uniqueObjects.length !== 0) {
+    return (
+      <div style={{ height: '100vh', width: '100%' }}>
+        {
+          uniqueObjects.map((bookmark) => {
+            return (
+              <div key={bookmark.id}>
+                <SingleBookmark bookmark={bookmark} currentItem={currentItem} />
+              </div>
+            );
+          })
+        }
+      </div>
+    );
+  } else {
+    return (
+      <div>
+        <h2>No Bookmarks</h2>
+      </div>
+    );
+  }
 };
 
 export default BookmarkList;
