@@ -11,7 +11,7 @@ const ItemPost = ({ itemReview, user }) => {
       <div>
         <Typography>
           <div>
-            <h2>Reviews</h2>
+            <h2 style={{marginLeft: '20px'}}>Reviews</h2>
             <Paper elevation={0}>
               <Grid container spacing={2} rowSpacing={1} columnSpacing={{ xs: 1, sm: 2, md: 3 }} >
                 {
@@ -57,7 +57,7 @@ const ItemPost = ({ itemReview, user }) => {
     return (
       <div>
         <Typography>
-          <h2>No Reviews Yet</h2>
+          <h2 style={{marginLeft: '20px'}}>No Reviews Yet</h2>
         </Typography>
       </div>
     );

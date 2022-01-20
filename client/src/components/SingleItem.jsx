@@ -48,7 +48,7 @@ const SingleItem = ({user, currentItem, addBookmark, appUser, userClick}) => {
           if (person.id === currentItem.userId) {
             return (
               <Grid key={person.id} >
-                <div style={{ marginTop: '30px', display: 'inline-flex', marginLeft: '30px'}}>
+                <div style={{ marginTop: '50px', display: 'inline-flex', marginLeft: '20px'}}>
                   <div style={{marginLeft: '20px'}}>
                     <Card sx={{ width: 350}} variant='outlined'>
                       <CardMedia
