@@ -6,7 +6,7 @@ import './css/LandingPage.css';
 
 ReactDOM.render(
   <BrowserRouter>
-    <App />
+    <App style={{height: '100vh'}}/>
   </BrowserRouter>,
   document.getElementById('app')
 );
