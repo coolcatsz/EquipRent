@@ -55,7 +55,7 @@ const Lender = ({user}) => {
       direction="column"
       alignItems="center"
       justifyContent="center"
-      style={{ minHeight: '100vh' }}
+      style={{ height: '100%', marginTop: '50px' }}
 
     >
       <div style={{display: 'inline-block'}}>
