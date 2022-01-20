@@ -56,7 +56,7 @@ const Profile = ({ authUser }) => {
             </Paper>
           </Card>
         </div>
-        <div style={{marginLeft: '50px'}}>
+        <div style={{marginLeft: '70px'}}>
           <div>
             <div>
               <Typography>

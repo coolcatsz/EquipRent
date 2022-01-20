@@ -35,9 +35,9 @@ const SingleRentedItem = ({rentItem}) => {
   }, []);
   return (
     <div>
-      <Grid container spacing={1} style={{marginLeft: '20px'}}>
+      <Grid container spacing={1} style={{marginLeft: '10px', marginTop: '10px'}}>
         <Typography>
-          <img src={userReserveImg.imgUrl} style ={{width: 170, height: 200}}></img>
+          <img src={userReserveImg.imgUrl} style ={{width: 150, height: 200}}></img>
           <p>{bookedItem.type}</p>
           <CreatePost user={rentItem.userId} currentItem={rentItem.itemId} allItemPost={allItemPost} />
         </Typography>
