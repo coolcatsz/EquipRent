@@ -67,7 +67,7 @@ const Lender = ({user}) => {
       direction="column"
       alignItems="center"
       justifyContent="center"
-      style={{ height: '100%', marginTop: '50px' }}
+      style={{ height: '100%', marginTop: '150px' }}
 
     >
       <div style={{display: 'inline-block'}}>
