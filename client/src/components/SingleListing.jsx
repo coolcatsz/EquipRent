@@ -2,7 +2,6 @@ import React, {useState, useEffect} from 'react';
 import axios from 'axios';
 import Typography from '@mui/material/Typography';
 import Card from '@mui/material/Card';
-import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import Paper from '@material-ui/core/Paper';
 
@@ -23,20 +22,21 @@ const SingleListing = ({ list, userListing }) => {
 
   return (
     <div>
-      <Card sx={{ width: 200 }}>
-        <Paper>
-          <CardMedia
-            component='img'
-            sx={{ width: 200 }}
-            image={listImg.imgUrl}
-          />
-          <CardContent>
+      <Paper elevation={0}>
+        <Card variant="none">
+          <Paper>
+            <CardMedia
+              component="img"
+              sx={{ width: 170 }}
+              image={listImg.imgUrl}
+              alt="Item Img"
+            />
             <Typography variant="h6" component="div">
               {list.type}
             </Typography>
-          </CardContent>
-        </Paper>
-      </Card>
+          </Paper>
+        </Card>
+      </Paper>
     </div>
   );
 

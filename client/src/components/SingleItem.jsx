@@ -50,13 +50,12 @@ const SingleItem = ({user, currentItem, addBookmark, appUser, userClick}) => {
               <Grid key={person.id} >
                 <div style={{ marginTop: '50px', display: 'inline-flex', padding: '10px', marginLeft: '30px'}}>
                   <div style={{marginLeft: '20px'}}>
-                    <Card sx={{ width: 320 }} variant='outlined'>
+                    <Card sx={{ width: '320px' }} variant='outlined'>
                       <CardMedia
                         component="img"
                         alt="Item Img"
                         image={`${image}`}
-                        sx={{ width: 320}}
-                        // style={{width: '300px'}}
+                        style={{height: '265px'}}
                       />
                       <Paper>
                         <CardContent>

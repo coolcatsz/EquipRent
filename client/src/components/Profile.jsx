@@ -36,14 +36,13 @@ const Profile = ({ authUser }) => {
 
   return (
     <div>
-      <div style={{display: 'inline-flex', padding: '30px', marginLeft: '70px'}}>
+      <div style={{display: 'inline-flex', marginLeft: 30, marginTop: 40}}>
         <div className='user-info'>
-          <Card sx={{ maxWidth: 345 }}>
+          <Card sx={{ maxWidth: 300 }}>
             <Paper elevation={0}>
               <CardMedia
                 component="img"
                 alt="Item Img"
-                style ={{ width: '100px', height: '100px', padding: '20px', marginLeft: '15px'}}
                 image={profile.thumbnail}
               />
               <CardContent>
@@ -57,7 +56,7 @@ const Profile = ({ authUser }) => {
             </Paper>
           </Card>
         </div>
-        <div style={{marginLeft: '150px'}}>
+        <div style={{marginLeft: '40px'}}>
           <div>
             <div>
               <Typography>
