@@ -2,14 +2,14 @@ import React, { useState, useEffect } from 'react';
 import Paper from '@material-ui/core/Paper';
 import io from 'socket.io-client';
 
-const baseurl = require('../../../config/keys.js').BASEURL.url;
-// const baseurl = 'http://localhost';
+// const baseurl = require('../../../config/keys.js').BASEURL.url;
+const baseurl = 'http://localhost';
 import '../css/Chat.css';
 
 import ActiveChat from './ActiveChat.jsx';
 
-// const socket = io.connect(`${baseurl}:3001`);
-const socket = io.connect('http://localhost:3001');
+const socket = io.connect(`${baseurl}:3001`);
+
 
 const Chat = ({googleUser}) => {
   
