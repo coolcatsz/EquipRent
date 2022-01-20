@@ -48,14 +48,14 @@ const SingleItem = ({user, currentItem, addBookmark, appUser, userClick}) => {
           if (person.id === currentItem.userId) {
             return (
               <Grid key={person.id} >
-                <div style={{ marginTop: '50px', display: 'inline-flex', padding: '10px', marginLeft: '30px'}}>
+                <div style={{ marginTop: '30px', display: 'inline-flex', marginLeft: '30px'}}>
                   <div style={{marginLeft: '20px'}}>
-                    <Card sx={{ width: '320px' }} variant='outlined'>
+                    <Card sx={{ width: 350}} variant='outlined'>
                       <CardMedia
                         component="img"
                         alt="Item Img"
                         image={`${image}`}
-                        style={{height: '265px'}}
+                        // style={{height: 290}}
                       />
                       <Paper>
                         <CardContent>
