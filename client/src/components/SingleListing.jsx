@@ -4,7 +4,7 @@ import Typography from '@mui/material/Typography';
 import Card from '@mui/material/Card';
 import CardMedia from '@mui/material/CardMedia';
 import Paper from '@material-ui/core/Paper';
-
+import Grid from '@mui/material/Grid';
 
 const SingleListing = ({ list, userListing }) => {
 
@@ -22,21 +22,12 @@ const SingleListing = ({ list, userListing }) => {
 
   return (
     <div>
-      <Paper elevation={0}>
-        <Card variant="none">
-          <Paper>
-            <CardMedia
-              component="img"
-              sx={{ width: 170 }}
-              image={listImg.imgUrl}
-              alt="Item Img"
-            />
-            <Typography variant="h6" component="div">
-              {list.type}
-            </Typography>
-          </Paper>
-        </Card>
-      </Paper>
+      <Grid container spacing={2}>
+        <Typography>
+          <img src={listImg.imgUrl} style ={{width: 170, height: 200}}></img>
+          <p>{list.type}</p>
+        </Typography>
+      </Grid>
     </div>
   );
 

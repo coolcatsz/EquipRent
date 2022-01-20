@@ -1,6 +1,7 @@
 import React, {useState, useEffect} from 'react';
 import axios from 'axios';
 import SingleRentedItem from './SingleUserReserve.jsx';
+import Carousel from 'react-grid-carousel';
 
 const RentedItems = ({ profile, authUser }) => {
 
@@ -19,16 +20,18 @@ const RentedItems = ({ profile, authUser }) => {
 
   if (rentList.length !== 0) {
     return (
-      <div style={{display: '-webkit-inline-flex'}}>
-        {
-          rentList.map((item) => {
-            return (
-              <div key={item.id}>
-                <SingleRentedItem rentItem={item} authUser={authUser} />
-              </div>
-            );
-          })
-        }
+      <div >
+        <Carousel cols={4}>
+          {
+            rentList.map((item) => {
+              return (
+                <Carousel.Item key={item.id}>
+                  <SingleRentedItem rentItem={item} authUser={authUser} />
+                </Carousel.Item>
+              );
+            })
+          }
+        </Carousel>
       </div>
     );
   } else {
