@@ -16,6 +16,7 @@ import axios from 'axios';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { io } from 'socket.io-client';
+import { createTheme, MuiThemeProvider } from '@material-ui/core/styles';
 // const baseurl = require('../../../config/keys.js').BASEURL.url;
 const baseurl = 'http://localhost';
 
@@ -98,13 +99,28 @@ const App = () => {
     });
   }, [lat, long]);
 
-  return (
+  const [darkMode, setDarkMode] = useState(null);
 
-    <div style={{height: '100vh'}}>
+  const theme = createTheme({
+    palette: {
+      type: darkMode ? 'dark' : 'light',
+    },
+  });
+
+  const setTheme = ( themeBol ) => {
+    if (!themeBol) {
+      setDarkMode(false);
+    } else {
+      setDarkMode(true);
+    }
+  };
+
+  return (
+    <MuiThemeProvider style={{height: '100vh'}} theme={theme}>
       <Paper elevation={0}>
         { user ? (
           <div>
-            <Nav setItemList={setItemList} authUser={user.id} darkUser={user}/>
+            <Nav setItemList={setItemList} authUser={user.id} darkUser={user} theme={theme} darkMode={darkMode} setTheme={setTheme} />
             <ToastContainer />
             <Routes>
               <Route exact path ="/profile/:userId" element={<Profile authUser={user}/>}/>
@@ -121,7 +137,7 @@ const App = () => {
           <Nav />
         )}
       </Paper>
-    </div>
+    </MuiThemeProvider>
   );
 };
 
