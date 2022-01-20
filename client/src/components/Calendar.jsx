@@ -35,6 +35,52 @@ const Calendar = ({ currentItem, user }) => {
 
         {(dates[1] === null ) ? (
           <div>
+            <Paper elevation={0} style={{color: 'black'}}>
+              <LocalizationProvider dateAdapter={AdapterDateFns}>
+                <StaticDateRangePicker
+                  displayStaticWrapperAs="desktop"
+                  disablePast
+                  value={dates}
+                  onChange={(newValue) => {
+                    setDates(newValue);
+                  }}
+                  renderInput={(startProps, endProps) => (
+                    <React.Fragment>
+                      <TextField {...startProps} />
+                      <Box sx={{ mx: 2 }}> to </Box>
+                      <TextField {...endProps} />
+                    </React.Fragment>
+                  )}
+                />
+              </LocalizationProvider>
+              <div style={{marginLeft: '100px'}}>
+                <LocalizationProvider dateAdapter={AdapterDateFns}>
+                  <Stack spacing={1}>
+                    <DateRangePicker
+                      disablePast
+                      readOnly
+                      startText="start"
+                      endText="end"
+                      value={dates}
+                      onChange={(newValue) => {
+                        value = newValue;
+                      }}
+                      renderInput={(startProps, endProps) => (
+                        <React.Fragment>
+                          <TextField {...startProps} />
+                          <Box sx={{ mx: 2 }}> to </Box>
+                          <TextField {...endProps} />
+                        </React.Fragment>
+                      )}
+                    />
+                  </Stack>
+                </LocalizationProvider>
+                <Button variant="contained" id="outlined-basic" color="success" style={{marginLeft: '130px'}}>Check Availability</Button>
+              </div>
+            </Paper>
+          </div>
+        ) : (
+          <div>
             <Paper elevation={0}>
               <LocalizationProvider dateAdapter={AdapterDateFns}>
                 <StaticDateRangePicker
@@ -45,52 +91,19 @@ const Calendar = ({ currentItem, user }) => {
                     setDates(newValue);
                   }}
                   renderInput={(startProps, endProps) => (
-                    <Paper>
-                      <React.Fragment>
-                        <TextField {...startProps} />
-                        <Box sx={{ mx: 2 }}> to </Box>
-                        <TextField {...endProps} />
-                      </React.Fragment>
-                    </Paper>
-                  )}
-                />
+                    <React.Fragment>
+                      <TextField {...startProps} />
+                      <Box sx={{ mx: 2 }}> to </Box>
+                      <TextField {...endProps} />
+                    </React.Fragment>
+                  )} />
               </LocalizationProvider>
-              <div style={{marginLeft: '100px'}}>
+              <div style={{marginLeft: '100px', marginTop: '20px'}}>
                 <LocalizationProvider dateAdapter={AdapterDateFns}>
-                  <Stack spacing={1}>
-                    <Paper>
-                      <DateRangePicker
-                        disablePast
-                        startText="start"
-                        endText="end"
-                        value={dates}
-                        onChange={(newValue) => {
-                          value = newValue;
-                        }}
-                        renderInput={(startProps, endProps) => (
-                          <React.Fragment>
-                            <TextField {...startProps} />
-                            <Box sx={{ mx: 2 }}> to </Box>
-                            <TextField {...endProps} />
-                          </React.Fragment>
-                        )}
-                      />
-                    </Paper>
-                  </Stack>
-                </LocalizationProvider>
-                <Button variant="contained" id="outlined-basic" color="success" style={{marginLeft: '130px'}}>Check Availability</Button>
-              </div>
-            </Paper>
-          </div>
-        ) : (
-          <div>
-            <Paper elevation={0}>
-
-              <LocalizationProvider dateAdapter={AdapterDateFns}>
-                <Paper>
-                  <StaticDateRangePicker
-                    displayStaticWrapperAs="desktop"
+                  <DesktopDateRangePicker
                     disablePast
+                    readOnly
+                    startText="Desktop start"
                     value={dates}
                     onChange={(newValue) => {
                       setDates(newValue);
@@ -101,28 +114,8 @@ const Calendar = ({ currentItem, user }) => {
                         <Box sx={{ mx: 2 }}> to </Box>
                         <TextField {...endProps} />
                       </React.Fragment>
-                    )} />
-                </Paper>
-              </LocalizationProvider>
-              <div style={{marginLeft: '100px'}}>
-                <LocalizationProvider dateAdapter={AdapterDateFns}>
-                  <Paper>
-                    <DesktopDateRangePicker
-                      disablePast
-                      startText="Desktop start"
-                      value={dates}
-                      onChange={(newValue) => {
-                        setDates(newValue);
-                      }}
-                      renderInput={(startProps, endProps) => (
-                        <React.Fragment>
-                          <TextField {...startProps} />
-                          <Box sx={{ mx: 2 }}> to </Box>
-                          <TextField {...endProps} />
-                        </React.Fragment>
-                      )}
-                    />
-                  </Paper>
+                    )}
+                  />
                 </LocalizationProvider>
               </div>
               <div style={{marginLeft: '200px'}}>
