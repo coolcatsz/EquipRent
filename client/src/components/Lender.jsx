@@ -5,10 +5,11 @@ const CLOUDINARY_URL = 'https://api.cloudinary.com/v1_1/coolcatz/image/upload';
 const CLOUDINARY_UPLOAD_PRESET = 'ny4zarxq';
 import { Paper, Typography, Button, TextField, Grid } from '@mui/material';
 import { toast } from 'react-toastify';
-import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 const Lender = ({ user, getAllItem }) => {
   const { register, handleSubmit } = useForm();
+  const navigate = useNavigate();
 
   const notify = (data) => toast.success('Image successfully uploaded!', {
     position: 'top-right',
@@ -31,6 +32,9 @@ const Lender = ({ user, getAllItem }) => {
         saveUrlToDb(url, id);
       }).then(() => {
         notify();
+      }).then(() => {
+        console.log('hiiiiii!');
+        navigate('/');
       });
   };
   const listItem = data => { 
