@@ -31,7 +31,7 @@ import { useSharedUser } from './User.jsx';
 import LogOut from './LogOut.jsx';
 //ok
 
-const NavBar = ({ setItemList, authUser }) => {
+const NavBar = ({ setItemList, authUser, darkMode, setTheme, theme }) => {
   const [anchorEl, setAnchorEl] = React.useState(null);
   const [isLoggedIn, setIsLoggedIn] = React.useState(false);
   const [user, setUser] = React.useState(null);
@@ -99,7 +99,7 @@ const NavBar = ({ setItemList, authUser }) => {
             >
             EquipRent
             </Typography>
-            <DarkMode authUser={authUser}/>
+            <DarkMode authUser={authUser} theme={theme} darkMode={darkMode} setTheme={setTheme}/>
             <SearchStub setItemList={setItemList} />
             <Button
               size="large"
