@@ -108,7 +108,7 @@ const App = () => {
             <ToastContainer />
             <Routes>
               <Route exact path ="/profile/:userId" element={<Profile authUser={user}/>}/>
-              <Route exact path ='/lender' element={<Lender user={user}/>}/>
+              <Route exact path ='/lender' element={<Lender user={user} getAllItem={getAllItem}/>}/>
               {/* <Route exact path ='/chat' element={<Chat googleUser={user}/>} /> */}
               <Route exact path ='/chat/:room' element={<ActiveChat googleUser={user}/>} />
               <Route exact path ='/' element={<ItemList itemList={itemList} handleClick={oneItem} user={user} addBookmark={addBookmark} />}/>
