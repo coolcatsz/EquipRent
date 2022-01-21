@@ -45,6 +45,7 @@ body {
   height: calc(450px - (45px + 70px));
   border: 1px solid #263238;
   background: #fff;
+  border-radius: 5px;
 
   position: relative;
 }
@@ -69,7 +70,7 @@ body {
   height: auto;
   min-height: 40px;
   max-width: 120px;
-  background-color: #5893e6;
+  background-color: #fcf9f9;
   border-radius: 5px;
   color: white;
   display: flex;
@@ -87,6 +88,7 @@ body {
 }
 
 #other .message-content {
+  background-color: rgb(235, 239, 246);
   justify-content: flex-start;
 }
 
@@ -132,6 +134,7 @@ body {
   border: 1px solid #263238;
   border-top: none;
   display: flex;
+  border-radius: 5px;
 }
 
 .chat-window .chat-footer input {
@@ -141,6 +144,7 @@ body {
   padding: 0 0.7em;
   font-size: 1em;
   border-right: 1px dotted #607d8b;
+  border-radius: 5px;
 
   outline: none;
   font-family: "Open Sans", sans-serif;
@@ -156,7 +160,8 @@ body {
   background: transparent;
   outline: none;
   font-size: 25px;
-  color: lightgray;
+  color: rgb(255, 255, 255);
+  border-radius: 5px;
 }
 
 .chat-window .chat-footer button:hover {

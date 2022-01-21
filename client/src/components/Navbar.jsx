@@ -31,7 +31,7 @@ import { useSharedUser } from './User.jsx';
 import LogOut from './LogOut.jsx';
 //ok
 
-const NavBar = ({ setItemList, authUser, darkMode, setTheme, theme }) => {
+const NavBar = ({ setItemList, authUser, darkMode, setTheme, theme, getAllItem }) => {
   const [anchorEl, setAnchorEl] = React.useState(null);
   const [isLoggedIn, setIsLoggedIn] = React.useState(false);
   const [user, setUser] = React.useState(null);
