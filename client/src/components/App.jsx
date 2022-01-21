@@ -120,8 +120,8 @@ const App = () => {
   };
 
   return (
-    <MuiThemeProvider theme={theme}>
-      <Paper>
+    <MuiThemeProvider theme={theme} style={{height: '100vh'}}>
+      <Paper elevation={0}>
         { user ? (
           <div >
             <Nav setItemList={setItemList} authUser={user.id} darkUser={user} theme={theme} darkMode={darkMode} setTheme={setTheme} />
