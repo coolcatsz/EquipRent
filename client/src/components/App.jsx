@@ -120,11 +120,11 @@ const App = () => {
   };
 
   return (
-    <MuiThemeProvider style={{height: 'inherit'}} theme={theme}>
-      <Paper elevation={0}>
+    <MuiThemeProvider theme={theme}>
+      <Paper elevation={0} >
         { user ? (
-          <div>
-            <Nav setItemList={setItemList} authUser={user.id} darkUser={user} theme={theme} darkMode={darkMode} setTheme={setTheme} getAllItem={getAllItem} />
+          <div >
+            <Nav setItemList={setItemList} authUser={user.id} darkUser={user} theme={theme} darkMode={darkMode} setTheme={setTheme} />
             <ToastContainer />
             <Routes>
               <Route exact path ="/profile/:userId" element={<Profile authUser={user}/>}/>
