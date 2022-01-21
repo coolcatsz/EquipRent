@@ -30,7 +30,7 @@ const query = pgClient.query('LISTEN reserve_event');
 const httpServer = createServer(app);
 
 const io = new Server(httpServer, {
-  path: '/notification',
+  path: '/app2socket',
   cors: {
     origin: `${BASEURL}:3000`,
     methods: ['GET', 'POST']
