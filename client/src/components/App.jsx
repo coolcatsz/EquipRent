@@ -120,10 +120,10 @@ const App = () => {
   };
 
   return (
-    <MuiThemeProvider style={{height: '100vh'}} theme={theme}>
-      <Paper elevation={0}>
+    <MuiThemeProvider theme={theme}>
+      <Paper elevation={0} >
         { user ? (
-          <div>
+          <div >
             <Nav setItemList={setItemList} authUser={user.id} darkUser={user} theme={theme} darkMode={darkMode} setTheme={setTheme} />
             <ToastContainer />
             <Routes>
