@@ -84,7 +84,7 @@ const App = () => {
     /*
     initializing the socket connection inside of useEffect ensures that only a single connection is made, since useEffect is getting passed an empty array as 2nd arg
     */
-    const socket = io.connect(`${baseurl}`, {path: "/app2socket"});
+    const socket = io.connect(`${baseurl}`, {path: 'app2socket'});
     socket.on('connect', data => {
       socket.emit('ready for data', {});
     });
