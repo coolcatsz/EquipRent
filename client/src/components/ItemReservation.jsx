@@ -55,7 +55,7 @@ const ItemReservation = ({ currentItem, dates, user}) => {
           <Button
             variant="contained"
             id="outlined-basic"
-            color="error">
+            color="success">
               Pay and Reserve Item
           </Button>
         </StripeCheckout>
