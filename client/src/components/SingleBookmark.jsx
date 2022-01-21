@@ -37,7 +37,7 @@ const SingleBookmark = ({bookmark}) => {
   }
 
   return (
-    <Paper elevation={0}>
+    <Paper elevation={0} style={{ height: '100vh', width: '100%' }}>
       <Card sx={{ display: 'inline-flex', marginLeft: '25px', marginTop: '30px' }} variant="none">
         <CardMedia
           component="img"
