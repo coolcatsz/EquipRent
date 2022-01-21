@@ -2,6 +2,7 @@ import React, {useState, useEffect} from 'react';
 import { Link } from 'react-router-dom';
 import Typography from '@mui/material/Typography';
 import axios from 'axios';
+import { shadows } from '@mui/system';
 
 
 
@@ -26,7 +27,7 @@ const Image = ({item, handleClick}) => {
             <Link to={`/item/${item.id}`}>
               <img
                 src={`${itemImg.imgUrl}`}
-                style ={{width: '300px', height: '300px', border: '2px solid black', borderRadius: '20px'}}
+                style ={{width: '300px', height: '300px', border: '1px solid grey', borderRadius: '20px', boxShadow: '5px 9px 16px -11px rgba(0,0,0,0.97)'}}
                 onClick={() => handleClick(item)}
               >
               </img>
