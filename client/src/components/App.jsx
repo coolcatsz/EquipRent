@@ -17,8 +17,8 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { io } from 'socket.io-client';
 import { createTheme, MuiThemeProvider } from '@material-ui/core/styles';
-// const baseurl = require('../../../config/keys.js').BASEURL.url;
-const baseurl = 'http://localhost';
+const baseurl = require('../../../config/keys.js').BASEURL.url;
+// const baseurl = 'http://localhost';
 
 const App = () => {
 
@@ -84,7 +84,7 @@ const App = () => {
     /*
     initializing the socket connection inside of useEffect ensures that only a single connection is made, since useEffect is getting passed an empty array as 2nd arg
     */
-    const socket = io.connect(`http://localhost:3006`, {path: "/app2socket"});
+    const socket = io.connect(`${baseurl}`, {path: "/app2socket"});
     socket.on('connect', data => {
       socket.emit('ready for data', {});
     });
@@ -121,7 +121,7 @@ const App = () => {
 
   return (
     <MuiThemeProvider theme={theme}>
-      <Paper elevation={0} >
+      <Paper>
         { user ? (
           <div >
             <Nav setItemList={setItemList} authUser={user.id} darkUser={user} theme={theme} darkMode={darkMode} setTheme={setTheme} />
