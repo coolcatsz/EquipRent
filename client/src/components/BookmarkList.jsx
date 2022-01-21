@@ -20,7 +20,7 @@ const BookmarkList = ({user, currentItem}) => {
 
   if (uniqueObjects.length !== 0) {
     return (
-      <div style={{ height: '100vh', width: '100%' }}>
+      <div style={{ height: '100vh' }}>
         {
           uniqueObjects.map((bookmark) => {
             return (
@@ -34,7 +34,7 @@ const BookmarkList = ({user, currentItem}) => {
     );
   } else {
     return (
-      <div>
+      <div style={{ height: '100vh' }}>
         <h2>No Bookmarks</h2>
       </div>
     );
