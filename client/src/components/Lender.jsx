@@ -72,11 +72,11 @@ const Lender = ({ user, getAllItem }) => {
       direction="column"
       alignItems="center"
       justifyContent="center"
-      style={{ height: '100%', marginTop: '150px' }}
+      style={{ height: '100%', marginTop: '150px', position: 'relative' }}
 
     >
-      <div style={{display: 'inline-block'}}>
-        <Paper>
+      <div style={{display: 'inline-block', height: '100vh'}}>
+        <Paper >
           <Typography align="center" variant="h2">List an Item</Typography>
           <form onSubmit={handleSubmit(listItem)}>
             <div style={{ padding: '10px' }} spacing={5}>
