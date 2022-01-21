@@ -95,7 +95,8 @@ const NavBar = ({ setItemList, authUser, darkMode, setTheme, theme }) => {
             <Typography
               variant="h6"
               component="div"
-              sx={{ flexGrow: 1 }}
+              sx={{ flexGrow: 1, fontSize: 25 }}
+              fontFamily='Roboto'
             >
             EquipRent
             </Typography>
