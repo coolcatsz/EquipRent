@@ -89,7 +89,7 @@ const App = () => {
       notify(JSON.parse(data.message.payload));
     });
 
-  }, []);
+  }, [itemList]);
 
   useEffect(() => {
     navigator.geolocation.getCurrentPosition(function(position) {

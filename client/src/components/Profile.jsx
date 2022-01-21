@@ -36,7 +36,7 @@ const Profile = ({ authUser }) => {
 
   return (
     <div>
-      <div style={{display: 'inline-flex', marginLeft: 60, marginTop: 70, height: '100vh'}}>
+      <div style={{display: 'inline-flex', marginLeft: 60, marginTop: 70}}>
         <div className='user-info'>
           <Card sx={{ maxWidth: 300 }}>
             <Paper elevation={0}>
