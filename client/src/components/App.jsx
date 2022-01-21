@@ -78,10 +78,13 @@ const App = () => {
     getAllItem();
     authUser();
     appUsers();
+  }, [itemList]);
+
+  useEffect(() => {
     /*
     initializing the socket connection inside of useEffect ensures that only a single connection is made, since useEffect is getting passed an empty array as 2nd arg
     */
-    const socket = io.connect(`http://localhost:3006`);
+    const socket = io.connect(`http://localhost:3006`, {path: "/app2socket"});
     socket.on('connect', data => {
       socket.emit('ready for data', {});
     });
@@ -89,13 +92,14 @@ const App = () => {
       notify(JSON.parse(data.message.payload));
     });
 
-  }, [itemList]);
+
+
+  }, []);
 
   useEffect(() => {
     navigator.geolocation.getCurrentPosition(function(position) {
       setLat(position.coords.latitude);
       setLong(position.coords.longitude);
-      console.log('latitude: ', lat, 'longitude: ', long);
     });
   }, [lat, long]);
 

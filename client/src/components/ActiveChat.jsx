@@ -6,13 +6,15 @@ import moment from 'moment';
 
 import { useParams } from 'react-router-dom';
 import io from 'socket.io-client';
-const socket = io.connect('http://localhost:3001');
+const baseurl = require('../../../config/keys.js').BASEURL.url;
+const socket = io.connect(`${baseurl}`, {path: '/app1socket'});
 
 const ActiveChat = ({ googleUser}) => {
+  
+
 
   const { room } = useParams();
 
-  console.log('room: ', room);
   const [currentMessage, setCurrentMessage] = useState('');
   const [messageList, setMessageList] = useState([]);
   const currentDate = moment().format('h:mm a');
@@ -26,7 +28,7 @@ const ActiveChat = ({ googleUser}) => {
     message: currentMessage,
     time: currentDate
   };
-  console.log(messageData);
+  
   const sendMessage = () => {
     if (currentMessage !== '') {
       socket.emit('send_message', messageData);
@@ -43,11 +45,10 @@ const ActiveChat = ({ googleUser}) => {
     socket.emit('join_room', room, googleUser.username);
 
     socket.on('receive_message', (data) => {
-      // console.log('received message, data: ', data);
       setMessageList((list) => [...list, data]);
       console.log('list', messageList);
     });
-  }, [socket]);
+  }, []);
 
   return (
     <Paper>

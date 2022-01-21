@@ -35,6 +35,7 @@ app.use(express.static(CLIENT_PATH));
 //socket io stuff
 const server = http.createServer(app);
 const io = new Server(server, {
+  path: '/app1socket',
   cors: {
     origin: `${BASEURL}:3000`,
     methods: ['GET', 'POST', 'PUT', 'DELETE']
@@ -42,9 +43,10 @@ const io = new Server(server, {
 });
 //run when client connects
 io.on('connection', (socket) => {
-  // console.log(`User Connected ${socket.id}`);
+  console.log(`User Connected ${socket.id}`);
 
   socket.on('join_room', (data, user) => {
+    console.log('joining room 99999999999999999999999999999999999999999999999999999999');
     socket.join(data);
     // console.log(`user with id: ${socket.id} joined room: ${data}`);
   });
@@ -60,7 +62,7 @@ io.on('connection', (socket) => {
 });
 
 server.listen(3001, () => {
-  console.log('server running');
+  console.log('chat socket server running on port 3001');
 });
 
 app.use(cookieSession({
