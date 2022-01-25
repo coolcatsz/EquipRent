@@ -27,4 +27,19 @@ usersRoute.put('/theme/:id', (req, res) => {
     .catch(err => console.error(err, 'backErr'));
 });
 
+usersRoute.put('/about/:id', (req, res) => {
+  const data = {
+    description: req.body.description,
+  };
+  User.update(data, {where: {id: req.params.id}})
+    .then(([data]) => {
+      if (data === 0) {
+        res.status(404);
+      }
+      console.log(data);
+      res.sendStatus(200);
+    }).catch(err => console.log('About Error'));
+});
+
+
 module.exports = usersRoute;
