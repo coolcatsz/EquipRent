@@ -1,4 +1,5 @@
 import React from 'react';
+import axios from 'axios';
 import { Button } from '@mui/material';
 import { useParams } from 'react-router-dom';
 import Typography from '@mui/material/Typography';
@@ -19,6 +20,12 @@ const ProfileEdit = ({authUser}) => {
 
   const handleClose = () => {
     setOpen(false);
+  };
+
+  const addProfileInfo = (describe) => {
+    axios.put(`users/about/${userId}`, {description: describe})
+      .then((data) => console.log(data))
+      .catch((data) => console.log(err, 'profileEditErr'));
   };
 
   if (Number(userId) === authUser.id) {
