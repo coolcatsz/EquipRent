@@ -1,7 +1,7 @@
 import React, {useEffect} from 'react';
 import axios from 'axios';
 import { Button } from '@mui/material';
-import { useParams } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
@@ -28,14 +28,13 @@ const ProfileEdit = ({authUser, currSignedUser}) => {
     setOpen(false);
   };
 
-
   if (Number(userId) === authUser.id) {
     return (
       <div>
         <Button variant="outlined" onClick={handleClickOpen}>Edit Profile</Button>
         <Dialog open={open} onClose={handleClose}>
           <DialogTitle>Update Profile</DialogTitle>
-          <form id="my-form-id" onSubmit={currSignedUser}>
+          <form id="my-form-id" >
             <DialogContent>
               <Box
                 sx={{
@@ -58,7 +57,10 @@ const ProfileEdit = ({authUser, currSignedUser}) => {
               />
             </DialogContent>
             <DialogActions>
-              <Button type="submit" form="my-form-id" onClick={handleClose }>Save</Button>
+              <Button type="submit" form="my-form-id" component={Link} to={`/profile/${authUser.id}`} onClick={() => {
+                handleClose();
+                currSignedUser();
+              }}>Save</Button>
             </DialogActions>
           </form>
         </Dialog>

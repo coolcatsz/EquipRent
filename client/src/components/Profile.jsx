@@ -23,12 +23,13 @@ const Profile = ({ authUser }) => {
       .catch((err) => console.error('listings error'));
   };
 
+  const currSignedUser = () => {
+    axios.get(`/users/show/${userId}`)
+      .then(({data}) => setProfile(data))
+      .catch((err) => console.error('SignedUserErr'));
+  };
+
   useEffect(() => {
-    const currSignedUser = () => {
-      axios.get(`/users/show/${userId}`)
-        .then(({data}) => setProfile(data))
-        .catch((err) => console.error('SignedUserErr'));
-    };
     currSignedUser();
     userRentListings();
   }, [userId]);
@@ -60,7 +61,7 @@ const Profile = ({ authUser }) => {
             <div>
               <Typography>
                 <h2>Hi I'm {profile.username}</h2>
-                <ProfileEdit authUser={authUser}/>
+                <ProfileEdit authUser={authUser} profile={profile} currSignedUser={currSignedUser}/>
               </Typography>
             </div>
             <div>
@@ -82,7 +83,7 @@ const Profile = ({ authUser }) => {
           <div>
             <Typography>
               <h2>{profile.username}'s rented items</h2>
-              <RentedItems profile={profile} authUser={authUser} currSignedUser={currSignedUser}/>
+              <RentedItems profile={profile} authUser={authUser}/>
             </Typography>
           </div>
         </div>
