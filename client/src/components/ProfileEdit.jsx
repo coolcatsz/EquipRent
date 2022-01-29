@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import axios from 'axios';
 import { Button } from '@mui/material';
 import { useParams } from 'react-router-dom';
@@ -10,9 +10,15 @@ import DialogActions from '@mui/material/DialogActions';
 import DialogContent from '@mui/material/DialogContent';
 import DialogTitle from '@mui/material/DialogTitle';
 
-const ProfileEdit = ({authUser}) => {
+const ProfileEdit = ({authUser, currSignedUser}) => {
   const {userId} = useParams();
   const [open, setOpen] = React.useState(false);
+
+  const addProfileInfo = (describe) => {
+    axios.put(`/users/about/${authUser.id}`, {description: describe})
+      .then((data) => console.log(data, 'dataDescribe'))
+      .catch((err) => console.log(err, 'profileEditErr'));
+  };
 
   const handleClickOpen = () => {
     setOpen(true);
@@ -22,11 +28,6 @@ const ProfileEdit = ({authUser}) => {
     setOpen(false);
   };
 
-  const addProfileInfo = (describe) => {
-    axios.put(`users/about/${userId}`, {description: describe})
-      .then((data) => console.log(data))
-      .catch((data) => console.log(err, 'profileEditErr'));
-  };
 
   if (Number(userId) === authUser.id) {
     return (
@@ -34,7 +35,7 @@ const ProfileEdit = ({authUser}) => {
         <Button variant="outlined" onClick={handleClickOpen}>Edit Profile</Button>
         <Dialog open={open} onClose={handleClose}>
           <DialogTitle>Update Profile</DialogTitle>
-          <form id="my-form-id" >
+          <form id="my-form-id" onSubmit={currSignedUser}>
             <DialogContent>
               <Box
                 sx={{
@@ -51,14 +52,13 @@ const ProfileEdit = ({authUser}) => {
                 autoFocus
                 margin="dense"
                 fullWidth
-                // value={description}
-                onChange={(event) => {
-                  setDescription(event.target.value);
+                onChange={(e) => {
+                  addProfileInfo(e.target.value);
                 }}
               />
             </DialogContent>
             <DialogActions>
-              <Button type="submit" form="my-form-id" onClick={handleClose}>Post</Button>
+              <Button type="submit" form="my-form-id" onClick={handleClose }>Save</Button>
             </DialogActions>
           </form>
         </Dialog>

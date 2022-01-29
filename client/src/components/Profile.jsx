@@ -14,7 +14,6 @@ import Paper from '@material-ui/core/Paper';
 import ProfileEdit from './ProfileEdit.jsx';
 
 const Profile = ({ authUser }) => {
-  // console.log(authUser, 'AuthUser');
   const { userId } = useParams();
   const [profile, setProfile] = useState({});
 
@@ -31,7 +30,7 @@ const Profile = ({ authUser }) => {
         .catch((err) => console.error('SignedUserErr'));
     };
     currSignedUser();
-    userRentListings;
+    userRentListings();
   }, [userId]);
 
   return (
@@ -62,7 +61,6 @@ const Profile = ({ authUser }) => {
               <Typography>
                 <h2>Hi I'm {profile.username}</h2>
                 <ProfileEdit authUser={authUser}/>
-                {/* <Button>Edit Profile</Button> */}
               </Typography>
             </div>
             <div>
@@ -84,7 +82,7 @@ const Profile = ({ authUser }) => {
           <div>
             <Typography>
               <h2>{profile.username}'s rented items</h2>
-              <RentedItems profile={profile} authUser={authUser} />
+              <RentedItems profile={profile} authUser={authUser} currSignedUser={currSignedUser}/>
             </Typography>
           </div>
         </div>

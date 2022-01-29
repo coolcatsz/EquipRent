@@ -28,15 +28,14 @@ usersRoute.put('/theme/:id', (req, res) => {
 });
 
 usersRoute.put('/about/:id', (req, res) => {
-  const data = {
-    description: req.body.description,
-  };
-  User.update(data, {where: {id: req.params.id}})
+  console.log(req);
+  const description = req.body;
+  User.update(description, {where: {id: req.params.id}})
     .then(([data]) => {
+      console.log(data);
       if (data === 0) {
         res.status(404);
       }
-      console.log(data);
       res.sendStatus(200);
     }).catch(err => console.log('About Error'));
 });
