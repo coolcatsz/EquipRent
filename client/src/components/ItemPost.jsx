@@ -5,7 +5,7 @@ import Typography from '@mui/material/Typography';
 import Paper from '@material-ui/core/Paper';
 
 const ItemPost = ({ itemReview, user }) => {
-
+  console.log(user, "USER");
   if (itemReview.length !== 0) {
     return (
       <div>
