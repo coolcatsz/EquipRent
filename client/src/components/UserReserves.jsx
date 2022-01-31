@@ -18,12 +18,13 @@ const RentedItems = ({ profile, authUser }) => {
     }
   }, [profile]);
 
-  if (rentList.length !== 0) {
+  const uniqueReserves = [...new Map(rentList.map(item => [item.itemId, item])).values()];
+  if (uniqueReserves.length !== 0) {
     return (
       <div >
         <Carousel cols={3}>
           {
-            rentList.map((item) => {
+            uniqueReserves.map((item) => {
               return (
                 <Carousel.Item key={item.id}>
                   <SingleRentedItem rentItem={item} authUser={authUser} />
