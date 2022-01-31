@@ -7,7 +7,6 @@ import Paper from '@material-ui/core/Paper';
 import Grid from '@mui/material/Grid';
 
 const SingleListing = ({ list, userListing }) => {
-
   const [listImg, setListImg] = useState({});
 
   const listingImg = () => {

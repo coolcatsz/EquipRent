@@ -3,8 +3,8 @@ const { createServer } = require('http');
 const { Server } = require('socket.io');
 require('dotenv').config();
 
-const {BASEURL} = process.env;
-// const BASEURL = 'http://localhost';
+// const {BASEURL} = process.env;
+const BASEURL = 'http://localhost';
 
 //instantiating pg.client so we can call the pg.Client.on event handler inside of the socket event handler
 const { Client } = require('pg');
