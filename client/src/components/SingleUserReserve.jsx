@@ -37,7 +37,11 @@ const SingleRentedItem = ({rentItem}) => {
     <div>
       <Grid container spacing={1} style={{marginLeft: '10px', marginTop: '10px'}}>
         <Typography>
-          <img src={userReserveImg.imgUrl} style ={{width: 130, height: 200}}></img>
+          <img
+            src={userReserveImg.imgUrl}
+            style ={{width: 135, height: 200, border: '1px solid grey', borderRadius: '20px', boxShadow: '5px 9px 16px -11px rgba(0,0,0,0.97)'}}
+          >
+          </img>
           <p>{bookedItem.type}</p>
           <CreatePost user={rentItem.userId} currentItem={rentItem.itemId} allItemPost={allItemPost} />
         </Typography>
