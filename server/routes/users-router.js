@@ -32,7 +32,6 @@ usersRoute.put('/about/:id', (req, res) => {
   const description = req.body;
   User.update(description, {where: {id: req.params.id}})
     .then(([data]) => {
-      console.log(data);
       if (data === 0) {
         res.status(404);
       }

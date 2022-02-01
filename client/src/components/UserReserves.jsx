@@ -22,7 +22,7 @@ const RentedItems = ({ profile, authUser }) => {
   if (uniqueReserves.length !== 0) {
     return (
       <div >
-        <Carousel cols={3}>
+        <Carousel cols={4}>
           {
             uniqueReserves.map((item) => {
               return (

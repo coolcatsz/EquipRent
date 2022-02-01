@@ -14,6 +14,7 @@ import EmailIcon from '@mui/icons-material/Email';
 import Paper from '@material-ui/core/Paper';
 import { Grid } from '@mui/material';
 
+
 const SingleItem = ({user, currentItem, addBookmark, appUser, userClick}) => {
   const {itemId} = useParams();
 
@@ -51,13 +52,12 @@ const SingleItem = ({user, currentItem, addBookmark, appUser, userClick}) => {
               <Grid key={person.id} >
                 <div style={{ marginTop: '50px', display: 'inline-flex', marginLeft: '20px'}}>
                   <div style={{marginLeft: '20px'}}>
-                    <Card sx={{ width: 350}} variant='outlined'>
-                      <CardMedia
-                        component="img"
-                        alt="Item Img"
-                        image={`${image}`}
-                        style={{height: 290}}
-                      />
+                    <img
+                      src={`${image}`}
+                      style ={{width: '300px', height: '300px', border: '1px solid grey', borderRadius: '20px', boxShadow: '5px 9px 16px -11px rgba(0,0,0,0.97)'}}
+                    >
+                    </img>
+                    <Card sx={{ width: 350}} variant='none'>
                       <Paper>
                         <CardContent>
                           <Typography gutterBottom variant="h5" component="div">

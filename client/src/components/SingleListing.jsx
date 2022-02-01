@@ -23,7 +23,11 @@ const SingleListing = ({ list, userListing }) => {
     <div>
       <Grid container spacing={1} style={{marginLeft: '10px', marginTop: '10px'}}>
         <Typography>
-          <img src={listImg.imgUrl} style ={{width: 130, height: 200}}></img>
+          <img
+            src={listImg.imgUrl}
+            style ={{width: 135, height: 200, border: '1px solid grey', borderRadius: '20px', boxShadow: '5px 9px 16px -11px rgba(0,0,0,0.97)'}}
+          >
+          </img>
           <p>{list.type}</p>
         </Typography>
       </Grid>
