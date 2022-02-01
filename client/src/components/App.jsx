@@ -78,7 +78,7 @@ const App = () => {
     getAllItem();
     authUser();
     appUsers();
-  }, [itemList]);
+  }, []);
 
   useEffect(() => {
     /*

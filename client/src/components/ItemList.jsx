@@ -10,7 +10,9 @@ const ItemList = ({itemList, handleClick, user, addBookmark}) => {
       <div style={{display: 'inherit'}}>
         {
           (itemList.length > 0) ? (
-            itemList.map((item) => {
+            itemList.sort((a, b) => {
+              return a.id - b.id;
+            }).reverse().map((item) => {
               // console.log(item, 'Single');
               return (
                 <div
