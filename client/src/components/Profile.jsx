@@ -75,7 +75,7 @@ const Profile = ({ authUser, listingClick }) => {
           <div>
             <Typography>
               <h2>{profile.username}'s rented items</h2>
-              <RentedItems profile={profile} authUser={authUser}/>
+              <RentedItems profile={profile} authUser={authUser} rentalClick={listingClick}/>
             </Typography>
           </div>
         </div>
