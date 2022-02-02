@@ -23,7 +23,7 @@ const Listings = ({listingClick}) => {
   if (userListing.length !== 0) {
     return (
       <div>
-        <Carousel cols={4}>
+        <Carousel cols={3}>
           {
             userListing.map((list) => {
               return (

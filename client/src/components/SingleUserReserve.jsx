@@ -36,12 +36,12 @@ const SingleRentedItem = ({rentItem, rentalClick}) => {
   }, []);
   return (
     <div>
-      <Grid container spacing={1} style={{marginLeft: '10px', marginTop: '10px'}}>
+      <Grid container spacing={1} style={{marginLeft: '5px', marginTop: '10px'}}>
         <div>
           <Link to={`/item/${bookedItem.id}`}>
             <img
               src={userReserveImg.imgUrl}
-              style ={{width: 135, height: 200, border: '1px solid grey', borderRadius: '20px', boxShadow: '5px 9px 16px -11px rgba(0,0,0,0.97)'}}
+              style ={{width: 135, height: 150, border: '1px solid grey', borderRadius: '20px', boxShadow: '5px 9px 16px -11px rgba(0,0,0,0.97)'}}
               onClick={() => rentalClick(bookedItem)}
             >
             </img>
