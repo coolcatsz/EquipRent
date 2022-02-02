@@ -22,7 +22,7 @@ const SingleItem = ({user, currentItem, addBookmark, appUser, userClick}) => {
   const [singleItemImg, setSingleItemImg] = useState({});
 
   const oneItemImg = () => {
-    axios.get(`/item/itemImg/${currentItem.id}`)
+    axios.get(`/item/itemImg/${itemId}`)
       .then(( {data} ) => setSingleItemImg(data[0]))
       .catch((err) => console.error('GetAxiosErr'));
   };

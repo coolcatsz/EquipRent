@@ -31,7 +31,7 @@ const ProfileEdit = ({authUser, currSignedUser}) => {
   if (Number(userId) === authUser.id) {
     return (
       <div>
-        <Button variant="outlined" onClick={handleClickOpen}>Edit Profile</Button>
+        <Button variant="outlined" onClick={handleClickOpen} color='success'>Edit Profile</Button>
         <Dialog open={open} onClose={handleClose}>
           <DialogTitle>Update Profile</DialogTitle>
           <form id="my-form-id" >
@@ -57,7 +57,7 @@ const ProfileEdit = ({authUser, currSignedUser}) => {
               />
             </DialogContent>
             <DialogActions>
-              <Button type="submit" form="my-form-id" component={Link} to={`/profile/${authUser.id}`} onClick={() => {
+              <Button color='success' type="submit" form="my-form-id" component={Link} to={`/profile/${authUser.id}`} onClick={() => {
                 handleClose();
                 currSignedUser();
               }}>Save</Button>

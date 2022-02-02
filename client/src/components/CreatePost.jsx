@@ -42,7 +42,7 @@ const CreatePost = ({user, currentItem}) => {
   return (
     <div>
       <div>
-        <Button variant="outlined" onClick={handleClickOpen}>
+        <Button variant="outlined" onClick={handleClickOpen} color='success'>
         Review
         </Button>
         <Dialog open={open} onClose={handleClose}>
@@ -79,7 +79,7 @@ const CreatePost = ({user, currentItem}) => {
               />
             </DialogContent>
             <DialogActions>
-              <Button type="submit" form="my-form-id" onClick={handleClose}>Post</Button>
+              <Button color='success' type="submit" form="my-form-id" onClick={handleClose}>Post</Button>
             </DialogActions>
           </form>
         </Dialog>
