@@ -1,6 +1,7 @@
 import React, {useState, useEffect} from 'react';
 import axios from 'axios';
 import SingleBookmark from './SingleBookmark.jsx';
+import Typography from '@mui/material/Typography';
 
 const BookmarkList = ({user, currentItem}) => {
 
@@ -34,8 +35,8 @@ const BookmarkList = ({user, currentItem}) => {
     );
   } else {
     return (
-      <div style={{ height: '100vh' }}>
-        <h2>No Bookmarks</h2>
+      <div style={{ height: '100vh', margin: '30px' }}>
+        <Typography variant='h4'>No Bookmarks</Typography>
       </div>
     );
   }
