@@ -118,14 +118,6 @@ const NavBar = ({ setItemList, authUser, darkMode, setTheme, theme, getAllItem }
             >
            Map
             </Button>
-            <Button
-              size="large"
-              component={Link}
-              to="/chat"
-              color="inherit"
-            >
-              <EmailIcon/>
-            </Button>
             {
               (user && user.thumbnail) ?
 
