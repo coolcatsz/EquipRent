@@ -1,9 +1,6 @@
 import React, {useState, useEffect} from 'react';
 import axios from 'axios';
 import Typography from '@mui/material/Typography';
-import Card from '@mui/material/Card';
-import CardMedia from '@mui/material/CardMedia';
-import Paper from '@material-ui/core/Paper';
 import Grid from '@mui/material/Grid';
 
 const SingleListing = ({ list, userListing }) => {

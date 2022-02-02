@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
-import { useSharedUser } from './User.jsx';
 import Divider from '@mui/material/Divider';
 import Home from '@mui/icons-material/Home';
 import axios from 'axios';

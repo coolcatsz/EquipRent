@@ -1,5 +1,5 @@
 const differenceInDays = require('date-fns/differenceInDays/index.js');
-import React, { useState } from 'react';
+import React from 'react';
 import axios from 'axios';
 import { Button } from '@mui/material';
 import StripeCheckout from 'react-stripe-checkout';

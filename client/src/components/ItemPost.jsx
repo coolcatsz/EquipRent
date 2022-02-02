@@ -12,7 +12,6 @@ import Avatar from '@mui/material/Avatar';
 
 
 const ItemPost = ({ itemReview, user }) => {
-  console.log(itemReview);
 
   let ratingAvg = 0;
   const average = itemReview.reduce((total, rateObj) => {
@@ -22,8 +21,6 @@ const ItemPost = ({ itemReview, user }) => {
     }
     return total;
   }, 0) / ratingAvg;
-
-  console.log(average);
 
   if (itemReview.length !== 0) {
     return (

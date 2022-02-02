@@ -1,8 +1,6 @@
 import React from 'react';
 import Image from './Image.jsx';
 
-
-
 const ItemList = ({itemList, handleClick, user, addBookmark}) => {
 
   return (

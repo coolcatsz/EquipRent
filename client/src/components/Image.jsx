@@ -4,8 +4,6 @@ import Typography from '@mui/material/Typography';
 import axios from 'axios';
 import { shadows } from '@mui/system';
 
-
-
 const Image = ({item, handleClick}) => {
   const [itemImg, setItemImg] = useState({});
 
