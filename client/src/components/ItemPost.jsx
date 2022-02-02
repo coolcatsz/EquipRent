@@ -79,9 +79,7 @@ const ItemPost = ({ itemReview, user }) => {
   } else {
     return (
       <div>
-        <Typography>
-          <h2 style={{marginLeft: '20px'}}>No Reviews Yet</h2>
-        </Typography>
+        <Typography variant='h5' style={{marginLeft: '50px'}}>No Reviews Yet</Typography>
       </div>
     );
   }
