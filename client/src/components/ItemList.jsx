@@ -1,8 +1,6 @@
 import React from 'react';
 import Image from './Image.jsx';
 
-
-
 const ItemList = ({itemList, handleClick, user, addBookmark}) => {
 
   return (
@@ -13,7 +11,6 @@ const ItemList = ({itemList, handleClick, user, addBookmark}) => {
             itemList.sort((a, b) => {
               return a.id - b.id;
             }).reverse().map((item) => {
-              // console.log(item, 'Single');
               return (
                 <div
                   key={item.id}

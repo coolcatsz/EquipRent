@@ -7,7 +7,6 @@ import Button from '@mui/material/Button';
 import Card from '@mui/material/Card';
 import CardActions from '@mui/material/CardActions';
 import CardContent from '@mui/material/CardContent';
-import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import EmailIcon from '@mui/icons-material/Email';
@@ -22,7 +21,7 @@ const SingleItem = ({user, currentItem, addBookmark, appUser, userClick}) => {
   const [singleItemImg, setSingleItemImg] = useState({});
 
   const oneItemImg = () => {
-    axios.get(`/item/itemImg/${currentItem.id}`)
+    axios.get(`/item/itemImg/${itemId}`)
       .then(( {data} ) => setSingleItemImg(data[0]))
       .catch((err) => console.error('GetAxiosErr'));
   };

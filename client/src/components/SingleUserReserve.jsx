@@ -3,8 +3,9 @@ import axios from 'axios';
 import CreatePost from './CreatePost.jsx';
 import Typography from '@mui/material/Typography';
 import Grid from '@mui/material/Grid';
+import { Link } from 'react-router-dom';
 
-const SingleRentedItem = ({rentItem}) => {
+const SingleRentedItem = ({rentItem, rentalClick}) => {
 
   const [bookedItem, setBookedItem] = useState({});
   const [userReserveImg, setUserReserveImg] = useState({});
@@ -35,16 +36,19 @@ const SingleRentedItem = ({rentItem}) => {
   }, []);
   return (
     <div>
-      <Grid container spacing={1} style={{marginLeft: '10px', marginTop: '10px'}}>
-        <Typography>
-          <img
-            src={userReserveImg.imgUrl}
-            style ={{width: 135, height: 200, border: '1px solid grey', borderRadius: '20px', boxShadow: '5px 9px 16px -11px rgba(0,0,0,0.97)'}}
-          >
-          </img>
+      <Grid container spacing={1} style={{marginLeft: '5px', marginTop: '10px'}}>
+        <div>
+          <Link to={`/item/${bookedItem.id}`}>
+            <img
+              src={userReserveImg.imgUrl}
+              style ={{width: 135, height: 150, border: '1px solid grey', borderRadius: '20px', boxShadow: '5px 9px 16px -11px rgba(0,0,0,0.97)'}}
+              onClick={() => rentalClick(bookedItem)}
+            >
+            </img>
+          </Link>
           <p>{bookedItem.type}</p>
           <CreatePost user={rentItem.userId} currentItem={rentItem.itemId} allItemPost={allItemPost} />
-        </Typography>
+        </div>
       </Grid>
     </div>
   );

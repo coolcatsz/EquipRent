@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
-import { useSharedUser } from './User.jsx';
 import Divider from '@mui/material/Divider';
 import Home from '@mui/icons-material/Home';
 import axios from 'axios';
@@ -13,15 +12,9 @@ import Typography from '@mui/material/Typography';
 import Paper from '@material-ui/core/Paper';
 import ProfileEdit from './ProfileEdit.jsx';
 
-const Profile = ({ authUser }) => {
+const Profile = ({ authUser, listingClick }) => {
   const { userId } = useParams();
   const [profile, setProfile] = useState({});
-
-  const userRentListings = () => {
-    axios.get(`/item/userItem/${userId}`)
-      .then(({data}) => console.log(data, 'data'))
-      .catch((err) => console.error('listings error'));
-  };
 
   const currSignedUser = () => {
     axios.get(`/users/show/${userId}`)
@@ -31,7 +24,6 @@ const Profile = ({ authUser }) => {
 
   useEffect(() => {
     currSignedUser();
-    userRentListings();
   }, [userId]);
 
   return (
@@ -76,14 +68,14 @@ const Profile = ({ authUser }) => {
           <div>
             <Typography>
               <h2>{profile.username}'s listings</h2>
-              <Listings />
+              <Listings listingClick={listingClick}/>
             </Typography>
           </div>
           <Divider variant="middle"/>
           <div>
             <Typography>
               <h2>{profile.username}'s rented items</h2>
-              <RentedItems profile={profile} authUser={authUser}/>
+              <RentedItems profile={profile} authUser={authUser} rentalClick={listingClick}/>
             </Typography>
           </div>
         </div>

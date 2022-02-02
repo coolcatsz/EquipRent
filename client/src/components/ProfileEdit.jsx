@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react';
+import React from 'react';
 import axios from 'axios';
 import { Button } from '@mui/material';
 import { Link, useParams } from 'react-router-dom';
@@ -31,7 +31,7 @@ const ProfileEdit = ({authUser, currSignedUser}) => {
   if (Number(userId) === authUser.id) {
     return (
       <div>
-        <Button variant="outlined" onClick={handleClickOpen}>Edit Profile</Button>
+        <Button variant="outlined" onClick={handleClickOpen} color='success'>Edit Profile</Button>
         <Dialog open={open} onClose={handleClose}>
           <DialogTitle>Update Profile</DialogTitle>
           <form id="my-form-id" >
@@ -57,7 +57,7 @@ const ProfileEdit = ({authUser, currSignedUser}) => {
               />
             </DialogContent>
             <DialogActions>
-              <Button type="submit" form="my-form-id" component={Link} to={`/profile/${authUser.id}`} onClick={() => {
+              <Button color='success' type="submit" form="my-form-id" component={Link} to={`/profile/${authUser.id}`} onClick={() => {
                 handleClose();
                 currSignedUser();
               }}>Save</Button>

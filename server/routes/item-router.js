@@ -1,7 +1,6 @@
 const { Router } = require('express');
 const itemRoute = Router();
 const { findAllItem, findUserItem, itemImgId, newItem, itemAvailability, newItemImg, findItemById} = require('../helpers/itemHelper');
-// const { findAllItem, findUserItem, itemImgId, newItem, newItemImg } = require('../helpers/itemHelper');
 
 itemRoute.get('/allItem', (req, res) => {
   findAllItem()

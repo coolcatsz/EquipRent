@@ -5,7 +5,7 @@ import SingleListing from './SingleListing.jsx';
 import { Button } from '@mui/material';
 import Carousel from 'react-grid-carousel';
 
-const Listings = () => {
+const Listings = ({listingClick}) => {
   const { userId } = useParams();
   const [userListing, setUserListing] = useState([]);
 
@@ -23,12 +23,12 @@ const Listings = () => {
   if (userListing.length !== 0) {
     return (
       <div>
-        <Carousel cols={4}>
+        <Carousel cols={3}>
           {
             userListing.map((list) => {
               return (
                 <Carousel.Item key={list.id}>
-                  <SingleListing list={list} userListing={userListing}/>
+                  <SingleListing list={list} listingClick={listingClick}/>
                 </Carousel.Item>
               );
             })
@@ -41,6 +41,8 @@ const Listings = () => {
       <div>
         <h3>No Listings</h3>
         <Button
+          variant="outlined"
+          color='success'
           component={Link}
           to="/lender"
           style={{ textDecoration: 'none' }}

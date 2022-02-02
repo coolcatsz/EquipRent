@@ -127,7 +127,7 @@ const App = () => {
             <Nav setItemList={setItemList} authUser={user.id} darkUser={user} theme={theme} darkMode={darkMode} setTheme={setTheme} />
             <ToastContainer />
             <Routes>
-              <Route exact path ="/profile/:userId" element={<Profile authUser={user}/>}/>
+              <Route exact path ="/profile/:userId" element={<Profile authUser={user} listingClick={oneItem}/>}/>
               <Route exact path ='/lender' element={<Lender user={user} getAllItem={getAllItem}/>}/>
               {/* <Route exact path ='/chat' element={<Chat googleUser={user}/>} /> */}
               <Route exact path ='/chat/:room' element={<ActiveChat googleUser={user}/>} />
