@@ -4,14 +4,9 @@ import Typography from '@mui/material/Typography';
 import Paper from '@material-ui/core/Paper';
 import Rating from '@mui/material/Rating';
 import Divider from '@mui/material/Divider';
-import List from '@mui/material/List';
-import ListItem from '@mui/material/ListItem';
-import ListItemText from '@mui/material/ListItemText';
-import ListItemAvatar from '@mui/material/ListItemAvatar';
-import Avatar from '@mui/material/Avatar';
-const moment = require('moment');
+import SinglePost from './SinglePost.jsx';
 
-const ItemPost = ({ itemReview, user }) => {
+const ItemPost = ({ itemReview }) => {
 
   let ratingAvg = 0;
   const average = itemReview.reduce((total, rateObj) => {
@@ -45,28 +40,10 @@ const ItemPost = ({ itemReview, user }) => {
                     return 0;
                   }
                 }).reverse().map((post) => {
+                  console.log(post);
                   return (
                     <div>
-                      <List sx={{ width: '100%', maxWidth: 700, marginLeft: '50px' }}>
-                        <ListItem alignItems="flex-start">
-                          <ListItemAvatar>
-                            <Avatar sx={{ width: 32, height: 32 }}>
-                              <img src={user.thumbnail} width={'100%'} />
-                            </Avatar>
-                          </ListItemAvatar>
-                          <ListItemText >
-                            <Typography>{user.username}</Typography>
-                            {moment(post.createdAt).fromNow()}
-                          </ListItemText>
-                        </ListItem>
-                        <ListItem>
-                          <ListItemText>
-                            <Rating name="read-only" value={post.rating} readOnly />
-                            <Typography variant="h6">{post.description}</Typography>
-                          </ListItemText>
-                        </ListItem>
-                        <Divider variant="middle" component="li" />
-                      </List>
+                      <SinglePost post={post} />
                     </div>
                   );
                 })
