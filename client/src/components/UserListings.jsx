@@ -41,6 +41,8 @@ const Listings = ({listingClick}) => {
       <div>
         <h3>No Listings</h3>
         <Button
+          variant="outlined"
+          color='success'
           component={Link}
           to="/lender"
           style={{ textDecoration: 'none' }}
