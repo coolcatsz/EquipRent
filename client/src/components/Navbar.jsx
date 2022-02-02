@@ -31,7 +31,7 @@ import { useSharedUser } from './User.jsx';
 import LogOut from './LogOut.jsx';
 //ok
 
-const NavBar = ({ setItemList, authUser, darkMode, setTheme, theme }) => {
+const NavBar = ({ setItemList, authUser, darkMode, setTheme, theme, getAllItem }) => {
   const [anchorEl, setAnchorEl] = React.useState(null);
   const [isLoggedIn, setIsLoggedIn] = React.useState(false);
   const [user, setUser] = React.useState(null);
@@ -117,14 +117,6 @@ const NavBar = ({ setItemList, authUser, darkMode, setTheme, theme }) => {
               color="inherit"
             >
            Map
-            </Button>
-            <Button
-              size="large"
-              component={Link}
-              to="/chat"
-              color="inherit"
-            >
-              <EmailIcon/>
             </Button>
             {
               (user && user.thumbnail) ?
