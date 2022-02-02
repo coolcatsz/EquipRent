@@ -56,7 +56,7 @@ const ItemPost = ({ itemReview, user }) => {
                           </ListItemAvatar>
                           <ListItemText >
                             <Typography>{user.username}</Typography>
-                            {moment(post.createdAt).startOf('day').fromNow()}
+                            {moment(post.createdAt).fromNow()}
                           </ListItemText>
                         </ListItem>
                         <ListItem>
