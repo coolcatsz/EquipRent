@@ -9,9 +9,10 @@ import Dialog from '@mui/material/Dialog';
 import DialogActions from '@mui/material/DialogActions';
 import DialogContent from '@mui/material/DialogContent';
 import DialogTitle from '@mui/material/DialogTitle';
+import { useParams } from 'react-router-dom';
 
 const CreatePost = ({user, currentItem}) => {
-
+  const { userId } = useParams();
   const [open, setOpen] = React.useState(false);
 
   const handleClickOpen = () => {
@@ -39,53 +40,55 @@ const CreatePost = ({user, currentItem}) => {
       .catch((err) => console.error('PostReview Err'));
   };
 
-  return (
-    <div>
+  if (Number(userId) === user) {
+    return (
       <div>
-        <Button variant="outlined" onClick={handleClickOpen} color='success'>
-        Review
-        </Button>
-        <Dialog open={open} onClose={handleClose}>
-          <DialogTitle>Write a Review</DialogTitle>
-          <form id="my-form-id" onSubmit={postReview}>
-            <DialogContent>
-              <Box
-                sx={{
-                  '& > legend': { mt: 2 },
-                }}
-              />
-              <Typography component="legend">Rate this item</Typography>
-              <Rating
-                name="simple-controlled"
-                size="large"
-                value={rating}
-                onChange={(event, newValue) => {
-                  setRating(newValue);
-                }}
-              />
-              <TextField
-                id="filled-multiline-static"
-                label="Write a Review"
-                multiline
-                rows={4}
-                variant="filled"
-                autoFocus
-                margin="dense"
-                fullWidth
-                value={description}
-                onChange={(event) => {
-                  setDescription(event.target.value);
-                }}
-              />
-            </DialogContent>
-            <DialogActions>
-              <Button color='success' type="submit" form="my-form-id" onClick={handleClose}>Post</Button>
-            </DialogActions>
-          </form>
-        </Dialog>
+        <div>
+          <Button variant="outlined" onClick={handleClickOpen} color='success'>
+          Review
+          </Button>
+          <Dialog open={open} onClose={handleClose}>
+            <DialogTitle>Write a Review</DialogTitle>
+            <form id="my-form-id" onSubmit={postReview}>
+              <DialogContent>
+                <Box
+                  sx={{
+                    '& > legend': { mt: 2 },
+                  }}
+                />
+                <Typography component="legend">Rate this item</Typography>
+                <Rating
+                  name="simple-controlled"
+                  size="large"
+                  value={rating}
+                  onChange={(event, newValue) => {
+                    setRating(newValue);
+                  }}
+                />
+                <TextField
+                  id="filled-multiline-static"
+                  label="Write a Review"
+                  multiline
+                  rows={4}
+                  variant="filled"
+                  autoFocus
+                  margin="dense"
+                  fullWidth
+                  value={description}
+                  onChange={(event) => {
+                    setDescription(event.target.value);
+                  }}
+                />
+              </DialogContent>
+              <DialogActions>
+                <Button color='success' type="submit" form="my-form-id" onClick={handleClose}>Post</Button>
+              </DialogActions>
+            </form>
+          </Dialog>
+        </div>
       </div>
-    </div>
-  );
+    );
+  }
 };
 
 export default CreatePost;
