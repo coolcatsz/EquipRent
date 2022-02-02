@@ -9,7 +9,7 @@ import ListItem from '@mui/material/ListItem';
 import ListItemText from '@mui/material/ListItemText';
 import ListItemAvatar from '@mui/material/ListItemAvatar';
 import Avatar from '@mui/material/Avatar';
-
+const moment = require('moment');
 
 const ItemPost = ({ itemReview, user }) => {
 
@@ -28,7 +28,7 @@ const ItemPost = ({ itemReview, user }) => {
         <div>
           <div style={{marginLeft: '45px', display: 'inline-flex'}}>
             <h1> { average.toFixed(1) } <Rating name="read-only" value={ average.toFixed(1) } precision={0.5} size="large" readOnly /></h1>
-            <h4 style={{marginLeft: '20px', marginTop: '30px'}}> Based on {itemReview.length} reviews</h4>
+            <Typography variant='h6' style={{marginLeft: '20px', marginTop: '25px'}}> Based on {itemReview.length} reviews</Typography>
           </div>
           <Divider variant="middle"/>
           <Paper elevation={0}>
@@ -54,12 +54,15 @@ const ItemPost = ({ itemReview, user }) => {
                               <img src={user.thumbnail} width={'100%'} />
                             </Avatar>
                           </ListItemAvatar>
-                          <ListItemText primary={user.username} secondary="Jan 9, 2014" />
+                          <ListItemText >
+                            <Typography>{user.username}</Typography>
+                            {moment(post.createdAt).startOf('day').fromNow()}
+                          </ListItemText>
                         </ListItem>
                         <ListItem>
                           <ListItemText>
                             <Rating name="read-only" value={post.rating} readOnly />
-                            <Typography>Description: {post.description}</Typography>
+                            <Typography variant="h6">{post.description}</Typography>
                           </ListItemText>
                         </ListItem>
                         <Divider variant="middle" component="li" />
